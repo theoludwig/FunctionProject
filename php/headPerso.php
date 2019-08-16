@@ -36,8 +36,8 @@ switch ($currentpage) {
         $description = "Affiche la météo et l'heure local selon la ville.";
         break;
     default:
-        $title = 'FunctionProject';
-        $description = 'FunctionProject est un projet créé par Divlo qui a pour but de rassembler plein de mini-programme (fonctions JavaScript) permettant de faire plusieurs choses comme savoir la météo, générer un nombre aléatoire, etc.';
+        $title = 'Erreur 404';
+        $description = "Cette page n'existe pas!";
 }
 
 ?>
