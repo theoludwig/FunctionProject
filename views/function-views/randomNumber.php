@@ -1,3 +1,6 @@
+<!-- Head Perso -->
+<?php include("../../php/headPerso.php");?>
+
 <!-- Header -->
 <?php include("../../incl/header.php");?>
 
@@ -6,8 +9,8 @@
 
 <!-- Page Content -->
 <div class="container">
-  <h1 class="mt-4 text-center"><span class="yellow-color">Nombre Aléatoire</span> :</h1>
-  <p class="pt-3 text-center">Génère un nombre aléatoire entre un minimum inclus et un maximum inclus.</p>
+  <h1 class="mt-4 text-center"><span class="yellow-color"><?php echo $title?></span> :</h1>
+  <p class="pt-3 text-center"><?php echo $description?></p>
   <div class="form-group">
 		<label for="minValue">Entrez la valeur minimale :</label>
         <input name="minValue" type="text" id="minValue" placeholder="(e.g : 1)" class="form-control">

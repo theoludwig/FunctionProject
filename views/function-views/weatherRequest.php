@@ -1,3 +1,6 @@
+<!-- Head Perso -->
+<?php include("../../php/headPerso.php");?>
+
 <!-- Header -->
 <?php include("../../incl/header.php");?>
 
@@ -6,8 +9,8 @@
 
 <!-- Page Content -->
 <div class="container">
-  <h1 class="mt-4 text-center"><span class="yellow-color">Météo</span> :</h1>
-  <p class="pt-3 text-center">Affiche la météo et l'heure local selon la ville.</p>
+  <h1 class="mt-4 text-center"><span class="yellow-color"><?php echo $title?></span> :</h1>
+  <p class="pt-3 text-center"><?php echo $description?></p>
   <div class="form-group">
 		<label for="cityName">Entrez le nom d'une ville :</label>
         <input name="cityName" type="text" id="cityName" placeholder="(e.g : Paris)" class="form-control">

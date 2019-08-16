@@ -1,3 +1,6 @@
+<!-- Head Perso -->
+<?php include("../php/headPerso.php");?>
+
 <!-- Header -->
 <?php include("../incl/header.php");?>
                 <ul class="navbar-nav ml-auto">

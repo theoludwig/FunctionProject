@@ -1,3 +1,6 @@
+<!-- Head Perso -->
+<?php include("../../php/headPerso.php");?>
+
 <!-- Header -->
 <?php include("../../incl/header.php");?>
 
@@ -6,8 +9,8 @@
 
 <!-- Page Content -->
 <div class="container">
-  <h1 class="mt-4 text-center"><span class="yellow-color">Quelle âge avez-vous ?</span></h1>
-  <p class="pt-3 text-center">Calcule l'âge de quelqu'un selon la date de naissance.</p>
+  <h1 class="mt-4 text-center"><span class="yellow-color"><?php echo $title?></span></h1>
+  <p class="pt-3 text-center"><?php echo $description?></p>
   <div class="form-group">
 		<label for="birthDateValue">Entrez la date de naissance au format (dd/mm/yyyy) :</label>
         <input name="birthDateValue" type="text" id="birthDateValue" placeholder="(e.g : 31/03/2003)" class="form-control">

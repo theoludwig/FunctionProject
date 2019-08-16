@@ -1,3 +1,6 @@
+<!-- Head Perso -->
+<?php include("../../php/headPerso.php");?>
+
 <!-- Header -->
 <?php include("../../incl/header.php");?>
 
@@ -6,8 +9,9 @@
 
 <!-- Page Content -->
 <div class="container">
-  <h1 class="mt-4 text-center"><span class="yellow-color">Conversion de Distance</span> :</h1>
-  <p class="pt-3 text-center">Convertit la longueur (distance) avec les unités allant de picomètre au Téramètre.</p>
+  <h1 class="mt-4 text-center"><span class="yellow-color"><?php echo $title?></span> :</h1>
+  <p class="pt-3 text-center"><?php echo $description?></p>
+  <br>
   <div class="form-group">
 		<label for="firstValue">Entrez la distance que vous voulez convertir :</label>
         <input name="firstValue" type="text" id="firstValue" placeholder="(e.g : 50cm)" class="form-control">

@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr" prefix="og: http://ogp.me/ns#">
     <head>
-        <title>Function Project</title>
+        <title><?php echo $title?></title>
         <link rel="icon" type="image/png" href="/img/FunctionProject_logo.png"/>
 
         <!-- Meta Tag -->
         <meta charset="utf-8">
         <meta https-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="FunctionProject est un projet créé par Divlo qui a pour but de rassembler plein de mini-programme (fonctions JavaScript) permettant de faire plusieurs choses comme savoir la météo, générer un nombre aléatoire, etc."/> 
+        <meta name="description" content="<?php echo $description?>"/> 
         <link rel="canonical" href="function.divlo.fr"/> 
         <meta name="Language" content="fr"/> 
         <meta charset="utf-8">
 
         <!--Open Graph Metadata-->
-        <meta property="og:title" content="Function Project">
+        <meta property="og:title" content="<?php echo $title?>">
         <meta property="og:type" content="website"> 
         <meta property="og:url" content="https://function.divlo.fr/"> 
         <meta property="og:image" content="https://function.divlo.fr/img/FunctionProject.png"> 
-        <meta property="og:description" content="FunctionProject est un projet créé par Divlo qui a pour but de rassembler plein de mini-programme (fonctions JavaScript) permettant de faire plusieurs choses comme savoir la météo, générer un nombre aléatoire, etc."> 
+        <meta property="og:description" content="<?php echo $description?>"> 
         <meta property="og:locale" content="fr_FR">
         <meta property="og:site_name" content="Function Project"> 
 
         <!-- Twitter card Metadata -->
         <meta name="twitter:card" content="summary">
-        <meta name="twitter:description" content="FunctionProject est un projet créé par Divlo qui a pour but de rassembler plein de mini-programme (fonctions JavaScript) permettant de faire plusieurs choses comme savoir la météo, générer un nombre aléatoire, etc.">
-        <meta name="twitter:title" content="Function Project">
+        <meta name="twitter:description" content="<?php echo $description?>">
+        <meta name="twitter:title" content="<?php echo $title?>">
         <meta name="twitter:site" content="@Divlo_FR">
         <meta name="twitter:image:src" content="https://function.divlo.fr/img/FunctionProject.png">
         <meta name="twitter:creator" content="@Divlo_FR">
