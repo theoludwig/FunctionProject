@@ -106,7 +106,7 @@ $(function () {
     $( "#submitConvertDistance" ).click(function() 
     {
         let firstValueEntered = $('#firstValue').val();
-        let secondValueEntered = $('#secondValue').val();
+        let secondValueEntered = $("#secondValue option:selected").text();
 
         if(isEmptyValue(firstValueEntered) || isEmptyValue(secondValueEntered))
         {
