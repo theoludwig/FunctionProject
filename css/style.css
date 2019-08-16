@@ -1,0 +1,72 @@
+/* GENERAL */
+body {
+    background-color: #181818;
+    color:rgba(222, 222, 222, 0.9);
+    font-family: 'Montserrat', 'Arial', sans-serif;
+}
+b {
+    font-weight: bold;
+}
+.yellow-color, .yellow-color:hover {
+    color: #ffd800;
+}
+
+/* HEADER */
+header {
+    margin-bottom: 5%;
+}
+.navbar {
+    border-bottom: 3px rgba(255,255,255,0.7) solid;
+}
+
+/* CONTENT */
+.container > h1, .container > .row > h1 {
+    font-family: 'Roboto', 'sans-serif';
+}
+.container > p, .container > .row > p {
+    font-size: 18px; 
+    line-height: 1.9; /* représente un facteur multiplicateur de la taille de la police appliquée à l'élément */
+}
+.container > p > a, .container > .row > a, .container > table > tbody > tr > td > a, .container > .row > table > tbody > tr > td > a, footer > p > a {
+    color: #ffd800;
+    font-weight: bold;
+}
+.container > p > a:hover, .container > .row > p > a:hover, footer > p > a:hover {
+    color: rgba(255,255,255,1);
+    font-weight: bold;
+    text-decoration: underline;
+}
+.function-list-title {
+    margin: auto;
+    padding-bottom: 45px;
+}
+.table {
+    color: #fff;
+}
+
+/* FOOTER */
+footer
+{
+    border-top: 3px rgba(255,255,255,0.7) solid;
+    padding: 20px 0 40px;
+    margin-top: 40px;
+}
+.footer-text
+{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+	margin: 0 0 25px 0;
+	line-height: 1.1;
+	color: #9a9da2;
+}
+footer i
+{
+	font-size: 25px;
+	margin: 20px;
+	height: 30px;
+}
+footer i:hover
+{
+	font-size: 30px;
+}
