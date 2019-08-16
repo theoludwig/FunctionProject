@@ -2,7 +2,7 @@
 <html lang="fr" prefix="og: http://ogp.me/ns#">
     <head>
         <title><?php echo $title?></title>
-        <link rel="icon" type="image/png" href="/img/FunctionProject_logo.png"/>
+        <link rel="icon" type="image/png" href="<?php echo $image?>"/>
 
         <!-- Meta Tag -->
         <meta charset="utf-8">
@@ -17,7 +17,7 @@
         <meta property="og:title" content="<?php echo $title?>">
         <meta property="og:type" content="website"> 
         <meta property="og:url" content="https://function.divlo.fr/"> 
-        <meta property="og:image" content="https://function.divlo.fr/img/FunctionProject.png"> 
+        <meta property="og:image" content="<?php echo $image?>"> 
         <meta property="og:description" content="<?php echo $description?>"> 
         <meta property="og:locale" content="fr_FR">
         <meta property="og:site_name" content="Function Project"> 
@@ -27,7 +27,7 @@
         <meta name="twitter:description" content="<?php echo $description?>">
         <meta name="twitter:title" content="<?php echo $title?>">
         <meta name="twitter:site" content="@Divlo_FR">
-        <meta name="twitter:image:src" content="https://function.divlo.fr/img/FunctionProject.png">
+        <meta name="twitter:image:src" content="<?php echo $image?>">
         <meta name="twitter:creator" content="@Divlo_FR">
 
         <!-- Frameworks and Tools -->
