@@ -8,7 +8,7 @@
 
 Toutes les informations en détails sur le projet sont disponible sur [function.divlo.fr](https://function.divlo.fr/).
 
-(Projet uniquement en français pour le moment.)
+(Projet uniquement en français)
 
 [![FunctionProject](https://cloud.divlo.fr/public_files/others/FunctionProject.png)](https://function.divlo.fr/)
 

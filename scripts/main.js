@@ -129,6 +129,8 @@ $(function () {
         }
     });
 
+    window.onload = realDateTime('realDateTime');
+
     // Fin de l'import des fonctions
     });
     // Fin de l'import des variables

@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////
-/* Fonctions Principales */ https://www.google.com/maps/search/?api=1&query=48.86,2.35
+/* Fonctions Principales */
 
 // Permet de faire une requête à l'API openweathermap.org
 function weatherRequest(url,toDo) {
@@ -183,7 +183,7 @@ function isEmptyValue(value) {
     }
 }
 
-// Fonction qui formate les nombres avec des espaces (ex : 76120 = 76 120)
+// Formate les nombres avec des espaces (ex : 76120 = 76 120)
 function formatNumberResult(num) {
     if (!isNaN(num))
     {
@@ -202,7 +202,7 @@ function formatNumberResult(num) {
     }
 }
 
-// Fonction qui convertit les puissances de 10 en nombre (ex: 1e+20 = 100 000 000 000 000 000 000), ne peut pas dépasser 1e+20 (21 ne fonctionne pas)
+// Convertit les puissances de 10 en nombre (ex: 1e+20 = 100 000 000 000 000 000 000), ne peut pas dépasser 1e+20 (21 ne fonctionne pas)
 function convertPuissanceToNumber(num) {
     if(!isNaN(num))
     {
@@ -215,31 +215,7 @@ function convertPuissanceToNumber(num) {
     }
 }
 
-// Fonction qui convertit un résultat en m/s en km/s
-function msToKms(num) {
-    if (!isNaN(num))
-    {
-        return num / 1000;
-    }
-    else 
-    {
-        return messageError;
-    }
-}
-
-// Fonction qui convertit un résultat en m/s en km/h
-function msToKmh(num) {
-    if (!isNaN(num))
-    {
-        return num * 3.6;
-    }
-    else 
-    {
-        return messageError;
-    }
-}
-
-// Fonction qui calcul une valeur (= 100%) selon le pourcentage (ex: 25% de 100 = 25) 
+// Calcul une valeur (= 100%) selon le pourcentage (ex: 25% de 100 = 25) 
 function calculPercentagePart(percentage,value) {
     if (!isNaN(percentage) && !isNaN(value))
     {
@@ -251,13 +227,13 @@ function calculPercentagePart(percentage,value) {
     }
 }
 
-// Fonction qui met une majuscule à la 1ère lettre d'une string
+// Met une majuscule à la 1ère lettre d'une string
 function capitalize (s) { 
     if (typeof s !== 'string') return ''
     return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
-// Fonction qui donne la date et l'heure selon l'UTC (Universal Time Coordinated)
+// Donne la date et l'heure selon l'UTC (Universal Time Coordinated)
 function dateTimeUTC(utc) {
     if(typeof utc === 'string' && utc.length >= 1 && utc[0] === '-' || '0' || '+' || !isNaN(parseFloat(utc[0])))
     {   
@@ -343,7 +319,7 @@ function dateTimeUTC(utc) {
     }
 }
 
-// Fonction qui affiche la date et l'heure (format : dd/mm/yyyy - 00:00:00)
+// Affiche la date et l'heure (format : dd/mm/yyyy - 00:00:00)
 function showDateTime(enteredOffset) {
     year    = timeNow.getFullYear();
     month   = ('0'+(timeNow.getMonth()+1)).slice(-2);
@@ -358,7 +334,19 @@ function showDateTime(enteredOffset) {
     return showDateTimeValue;
 }
 
-// Fonction qui permet de récupérer le décalage en secondes depuis UTC grâce à l'API
+// Affiche l'heure en temps réel
+function realDateTime(id)
+{
+    timeNow = new Date;
+    showDateTime();
+    resultat = hour + ":" + minute + ":" + second;
+
+    document.getElementById(id).innerHTML = resultat;
+    setTimeout('realDateTime("'+id+'");','1000');
+    return true;
+}
+
+// Permet de récupérer le décalage en secondes depuis UTC grâce à l'API
 function timeZone(json) {
     if(json.name === 'Moscou') // Il faut ajouter + 1h de décallage à Moscou
     {

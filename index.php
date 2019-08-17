@@ -3,6 +3,8 @@
 
 <!-- Header -->
 <?php include("./incl/header.php");?>
+
+<!-- Menu -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="/index.php">Accueil<span class="sr-only">(current)</span></a>
@@ -33,7 +35,6 @@
   Je suis débutant en programmation donc si je commets une erreur dans le code, n'hésitez pas à me le faire savoir. <i class="fas fa-code"></i>
   <br><br>
   Vous pouvez m'envoyer vos avis, suggestion d'ajouts, éventuel bug/problème grâce à ce <a href="https://docs.google.com/forms/d/1NliUWi3lntHDM42Td0C47J0cZKgnYilxT_0UcdmVaog/" target="_blank">Feedback Formulaire</a> 📝.
-  <br>
   </p>
 </div>
 

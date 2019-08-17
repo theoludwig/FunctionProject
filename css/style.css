@@ -7,7 +7,7 @@ body {
     background-color: #181818;
     color:rgba(222, 222, 222, 0.9);
     font-family: 'Montserrat', 'Arial', sans-serif;
-    margin: 0 0 125px; /* bottom = footer height */
+    margin: 0 0 182px; /* bottom = footer height */
 }
 b {
     font-weight: bold;
@@ -59,7 +59,7 @@ footer
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 125px;
+    height: 182px;
     width: 100%;
 }
 .footer-text
@@ -79,4 +79,11 @@ footer i
 footer i:hover
 {
 	font-size: 30px;
+}
+.realDateTime {
+    padding-bottom: 20px;
+}
+#realDateTime {
+    font-size: 18px;
+    font-family: 'Roboto', 'sans-serif';
 }
