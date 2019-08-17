@@ -1,8 +1,13 @@
 /* GENERAL */
+html {
+    position: relative;
+    min-height: 100%;
+}
 body {
     background-color: #181818;
     color:rgba(222, 222, 222, 0.9);
     font-family: 'Montserrat', 'Arial', sans-serif;
+    margin: 0 0 125px; /* bottom = footer height */
 }
 b {
     font-weight: bold;
@@ -20,6 +25,9 @@ header {
 }
 
 /* CONTENT */
+.container {
+    padding-bottom: 25px;
+}
 .container > h1, .container > .row > h1 {
     font-family: 'Roboto', 'sans-serif';
 }
@@ -48,16 +56,18 @@ header {
 footer
 {
     border-top: 3px rgba(255,255,255,0.7) solid;
-    padding: 20px 0 40px;
-    margin-top: 40px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 125px;
+    width: 100%;
 }
 .footer-text
 {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 18px;
 	font-weight: 700;
-	margin: 0 0 25px 0;
-	line-height: 1.1;
+    padding: 0 0 25px 0;
 	color: #9a9da2;
 }
 footer i
