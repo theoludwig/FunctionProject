@@ -337,8 +337,14 @@ function showDateTime(enteredOffset) {
 // Affiche l'heure en temps réel
 function realDateTime(id)
 {
-    timeNow = new Date;
-    showDateTime();
+    realDateTimeNow = new Date;
+    year    = realDateTimeNow.getFullYear();
+    month   = ('0'+(realDateTimeNow.getMonth()+1)).slice(-2);
+    day     = ('0'+realDateTimeNow.getDate()).slice(-2);
+    hour    = ('0'+realDateTimeNow.getHours()).slice(-2);
+    minute  = ('0'+realDateTimeNow.getMinutes()).slice(-2);
+    second  = ('0'+realDateTimeNow.getSeconds()).slice(-2);
+
     resultat = hour + ":" + minute + ":" + second;
 
     document.getElementById(id).innerHTML = resultat;
