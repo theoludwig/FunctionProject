@@ -28,7 +28,7 @@
 <div class="container">
     <div class="row">
         <h1>La liste des <span class="important">Fonctions</span> :</h1>
-            <table class="table table-bordered">
+            <table class="table table-bordered mt-5">
                 <thead>
                     <tr>
                         <th scope="col">Nom</th>

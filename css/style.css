@@ -31,7 +31,6 @@ h1 {
     font-family: 'Roboto', 'sans-serif';
     margin: auto;
     text-align: center;
-    padding-bottom: 0.6em;
 }
 p {
     font-size: 18px; 
@@ -40,7 +39,7 @@ p {
 
 /* HEADER */
 header {
-    margin-bottom: 5%;
+    margin-bottom: 4%;
 }
 #header-container {
     padding-bottom: 0;
