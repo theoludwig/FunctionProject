@@ -31,7 +31,8 @@
   <br> <br>
   <a class="d-flex justify-content-center" href="./views/function-list.php">Cliquez ici pour accéder à la liste des fonctions.</a>
   <br>
-  <span class="d-flex justify-content-center">L'intégralité du&nbsp;<a target="_blank" href="https://github.com/Divlo/FunctionProject">code source</a>&nbsp;de ce site est disponible sur&nbsp;<a href="https://github.com/Divlo">mon profil GitHub</a>&nbsp;<span><i class="fab fa-github"></i></span>.</span>
+  L'intégralité du <a target="_blank" href="https://github.com/Divlo/FunctionProject">code source</a> de ce site est disponible sur <a href="https://github.com/Divlo">mon profil GitHub</a> <i class="fab fa-github"></i>.
+  <br>
   Je suis débutant en programmation donc si je commets une erreur dans le code, n'hésitez pas à me le faire savoir <i class="fas fa-code"></i>.
   <br><br>
   Vous pouvez m'envoyer vos avis, suggestion d'ajouts, éventuel bug/problème grâce à ce <a href="https://docs.google.com/forms/d/1NliUWi3lntHDM42Td0C47J0cZKgnYilxT_0UcdmVaog/" target="_blank">Feedback Formulaire</a> 📝.
