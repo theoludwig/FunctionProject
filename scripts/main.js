@@ -11,15 +11,12 @@ $(function () {
     {
         let city = $('#cityName').val();
         let cityName = city.split(' ').join('+'); 
-        if(cityName === '')
+        if(isEmptyValue(cityName))
         {
-            $('.results').html("Vous ne pouvez pas rentré une valeur vide.");
-            $("#cityName").click(function() {
+            $('.results').html(emptyMessageError);
+            $("#cityName, #submitWeatherRequest").click(function() {
                 document.location.replace("../function-views/weatherRequest.php");
-              });
-              $("#submitWeatherRequest").click(function() {
-                document.location.replace("../function-views/weatherRequest.php");
-              });
+            });
         }
         else 
         {
@@ -35,7 +32,7 @@ $(function () {
 
         if(isEmptyValue(minEntered) || isEmptyValue(maxEntered))
         {
-            $('.results').html("Vous ne pouvez pas rentré de valeur vide.");
+            $('.results').html(emptyMessageError);
         }
         else 
         {
@@ -53,15 +50,15 @@ $(function () {
 
     $( "#submitCalculateAge" ).click(function() 
     {
-        let birthDate = $('#birthDateValue').val();
+        let birthDateEntered = $('#birthDateValue').val();
 
-        if(isEmptyValue(birthDate))
+        if(isEmptyValue(birthDateEntered))
         {
-            $('.results').html("Vous ne pouvez pas rentré de valeur vide.");
+            $('.results').html(emptyMessageError);
         }
         else 
         {
-            let result = calculateAge(birthDate);
+            let result = calculateAge(birthDateEntered);
             if(result === messageError)
             {
                 $('.results').html(messageError);
@@ -69,12 +66,6 @@ $(function () {
             else 
             {
                 $('.results').html(result);
-                $("#birthDateValue").click(function() {
-                    document.location.replace("../function-views/calculateAge.php");
-                  });
-                  $("#submitCalculateAge").click(function() {
-                    document.location.replace("../function-views/calculateAge.php");
-                  });
             }
         }
     });
@@ -87,7 +78,7 @@ $(function () {
 
         if(isEmptyValue(temperatureValue))
         {
-            $('.results').html("Vous ne pouvez pas rentré de valeur vide.");
+            $('.results').html(emptyMessageError);
         }
         else 
         {
@@ -110,7 +101,7 @@ $(function () {
 
         if(isEmptyValue(firstValueEntered) || isEmptyValue(secondValueEntered))
         {
-            $('.results').html("Vous ne pouvez pas rentré de valeur vide.");
+            $('.results').html(emptyMessageError);
         }
         else 
         {
@@ -129,6 +120,7 @@ $(function () {
         }
     });
 
+    /* Permet d'afficher l'heure en temps réel sur le footer */
     window.onload = realDateTime('realDateTime');
 
     // Fin de l'import des fonctions

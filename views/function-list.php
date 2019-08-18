@@ -27,7 +27,7 @@
 <!-- Page Content -->
 <div class="container">
     <div class="row">
-        <h1 class="function-list-title">La liste des <span class="yellow-color">Fonctions</span> :</h1>
+        <h1 class="function-list-title">La liste des <span class="important">Fonctions</span> :</h1>
         <!-- <p class="text-center">(Uniquement les fonctions pouvant être testé sont affichés.)</p> -->
             <table class="table table-bordered">
                 <thead>

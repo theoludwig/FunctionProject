@@ -1,74 +1,77 @@
+:root {
+    --footer-height: 182px; 
+    --border-header-footer: 3px rgba(255,255,255,0.7) solid;
+    --background-color: #181818;
+    --text-color: rgb(222, 222, 222);
+    --important: #ffd800;
+}
+
 /* GENERAL */
 html {
     position: relative;
     min-height: 100%;
 }
 body {
-    background-color: #181818;
-    color:rgba(222, 222, 222, 0.9);
+    background-color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Montserrat', 'Arial', sans-serif;
-    margin: 0 0 182px; /* bottom = footer height */
+    margin: 0 0 var(--footer-height); /* bottom = footer height */
+}
+.important {
+    color: var(--important);
 }
 b {
     font-weight: bold;
+    color: var(--important);
 }
-.yellow-color, .yellow-color:hover {
-    color: #ffd800;
+a, a:hover {
+    color: var(--important);
+}
+h1 {
+    font-family: 'Roboto', 'sans-serif';
+}
+p {
+    font-size: 18px; 
+    line-height: 1.9; 
 }
 
 /* HEADER */
 header {
     margin-bottom: 5%;
 }
+#header-container {
+    padding-bottom: 0;
+}
 .navbar {
-    border-bottom: 3px rgba(255,255,255,0.7) solid;
+    border-bottom: var(--border-header-footer);
 }
 
 /* CONTENT */
 .container {
     padding-bottom: 25px;
 }
-.container > h1, .container > .row > h1 {
-    font-family: 'Roboto', 'sans-serif';
-}
-.container > p, .container > .row > p {
-    font-size: 18px; 
-    line-height: 1.9; /* représente un facteur multiplicateur de la taille de la police appliquée à l'élément */
-}
-.container > p > a, .container > .row > a, .container > table > tbody > tr > td > a, .container > .row > table > tbody > tr > td > a, footer > p > a {
-    color: #ffd800;
-    font-weight: bold;
-}
-.container > p > a:hover, .container > .row > p > a:hover, footer > p > a:hover {
-    color: rgba(255,255,255,1);
-    font-weight: bold;
-    text-decoration: underline;
-}
 .function-list-title {
     margin: auto;
     padding-bottom: 45px;
 }
 .table {
-    color: #fff;
+    color: white;
 }
 
 /* FOOTER */
 footer
 {
-    border-top: 3px rgba(255,255,255,0.7) solid;
+    border-top: var(--border-header-footer);
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 182px;
+    height: var(--footer-height);
     width: 100%;
 }
 .footer-text
 {
-	font-family: 'Montserrat', sans-serif;
 	font-size: 18px;
-	font-weight: 700;
     padding: 0 0 25px 0;
-	color: #9a9da2;
 }
 footer i
 {

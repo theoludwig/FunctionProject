@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////
 /* Fonctions Principales */
 
-// Permet de faire une requête à l'API openweathermap.org
+// Requête à l'API openweathermap.org
 function weatherRequest(url,toDo) {
         $.ajax({
             url : url,
@@ -12,33 +12,24 @@ function weatherRequest(url,toDo) {
                 switch (toDo) {
                     case 'time': 
                         $('.results').html("La date et l'heure de " + city + " : " + showDateTimeValue); 
-                        $("#cityName").click(function() {
-                            document.location.replace("../../views/function-views/weatherRequest.php");
-                          });
-                          $("#submitWeatherRequest").click(function() {
-                            document.location.replace("../../views/function-views/weatherRequest.php");
-                          });
+                        $("#cityName, #submitWeatherRequest").click(function() {
+                            document.location.replace("../../function-views/weatherRequest.php");
+                        });
                       break;
                       case 'weather':
                           if(city === 'Moscou')
                           {
                             $('.results').html(`🌎 Position : <a href='https://www.google.com/maps/place/${city}/' class="yellow-color" target="_blank">${city}, RU</a><br>⏰ Date et heure : ${showDateTimeValue}<br>☁️ Météo : ${capitalize(json.weather[0].description)}<br> 🌡️ Température : ${json.main.temp} °C<br> 💧 Humidité : ${json.main.humidity}% <br> <img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"/>`); 
-                            $("#cityName").click(function() {
-                                document.location.replace("../../views/function-views/weatherRequest.php");
-                              });
-                              $("#submitWeatherRequest").click(function() {
-                                document.location.replace("../../views/function-views/weatherRequest.php");
-                              });
+                            $("#cityName, #submitWeatherRequest").click(function() {
+                                document.location.replace("../../function-views/weatherRequest.php");
+                            });
                           }
                           else
                           {
                             $('.results').html(`🌎 Position : <a href='https://www.google.com/maps/place/${city}/' class="yellow-color" target="_blank">${city}, ${json.sys.country}</a><br>⏰ Date et heure : ${showDateTimeValue}<br>☁️ Météo : ${capitalize(json.weather[0].description)}<br> 🌡️ Température : ${json.main.temp} °C<br> 💧 Humidité : ${json.main.humidity}% <br> <img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"/>`); 
-                            $("#cityName").click(function() {
-                                document.location.replace("../../views/function-views/weatherRequest.php");
-                              });
-                              $("#submitWeatherRequest").click(function() {
-                                document.location.replace("../../views/function-views/weatherRequest.php");
-                              });
+                            $("#cityName, #submitWeatherRequest").click(function() {
+                                document.location.replace("../../function-views/weatherRequest.php");
+                            });
                           }
                       break;
                     default:
@@ -53,9 +44,9 @@ function weatherRequest(url,toDo) {
 }
 
 // Génère un nombre aléatoire entre un minimum inclus et un maximum inclus 
-function randomNumber(minEntered, maxEntered) {
-    let min = Math.ceil(minEntered);
-    let max = Math.floor(maxEntered);
+function randomNumber(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
 
     if (!isNaN(min) && !isNaN(max) && min < max)
     {
@@ -73,54 +64,40 @@ function randomNumber(minEntered, maxEntered) {
 }
 
 // Calcule l'âge de quelqu'un selon la date de naissance
-function calculateAge(birthDate) {
-    // Vérifie si la valeur entrée correspond à une date de naissance
-    if(birthDate.length === 10 && typeof birthDate === 'string' && birthDate[2] === '/' && birthDate[5] === '/' && !isNaN(parseInt(birthDate[0] + birthDate[1] + birthDate[3] + birthDate[4] + birthDate[6] + birthDate[7])))
-    {
-        // Les variables de la fonction
-        let birthDateDay = parseInt(birthDate[0] + birthDate[1]);
-        let birthDateMonth = parseInt(birthDate[3] + birthDate[4]);
-        let birthDateYear = parseInt(birthDate[6] + birthDate[7] + birthDate[8] + birthDate[9]);
-        dateTimeUTC('0');
+function calculateAge(birthDateEntered) {
 
-        // Vérifie si la date entrée correspond à une date valide  
-        if(birthDateDay <= 31 && birthDateMonth <=12 && birthDateYear <= parseInt(year))
-        {
-            // Initialise la date de naissance 
-            let birthDate = new Date(birthDateYear + '-' + birthDateMonth + '-' + birthDateDay);
-            let ageDiff = timeNow - birthDate; // résultat en millisecondes
+    // Les variables de la fonction
+    let birthDateDay = parseInt(birthDateEntered[0] + birthDateEntered[1]);
+    let birthDateMonth = parseInt((birthDateEntered[3] + birthDateEntered[4]) - 1);
+    let birthDateYear = parseInt(birthDateEntered[6] + birthDateEntered[7] + birthDateEntered[8] + birthDateEntered[9]);
+    dateTimeUTC('0');
+    day = parseInt(day)
+    month = parseInt(month - 1);
+    year = parseInt(year);
 
-            // Vérifie si tu es déjà né
-            if(ageDiff > 0)
-            {
-                let ageDiffYear = ageDiff / 1000 / 60 / 60 / 24 / 365.25; // résultat en années
-                let ageYear = parseInt(ageDiffYear, 10); // Le 10 permet spécifier que parseInt doit utliser la base 10
+    let dateNow = moment([year, month, day]);
+    let birthDate = moment([birthDateYear, birthDateMonth, birthDateDay]);
 
-                let ageDiffDay = parseInt((ageDiff / 1000 / 60 / 60 / 24) - (ageYear * 365.25), 10);
-                let ageDiffMonth = ageDiffDay / 30;
-
-                let ageMonth = parseInt(ageDiffMonth, 10);
-                let ageDay = ageDiffDay - (ageMonth * 30);
-
-                // Si c'est ton anniversaire aujourd'hui
-                if(birthDateDay === parseInt(day) && birthDateMonth === parseInt(month))
-                {
-                    return 'Vous avez ' + ageYear + ' ans. Joyeux Anniversaire! 🥳';
-                }
+    // Calcule l'âge - Moment.js
+    let ageYears = dateNow.diff(birthDate, 'year');
+    birthDate.add(ageYears, 'years');
     
-                else
-                {
-                    return 'Vous avez ' + ageYear + ' ans, ' + ageMonth + ' mois et ' + ageDay + ' jour(s).';
-                }
-            }
-            else
-            {
-                return "Vous n'êtes pas encore né...";
-            }
+    let ageMonths = dateNow.diff(birthDate, 'months');
+    birthDate.add(ageMonths, 'months');
+    
+    let ageDays = dateNow.diff(birthDate, 'days');
+
+    // Vérifie si la valeur entrée correspond à une date de naissance valide
+    if(birthDate._isValid === true)
+    {
+        // Si c'est ton anniversaire aujourd'hui
+        if(birthDateDay === parseInt(day) && birthDateMonth === parseInt(month))
+        {
+            return 'Vous avez ' + ageYears + ' ans. Joyeux Anniversaire! 🥳';
         }
         else
         {
-            return messageError;
+            return 'Vous avez ' + ageYears + ' ans, ' + ageMonths + ' mois et ' + ageDays + ' jour(s).';
         }
     }
     else 
@@ -215,19 +192,7 @@ function convertPuissanceToNumber(num) {
     }
 }
 
-// Calcul une valeur (= 100%) selon le pourcentage (ex: 25% de 100 = 25) 
-function calculPercentagePart(percentage,value) {
-    if (!isNaN(percentage) && !isNaN(value))
-    {
-        return value * (percentage / 100);
-    }
-    else 
-    {
-        return messageError;
-    }
-}
-
-// Met une majuscule à la 1ère lettre d'une string
+// Majuscule à la 1ère lettre d'une string
 function capitalize (s) { 
     if (typeof s !== 'string') return ''
     return s.charAt(0).toUpperCase() + s.slice(1)
@@ -352,7 +317,7 @@ function realDateTime(id)
     return true;
 }
 
-// Permet de récupérer le décalage en secondes depuis UTC grâce à l'API
+// Récupére le décalage en secondes à partir de l'heure UTC grâce à l'API
 function timeZone(json) {
     if(json.name === 'Moscou') // Il faut ajouter + 1h de décallage à Moscou
     {

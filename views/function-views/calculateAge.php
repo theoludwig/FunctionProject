@@ -9,7 +9,7 @@
 
 <!-- Page Content -->
 <div class="container">
-  <h1 class="mt-4 text-center"><span class="yellow-color"><?php echo $title?></span></h1>
+  <h1 class="mt-4 text-center"><span class="important"><?php echo $title?></span></h1>
   <p class="pt-3 text-center"><?php echo $description?></p>
   <div class="form-group">
 		<label for="birthDateValue">Entrez la date de naissance au format (dd/mm/yyyy) :</label>

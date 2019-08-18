@@ -9,7 +9,7 @@
 
 <!-- Page Content -->
 <div class="container">
-  <h1 class="mt-4 text-center"><span class="yellow-color">La météo</span> :</h1>
+  <h1 class="mt-4 text-center"><span class="important">La météo</span> :</h1>
   <p class="pt-3 text-center">Affiche la météo et l'heure local selon la ville.</p>
   <div class="form-group">
 		<label for="cityName">Entrez le nom d'une ville :</label>

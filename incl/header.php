@@ -34,6 +34,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
         <script src="https://kit.fontawesome.com/ed4e9fbefd.js"></script>
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Varela+Round&display=swap" rel="stylesheet">
@@ -46,7 +47,7 @@
     <body>
         <header>    
             <nav class="navbar navbar-expand-lg navbar-dark static-top">
-                <div class="container">
+                <div class="container" id="header-container">
                     <!-- Brand -->
                     <a class="navbar-brand" href="/index.php"><img src="/img/FunctionProject_brand-logo.png" alt=""></a>
 
