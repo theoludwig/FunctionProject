@@ -38,9 +38,6 @@ p {
 }
 
 /* HEADER */
-header {
-    margin-bottom: 4%;
-}
 #header-container {
     padding-bottom: 0;
 }
@@ -52,8 +49,11 @@ header {
 }
 
 /* CONTENT */
-.container {
-    padding-bottom: 25px;
+@media (min-width: 576px) {
+    .jumbotron {padding: 6.17rem 2rem;}
+}
+.jumbotron {
+    background-color: var(--background-color) !important;
 }
 .table {
     color: white;
