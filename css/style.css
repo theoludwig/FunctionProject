@@ -29,6 +29,9 @@ a, a:hover {
 }
 h1 {
     font-family: 'Roboto', 'sans-serif';
+    margin: auto;
+    text-align: center;
+    padding-bottom: 0.6em;
 }
 p {
     font-size: 18px; 
@@ -45,14 +48,13 @@ header {
 .navbar {
     border-bottom: var(--border-header-footer);
 }
+.nav-link {
+    text-align: center !important;
+}
 
 /* CONTENT */
 .container {
     padding-bottom: 25px;
-}
-.function-list-title {
-    margin: auto;
-    padding-bottom: 45px;
 }
 .table {
     color: white;

@@ -26,7 +26,7 @@
 
 <!-- Page Content -->
 <div class="container">
-  <h1 class="mt-4 text-center">Bienvenue sur <span class="important">FunctionProject</span>! 🎉</h1>
+  <h1>Bienvenue sur <span class="important">FunctionProject</span>! 🎉</h1>
   <p class="pt-3">FunctionProject est un projet créé par <a href="https://divlo.fr/" target="_blank">Divlo</a> qui a pour but de rassembler plein de mini-programme (fonctions JavaScript) permettant de faire plusieurs choses comme <b>savoir la météo</b>, générer un <b>nombre aléatoire</b>, etc. 
   <br> <br>
   <a class="d-flex justify-content-center" href="./views/function-list.php">Cliquez ici pour accéder à la liste des fonctions.</a>
