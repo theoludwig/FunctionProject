@@ -13,7 +13,7 @@ function weatherRequest(url,toDo) {
                     case 'time': 
                         $('.results').html("La date et l'heure de " + city + " : " + showDateTimeValue); 
                         $("#cityName, #submitWeatherRequest").click(function() {
-                            document.location.replace("../../function-views/weatherRequest.php");
+                            document.location.replace("../../views/function-views/weatherRequest.php");
                         });
                       break;
                       case 'weather':
@@ -21,14 +21,14 @@ function weatherRequest(url,toDo) {
                           {
                             $('.results').html(`🌎 Position : <a href='https://www.google.com/maps/place/${city}/' class="yellow-color" target="_blank">${city}, RU</a><br>⏰ Date et heure : ${showDateTimeValue}<br>☁️ Météo : ${capitalize(json.weather[0].description)}<br> 🌡️ Température : ${json.main.temp} °C<br> 💧 Humidité : ${json.main.humidity}% <br> <img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"/>`); 
                             $("#cityName, #submitWeatherRequest").click(function() {
-                                document.location.replace("../../function-views/weatherRequest.php");
+                                document.location.replace("../../views/function-views/weatherRequest.php");
                             });
                           }
                           else
                           {
                             $('.results').html(`🌎 Position : <a href='https://www.google.com/maps/place/${city}/' class="yellow-color" target="_blank">${city}, ${json.sys.country}</a><br>⏰ Date et heure : ${showDateTimeValue}<br>☁️ Météo : ${capitalize(json.weather[0].description)}<br> 🌡️ Température : ${json.main.temp} °C<br> 💧 Humidité : ${json.main.humidity}% <br> <img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"/>`); 
                             $("#cityName, #submitWeatherRequest").click(function() {
-                                document.location.replace("../../function-views/weatherRequest.php");
+                                document.location.replace("../../views/function-views/weatherRequest.php");
                             });
                           }
                       break;
