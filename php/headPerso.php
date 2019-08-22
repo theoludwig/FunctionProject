@@ -6,12 +6,12 @@ switch ($currentpage) {
     case '/index.php':
         $title = 'FunctionProject';
         $description = 'FunctionProject est un projet créé par Divlo qui a pour but de rassembler plein de mini-programme (fonctions JavaScript) permettant de faire plusieurs choses comme savoir la météo, générer un nombre aléatoire, etc.';
-        $image = 'https://function.divlo.fr/img/FunctionProject_logo.png';
+        $image = 'https://function.divlo.fr/img/FunctionProject_icon.png';
         break;
     case '/views/function-list.php':
         $title = 'Liste des fonctions';
         $description = 'La liste des mini-programmes (fonctions JavaScript).';
-        $image = 'https://function.divlo.fr/img/FunctionProject_logo.png';
+        $image = 'https://function.divlo.fr/img/FunctionProject_icon.png';
         break;
     case '/views/function-views/calculateAge.php':
         $title = 'Quelle âge avez-vous ?';
