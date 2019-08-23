@@ -4,9 +4,6 @@
 <!-- Header -->
 <?php include("../incl/header.php");?>
 
-<!-- Menu -->
-<?php include("../incl/menu.php");?>
-
 <!-- Page Content -->
 <div class="container">
   <h1><span class="important">La météo</span> :</h1>
