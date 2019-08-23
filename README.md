@@ -1,5 +1,5 @@
 # FunctionProject
-![Badge Status](https://cloud.divlo.fr/public_files/others/under_dev.svg)
+![Badge Status](https://cloud.divlo.fr/public_files/others/Trash/under_dev.svg)
 
 [À propos de Divlo](https://divlo.fr/) | [Youtube](https://www.youtube.com/c/Divlo) | [Twitch](https://www.twitch.tv/divlofr) | [Twitter](https://twitter.com/Divlo_FR) | [Steam](https://steamcommunity.com/id/Divlo/) | [Discord](https://discordapp.com/invite/WWK2JPz)
 
@@ -10,7 +10,7 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 
 [Projet uniquement en français]
 
-[![FunctionProject](https://cloud.divlo.fr/public_files/others/FunctionProject.png)](https://function.divlo.fr/)
+[![FunctionProject](https://cloud.divlo.fr/public_files/others/FunctionProject/FunctionProject.png)](https://function.divlo.fr/)
 
 ## La liste des Fonctions Principales :   
 | Nom | Description | Paramètre(s) |
