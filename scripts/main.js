@@ -123,6 +123,21 @@ $(function () {
     /* Permet d'afficher l'heure en temps réel sur le footer */
     window.onload = realDateTime('realDateTime');
 
+    /* Window Scroll Top Button */
+    var $btnScrollTop = $('.scroll-top');
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $btnScrollTop.fadeIn();
+        } else {
+            $btnScrollTop.fadeOut();
+        }
+    });
+
+    $btnScrollTop.on('click', function () {
+        $('html, body').animate({scrollTop: 0}, 800);
+        return false;
+    });
+
     // Fin de l'import des fonctions
     });
     // Fin de l'import des variables
