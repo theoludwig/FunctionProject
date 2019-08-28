@@ -22,5 +22,33 @@
     </div>
 </div>
 
+<!-- Exécution de la fonction weatherRequest() -->
+<?php include("../../php/apiKey.php"); ?>
+<script>
+    $(function () {
+        // Fichiers qui contient les fonctions
+        $.getScript("/scripts/fonctions.js", function() {
+
+            $( "#submitWeatherRequest" ).click(function() 
+            {
+                let city = $('#cityName').val();
+                let cityName = city.split(' ').join('+'); 
+                if(isEmptyValue(cityName))
+                {
+                    $('.results').html(emptyMessageError);
+                    $("#cityName, #submitWeatherRequest").click(function() {
+                        document.location.replace("../function-views/weatherRequest.php");
+                    });
+                }
+                else 
+                {
+                    let url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&lang=fr&units=metric&appid=<?php echo $apiKey ?>";
+                    weatherRequest(url, 'weather');
+                }
+            });
+        });
+    })   
+</script>
+
 <!-- Footer -->
 <?php include("../../incl/footer.php");?>

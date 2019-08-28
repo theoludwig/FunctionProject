@@ -1,4 +1,2 @@
 htaccess
-scripts/config.js
-img/FunctionProject_brand-logo.psd
-img/FunctionProject.psd
+php/apiKey.php

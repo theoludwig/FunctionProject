@@ -7,25 +7,10 @@ $(function () {
     $.getScript("/scripts/fonctions.js", function() {
 
     /* ÉXECUTION DES FONCTONS */
-    $( "#submitWeatherRequest" ).click(function() 
-    {
-        let city = $('#cityName').val();
-        let cityName = city.split(' ').join('+'); 
-        if(isEmptyValue(cityName))
-        {
-            $('.results').html(emptyMessageError);
-            $("#cityName, #submitWeatherRequest").click(function() {
-                document.location.replace("../function-views/weatherRequest.php");
-            });
-        }
-        else 
-        {
-            let url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&lang=fr&units=metric&appid=" + config.APIkey + "";
-            weatherRequest(url, 'weather');
-        }
-    });
 
-    $( "#submitRandomNumber" ).click(function() 
+    // $("#submitWeatherRequest") se fait exécuter dans weatherRequest.php
+
+    $("#submitRandomNumber").click(function() 
     {
         let minEntered = $('#minValue').val();
         let maxEntered = $('#maxValue').val(); 
@@ -48,7 +33,7 @@ $(function () {
         }
     });
 
-    $( "#submitCalculateAge" ).click(function() 
+    $("#submitCalculateAge").click(function() 
     {
         let birthDateEntered = $('#birthDateValue').val();
 
@@ -70,7 +55,7 @@ $(function () {
         }
     });
 
-    $( "#submitConvertTemperature" ).click(function() 
+    $("#submitConvertTemperature").click(function() 
     {
         let temperatureValue = $('#temperatureValue').val();
         let degree = parseFloat(temperatureValue.slice(0, temperatureValue.length - 2));
@@ -94,7 +79,7 @@ $(function () {
         }
     });
 
-    $( "#submitConvertDistance" ).click(function() 
+    $("#submitConvertDistance").click(function() 
     {
         let firstValueEntered = $('#firstValue').val();
         let secondValueEntered = $("#secondValue option:selected").text();
@@ -124,7 +109,7 @@ $(function () {
     window.onload = realDateTime('realDateTime');
 
     /* Window Scroll Top Button */
-    var $btnScrollTop = $('.scroll-top');
+    var $btnScrollTop = $('.scroll-top-arrow');
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
             $btnScrollTop.fadeIn();
