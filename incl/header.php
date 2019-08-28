@@ -31,15 +31,15 @@
         <meta name="twitter:creator" content="@Divlo_FR">
 
         <!-- Frameworks and Tools -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
-        <script src="https://kit.fontawesome.com/ed4e9fbefd.js"></script>
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Varela+Round&display=swap" rel="stylesheet">
+        <script src="/scripts/libs/jquery-min.js"></script>
+        <link rel="stylesheet" href="/css/libs/bootstrap-min.css">
+        <script src="/scripts/libs/bootstrap-min.js"></script>
+        <script src="/scripts/libs/moment.js"></script>
 
-        <script type='text/javascript' src='/scripts/config.js'></script>
+        <!-- Google Fonts and Font Awesome -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Varela+Round&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/ed4e9fbefd.js"></script>
+
         <script src="/scripts/main.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/style.css">
     </head>
