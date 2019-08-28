@@ -1,5 +1,5 @@
-<!-- Head Perso -->
-<?php include("./php/headPerso.php");?>
+<!-- Config -->
+<?php include("./php/config.php");?>
 
 <!-- Header -->
 <?php include("./incl/header.php");?>
