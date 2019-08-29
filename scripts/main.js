@@ -44,7 +44,7 @@ $(function () {
             }
             else 
             {
-                $('.results').html("Nombre aléatoire compris entre " + minEntered + " inclus et " + maxEntered + " inclus : " + result);
+                $('.results').html(result);
             }
         }
     });

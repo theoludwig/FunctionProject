@@ -51,7 +51,7 @@ function randomNumber(min, max) {
     if (!isNaN(min) && !isNaN(max) && min < max)
     {
         let randomNumber =  Math.floor(Math.random() * (max - min +1)) + min;
-        return randomNumber;
+        return "Nombre aléatoire compris entre " + min + " inclus et " + max + " inclus : " + randomNumber;
     }
     else if (min > max)
     {
