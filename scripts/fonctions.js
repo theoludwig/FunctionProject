@@ -152,7 +152,7 @@ function filterStudents(filteredLetter, students)
     let filteredStudents = [];
     for(let i = 0; i < students.length; i++)
     {
-        let studentBoucle = students[i];
+        let studentBoucle = capitalize(students[i]);
         if (studentBoucle[0] === filteredLetter) {
             filteredStudents.push(studentBoucle);
         }
