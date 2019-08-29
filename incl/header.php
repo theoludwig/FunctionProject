@@ -36,6 +36,9 @@
         <link rel="stylesheet" href="/css/libs/bootstrap-min.css">
         <script src="/scripts/libs/bootstrap-min.js"></script>
         <script src="/scripts/libs/moment.js"></script>
+        <link rel="stylesheet" href="/css/libs/bootstrap-datepicker3.css"/>
+        <script src="/scripts/libs/jquery-ui-min.js"></script>
+        <script src="/scripts/libs/bootstrap-datepicker-min.js"></script>
 
         <!-- Google Fonts and Font Awesome -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Varela+Round&display=swap" rel="stylesheet">

@@ -10,7 +10,7 @@
   <p class="pt-3 text-center"><?php echo $description?></p>
   <div class="form-group">
 		<label for="birthDateValue">Entrez la date de naissance au format (dd/mm/yyyy) :</label>
-        <input name="birthDateValue" type="text" id="birthDateValue" placeholder="(e.g : 31/03/2003)" class="form-control">
+        <input name="birthDateValue" type="text" id="birthDateValue" placeholder="Sélectionnez une date" class="form-control datepicker">
         <br>
         <div class="form-row text-center">
             <div class="col-12">

@@ -147,11 +147,29 @@ $(function () {
 
     /* Window Scroll Top Button */
     var $btnScrollTop = $('.scroll-top-arrow');
-
     $btnScrollTop.on('click', function () {
         $('html, body').animate({scrollTop: 0}, 800);
         return false;
     });
+
+    /* Date Picker */
+    $.fn.datepicker.dates['fr'] = {
+    days: ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
+    daysShort: ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."],
+    daysMin: ["d", "l", "ma", "me", "j", "v", "s"],
+    months: ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+    monthsShort: ["janv.", "févr.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."],
+    today: "Aujourd'hui",
+    monthsTitle: "Mois",
+    clear: "Effacer",
+    weekStart: 1,
+    format: "dd/mm/yyyy"
+    };
+    $('.datepicker').datepicker({
+    language: 'fr',
+    autoclose: true,
+    todayHighlight: true
+    })
 
     // Fin de l'import des fonctions
     });
