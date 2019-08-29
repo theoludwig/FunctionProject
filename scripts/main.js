@@ -8,7 +8,23 @@ $(function () {
 
     /* ÉXECUTION DES FONCTONS */
 
-    // $("#submitWeatherRequest") se fait exécuter dans weatherRequest.php
+    $( "#submitWeatherRequest" ).click(function() 
+    {
+        let city = $('#cityName').val();
+        let cityName = city.split(' ').join('+'); 
+        if(isEmptyValue(cityName))
+        {
+            $('.results').html(emptyMessageError);
+            $("#cityName, #submitWeatherRequest").click(function() {
+                document.location.replace("../function-views/weatherRequest.php");
+            });
+        }
+        else 
+        {
+            let url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&lang=fr&units=metric&appid=" + config.APIkey + "";
+            weatherRequest(url, 'weather');
+        }
+    });
 
     $("#submitRandomNumber").click(function() 
     {
@@ -110,13 +126,6 @@ $(function () {
 
     /* Window Scroll Top Button */
     var $btnScrollTop = $('.scroll-top-arrow');
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $btnScrollTop.fadeIn();
-        } else {
-            $btnScrollTop.fadeOut();
-        }
-    });
 
     $btnScrollTop.on('click', function () {
         $('html, body').animate({scrollTop: 0}, 800);
