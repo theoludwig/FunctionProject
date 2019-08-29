@@ -43,6 +43,11 @@ switch ($currentpage) {
         $description = "Affiche la météo et l'heure local selon la ville.";
         $image = 'https://function.divlo.fr/img/function-image/weatherRequest.png';
         break;
+    case '/views/function-views/filterStudents.php':
+        $title = 'Trie les prénoms par leur première lettre';
+        $description = "Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée.";
+        $image = 'https://function.divlo.fr/img/function-image/filterStudents.png';
+        break;
     default:
         $title = 'Erreur 404';
         $description = "Cette page n'existe pas!";

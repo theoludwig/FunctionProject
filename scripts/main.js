@@ -121,6 +121,27 @@ $(function () {
         }
     });
 
+    $("#submitFilterStudents").click(function() 
+    {
+        let nameEntered = $('#nameEntered').val();
+        let filteredLetter = $("#filteredLetter").val();
+
+        if(isEmptyValue(nameEntered) || isEmptyValue(filteredLetter))
+        {
+            $('.results').html(emptyMessageError);
+        }
+        else if(filteredLetter.length === 1)
+        {
+            let students = nameEntered.split(', ');
+            filteredLetter = capitalize(filteredLetter);
+            let result = filterStudents(filteredLetter, students);
+            $('.results').html(result);
+        }
+        else {
+            $('.results').html(messageError);
+        }
+    });
+
     /* Permet d'afficher l'heure en temps réel sur le footer */
     window.onload = realDateTime('realDateTime');
 

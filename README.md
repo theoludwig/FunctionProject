@@ -20,6 +20,7 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **calculateAge(birthDate)** | Calcule l'âge de quelqu'un selon la date de naissance. | - birthDate : date de naissance au format (dd/mm/yyyy). |
 | **convertTemperature(degree,unit)** | Convertit des Degré Celsius en Degré Fahrenheit et l'inverse aussi. | - degre : Le nombre que vous voulez convertir - unite : l'unité du nombre que vous voulez convertir (°C ou °F)	|
 | **convertDistance (firstValue, unitFirstValue, unitFinalValue)** | Convertit la longueur (distance) avec les unités allant de picomètre au Téramètre. | - firstValue : Le nombre que vous voulez convertir - unitFirstValue : l'unité du nombre que vous voulez convertir - unitFinalValue : l'unité de votre nombre après la conversion	|
+| **filterStudents(filteredLetter, students)** | Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée. | - filteredLetter : la lettre à filtré - students : la liste des prénoms  |
 
 ## La liste des Fonctions Annexes :   
 | Nom | Description | Paramètre(s) |
@@ -32,4 +33,3 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **showDateTime(enteredOffset)** | Affiche la date et l'heure (format : dd/mm/yyyy - 00:00:00). | - enteredOffset : date à formaté |
 | **realDateTime(id)** | Affiche l'heure en temps réel. | - id : l'id de votre span/div où vous voulez afficher l'heure en temps réel |
 | **timeZone(json)** | Récupére le décalage en secondes à partir de l'heure UTC grâce à l'API openweathermap.org. | - json : le json de l'API |
-

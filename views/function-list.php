@@ -36,6 +36,10 @@
                         <td><a href="./function-views/convertDistance.php">Conversion de Distance</a></td>
                         <td>Convertit la longueur (distance) avec les unités allant de picomètre au Téramètre.</td> 
                     </tr>
+                    <tr>
+                        <td><a href="./function-views/filterStudents.php">Trie les prénoms par leur première lettre</a></td>
+                        <td>Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée.</td> 
+                    </tr>
                 </tbody>
             </table>
     </div>

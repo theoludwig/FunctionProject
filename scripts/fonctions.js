@@ -146,6 +146,36 @@ function convertDistance (firstValue, unitFirstValue, unitFinalValue) {
     }
 }
 
+// Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée
+function filterStudents(filteredLetter, students)
+{
+    let filteredStudents = [];
+    for(let i = 0; i < students.length; i++)
+    {
+        let studentBoucle = students[i];
+        if (studentBoucle[0] === filteredLetter) {
+            filteredStudents.push(studentBoucle);
+        }
+    }
+    if (filteredStudents.length === 1)
+    {
+        return ("Prénom qui commence par " + filteredLetter + " : " + filteredStudents + '.');
+    }
+    else if (filteredStudents.length >= 2)
+    {
+        // Affiche la liste des prénoms...
+        let last = filteredStudents[filteredStudents.length - 1]; // Accéde au dernier élément du tableau
+        let totalfilteredLetterStudents = filteredStudents.length;
+        filteredStudents.pop(); // Supprime le dernier élément du tableau
+        // filteredStudents.join(', ') permet de rajouter un espace entre chaque élément du tableau
+        return ("Prénoms qui commence par " + filteredLetter + " (" + totalfilteredLetterStudents + ") : " + filteredStudents.join(', ') + ' et ' + last + '.');
+    }
+    else
+    {
+        return ("Il n'y a pas de prénom commencant par " + filteredLetter + ".");
+    }
+}
+
 
 /////////////////////////////////////////////////////////////////
 /* Fonctions Annexes */
