@@ -10,9 +10,25 @@
   <p class="pt-3 text-center"><?php echo $description?></p>
   <br>
   <div class="form-group">
-		<label for="firstValue">Entrez la distance que vous voulez convertir :</label>
-        <input name="firstValue" type="text" id="firstValue" placeholder="(e.g : 50cm)" class="form-control">
+        <label for="firstValue">Entrez la distance que vous voulez convertir et sélectionner l'unité de celle-çi :</label>
         <br>
+        <input name="firstValue" type="text" id="firstValue" placeholder="(e.g : 50)" class="form-control">
+        <select id="firstValueUnit">
+            <option value="pm">pm</option>
+            <option value="nm">nm</option>
+            <option value="µm">µm</option>
+            <option value="mm">mm</option>
+            <option value="cm">cm</option>
+            <option value="dm">dm</option>
+            <option value="m">m</option>
+            <option value="dam">dam</option>
+            <option value="hm">hm</option>
+            <option value="km">km</option>
+            <option value="Mm">Mm</option>
+            <option value="Gm">Gm</option>
+            <option value="Tm">Tm</option>
+        </select>
+        <br> <br>
 		<label for="secondValue">Choisissez l'unité que vous voulez avoir après conversion :</label> <br>
         <select id="secondValue">
             <option value="pm">pm</option>

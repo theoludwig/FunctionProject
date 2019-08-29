@@ -97,19 +97,17 @@ $(function () {
 
     $("#submitConvertDistance").click(function() 
     {
-        let firstValueEntered = $('#firstValue').val();
-        let secondValueEntered = $("#secondValue option:selected").text();
+        let firstValue = $('#firstValue').val();
+        let unitFirstValue = $("#firstValueUnit option:selected").text();
+        let secondValue = $("#secondValue option:selected").text();
 
-        if(isEmptyValue(firstValueEntered) || isEmptyValue(secondValueEntered))
+        if(isEmptyValue(firstValue) || isEmptyValue(secondValue))
         {
             $('.results').html(emptyMessageError);
         }
         else 
         {
-            let firstValue = parseFloat(firstValueEntered.slice(0, firstValueEntered.length - 2));;
-            let unitFirstValue = firstValueEntered.slice(firstValueEntered.length - 2);
-
-            let result = convertDistance(firstValue, unitFirstValue, secondValueEntered);
+            let result = convertDistance(parseFloat(firstValue), unitFirstValue, secondValue);
             if(result === messageError)
             {
                 $('.results').html(messageError);

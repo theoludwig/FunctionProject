@@ -55,6 +55,10 @@ header {
 .container {
     padding-bottom: 25px;
 }
+#firstValue {
+    width: 25% !important;
+    display: inline;
+}
 .table {
     color: white;
 }
