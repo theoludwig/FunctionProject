@@ -10,10 +10,10 @@
   <p class="pt-3 text-center"><?php echo $description?></p>
   <div class="form-group">
 		<label for="minValue">Entrez la valeur minimale :</label>
-        <input name="minValue" type="text" id="minValue" placeholder="(e.g : 1)" class="form-control">
+        <input name="minValue" type="number" min="0" id="minValue" placeholder="(e.g : 1)" class="form-control">
         <br>
 		<label for="maxValue">Entrez la valeur maximale :</label>
-        <input name="maxValue" type="text" id="maxValue" placeholder="(e.g : 100)" class="form-control">
+        <input name="maxValue" type="number" min="1" id="maxValue" placeholder="(e.g : 100)" class="form-control">
         <br>
         <div class="form-row text-center">
             <div class="col-12">
