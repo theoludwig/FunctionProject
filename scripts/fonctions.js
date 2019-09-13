@@ -178,10 +178,10 @@ function getRandomQuote() {
 }
 
 // Convertis des euros (€) dans une autre devise 
-function convertCurrency(urlFixerIO, currency, euroValue) {
+function convertCurrency(currency, euroValue) {
     $.ajax({
-        url : urlFixerIO,
-        dataType : "jsonp",
+        url : 'https://api.exchangeratesapi.io/latest',
+        dataType : "json",
         success: function (jsonFixer) { 
             switch(currency) {
                 case '£':

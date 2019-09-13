@@ -175,8 +175,7 @@ $(function () {
         else 
         {
             euroValue = parseFloat(euroValue);
-            let urlFixer = 'http://data.fixer.io/api/latest?access_key=' + config.APIkeyFixer;
-            convertCurrency(urlFixer, euroToCurrency, euroValue);
+            convertCurrency(euroToCurrency, euroValue);
         }
     });
 
