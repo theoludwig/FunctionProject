@@ -154,6 +154,14 @@ $(function () {
         $('.resultsRandomQuote').html(getRandomQuote());
     }
 
+    /* Permet d'afficher la liste des citations/proverbes */
+    if(chemin === "/views/quote-list.php") {
+        for (index in quotes) {
+            $( ".quote-list" ).append('<tr> <td class="quote-element-list important">' + quotes[index]["source"] + '</td> <td class="quote-element-list">" ' + quotes[index]["quote"] + ' "</td> </tr>');
+        }
+    }
+
+
     /* Permet d'afficher l'heure en temps réel sur le footer */
     window.onload = realDateTime('realDateTime');
 

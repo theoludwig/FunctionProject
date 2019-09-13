@@ -8,10 +8,9 @@
 <div class="container">
   <h1><span class="important"><?php echo $title?></span> :</h1>
   <p class="pt-3 text-center">
-    <?php echo $description?> <br> 
-    <em>(Les citations peuvent être en anglais ou en français)</em> <br> <br>
-    <a href="#">La liste de toutes les citations/proverbes.</a>
-</p> <br>
+    <?php echo $description?> <br> <br>
+    <a href="/views/quote-list.php">La liste de toutes les citations/proverbes.</a>
+  </p> <br>
   <div class="form-group">
         <div class="form-row text-center">
             <div class="col-12">

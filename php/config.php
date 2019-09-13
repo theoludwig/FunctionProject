@@ -53,6 +53,11 @@ switch ($currentpage) {
         $description = "Génère aléatoirement une citation ou un proverbe.";
         $image = 'https://function.divlo.fr/img/function-image/randomQuote.png';
         break;
+    case '/views/quote-list.php':
+        $title = 'Liste des citations';
+        $description = "La liste de toutes les citations ou proverbes (aimé par Divlo).";
+        $image = 'https://function.divlo.fr/img/function-image/randomQuote.png';
+        break;
     default:
         $title = 'Erreur 404';
         $description = "Cette page n'existe pas!";

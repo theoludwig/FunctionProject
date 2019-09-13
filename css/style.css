@@ -62,6 +62,10 @@ header {
 .table {
     color: white;
 }
+.quote-element-list {
+    vertical-align: middle !important;
+    line-height: 2;
+}
 
 /* FOOTER */
 footer
