@@ -45,7 +45,6 @@
             <option value="Gm">Gm</option>
             <option value="Tm">Tm</option>
         </select>
-        <!-- <input name="secondValue" type="text" id="secondValue" placeholder="(e.g : km)" class="form-control"> -->
         <br>
         <div class="form-row text-center">
             <div class="col-12">

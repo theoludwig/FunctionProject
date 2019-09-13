@@ -22,6 +22,7 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **convertDistance (firstValue, unitFirstValue, unitFinalValue)** | Convertit la longueur (distance) avec les unités allant de picomètre au Téramètre. | - firstValue : Le nombre que vous voulez convertir - unitFirstValue : l'unité du nombre que vous voulez convertir - unitFinalValue : l'unité de votre nombre après la conversion	|
 | **filterStudents(filteredLetter, students)** | Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée. | - filteredLetter : la lettre à filtré - students : la liste des prénoms  |
 | **randomQuote()** | Génère aléatoirement une citation ou un proverbe. | Aucun paramètre  |
+| **convertCurrency(urlFixerIO, currency, euroValue)** | Convertis des euros (€) dans une autre devise. | - urlFixerIO : l'url de l'API pour les taux de change - currency : la devise à avoir après conversion - euroValue : le nombre d'euros (€) à convertir  |
 
 ## La liste des Fonctions Annexes :   
 | Nom | Description | Paramètre(s) |

@@ -21,7 +21,7 @@ $(function () {
         }
         else 
         {
-            let url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&lang=fr&units=metric&appid=" + config.APIkey + "";
+            let url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&lang=fr&units=metric&appid=" + config.APIkeyWeather + "";
             weatherRequest(url, 'weather');
         }
     });
@@ -160,6 +160,25 @@ $(function () {
             $( ".quote-list" ).append('<tr> <td class="quote-element-list important">' + quotes[index]["source"] + '</td> <td class="quote-element-list">" ' + quotes[index]["quote"] + ' "</td> </tr>');
         }
     }
+
+    $("#submitConvertCurrency").click(function() 
+    {
+        let euroValue = $('#euroValue').val();
+        let euroToCurrency = $("#euroToCurrency option:selected").val();
+        if(isEmptyValue(euroValue) || isNaN(parseFloat(euroValue)))
+        {
+            $('.results').html(emptyMessageError);
+            $("#euroValue, #submitConvertCurrency").click(function() {
+                document.location.replace("../function-views/convertCurrency.php");
+            });
+        }
+        else 
+        {
+            euroValue = parseFloat(euroValue);
+            let urlFixer = 'http://data.fixer.io/api/latest?access_key=' + config.APIkeyFixer;
+            convertCurrency(urlFixer, euroToCurrency, euroValue);
+        }
+    });
 
 
     /* Permet d'afficher l'heure en temps réel sur le footer */

@@ -1,8 +1,8 @@
 <!-- Config -->
-<?php include("./php/config.php");?>
+<?php include("../php/config.php");?>
 
 <!-- Header -->
-<?php include("./incl/header.php");?>
+<?php include("../incl/header.php");?>
 
 <!-- Page Content -->
 <div class="container">
@@ -11,4 +11,4 @@
 </div>
 
 <!-- Footer -->
-<?php include("./incl/footer.php");?>
+<?php include("../incl/footer.php");?>

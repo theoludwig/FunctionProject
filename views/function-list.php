@@ -44,6 +44,10 @@
                         <td><a href="./function-views/randomQuote.php">Générateur de citation</a></td>
                         <td>Génère aléatoirement une citation ou un proverbe.</td> 
                     </tr>
+                    <tr>
+                        <td><a href="./function-views/convertCurrency.php">Convertisseur de devise</a></td>
+                        <td>Convertis des euros (€) dans une autre devise.</td> 
+                    </tr>
                 </tbody>
             </table>
     </div>

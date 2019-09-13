@@ -37,7 +37,7 @@ function weatherRequest(url,toDo) {
             },
             statusCode: {
                 404: function() { 
-                    document.location.replace("../error404.php");
+                    document.location.replace("../error404Weather");
                 }
             }
         });
@@ -170,13 +170,38 @@ function filterStudents(filteredLetter, students)
     }
 }
 
-// Génère aléatoirement une citation ou un proverbe.
+// Génère aléatoirement une citation ou un proverbe
 function getRandomQuote() {
     let randomNbr = randomNumber(0, (quotes.length - 1));
     let randomQuotes = quotes[randomNbr];
     return  '" ' + randomQuotes["quote"] + ' " <br> <br> - ' + randomQuotes["source"];
 }
 
+// Convertis des euros (€) dans une autre devise 
+function convertCurrency(urlFixerIO, currency, euroValue) {
+    $.ajax({
+        url : urlFixerIO,
+        dataType : "jsonp",
+        success: function (jsonFixer) { 
+            switch(currency) {
+                case '$':
+                    $('.results').html(formatNumberResult(euroValue) + ' € = ' + (formatNumberResult(parseFloat(jsonFixer.rates.USD) * euroValue)).toFixed(2) + ' ' + currency);
+                    break;
+                case '£':
+                    $('.results').html(formatNumberResult(euroValue) + ' € = ' + (formatNumberResult(parseFloat(jsonFixer.rates.GBP) * euroValue)).toFixed(2) + ' ' + currency);
+                    break;
+                default:
+                    $('.results').html(formatNumberResult(euroValue) + ' €');
+                    break;
+            }
+        },
+        statusCode: {
+            404: function() { 
+                document.location.replace("../404.php");
+            }
+        }
+    });
+}
 
 /////////////////////////////////////////////////////////////////
 /* Fonctions Annexes */
