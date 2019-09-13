@@ -35,17 +35,20 @@ $(function () {
         {
             $('.results').html(emptyMessageError);
         }
-        else 
+        else if (!isNaN(parseInt(minEntered)) && !isNaN(parseInt(maxEntered))) 
         {
             let result = randomNumber(minEntered, maxEntered);
-            if(result === messageError)
+            if (minEntered < maxEntered)
             {
-                $('.results').html(messageError);
+                $('.results').html("Nombre aléatoire compris entre " + minEntered + " inclus et " + maxEntered + " inclus : " + formatNumberResult(result));
             }
-            else 
-            {
-                $('.results').html(result);
+            else if (minEntered > maxEntered) {
+                $('.results').html("Votre nombre minimum est plus grand que le nombre maximum.");
             }
+        else 
+        {
+            $('.results').html(messageError);
+        }
         }
     });
 
@@ -139,6 +142,17 @@ $(function () {
             $('.results').html(messageError);
         }
     });
+
+    let randomQuoteClicked;
+    $("#submitRandomQuote").click(function() 
+    {
+        randomQuoteClicked = true;
+        $('.resultsRandomQuote').html(getRandomQuote());
+    });
+    // Affichage d'une citation au chargement de la page
+    if (randomQuoteClicked != true && window.location.href.indexOf("randomQuote") > -1) {
+        $('.resultsRandomQuote').html(getRandomQuote());
+    }
 
     /* Permet d'afficher l'heure en temps réel sur le footer */
     window.onload = realDateTime('realDateTime');

@@ -21,6 +21,7 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **convertTemperature(degree,unit)** | Convertit des Degré Celsius en Degré Fahrenheit et l'inverse aussi. | - degre : Le nombre que vous voulez convertir - unite : l'unité du nombre que vous voulez convertir (°C ou °F)	|
 | **convertDistance (firstValue, unitFirstValue, unitFinalValue)** | Convertit la longueur (distance) avec les unités allant de picomètre au Téramètre. | - firstValue : Le nombre que vous voulez convertir - unitFirstValue : l'unité du nombre que vous voulez convertir - unitFinalValue : l'unité de votre nombre après la conversion	|
 | **filterStudents(filteredLetter, students)** | Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée. | - filteredLetter : la lettre à filtré - students : la liste des prénoms  |
+| **randomQuote()** | Génère aléatoirement une citation ou un proverbe. | Aucun paramètre  |
 
 ## La liste des Fonctions Annexes :   
 | Nom | Description | Paramètre(s) |

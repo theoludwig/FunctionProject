@@ -48,6 +48,11 @@ switch ($currentpage) {
         $description = "Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée.";
         $image = 'https://function.divlo.fr/img/function-image/filterStudents.png';
         break;
+    case '/views/function-views/randomQuote.php':
+        $title = 'Générateur de citation';
+        $description = "Génère aléatoirement une citation ou un proverbe.";
+        $image = 'https://function.divlo.fr/img/function-image/randomQuote.png';
+        break;
     default:
         $title = 'Erreur 404';
         $description = "Cette page n'existe pas!";

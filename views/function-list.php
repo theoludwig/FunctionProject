@@ -40,6 +40,10 @@
                         <td><a href="./function-views/filterStudents.php">Trie les prénoms par leur première lettre</a></td>
                         <td>Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée.</td> 
                     </tr>
+                    <tr>
+                        <td><a href="./function-views/randomQuote.php">Générateur de citation</a></td>
+                        <td>Génère aléatoirement une citation ou un proverbe.</td> 
+                    </tr>
                 </tbody>
             </table>
     </div>

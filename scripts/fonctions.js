@@ -50,16 +50,10 @@ function randomNumber(min, max) {
 
     if (!isNaN(min) && !isNaN(max) && min < max)
     {
-        let randomNumber =  Math.floor(Math.random() * (max - min +1)) + min;
-        return "Nombre aléatoire compris entre " + min + " inclus et " + max + " inclus : " + randomNumber;
+        return Math.floor(Math.random() * (max - min +1)) + min;
     }
-    else if (min > max)
-    {
-        return "Votre nombre minimum est plus grand que le nombre maximum.";
-    }
-    else
-    {
-        return messageError;
+    else {
+        return null;
     }
 }
 
@@ -174,6 +168,13 @@ function filterStudents(filteredLetter, students)
     {
         return ("Il n'y a pas de prénom commencant par " + filteredLetter + ".");
     }
+}
+
+// Génère aléatoirement une citation ou un proverbe.
+function getRandomQuote() {
+    let randomNbr = randomNumber(0, (quotes.length - 1));
+    let randomQuotes = quotes[randomNbr];
+    return  '" ' + randomQuotes["quote"] + ' " <br> <br> - ' + randomQuotes["source"];
 }
 
 
