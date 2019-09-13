@@ -184,12 +184,33 @@ function convertCurrency(urlFixerIO, currency, euroValue) {
         dataType : "jsonp",
         success: function (jsonFixer) { 
             switch(currency) {
-                case '$':
-                    $('.results').html(formatNumberResult(euroValue) + ' € = ' + (formatNumberResult(parseFloat(jsonFixer.rates.USD) * euroValue)).toFixed(2) + ' ' + currency);
-                    break;
                 case '£':
-                    $('.results').html(formatNumberResult(euroValue) + ' € = ' + (formatNumberResult(parseFloat(jsonFixer.rates.GBP) * euroValue)).toFixed(2) + ' ' + currency);
+                    $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.GBP) * euroValue)).toFixed(2) + ' ' + currency);
                     break;
+                case '$ Américain':
+                    $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.USD) * euroValue)).toFixed(2) + ' ' + currency);
+                    break;
+                case '$ Canadien':
+                            $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.CAD) * euroValue)).toFixed(2) + ' ' + currency);
+                            break;
+                case '$ Australien':
+                        $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.AUD) * euroValue)).toFixed(2) + ' ' + currency);
+                        break;
+                case '$ Mexicain':
+                        $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.MXN) * euroValue)).toFixed(2) + ' ' + currency);
+                        break;
+                case 'Fr':
+                        $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.CHF) * euroValue)).toFixed(2) + ' ' + currency);
+                        break;
+                case '₽':
+                        $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.RUB) * euroValue)).toFixed(2) + ' ' + currency);
+                        break;
+                case 'R$':
+                        $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.BRL) * euroValue)).toFixed(2) + ' ' + currency);
+                        break;
+                case '¥':
+                        $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.JPY) * euroValue)).toFixed(2) + ' ' + currency);
+                        break;
                 default:
                     $('.results').html(formatNumberResult(euroValue) + ' €');
                     break;
@@ -202,6 +223,7 @@ function convertCurrency(urlFixerIO, currency, euroValue) {
         }
     });
 }
+
 
 /////////////////////////////////////////////////////////////////
 /* Fonctions Annexes */

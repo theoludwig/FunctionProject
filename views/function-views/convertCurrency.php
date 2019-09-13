@@ -16,8 +16,15 @@
         <br> <br>
 		<label for="euroToCurrency">Choisissez la devise que voulez avoir après conversion :</label> <br>
         <select id="euroToCurrency">
-            <option value="$">$ - USD - Dollar Américain</option>
-            <option value="£">£ - GBP - Livre sterling</option>
+            <option value="£">Livre sterling (£) - GBP</option>
+            <option value="$ Américain">Dollar Américain ($) - USD</option>
+            <option value="$ Canadien">Dollar Canadien ($) - CAD</option>
+            <option value="$ Australien">Dollar Australien ($) - AUD</option>
+            <option value="$ Mexicain">Peso Mexicain ($) - MXN</option>
+            <option value="Fr">Franc Suisse (Fr) - CHF</option>
+            <option value="₽">Rouble Russe (₽) - RUB</option>
+            <option value="R$">Réal brésilien (R$) - BRL</option>
+            <option value="¥">Yen (¥) - JPY</option>
         </select>
         <br>
         <div class="form-row text-center">
