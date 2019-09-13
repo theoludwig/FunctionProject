@@ -59,7 +59,7 @@ switch ($currentpage) {
         $image = 'https://function.divlo.fr/img/function-image/randomQuote.png';
         break;
     case '/views/function-views/convertCurrency.php':
-        $title = 'Convertisseur de devise';
+        $title = 'Conversion de devise';
         $description = "Convertis des euros (€) dans une autre devise.";
         $image = 'https://function.divlo.fr/img/function-image/convertCurrency.png';
         break;
