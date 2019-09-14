@@ -63,6 +63,11 @@ switch ($currentpage) {
         $description = "Convertis des euros (€) dans une autre devise.";
         $image = 'https://function.divlo.fr/img/function-image/convertCurrency.png';
         break;
+    case '/views/function-views/convertBinaryText.php':
+        $title = "Conversion d'un texte en binaire et vice-versa";
+        $description = "Convertis du texte (encodé en UTF-8) en binaire et l'inverse aussi.";
+        $image = 'https://function.divlo.fr/img/function-image/convertBinaryText.png';
+        break;
     default:
         $title = 'Erreur 404';
         $description = "Cette page n'existe pas!";

@@ -100,7 +100,7 @@ function calculateAge(birthDateEntered) {
     }
 }
 
-// Convertit des °C en °F et l'inverse aussi
+// Convertis des °C en °F et l'inverse aussi
 function convertTemperature(degree, unit) {
     if (!isNaN(degree) && unit === "°C") 
     {
@@ -118,7 +118,7 @@ function convertTemperature(degree, unit) {
     }
 }
 
-// Convertit la longueur (distance) avec les unités allant de picomètre au Téramètre
+// Convertis la longueur (distance) avec les unités allant de picomètre au Téramètre
 function convertDistance (firstValue, unitFirstValue, unitFinalValue) {
 
     let reference = ["pm",null,null,"nm",null,null,"µm",null,null,"mm","cm","dm","m","dam","hm","km",null,null,"Mm",null,null,"Gm",null,null,"Tm"];
@@ -224,6 +224,27 @@ function convertCurrency(currency, euroValue) {
     });
 }
 
+// Convertis du texte (encodé en UTF-8) en binaire et l'inverse aussi (source : http://jsfiddle.net/47zwb41o)
+// UTF-8 vers Binaire
+function utf8ToBin(s) {
+    s = unescape( encodeURIComponent(s));
+    var chr, i = 0, l = s.length, out = '';
+    for( ; i < l; i ++ ){
+        chr = s.charCodeAt( i ).toString(2);
+        while(chr.length % 8 != 0 ){ chr = '0' + chr; }
+        out += chr;
+    }
+    return out;
+}
+// Binaire vers UTF-8
+function binToUtf8(s){
+    var i = 0, l = s.length, chr, out = '';
+    for( ; i < l; i += 8){
+        chr = parseInt( s.substr(i, 8 ), 2).toString(16);
+        out += '%' + ((chr.length % 2 == 0) ? chr : '0' + chr);
+    }
+    return decodeURIComponent(out);
+}
 
 /////////////////////////////////////////////////////////////////
 /* Fonctions Annexes */
@@ -407,4 +428,9 @@ function timeZone(json) {
     }
     let timeZoneStr = timeZoneValue.toString();
     return dateTimeUTC(timeZoneStr); 
+}
+
+// Verifie si une chaîne de caractère c'est du binaire ou non
+function isStringBin(s) {
+    return s.match(/^[+\-0-1(). ]+$/g) !== null ? true : false;
 }

@@ -179,6 +179,32 @@ $(function () {
         }
     });
 
+    $("#submitConvertBinaryText").click(function() 
+    {
+        let binaryTextValue = $('#binaryTextValue').val();
+        let isBinaryValue = isStringBin(binaryTextValue);
+
+        if(isEmptyValue(binaryTextValue)) {
+            $('.results').html(emptyMessageError);
+        }
+        else if (isBinaryValue === true) { 
+            // Le replace enlève les espaces
+            let textResult = binToUtf8(binaryTextValue.replace(/\s/g,'')); 
+
+            $('.results').html(textResult);
+        }
+        else if (isBinaryValue === false) {
+            // Les 2 replace permettent de rajouter un espace tout les 8 bits
+            let binaryResult = utf8ToBin(binaryTextValue);
+            binaryResult = binaryResult.replace(/(\d{8})/g, '$1 ').replace(/(^\s+|\s+$)/,''); 
+
+            $('.results').html(binaryResult);
+        }
+        else {
+            $('.results').html(messageError);
+        }
+    });
+
 
     /* Permet d'afficher l'heure en temps réel sur le footer */
     window.onload = realDateTime('realDateTime');
