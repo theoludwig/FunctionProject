@@ -68,5 +68,41 @@ const quotes = [
     {
       quote:"Vous voulez vous lever le matin en pensant que l'avenir sera formidable - et c'est en cela que réside le fait d'être une civilisation à la conquête de l'espace. Il s'agit de croire en l'avenir et de penser que celui-ci sera meilleur que le passé. Et je ne peux rien trouver de plus excitant que d’être parmi les étoiles.",
       source:"Elon Musk"
+    },
+    {
+      quote:"C'est normal de ne pas savoir. Ce n'est pas parce que tu ne sais pas comment faire que tu es un mauvais développeur.",
+      source:"Développeur Libre"
+    },
+    {
+      quote:"Si vous êtes en train de changer le monde, votre travail porte sur des choses importantes. Si bien que vous êtes excités dès que vous vous levez le matin.",
+      source:"Larry Page"
+    },
+    {
+      quote:"Innover, c'est savoir abandonner des milliers de bonnes idées.",
+      source:"Steve Jobs"
+    },
+    {
+      quote:"Les détails comptent, il vaut mieux attendre de les maîtriser.",
+      source:"Steve Jobs"
+    },
+    {
+      quote:"Dans un monde qui évolue très vite, la seule stratégie qui est vouée à l'échec de façon garantie est de ne pas prendre de risques.",
+      source:"Mark Zuckerberg"
+    },
+    {
+      quote:"Si vous vous décidez à n'entreprendre que des choses dont vous êtes sûr qu’elles vont réussir, vous allez manquer tout un tas d' opportunités.",
+      source:"Jeff Bezos"
+    },
+    {
+      quote:"Vous devez être prêt à être mal compris si vous décidez d’innover.",
+      source:"Jeff Bezos"
+    },
+    {
+      quote:"Vos clients les plus malheureux sont votre meilleure source d'apprentissage.",
+      source:"Bill Gates"
+    },
+    {
+      quote:"Tout le monde a une idée. Mais il s’agit surtout de la mettre à exécution et d’attirer d’autres personnes pour vous aider à travailler et améliorer cette idée.",
+      source:"Jack Dorsey"
     }
   ];

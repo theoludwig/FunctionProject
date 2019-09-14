@@ -26,7 +26,6 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **utf8ToBin(s)** | UTF-8 vers Binaire | - s : la valeur à convertir  |
 | **binToUtf8(s)** | Binaire vers UTF-8 | - s : la valeur à convertir  |
 
-
 ## La liste des Fonctions Annexes :   
 | Nom | Description | Paramètre(s) |
 | -- | -- | -- |
