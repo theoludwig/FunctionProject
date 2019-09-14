@@ -9,6 +9,7 @@
     <h1><span class="important"><?php echo $title?></span> :</h1>
     <p class="pt-3 text-center">
         <?php echo $description?> <br>
+        <span class="totalLengthQuote"></span><br>
         <a href="/views/function-views/randomQuote.php">Revenir au générateur de citations/proverbes.</a>
     </p>
 

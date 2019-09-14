@@ -12,7 +12,8 @@ let utcOffset = timeNow.getTimezoneOffset();
 timeNow.setMinutes(timeNow.getMinutes() + utcOffset);
 
 // Variable pour randomQuote
-const quotes = [
+const quotes = 
+[
     {
       quote:"Rêver, c’est ce qu’un humain peut faire de mieux.",
       source:"Divlo"
@@ -70,6 +71,10 @@ const quotes = [
       source:"Elon Musk"
     },
     {
+      quote:"Si vous ne pouvez expliquer un concept à un enfant de six ans, c'est que vous ne le comprenez pas complètement.",
+      source:"Albert Einstein"
+    },
+    {
       quote:"C'est normal de ne pas savoir. Ce n'est pas parce que tu ne sais pas comment faire que tu es un mauvais développeur.",
       source:"Développeur Libre"
     },
@@ -94,6 +99,10 @@ const quotes = [
       source:"Jeff Bezos"
     },
     {
+      quote:"L'enseignement devrait être ainsi : celui qui le reçoit le recueille comme un don inestimable mais jamais comme une contrainte pénible.",
+      source:"Albert Einstein"
+    },
+    {
       quote:"Vous devez être prêt à être mal compris si vous décidez d’innover.",
       source:"Jeff Bezos"
     },
@@ -104,5 +113,85 @@ const quotes = [
     {
       quote:"Tout le monde a une idée. Mais il s’agit surtout de la mettre à exécution et d’attirer d’autres personnes pour vous aider à travailler et améliorer cette idée.",
       source:"Jack Dorsey"
+    },
+    {
+      quote:"Ne fais jamais rien contre ta conscience, même si l'Etat te le demande.",
+      source:"Albert Einstein"
+    },
+    {
+      quote:"Un problème sans solution est un problème mal posé.",
+      source:"Albert Einstein"
+    },
+    {
+      quote:"Personne n’est trop vieux pour se fixer un nouvel objectif ou réaliser de nouveaux rêves.",
+      source:"Les Brown"
+    },
+    {
+      quote:"La seule façon de faire du bon travail est d’aimer ce que vous faites. Si vous n’avez pas encore trouvé, continuez à chercher.",
+      source:"Steve Jobs"
+    },
+    {
+      quote:"Un pessimiste voit la difficulté dans chaque opportunité, un optimiste voit l’opportunité dans chaque difficulté.",
+      source:"Winston Churchill"
+    },
+    {
+      quote:"Les gagnants trouvent des moyens, les perdants des excuses.",
+      source:"F. D. Roosevelt"
+    },
+    {
+      quote:"La plus grande erreur que puisse faire un homme est d’avoir peur d’en faire une.",
+      source:"Elbert Hubbard"
+    },
+    {
+      quote:"J’ai décidé d’être heureux parce que c’est bon pour la santé.",
+      source:"Voltaire"
+    },
+    {
+      quote:"Pour ce qui est de l’avenir, il ne s’agit pas de le prévoir, mais de le rendre possible.",
+      source:"Antoine de Saint-Exupéry"
+    },
+    {
+      quote:"Celui qui veut atteindre un objectif lointain doit faire de petits pas.",
+      source:"Saul Bellow"
+    },
+    {
+      quote:"Il n’y a pas de réussites faciles ni d’échecs définitifs.",
+      source:"Marcel Proust"
+    },
+    {
+      quote:"Hier n’existe plus , demain ne viendra peut-être jamais. Il n’y a que le miracle du moment présent, savoure-le. C’est un cadeau!",
+      source:"Marie Stilkind"
+    },
+    {
+      quote:"Il faut viser la lune, parce qu’au moins, si vous échouez, vous finirez dans les étoiles.",
+      source:"Oscar Wilde"
+    },
+    {
+      quote:"Celui qui veut réussir trouve un moyen. Celui qui veut rien faire trouve une excuse.",
+      source:"Proverbe"
+    },
+    {
+      quote:"Vous ne trouverez jamais ce que vous ne cherchez pas.",
+      source:"Confucius"
+    },
+    {
+      quote:"Si vous pouvez le rêver, vous pouvez le faire.",
+      source:"Walt Disney"
+    },
+    {
+      quote:"La persévérance, c’est ce qui rend l’impossible possible, le possible probable et le probable réalisé.",
+      source:"Léon Trotsky"
+    },
+    {
+      quote:"Il n’y a qu’une façon d’échouer, c’est d’abandonner avant d’avoir réussi.",
+      source:"Georges Clémenceau"
+    },
+    {
+      quote:"La folie, c’est de refaire la même chose et d’en attendre un résultat différent.",
+      source:"Albert Einstein"
+    },
+    {
+      quote:"L’échec n’est qu’une opportunité pour recommencer la même chose plus intelligemment.",
+      source:"Henry Ford"
     }
-  ];
+];
