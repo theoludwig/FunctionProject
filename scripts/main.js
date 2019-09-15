@@ -190,13 +190,13 @@ $(function () {
         if(isEmptyValue(binaryTextValue)) {
             $('.results').html(emptyMessageError);
         }
-        else if (isBinaryValue === true && convertIn === 'Texte') { 
+        else if (convertIn === 'Texte') { 
             // Le replace enlève les espaces
             let textResult = binToUtf8(binaryTextValue.replace(/\s/g,'')); 
 
             $('.results').html(textResult);
         }
-        else if (isBinaryValue === false && convertIn === 'Binaire') {
+        else if (convertIn === 'Binaire') {
             // Les 2 replace permettent de rajouter un espace tout les 8 bits
             let binaryResult = utf8ToBin(binaryTextValue);
             binaryResult = binaryResult.replace(/(\d{8})/g, '$1 ').replace(/(^\s+|\s+$)/,''); 

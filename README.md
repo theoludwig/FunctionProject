@@ -22,7 +22,7 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **convertDistance (firstValue, unitFirstValue, unitFinalValue)** | Convertit la longueur (distance) avec les unités allant de picomètre au Téramètre. | - firstValue : Le nombre que vous voulez convertir - unitFirstValue : l'unité du nombre que vous voulez convertir - unitFinalValue : l'unité de votre nombre après la conversion	|
 | **filterStudents(filteredLetter, students)** | Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée. | - filteredLetter : la lettre à filtré - students : la liste des prénoms  |
 | **randomQuote()** | Génère aléatoirement une citation ou un proverbe. | Aucun paramètre  |
-| **convertCurrency(currency, euroValue)** | Convertis des euros (€) dans une autre devise. | - urlFixerIO : l'url de l'API pour les taux de change - currency : la devise à avoir après conversion - euroValue : le nombre d'euros (€) à convertir  |
+| **convertCurrency(currency, euroValue)** | Convertis des euros (€) dans une autre devise. [Lien de l'API](https://exchangeratesapi.io/) | - currency : la devise à avoir après conversion - euroValue : le nombre d'euros (€) à convertir  |
 | **utf8ToBin(s)** | UTF-8 vers Binaire | - s : la valeur à convertir  |
 | **binToUtf8(s)** | Binaire vers UTF-8 | - s : la valeur à convertir  |
 
@@ -37,4 +37,3 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **showDateTime(enteredOffset)** | Affiche la date et l'heure (format : dd/mm/yyyy - 00:00:00). | - enteredOffset : date à formaté |
 | **realDateTime(id)** | Affiche l'heure en temps réel. | - id : l'id de votre span/div où vous voulez afficher l'heure en temps réel |
 | **timeZone(json)** | Récupére le décalage en secondes à partir de l'heure UTC grâce à l'API openweathermap.org. | - json : le json de l'API |
-| **isStringBin(s)** | Verifie si une chaîne de caractère c'est du binaire ou non | - s : valeur à testé |

@@ -429,8 +429,3 @@ function timeZone(json) {
     let timeZoneStr = timeZoneValue.toString();
     return dateTimeUTC(timeZoneStr); 
 }
-
-// Verifie si une chaîne de caractère c'est du binaire ou non
-function isStringBin(s) {
-    return s.match(/^[+\-0-1(). ]+$/g) !== null ? true : false;
-}
