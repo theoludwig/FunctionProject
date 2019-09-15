@@ -131,7 +131,7 @@ function convertDistance (firstValue, unitFirstValue, unitFinalValue) {
         // Conversion des longueurs : 
         let difference = index1 - index2; 
         let result = firstValue*Math.pow(10,difference);
-        let response = 'Conversion de longueur : ' + firstValue.toString() + ' ' + unitFirstValue + ' = ' + formatNumberResult(result) + ' ' + unitFinalValue;
+        let response = 'Conversion de longueur : ' + formatNumberResult(firstValue).toString() + ' ' + unitFirstValue + ' = ' + formatNumberResult(result) + ' ' + unitFinalValue;
         return response;
     }
     else

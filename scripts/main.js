@@ -110,7 +110,8 @@ $(function () {
         }
         else 
         {
-            let result = convertDistance(parseFloat(firstValue), unitFirstValue, secondValue);
+            firstValue = parseFloat(firstValue.replace(/\s/g,''));
+            let result = convertDistance(firstValue, unitFirstValue, secondValue);
             if(result === messageError)
             {
                 $('.results').html(messageError);
