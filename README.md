@@ -15,14 +15,14 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 ## La liste des Fonctions Principales :   
 | Nom | Description | Paramètre(s) |
 | -- | -- | -- |
-| **weatherRequest(url,toDo)** | Permet de faire une requête à l'API openweathermap.org. | - url : l'url avec le nom de la ville. - toDo : afficher l'heure uniquement ou aussi la météo ? |
+| **weatherRequest(url,toDo)** | Permet de faire une requête à l'API [openweathermap.org](https://openweathermap.org/). | - url : l'url avec le nom de la ville. - toDo : afficher l'heure uniquement ou aussi la météo ? |
 | **randomNumber(min, max)** | Génère un nombre aléatoire entre un minimum inclus et un maximum inclus. | - min : Nombre Minimum - max : Nombre Maximum |
 | **calculateAge(birthDate)** | Calcule l'âge de quelqu'un selon la date de naissance. | - birthDate : date de naissance au format (dd/mm/yyyy). |
 | **convertTemperature(degree,unit)** | Convertit des Degré Celsius en Degré Fahrenheit et l'inverse aussi. | - degre : Le nombre que vous voulez convertir - unite : l'unité du nombre que vous voulez convertir (°C ou °F)	|
 | **convertDistance (firstValue, unitFirstValue, unitFinalValue)** | Convertit la longueur (distance) avec les unités allant de picomètre au Téramètre. | - firstValue : Le nombre que vous voulez convertir - unitFirstValue : l'unité du nombre que vous voulez convertir - unitFinalValue : l'unité de votre nombre après la conversion	|
 | **filterStudents(filteredLetter, students)** | Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée. | - filteredLetter : la lettre à filtré - students : la liste des prénoms  |
 | **randomQuote()** | Génère aléatoirement une citation ou un proverbe. | Aucun paramètre  |
-| **convertCurrency(currency, euroValue)** | Convertis des euros (€) dans une autre devise. [Lien de l'API](https://exchangeratesapi.io/) | - currency : la devise à avoir après conversion - euroValue : le nombre d'euros (€) à convertir  |
+| **convertCurrency(currency, euroValue)** | Convertis des euros (€) dans une autre devise. [exchangeratesapi.io](https://exchangeratesapi.io/) | - currency : la devise à avoir après conversion - euroValue : le nombre d'euros (€) à convertir  |
 | **utf8ToBin(s)** | UTF-8 vers Binaire | - s : la valeur à convertir  |
 | **binToUtf8(s)** | Binaire vers UTF-8 | - s : la valeur à convertir  |
 
