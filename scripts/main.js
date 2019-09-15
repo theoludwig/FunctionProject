@@ -185,7 +185,6 @@ $(function () {
     {
         let binaryTextValue = $('#binaryTextValue').val();
         let convertIn = $("#convertIn option:selected").text();
-        let isBinaryValue = isStringBin(binaryTextValue);
 
         if(isEmptyValue(binaryTextValue)) {
             $('.results').html(emptyMessageError);

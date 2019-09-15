@@ -227,23 +227,31 @@ function convertCurrency(currency, euroValue) {
 // Convertis du texte (encodé en UTF-8) en binaire et l'inverse aussi (source : http://jsfiddle.net/47zwb41o)
 // UTF-8 vers Binaire
 function utf8ToBin(s) {
-    s = unescape( encodeURIComponent(s));
-    var chr, i = 0, l = s.length, out = '';
-    for( ; i < l; i ++ ){
-        chr = s.charCodeAt( i ).toString(2);
-        while(chr.length % 8 != 0 ){ chr = '0' + chr; }
-        out += chr;
+    try {
+        s = unescape( encodeURIComponent(s));
+        var chr, i = 0, l = s.length, out = '';
+        for( ; i < l; i ++ ){
+            chr = s.charCodeAt( i ).toString(2);
+            while(chr.length % 8 != 0 ){ chr = '0' + chr; }
+            out += chr;
+        }
+        return out;
+    } catch (error) {
+        return s;
     }
-    return out;
 }
 // Binaire vers UTF-8
 function binToUtf8(s){
-    var i = 0, l = s.length, chr, out = '';
-    for( ; i < l; i += 8){
-        chr = parseInt( s.substr(i, 8 ), 2).toString(16);
-        out += '%' + ((chr.length % 2 == 0) ? chr : '0' + chr);
+    try {
+        var i = 0, l = s.length, chr, out = '';
+        for( ; i < l; i += 8){
+            chr = parseInt( s.substr(i, 8 ), 2).toString(16);
+            out += '%' + ((chr.length % 2 == 0) ? chr : '0' + chr);
+        }
+        return decodeURIComponent(out);
+    } catch (error) {
+        return s;
     }
-    return decodeURIComponent(out);
 }
 
 /////////////////////////////////////////////////////////////////
