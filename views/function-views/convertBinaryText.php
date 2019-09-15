@@ -12,8 +12,14 @@
 		<label for="binaryTextValue">Entrez votre chaîne de caractères ou du binaire :</label>
         <textarea name="binaryTextValue" type="text" id="binaryTextValue" placeholder="(e.g : 'Salut' ou '01010011 01100001')" class="form-control"></textarea>
         <br>
+		<label for="convertIn">Convertir en : </label> <br>
+        <select id="convertIn">
+            <option value="Binaire">Binaire</option>
+            <option value="Texte">Texte</option>
+        </select>
         <div class="form-row text-center">
             <div class="col-12">
+                <br>
                 <button type="submit" id="submitConvertBinaryText" class="btn btn-dark text-center">Envoyer</button>
             </div>
         </div>

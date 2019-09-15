@@ -59,6 +59,9 @@ header {
     width: 25% !important;
     display: inline;
 }
+#convertIn {
+    width: 6.7em;
+}
 .table {
     color: white;
 }
