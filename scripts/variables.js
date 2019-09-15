@@ -193,5 +193,9 @@ const quotes =
     {
       quote:"L’échec n’est qu’une opportunité pour recommencer la même chose plus intelligemment.",
       source:"Henry Ford"
+    },
+    {
+      quote:"Rien n'est plus puissant qu'une idée dont l'heure est venue.",
+      source:"Victor Hugo"
     }
 ];
