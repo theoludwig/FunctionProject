@@ -166,42 +166,45 @@ function getRandomQuote() {
     return  '" ' + randomQuotes["quote"] + ' " <br> <br> - ' + randomQuotes["source"];
 }
 
-// Convertis des euros (€) dans une autre devise 
-function convertCurrency(currency, euroValue) {
+// Convertis une valeur dans une devise dans une autre devise
+function convertCurrency(value, currency, url) {
     $.ajax({
-        url : 'https://api.exchangeratesapi.io/latest',
+        url : url,
         dataType : "json",
         success: function (jsonFixer) { 
             switch(currency) {
                 case '£':
-                    $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.GBP) * euroValue)).toFixed(2) + ' ' + currency);
+                    $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.GBP) * value)).toFixed(2) + ' ' + currency);
                     break;
                 case '$ Américain':
-                    $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.USD) * euroValue)).toFixed(2) + ' ' + currency);
+                    $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.USD) * value)).toFixed(2) + ' ' + currency);
                     break;
                 case '$ Canadien':
-                            $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.CAD) * euroValue)).toFixed(2) + ' ' + currency);
+                            $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.CAD) * value)).toFixed(2) + ' ' + currency);
                             break;
                 case '$ Australien':
-                        $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.AUD) * euroValue)).toFixed(2) + ' ' + currency);
+                        $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.AUD) * value)).toFixed(2) + ' ' + currency);
                         break;
                 case '$ Mexicain':
-                        $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.MXN) * euroValue)).toFixed(2) + ' ' + currency);
+                        $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.MXN) * value)).toFixed(2) + ' ' + currency);
                         break;
                 case 'Fr':
-                        $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.CHF) * euroValue)).toFixed(2) + ' ' + currency);
+                        $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.CHF) * value)).toFixed(2) + ' ' + currency);
                         break;
                 case '₽':
-                        $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.RUB) * euroValue)).toFixed(2) + ' ' + currency);
+                        $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.RUB) * value)).toFixed(2) + ' ' + currency);
                         break;
                 case 'R$':
-                        $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.BRL) * euroValue)).toFixed(2) + ' ' + currency);
+                        $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.BRL) * value)).toFixed(2) + ' ' + currency);
                         break;
                 case '¥':
-                        $('.results').html(formatNumberResult(euroValue) + ' € = ' + ((parseFloat(jsonFixer.rates.JPY) * euroValue)).toFixed(2) + ' ' + currency);
+                        $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.JPY) * value)).toFixed(2) + ' ' + currency);
+                        break;
+                case '€':
+                        $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.EUR) * value)).toFixed(2) + ' ' + currency);
                         break;
                 default:
-                    $('.results').html(formatNumberResult(euroValue) + ' €');
+                    $('.results').html(formatNumberResult(value) + ' €');
                     break;
             }
         },

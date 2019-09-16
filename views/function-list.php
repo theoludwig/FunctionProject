@@ -46,7 +46,7 @@
                     </tr>
                     <tr>
                         <td><a href="./function-views/convertCurrency.php">Conversion de devise</a></td>
-                        <td>Convertis des euros (€) dans une autre devise.</td> 
+                        <td>Convertis une valeur dans une devise dans une autre devise.</td> 
                     </tr>
                     <tr>
                         <td><a href="./function-views/convertBinaryText.php">Conversion d'un texte en binaire et vice-versa</a></td>

@@ -10,12 +10,24 @@
   <p class="pt-3 text-center"><?php echo $description?></p>
   <br>
   <div class="form-group">
-        <label for="euroValue">Entrez le nombre d'euros (€) à convertir :</label>
+        <label for="value">Entrez le nombre à convertir et sélectionner la devise de celui-çi :</label>
         <br>
-        <input name="euroValue" type="text" id="euroValue" placeholder="(e.g : 50)" class="form-control">
+        <input name="value" type="text" class="inlineInput" id="value" placeholder="(e.g : 50)" class="form-control">
+        <select id="currencyOfTheValue">
+            <option value="EUR">Euro (€) - EUR</option>
+            <option value="GBP">Livre sterling (£) - GBP</option>
+            <option value="USD">Dollar Américain ($) - USD</option>
+            <option value="CAD">Dollar Canadien ($) - CAD</option>
+            <option value="AUD">Dollar Australien ($) - AUD</option>
+            <option value="MXN">Peso Mexicain ($) - MXN</option>
+            <option value="CHF">Franc Suisse (Fr) - CHF</option>
+            <option value="RUB">Rouble Russe (₽) - RUB</option>
+            <option value="BRL">Réal brésilien (R$) - BRL</option>
+            <option value="JPY">Yen (¥) - JPY</option>
+        </select>
         <br> <br>
-		<label for="euroToCurrency">Choisissez la devise que voulez avoir après conversion :</label> <br>
-        <select id="euroToCurrency">
+		<label for="currencyAfter">Choisissez la devise que voulez avoir après conversion :</label> <br>
+        <select id="currencyAfter">
             <option value="£">Livre sterling (£) - GBP</option>
             <option value="$ Américain">Dollar Américain ($) - USD</option>
             <option value="$ Canadien">Dollar Canadien ($) - CAD</option>
@@ -25,6 +37,7 @@
             <option value="₽">Rouble Russe (₽) - RUB</option>
             <option value="R$">Réal brésilien (R$) - BRL</option>
             <option value="¥">Yen (¥) - JPY</option>
+            <option value="€">Euro (€) - EUR</option>
         </select>
         <br>
         <div class="form-row text-center">

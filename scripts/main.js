@@ -165,19 +165,22 @@ $(function () {
 
     $("#submitConvertCurrency").click(function() 
     {
-        let euroValue = $('#euroValue').val();
-        let euroToCurrency = $("#euroToCurrency option:selected").val();
-        if(isEmptyValue(euroValue) || isNaN(parseFloat(euroValue)))
+        let value = $('#value').val();
+        let currencyOfTheValue = $("#currencyOfTheValue option:selected").val();
+        let currencyAfter = $("#currencyAfter option:selected").val();
+        if(isEmptyValue(value) || isNaN(parseFloat(value)))
         {
             $('.results').html(emptyMessageError);
-            $("#euroValue, #submitConvertCurrency").click(function() {
+            $("#value, #submitConvertCurrency").click(function() {
                 document.location.replace("../function-views/convertCurrency.php");
             });
         }
         else 
         {
-            euroValue = parseFloat(euroValue);
-            convertCurrency(euroToCurrency, euroValue);
+            // let url = 'https://api.exchangeratesapi.io/latest'; 
+            let url = 'https://api.exchangeratesapi.io/latest?base=' + currencyOfTheValue;
+            value = parseFloat(value);
+            convertCurrency(value, currencyAfter, url);
         }
     });
 

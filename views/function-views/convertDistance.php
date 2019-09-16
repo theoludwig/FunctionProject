@@ -12,7 +12,7 @@
   <div class="form-group">
         <label for="firstValue">Entrez la distance que vous voulez convertir et sélectionner l'unité de celle-çi :</label>
         <br>
-        <input name="firstValue" type="text" id="firstValue" placeholder="(e.g : 50)" class="form-control">
+        <input name="firstValue" type="text" class="inlineInput" id="firstValue" placeholder="(e.g : 50)" class="form-control">
         <select id="firstValueUnit">
             <option value="pm">pm</option>
             <option value="nm">nm</option>

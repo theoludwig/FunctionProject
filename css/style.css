@@ -55,7 +55,7 @@ header {
 .container {
     padding-bottom: 25px;
 }
-#firstValue {
+.inlineInput {
     width: 25% !important;
     display: inline;
 }

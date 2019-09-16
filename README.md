@@ -22,7 +22,7 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **convertDistance (firstValue, unitFirstValue, unitFinalValue)** | Convertit la longueur (distance) avec les unités allant de picomètre au Téramètre. | - firstValue : Le nombre que vous voulez convertir - unitFirstValue : l'unité du nombre que vous voulez convertir - unitFinalValue : l'unité de votre nombre après la conversion	|
 | **filterStudents(filteredLetter, students)** | Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée. | - filteredLetter : la lettre à filtré - students : la liste des prénoms  |
 | **randomQuote()** | Génère aléatoirement une citation ou un proverbe. | Aucun paramètre  |
-| **convertCurrency(currency, euroValue)** | Convertis des euros (€) dans une autre devise. [exchangeratesapi.io](https://exchangeratesapi.io/) | - currency : la devise à avoir après conversion - euroValue : le nombre d'euros (€) à convertir  |
+| **convertCurrency(value, currency, url)** | Convertis une valeur dans une devise dans une autre devise. [exchangeratesapi.io](https://exchangeratesapi.io/) | - value : la valeur à convertir - currency : la devise à avoir après conversion - url : l'url de la requête à l'API en fonction du paramètre dans l'url '?base=' |
 | **utf8ToBin(s)** | UTF-8 vers Binaire | - s : la valeur à convertir  |
 | **binToUtf8(s)** | Binaire vers UTF-8 | - s : la valeur à convertir  |
 
