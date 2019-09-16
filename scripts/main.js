@@ -22,7 +22,7 @@ $(function () {
         else 
         {
             let url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&lang=fr&units=metric&appid=" + config.APIkeyWeather + "";
-            weatherRequest(url, 'weather');
+            weatherRequest(url);
         }
     });
 
