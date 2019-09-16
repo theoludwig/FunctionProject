@@ -47,6 +47,7 @@
         </div>
         <br> <br>
 		<p class="results text-center"></p>
+        <p class="rateDate text-center"></p>
     </div>
 </div>
 

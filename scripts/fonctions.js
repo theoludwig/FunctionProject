@@ -175,34 +175,49 @@ function convertCurrency(value, currency, url) {
             switch(currency) {
                 case '£':
                     $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.GBP) * value)).toFixed(2) + ' ' + currency);
+                    $('.rateDate').html("Dernier rafraîchissement du taux d'échange : " + jsonFixer.date);
                     break;
                 case '$ Américain':
                     $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.USD) * value)).toFixed(2) + ' ' + currency);
+                    $('.rateDate').html("Dernier rafraîchissement du taux d'échange : " + jsonFixer.date);
                     break;
                 case '$ Canadien':
-                            $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.CAD) * value)).toFixed(2) + ' ' + currency);
-                            break;
+                    $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.CAD) * value)).toFixed(2) + ' ' + currency);
+                    $('.rateDate').html("Dernier rafraîchissement du taux d'échange : " + jsonFixer.date);
+                    break;
                 case '$ Australien':
-                        $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.AUD) * value)).toFixed(2) + ' ' + currency);
-                        break;
+                    $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.AUD) * value)).toFixed(2) + ' ' + currency);
+                    $('.rateDate').html("Dernier rafraîchissement du taux d'échange : " + jsonFixer.date);
+                    break;
                 case '$ Mexicain':
-                        $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.MXN) * value)).toFixed(2) + ' ' + currency);
-                        break;
+                    $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.MXN) * value)).toFixed(2) + ' ' + currency);
+                    $('.rateDate').html("Dernier rafraîchissement du taux d'échange : " + jsonFixer.date);
+                    break;
                 case 'Fr':
-                        $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.CHF) * value)).toFixed(2) + ' ' + currency);
-                        break;
+                    $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.CHF) * value)).toFixed(2) + ' ' + currency);
+                    $('.rateDate').html("Dernier rafraîchissement du taux d'échange : " + jsonFixer.date);
+                    break;
                 case '₽':
-                        $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.RUB) * value)).toFixed(2) + ' ' + currency);
-                        break;
+                    $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.RUB) * value)).toFixed(2) + ' ' + currency);
+                    $('.rateDate').html("Dernier rafraîchissement du taux d'échange : " + jsonFixer.date);
+                    break;
                 case 'R$':
-                        $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.BRL) * value)).toFixed(2) + ' ' + currency);
-                        break;
+                    $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.BRL) * value)).toFixed(2) + ' ' + currency);
+                    $('.rateDate').html("Dernier rafraîchissement du taux d'échange : " + jsonFixer.date);
+                    break;
                 case '¥':
-                        $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.JPY) * value)).toFixed(2) + ' ' + currency);
-                        break;
+                    $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.JPY) * value)).toFixed(2) + ' ' + currency);
+                    $('.rateDate').html("Dernier rafraîchissement du taux d'échange : " + jsonFixer.date);
+                    break;
                 case '€':
-                        $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.EUR) * value)).toFixed(2) + ' ' + currency);
-                        break;
+                    let rateEUR = jsonFixer.rates.EUR;
+                    if (isNaN(rateEUR)) {
+                        $('.results').html(formatNumberResult(value) + ' €');
+                    } else {
+                        $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(rateEUR) * value)).toFixed(2) + ' ' + currency);
+                        $('.rateDate').html("Dernier rafraîchissement du taux d'échange : " + jsonFixer.date);
+                    }
+                    break;
                 default:
                     $('.results').html(formatNumberResult(value) + ' €');
                     break;

@@ -177,7 +177,6 @@ $(function () {
         }
         else 
         {
-            // let url = 'https://api.exchangeratesapi.io/latest'; 
             let url = 'https://api.exchangeratesapi.io/latest?base=' + currencyOfTheValue;
             value = parseFloat(value);
             convertCurrency(value, currencyAfter, url);
