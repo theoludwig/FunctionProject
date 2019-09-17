@@ -193,7 +193,7 @@ function convertCurrency(value, currency, url) {
                     $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.MXN) * value)).toFixed(2) + ' ' + currency);
                     $('.rateDate').html("Dernier rafraîchissement du taux d'échange : " + jsonFixer.date);
                     break;
-                case 'Fr':
+                case 'CHF':
                     $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + ((parseFloat(jsonFixer.rates.CHF) * value)).toFixed(2) + ' ' + currency);
                     $('.rateDate').html("Dernier rafraîchissement du taux d'échange : " + jsonFixer.date);
                     break;

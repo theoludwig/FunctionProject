@@ -33,7 +33,7 @@
             <option value="$ Canadien">Dollar Canadien ($) - CAD</option>
             <option value="$ Australien">Dollar Australien ($) - AUD</option>
             <option value="$ Mexicain">Peso Mexicain ($) - MXN</option>
-            <option value="Fr">Franc Suisse (Fr) - CHF</option>
+            <option value="CHF">Franc Suisse (Fr) - CHF</option>
             <option value="₽">Rouble Russe (₽) - RUB</option>
             <option value="R$">Réal brésilien (R$) - BRL</option>
             <option value="¥">Yen (¥) - JPY</option>
@@ -42,6 +42,7 @@
         <br>
         <div class="form-row text-center">
             <div class="col-12">
+                <br>
                 <button type="submit" id="submitConvertCurrency" class="btn btn-dark text-center">Envoyer</button>
             </div>
         </div>

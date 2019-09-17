@@ -42,13 +42,10 @@ $(function () {
             {
                 $('.results').html("Nombre aléatoire compris entre " + minEntered + " inclus et " + maxEntered + " inclus : " + formatNumberResult(result));
             }
-            else if (minEntered > maxEntered) {
-                $('.results').html("Votre nombre minimum est plus grand que le nombre maximum.");
+            else 
+            {
+                $('.results').html(messageError);
             }
-        else 
-        {
-            $('.results').html(messageError);
-        }
         }
     });
 
