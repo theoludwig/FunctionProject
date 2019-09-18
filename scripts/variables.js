@@ -11,7 +11,7 @@ let timeNow = new Date();
 let utcOffset = timeNow.getTimezoneOffset();
 timeNow.setMinutes(timeNow.getMinutes() + utcOffset);
 
-// Variable pour randomQuote
+// Variable pour randomQuote 
 const quotes = 
 [
     {
@@ -29,6 +29,10 @@ const quotes =
     {
       quote:"Soyez le changement que vous souhaitez voir dans le monde.",
       source: "Mahatma Gandhi"
+    },
+    {
+      quote:"Le temps que vous aimez dépenser n'est pas perdu.",
+      source:"Divlo"
     },
     {
       quote:"Fais de ta vie un rêve, et d'un rêve, une réalité.",
