@@ -70,8 +70,10 @@ function calculateAge(birthDateEntered) {
     
     let ageDays = dateNow.diff(birthDate, 'days');
 
+    let isValidDateFunction = isValidDate(birthDateDay + '/' + birthDateMonth + '/' + birthDateYear); 
+
     // Vérifie si la valeur entrée correspond à une date de naissance valide
-    if(birthDate._isValid === true)
+    if(isValidDateFunction === true)
     {
         // Si c'est ton anniversaire aujourd'hui
         if(birthDateDay === parseInt(day) && birthDateMonth === parseInt(month))
@@ -443,4 +445,28 @@ function timeZone(json) {
     }
     let timeZoneStr = timeZoneValue.toString();
     return dateTimeUTC(timeZoneStr); 
+}
+
+// Vérifie si une date est valide par rapport à la date d'aujourd'hui 
+function isValidDate(s) {
+
+    // Date à vérifier 
+    let toVerifyDate = s.split('/');
+    let splitedToVerifyDate = toVerifyDate[2] + '-' + (parseInt(toVerifyDate[1]) + 1) + '-' + toVerifyDate[0];
+    let msToVerifyDate = Date.parse(splitedToVerifyDate);
+
+    // Date courante
+    let currentDate = dateTimeUTC(0);
+    currentDate = currentDate.substr(0,10);
+    let currentDateSplited = currentDate.split('/');
+    let currentDateFormat = currentDateSplited[2] + '-' + currentDateSplited[1] + '-' + currentDateSplited[0];
+    let msCurrentDate = Date.parse(currentDateFormat);
+
+    if(msToVerifyDate <= msCurrentDate) {
+        return true;
+    } else if(msToVerifyDate > msCurrentDate) {
+        return false;
+    } else {
+        return messageError;
+    }
 }
