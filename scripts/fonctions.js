@@ -76,7 +76,7 @@ function calculateAge(birthDateEntered) {
     if(isValidDateFunction === true)
     {
         // Si c'est ton anniversaire aujourd'hui
-        if(birthDateDay === parseInt(day) && birthDateMonth === parseInt(month))
+        if(birthDateDay === parseInt(day) && (parseInt(birthDateMonth) + 1) === parseInt(month))
         {
             return 'Vous avez ' + ageYears + ' ans. Joyeux Anniversaire! 🥳';
         }
