@@ -53,7 +53,10 @@
             <nav class="navbar navbar-expand-lg navbar-dark static-top">
                 <div class="container" id="header-container">
                     <!-- Brand -->
-                    <a class="navbar-brand" href="/index.php"><img src="/img/FunctionProject_brand-logo.png" alt="FunctionProject"></a>
+                    <a class="navbar-brand" href="/index.php">
+                        <img id="logo" src="/img/FunctionProject_brand-logo.png" alt="FunctionProject">
+                        <img id="logo-small-screen" src="/img/FunctionProject_icon.png" alt="FunctionProject">
+                    </a>
 
                     <!-- Hamburger icon on Mobile -->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>

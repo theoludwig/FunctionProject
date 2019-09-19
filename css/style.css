@@ -47,17 +47,36 @@ header {
 .navbar {
     border-bottom: var(--border-header-footer);
 }
+#logo-small-screen {
+    display: none;
+}
+@media (max-width: 463px) {
+    #logo {
+        display: none;
+    }
+    .navbar-brand {
+        width: 30%;
+    }
+    #logo-small-screen {
+        display: inline-block;
+        width: 80%;
+    }
+}
 .nav-link {
     text-align: center !important;
 }
 
 /* CONTENT */
+@media (max-width: 576px) {
+    .container {
+        width: 90% !important;
+    }
+}
 .container {
     padding-bottom: 25px;
 }
 .inlineInput {
     width: 25% !important;
-    display: inline;
 }
 #convertIn {
     width: 6.7em;
