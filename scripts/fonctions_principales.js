@@ -261,3 +261,54 @@ function binToUtf8(s){
         return s;
     }
 }
+
+// Convertis un nombre arabe en nombre romain
+function convertRomanArabicNumbers(nombre) {
+    // Tableau contenant chaque correspondance entre un nombre arabe et un nombre romain
+    const correspondances = 
+    [
+        [1000, "M"],
+        [900, "CM"],
+        [500, "D"],
+        [400, "CD"],
+        [100, "C"],
+        [90, "XC"],
+        [50, "L"],
+        [40, "XL"],
+        [10, "X"],
+        [9, "IX"],
+        [5, "V"],
+        [4, "IV"],
+        [1, "I"],
+    ];
+
+    // Initialisation de la variable qui va contenir le résultat de la conversion
+    let chiffresRomains = "";
+
+    /* 
+        Étapes pour écrire un nombre romain :
+
+        On vérifie quand le nombre arabe est >= à la plus grande valeur possible dans la table de correspondance des nombres romains de haut en bas puis on rajoute la lettre romaine correspondante à la plus grande valeur possible dans la variable chiffresRomains et on soustrait la valeur du chiffre romain qu'on vient d'ajouter au nombre arabe puis on répète l'opération jusqu'à nombre arabe vaut 0...
+
+            Exemple avec 27 :
+                27 - X (10) = 17
+                17 - X (10) = 7
+                7 - V (5) = 2
+                2 - I (1) = 1
+                1 - I (1) = 0
+                XXVII
+    */
+
+    function extraireChiffreRomain(valeurLettre, lettres) {
+        while (nombre >= valeurLettre) {
+            chiffresRomains = chiffresRomains + lettres;
+            nombre = nombre - valeurLettre;
+        }
+    }
+
+    correspondances.forEach(correspondance => {
+        extraireChiffreRomain(correspondance[0], correspondance[1]);
+    })
+
+    return chiffresRomains;
+}

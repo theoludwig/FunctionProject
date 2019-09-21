@@ -68,6 +68,11 @@ switch ($currentpage) {
         $description = "Convertis du texte (encodé en UTF-8) en binaire et l'inverse aussi.";
         $image = 'https://function.divlo.fr/img/function-image/convertBinaryText.png';
         break;
+    case '/views/function-views/convertRomanArabicNumbers.php':
+        $title = "Conversion d'un nombre arabe en nombre romain";
+        $description = "Convertis un nombre arabe en nombre romain.";
+        $image = 'https://function.divlo.fr/img/function-image/convertRomanArabicNumbers.png';
+        break;
     default:
         $title = 'Erreur 404';
         $description = "Cette page n'existe pas!";

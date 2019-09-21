@@ -209,6 +209,22 @@ $(function () {
         }
     });
 
+    $("#submitConvertRomanArabicNumbers").click(function() 
+    {
+        let numbersValue = $('#numbersArabic').val();
+
+        if(isEmptyValue(numbersValue)) {
+            $('.results').html(emptyMessageError);
+        }
+        else if (!isNaN(parseInt(numbersValue))) { 
+            let result = convertRomanArabicNumbers(parseFloat(numbersValue.replace(/\s/g,''))); 
+            $('.results').html(`<b>${numbersValue}</b> s'écrit <b>${result}</b> en chiffres romains.`);
+        }
+        else {
+            $('.results').html(messageError);
+        }
+    });
+
 
     /* Permet d'afficher l'heure en temps réel sur le footer */
     window.onload = realDateTime('realDateTime');

@@ -52,6 +52,10 @@
                         <td><a href="./function-views/convertBinaryText.php">Conversion d'un texte en binaire et vice-versa</a></td>
                         <td>Convertis du texte (encodé en UTF-8) en binaire et l'inverse aussi.</td> 
                     </tr>
+                    <tr>
+                        <td><a href="./function-views/convertRomanArabicNumbers.php">Conversion d'un nombre arabe en nombre romain</a></td>
+                        <td>Convertis un nombre arabe en nombre romain.</td> 
+                    </tr>
                 </tbody>
             </table>
     </div>

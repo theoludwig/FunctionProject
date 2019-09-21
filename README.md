@@ -25,6 +25,7 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **convertCurrency(value, currency, url)** | Convertis une valeur dans une devise dans une autre devise. [exchangeratesapi.io](https://exchangeratesapi.io/) | - value : la valeur à convertir - currency : la devise à avoir après conversion - url : l'url de la requête à l'API en fonction du paramètre dans l'url '?base=' |
 | **utf8ToBin(s)** | UTF-8 vers Binaire | - s : la valeur à convertir  |
 | **binToUtf8(s)** | Binaire vers UTF-8 | - s : la valeur à convertir  |
+| **convertRomanArabicNumbers(nombre)** | Convertis un nombre arabe en nombre romain. | - nombre : le nombre à convertir  |
 
 ## La liste des Fonctions Annexes :   
 | Nom | Description | Paramètre(s) |
