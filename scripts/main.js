@@ -218,7 +218,7 @@ $(function () {
         }
         else if (!isNaN(parseInt(numbersValue))) { 
             let result = convertRomanArabicNumbers(parseFloat(numbersValue.replace(/\s/g,''))); 
-            $('.results').html(`<b>${numbersValue}</b> s'écrit <b>${result}</b> en chiffres romains.`);
+            $('.results').html(`<b>${formatNumberResult(numbersValue.replace(/\s/g,''))}</b> s'écrit <b>${result}</b> en chiffres romains.`);
         }
         else {
             $('.results').html(messageError);
