@@ -8,6 +8,9 @@
 <div class="container">
   <h1><span class="important"><?php echo $title?></span> :</h1>
   <p class="pt-3 text-center"><?php echo $description?></p>
+  <div class="text-center">
+    <img class="function-image" src="/img/function-image/randomNumber.png" alt="Random Number">
+  </div>
   <div class="form-group">
 		<label for="minValue">Entrez la valeur minimale :</label>
         <input name="minValue" type="number" min="0" id="minValue" placeholder="(e.g : 1)" class="form-control">

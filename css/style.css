@@ -81,9 +81,8 @@ header {
 #convertIn {
     width: 6.7em;
 }
-#roman-numerals {
-    width: 20%;
-    min-width: 200px;
+.function-image {
+    max-width: 130px;
     padding-bottom: 20px;
 }
 .table {

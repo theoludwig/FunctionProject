@@ -8,6 +8,9 @@
 <div class="container">
   <h1><span class="important"><?php echo $title?></span> :</h1>
   <p class="pt-3 text-center"><?php echo $description?></p>
+  <div class="text-center">
+    <img class="function-image" src="/img/function-image/convertTemperature.png" alt="Convert Temperature">
+  </div>
   <div class="form-group">
 		<label for="temperatureValue">Entrez la température :</label>
         <input name="temperatureValue" type="text" id="temperatureValue" placeholder="(e.g : 23°C)" class="form-control">

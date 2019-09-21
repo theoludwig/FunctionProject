@@ -8,6 +8,9 @@
 <div class="container">
   <h1><span class="important"><?php echo $title?></span> :</h1>
   <p class="pt-3 text-center"><?php echo $description?></p>
+  <div class="text-center">
+    <img class="function-image" src="/img/function-image/filterStudents.png" alt="Filter Students">
+  </div>
   <div class="form-group">
 		<label for="nameEntered">Entrez les prénoms :</label>
         <input name="nameEntered" type="text" id="nameEntered" placeholder="(e.g : 'Prénom1, Prénom2, Prénom3, ...')" class="form-control">

@@ -8,6 +8,9 @@
 <div class="container">
   <h1><span class="important"><?php echo $title?></span> :</h1>
   <p class="pt-3 text-center"><?php echo $description?></p>
+  <div class="text-center">
+    <img class="function-image" src="/img/function-image/convertCurrency.png" alt="Convert Currency">
+  </div>
   <br>
   <div class="form-group">
         <label for="value">Entrez le nombre à convertir et sélectionner la devise de celui-çi :</label>

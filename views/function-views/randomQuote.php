@@ -8,8 +8,14 @@
 <div class="container">
   <h1><span class="important"><?php echo $title?></span> :</h1>
   <p class="pt-3 text-center">
-    <?php echo $description?> <br> <br>
-    <a href="/views/quote-list.php">La liste de toutes les citations/proverbes.</a>
+    <?php echo $description?> 
+    <div class="text-center">
+        <img class="function-image" src="/img/function-image/randomQuote.png" alt="Random Quote">
+    </div>
+    <br>
+    <div class="text-center">
+        <a href="/views/quote-list.php">La liste de toutes les citations/proverbes.</a>
+    </div>
   </p> <br>
   <div class="form-group">
         <div class="form-row text-center">

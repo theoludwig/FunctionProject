@@ -8,6 +8,9 @@
 <div class="container">
   <h1><span class="important"><?php echo $title?></span> :</h1>
   <p class="pt-3 text-center"><?php echo $description?></p>
+  <div class="text-center">
+    <img class="function-image" src="/img/function-image/convertBinaryText.png" alt="Convert Binary Text">
+  </div>
   <div class="form-group">
 		<label for="binaryTextValue">Entrez votre chaîne de caractères ou du binaire :</label>
         <textarea name="binaryTextValue" type="text" id="binaryTextValue" placeholder="(e.g : 'Salut' ou '01010011 01100001')" class="form-control"></textarea>

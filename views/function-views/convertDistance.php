@@ -8,10 +8,13 @@
 <div class="container">
   <h1><span class="important"><?php echo $title?></span> :</h1>
   <p class="pt-3 text-center"><?php echo $description?></p>
+  <div class="text-center">
+    <img class="function-image" src="/img/function-image/convertDistance.png" alt="Convert Distance">
+  </div>
   <br>
   <div class="form-group">
         <label for="firstValue">Entrez la distance que vous voulez convertir et sélectionner l'unité de celle-çi :</label>
-        <br>
+        <br> 
         <input name="firstValue" type="text" class="inlineInput" id="firstValue" placeholder="(e.g : 50)" class="form-control">
         <select id="firstValueUnit">
             <option value="pm">pm</option>
@@ -48,6 +51,7 @@
         <br>
         <div class="form-row text-center">
             <div class="col-12">
+                <br>
                 <button type="submit" id="submitConvertDistance" class="btn btn-dark text-center">Envoyer</button>
             </div>
         </div>
