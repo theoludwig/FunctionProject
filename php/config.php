@@ -73,6 +73,11 @@ switch ($currentpage) {
         $description = "Convertis un nombre arabe en nombre romain.";
         $image = 'https://function.divlo.fr/img/function-image/convertRomanArabicNumbers.png';
         break;
+    case '/views/function-views/armstrongNumber.php':
+        $title = "Nombre d'Armstrong";
+        $description = "Un nombre d'<a href='https://fr.wikipedia.org/wiki/Nombre_narcissique' target='_blank'>Armstrong</a> est un nombre qui est égal à la somme de ses chiffres portés à la puissance du nombre de chiffres le composant. Cette fonction permet de savoir si un nombre fait partie des nombres d'Armstrong ou non.";
+        $image = 'https://function.divlo.fr/img/function-image/armstrongNumber.png';
+        break;
     default:
         $title = 'Erreur 404';
         $description = "Cette page n'existe pas!";

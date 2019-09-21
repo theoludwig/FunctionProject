@@ -312,3 +312,22 @@ function convertRomanArabicNumbers(nombre) {
 
     return chiffresRomains;
 }
+
+// Vérifie si un nombre fait partie des nombres d'Armstrong ou non 
+function armstrongNumber(nombre) {
+    let nombreString = nombre.toString();
+    let nombreStringLength = nombreString.length;
+
+    let result = 0;
+    let resultString = "";
+    for (let i = 0; i < nombreStringLength; i++) {
+        result = result + parseInt(nombreString[i])**nombreStringLength;
+        resultString = resultString + " + " + nombreString[i] + "<sup>" + nombreStringLength + "</sup>";
+    }
+
+    if (result === nombre) {
+        return `${formatNumberResult(nombre)} est un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.`;
+    } else {
+        return `${formatNumberResult(nombre)} n'est pas un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.`;
+    }
+}

@@ -56,6 +56,10 @@
                         <td><a href="./function-views/convertRomanArabicNumbers.php">Conversion d'un nombre arabe en nombre romain</a></td>
                         <td>Convertis un nombre arabe en nombre romain.</td> 
                     </tr>
+                    <tr>
+                        <td><a href="./function-views/armstrongNumber.php">Nombre d'Armstrong</a></td>
+                        <td>Vérifie si un nombre fait partie des nombres d'Armstrong ou non.</td> 
+                    </tr>
                 </tbody>
             </table>
     </div>

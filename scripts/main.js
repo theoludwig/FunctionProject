@@ -225,6 +225,22 @@ $(function () {
         }
     });
 
+    $("#submitArmstrongNumber").click(function() 
+    {
+        let numbersValue = $('#numberToTest').val();
+
+        if(isEmptyValue(numbersValue)) {
+            $('.results').html(emptyMessageError);
+        }
+        else if (!isNaN(parseInt(numbersValue))) { 
+            let result = armstrongNumber(parseFloat(numbersValue.replace(/\s/g,''))); 
+            $('.results').html(result);
+        }
+        else {
+            $('.results').html(messageError);
+        }
+    });
+
 
     /* Permet d'afficher l'heure en temps réel sur le footer */
     window.onload = realDateTime('realDateTime');
