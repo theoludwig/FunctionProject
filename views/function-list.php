@@ -54,7 +54,7 @@
                     </tr>
                     <tr>
                         <td><a href="./function-views/convertRomanArabicNumbers.php">Conversion d'un nombre arabe en nombre romain</a></td>
-                        <td>Convertis un nombre arabe en nombre romain.</td> 
+                        <td>Convertis un nombre arabe en nombre romain (et l'inverse aussi).</td> 
                     </tr>
                     <tr>
                         <td><a href="./function-views/armstrongNumber.php">Nombre d'Armstrong</a></td>

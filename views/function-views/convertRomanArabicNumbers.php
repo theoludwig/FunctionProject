@@ -14,6 +14,12 @@
   <div class="form-group">
 		<label for="numbersArabic">Entrez votre nombre :</label>
         <input name="numbersArabic" type="text" id="numbersArabic" placeholder="(e.g : 50)" class="form-control">
+        <br>
+        <label for="convertNumberType">Convertir en : </label> <br>
+        <select id="convertNumberType">
+            <option value="Nombre Romain">Nombre Romain</option>
+            <option value="Nombre Arabe">Nombre Arabe</option>
+        </select>
         <div class="form-row text-center">
             <div class="col-12">
                 <br>

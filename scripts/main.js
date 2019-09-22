@@ -212,13 +212,22 @@ $(function () {
     $("#submitConvertRomanArabicNumbers").click(function() 
     {
         let numbersValue = $('#numbersArabic').val();
+        let convertNumberType = $("#convertNumberType option:selected").text();
 
         if(isEmptyValue(numbersValue)) {
             $('.results').html(emptyMessageError);
         }
-        else if (!isNaN(parseInt(numbersValue))) { 
-            let result = convertRomanArabicNumbers(parseFloat(numbersValue.replace(/\s/g,''))); 
+        else if (!isNaN(parseInt(numbersValue)) && convertNumberType === "Nombre Romain") { 
+            let result = convertArabicToRoman(parseInt(numbersValue.replace(/\s/g,''))); 
             $('.results').html(`<b>${formatNumberResult(numbersValue.replace(/\s/g,''))}</b> s'écrit <b>${result}</b> en chiffres romains.`);
+        }
+        else if (convertNumberType === "Nombre Arabe") {
+            if (!isNaN(parseInt(numbersValue))) {
+                $('.results').html(`<b>${numbersValue}</b> est déjà en chiffres arabes.`);
+            } else {
+                let result = convertRomanToArabic(numbersValue);
+                $('.results').html(`<b>${numbersValue}</b> s'écrit <b>${result}</b> en chiffres arabes.`);
+            }
         }
         else {
             $('.results').html(messageError);

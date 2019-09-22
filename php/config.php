@@ -70,7 +70,7 @@ switch ($currentpage) {
         break;
     case '/views/function-views/convertRomanArabicNumbers.php':
         $title = "Conversion d'un nombre arabe en nombre romain";
-        $description = "Convertis un nombre arabe en nombre romain.";
+        $description = "Convertis un nombre arabe en nombre romain (et l'inverse aussi).";
         $image = 'https://function.divlo.fr/img/function-image/convertRomanArabicNumbers.png';
         break;
     case '/views/function-views/armstrongNumber.php':

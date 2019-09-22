@@ -263,7 +263,7 @@ function binToUtf8(s){
 }
 
 // Convertis un nombre arabe en nombre romain
-function convertRomanArabicNumbers(nombre) {
+function convertArabicToRoman(nombre) {
     // Tableau contenant chaque correspondance entre un nombre arabe et un nombre romain
     const correspondances = 
     [
@@ -313,9 +313,27 @@ function convertRomanArabicNumbers(nombre) {
     return chiffresRomains;
 }
 
+// Convertis un nombre romain en nombre arabe
+function convertRomanToArabic(str) {
+    var result = 0;
+    // the result is now a number, not a string
+    var decimal = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+    var roman = ["M", "CM","D","CD","C", "XC", "L", "XL", "X","IX","V","IV","I"];
+    for (var i = 0;i<=decimal.length;i++) {
+      while (str.indexOf(roman[i]) === 0){
+      //checking for the first characters in the string
+        result += decimal[i];
+        //adding the decimal value to our result counter
+        str = str.replace(roman[i],'');
+        //remove the matched Roman letter from the beginning
+      }
+    }
+    return result;
+}
+
 // Vérifie si un nombre fait partie des nombres d'Armstrong ou non 
-function armstrongNumber(nombre) {
-    let nombreString = nombre.toString();
+function armstrongNumber(number) {
+    let nombreString = number.toString();
     let nombreStringLength = nombreString.length;
 
     let result = 0;
