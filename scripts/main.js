@@ -225,6 +225,7 @@ $(function () {
             if (!isNaN(parseInt(numbersValue))) {
                 $('.results').html(`<b>${numbersValue}</b> est déjà en chiffres arabes.`);
             } else {
+                numbersValue = numbersValue.toUpperCase();
                 let result = convertRomanToArabic(numbersValue);
                 $('.results').html(`<b>${numbersValue}</b> s'écrit <b>${result}</b> en chiffres arabes.`);
             }
