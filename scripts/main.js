@@ -1,14 +1,5 @@
 $(function () {
 
-    // Fichiers qui contient les variables 
-    $.getScript("/scripts/variables.js", function() {
-
-    // Fichiers qui contient les fonctions annexes
-    $.getScript("/scripts/fonctions_annexes.js", function() {
-
-    // Fichiers qui contient les fonctions principales
-    $.getScript("/scripts/fonctions_principales.js", function() {
-
     /* ÉXECUTION DES FONCTONS */
 
     $( "#submitWeatherRequest" ).click(function() 
@@ -281,10 +272,4 @@ $(function () {
     todayHighlight: true
     })
 
-    // Fin de l'import des fonctions principales
-    });
-    // Fin de l'import des fonctions annexes
-    });
-    // Fin de l'import des variables
-    });
 })

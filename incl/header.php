@@ -44,6 +44,9 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Varela+Round&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/ed4e9fbefd.js"></script>
 
+        <script src="/scripts/variables.js"></script>
+        <script src="/scripts/fonctions_annexes.js"></script>
+        <script src="/scripts/fonctions_principales.js"></script>
         <script src="/scripts/main.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/style.css">
     </head>
