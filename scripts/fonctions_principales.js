@@ -1,31 +1,20 @@
 /* Fonctions Principales */
 
-// Requête à l'API openweathermap.org
-function weatherRequest(url) {
-        $.ajax({
-            url : url,
-            dataType : "json",
-            success: function (json) { 
-                let city = json.name;
-                let showDateTimeValue = timeZone(json);
-                if(city === 'Moscou')
-                {
-                    $('.results').html(`🌎 Position : <a href='https://www.google.com/maps/place/${city}/' class="yellow-color" target="_blank">${city}, RU</a><br>⏰ Date et heure : ${showDateTimeValue}<br>☁️ Météo : ${capitalize(json.weather[0].description)}<br> 🌡️ Température : ${json.main.temp} °C<br> 💧 Humidité : ${json.main.humidity}% <br> <img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"/>`); 
-                    $("#cityName, #submitWeatherRequest").click(function() {
-                        document.location.replace("../../views/function-views/weatherRequest.php");
-                    });
-                }
-                else
-                {
+// Affiche la météo et l'heure local selon la ville.
+function weatherRequest() {
+    $.ajax({
+        url: '/php/getWeatherJson.php', 
+        type: "POST",
+            success: function(data) {
+                try {
+                    let json = jQuery.parseJSON(data);
+                    let city = json.name;
+                    let showDateTimeValue = timeZone(json);
+                
                     $('.results').html(`🌎 Position : <a href='https://www.google.com/maps/place/${city}/' class="yellow-color" target="_blank">${city}, ${json.sys.country}</a><br>⏰ Date et heure : ${showDateTimeValue}<br>☁️ Météo : ${capitalize(json.weather[0].description)}<br> 🌡️ Température : ${json.main.temp} °C<br> 💧 Humidité : ${json.main.humidity}% <br> <img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"/>`); 
-                    $("#cityName, #submitWeatherRequest").click(function() {
-                        document.location.replace("../../views/function-views/weatherRequest.php");
-                    });
                 }
-            },
-            statusCode: {
-                404: function() { 
-                    document.location.replace("../error404Weather");
+                catch(error) {
+                    $('.results').html("La ville que vous avez rentré n'existe pas (dans l'API).");
                 }
             }
         });

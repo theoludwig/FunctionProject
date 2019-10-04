@@ -204,3 +204,8 @@ function isValidDate(s) {
         return messageError;
     }
 }
+
+// Créer un cookie de session
+function createSessionCookie(name, value) { 
+    document.cookie = escape(name) + "=" + escape(value) + " ; path=/"; 
+} 

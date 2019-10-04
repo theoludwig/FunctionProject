@@ -32,7 +32,6 @@
 
         <!-- Frameworks and Tools -->
         <script src="/scripts/libs/jquery-min.js"></script>
-        <script type='text/javascript' src='/scripts/config.js'></script>
         <link rel="stylesheet" href="/css/libs/bootstrap-min.css">
         <script src="/scripts/libs/bootstrap-min.js"></script>
         <script src="/scripts/libs/moment.js"></script>

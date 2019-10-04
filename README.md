@@ -15,16 +15,16 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 ## La liste des Fonctions Principales :   
 | Nom | Description | Paramètre(s) |
 | -- | -- | -- |
-| **weatherRequest(url,toDo)** | Permet de faire une requête à l'API [openweathermap.org](https://openweathermap.org/). | - url : l'url avec le nom de la ville. - toDo : afficher l'heure uniquement ou aussi la météo ? |
+| **weatherRequest()** | Affiche la météo et l'heure local selon la ville grâce à l'API : [openweathermap.org](https://openweathermap.org/). | Aucun paramètre |
 | **randomNumber(min, max)** | Génère un nombre aléatoire entre un minimum inclus et un maximum inclus. | - min : Nombre Minimum - max : Nombre Maximum |
 | **calculateAge(birthDate)** | Calcule l'âge de quelqu'un selon la date de naissance. | - birthDate : date de naissance au format (dd/mm/yyyy). |
 | **convertTemperature(degree,unit)** | Convertit des Degré Celsius en Degré Fahrenheit et l'inverse aussi. | - degre : Le nombre que vous voulez convertir - unite : l'unité du nombre que vous voulez convertir (°C ou °F)	|
 | **convertDistance (firstValue, unitFirstValue, unitFinalValue)** | Convertit la longueur (distance) avec les unités allant de picomètre au Téramètre. | - firstValue : Le nombre que vous voulez convertir - unitFirstValue : l'unité du nombre que vous voulez convertir - unitFinalValue : l'unité de votre nombre après la conversion	|
 | **filterStudents(filteredLetter, students)** | Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée. | - filteredLetter : la lettre à filtré - students : la liste des prénoms  |
 | **randomQuote()** | Génère aléatoirement une citation ou un proverbe. | Aucun paramètre  |
-| **convertCurrency(value, currency, url)** | Convertis une valeur dans une devise dans une autre devise. [exchangeratesapi.io](https://exchangeratesapi.io/) | - value : la valeur à convertir - currency : la devise à avoir après conversion - url : l'url de la requête à l'API en fonction du paramètre dans l'url '?base=' |
-| **utf8ToBin(s)** | UTF-8 vers Binaire | - s : la valeur à convertir  |
-| **binToUtf8(s)** | Binaire vers UTF-8 | - s : la valeur à convertir  |
+| **convertCurrency(value, currency, url)** | Convertis une valeur dans une devise dans une autre devise grâce à l'API [exchangeratesapi.io](https://exchangeratesapi.io/). | - value : la valeur à convertir - currency : la devise à avoir après conversion - url : l'url de la requête à l'API en fonction du paramètre dans l'url '?base=' |
+| **utf8ToBin(s)** | UTF-8 vers Binaire. | - s : la valeur à convertir  |
+| **binToUtf8(s)** | Binaire vers UTF-8. | - s : la valeur à convertir  |
 | **convertArabicToRoman(nombre)** | Convertis un nombre arabe en nombre romain. | - nombre : le nombre à convertir  |
 | **convertRomanToArabic(str)** | Convertis un nombre romain en nombre arabe. | - str : le nombre romain à convertir  |
 | **armstrongNumber(nombre)** | Vérifie si un nombre fait partie des nombres d'Armstrong ou non. | - nombre : le nombre à tester  |
@@ -41,3 +41,4 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **realDateTime(id)** | Affiche l'heure en temps réel. | - id : l'id de votre span/div où vous voulez afficher l'heure en temps réel |
 | **timeZone(json)** | Récupére le décalage en secondes à partir de l'heure UTC grâce à l'API openweathermap.org. | - json : le json de l'API |
 | **isValidDate(s)** | Vérifie si une date est valide par rapport à la date d'aujourd'hui.  | - s : la date à verifier (format : dd/mm/yyyy) |
+| **createSessionCookie(name, value)** | Créer un cookie de session  | - name : nom du cookie - value : valeur du cookie |
