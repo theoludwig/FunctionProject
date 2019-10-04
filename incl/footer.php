@@ -4,5 +4,15 @@
             <div class="footer-text"><a href="https://divlo.fr/" target="_blank">Divlo</a> | Tous droits réservés</div>
         </footer>
 
+        <!-- Scripts JS -->
+        <script defer src="/scripts/libs/jquery-min.js"></script>
+        <script defer src="/scripts/libs/bootstrap-min.js"></script>
+        <script defer src="/scripts/libs/moment.js"></script>
+        <script defer src="/scripts/libs/jquery-ui-min.js"></script>
+        <script defer src="/scripts/libs/bootstrap-datepicker-min.js"></script>
+        <script defer src="/scripts/variables.js"></script>
+        <script defer src="/scripts/fonctions_annexes.js"></script>
+        <script defer src="/scripts/fonctions_principales.js"></script>
+        <script defer src="/scripts/main.js"></script>
     </body>
 </html>

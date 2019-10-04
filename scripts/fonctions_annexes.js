@@ -115,7 +115,7 @@ function isValidDate(s) {
     let msToVerifyDate = Date.parse(splitedToVerifyDate);
 
     // Date courante
-    let currentDate = dateTimeUTC(0);
+    let currentDate = dateTimeUTC('0');
     currentDate = currentDate.substr(0,10);
     let currentDateSplited = currentDate.split('/');
     let currentDateFormat = currentDateSplited[2] + '-' + currentDateSplited[1] + '-' + currentDateSplited[0];

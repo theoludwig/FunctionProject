@@ -30,22 +30,12 @@
         <meta name="twitter:image:src" content="<?php echo $image?>">
         <meta name="twitter:creator" content="@Divlo_FR">
 
-        <!-- Frameworks and Tools -->
-        <script src="/scripts/libs/jquery-min.js"></script>
+        <!-- Styles CSS -->
         <link rel="stylesheet" href="/css/libs/bootstrap-min.css">
-        <script src="/scripts/libs/bootstrap-min.js"></script>
-        <script src="/scripts/libs/moment.js"></script>
-        <link rel="stylesheet" href="/css/libs/bootstrap-datepicker3.css"/>
-        <script src="/scripts/libs/jquery-ui-min.js"></script>
-        <script src="/scripts/libs/bootstrap-datepicker-min.js"></script>
-        <link href="/css/libs/fonts.css" rel="stylesheet">
-        <link rel="stylesheet" href="/css/libs/fontawesome/css/all.css"/>
-
-        <script src="/scripts/variables.js"></script>
-        <script src="/scripts/fonctions_annexes.js"></script>
-        <script src="/scripts/fonctions_principales.js"></script>
-        <script src="/scripts/main.js"></script>
-        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link rel="stylesheet" href="/css/libs/bootstrap-datepicker3.css">
+        <link rel="stylesheet" href="/css/libs/fonts.css">
+        <link rel="stylesheet" href="/css/libs/fontawesome/css/all.css">
+        <link rel="stylesheet" href="/css/style.css">
     </head>
     
     <body>
