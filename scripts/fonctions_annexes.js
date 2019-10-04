@@ -50,88 +50,13 @@ function capitalize (s) {
 
 // Donne la date et l'heure selon l'UTC (Universal Time Coordinated)
 function dateTimeUTC(utc) {
-    if(typeof utc === 'string' && utc.length >= 1 && utc[0] === '-' || '0' || '+' || !isNaN(parseFloat(utc[0])))
-    {   
-        if (utc[0] === '0' && utc.length === 1)
-        {   
-            let enteredOffset = 0;
-            return showDateTime(enteredOffset);
-        }
-        else if (utc[0] === '+' || !isNaN(parseFloat(utc[0])))
-        {
-            if (utc.length === 2 && utc[0] === '+')
-            {
-                // Entered offset
-                let enteredOffset = parseFloat(utc[1])*60;
-                timeNow.setMinutes(timeNow.getMinutes() + enteredOffset);
-                return showDateTime(enteredOffset);
-            }
-            else if (utc.length === 3 && utc[0] === '+')
-            {
-                // Entered offset
-                let enteredOffset = parseFloat(utc[1] + utc[2])*60;
-                timeNow.setMinutes(timeNow.getMinutes() + enteredOffset);
-                return showDateTime(enteredOffset);
-            }
-            else if (utc.length === 1 && !isNaN(parseFloat(utc[0])))
-            {
-                // Entered offset
-                let enteredOffset = parseFloat(utc[0])*60;
-                timeNow.setMinutes(timeNow.getMinutes() + enteredOffset);
-                return showDateTime(enteredOffset);
-            }
-            else if (utc.length === 2 && !isNaN(parseFloat(utc[0])))
-            {
-                // Entered offset
-                let enteredOffset = parseFloat(utc[0] + utc[1])*60;
-                timeNow.setMinutes(timeNow.getMinutes() + enteredOffset);
-                return showDateTime(enteredOffset);
-            }
-            else
-            {
-                let enteredOffset = 0;
-                return showDateTime(enteredOffset);
-            }
-        }
-        else if (utc[0] === '-')
-        {
-            if (utc.length === 2 && utc[0] === '-')
-            {
-                // Entered offset
-                let enteredOffset = - parseFloat(utc[1])*60;
-                timeNow.setMinutes(timeNow.getMinutes() + enteredOffset);   
-                return showDateTime(enteredOffset);
-            }
-            else if (utc.length === 3 && utc[0] === '-')
-            {
-                // Entered offset
-                let enteredOffset = - parseFloat(utc[1] + utc[2])*60;
-                timeNow.setMinutes(timeNow.getMinutes() + enteredOffset);   
-                return showDateTime(enteredOffset);
-            }
-            else
-            {
-                let enteredOffset = 0;
-                return showDateTime(enteredOffset);
-            }
-        }
-        else 
-        {
-            let enteredOffset = 0;
-            return showDateTime(enteredOffset);
-        }
+    let result = "";
+    for (let index in utc) {
+        result = result + utc[index];
     }
-    else if (utc === '' || !utc || utc === undefined)
-    {
-        utc = false;
-        let enteredOffset = 0;
-        return showDateTime(enteredOffset);
-    }
-    else
-    {
-        let enteredOffset = 0;
-        return showDateTime(enteredOffset);
-    }
+    let enteredOffset = parseFloat(result)*60;
+    timeNow.setMinutes(timeNow.getMinutes() + enteredOffset);
+    return showDateTime(enteredOffset);
 }
 
 // Affiche la date et l'heure (format : dd/mm/yyyy - 00:00:00)
