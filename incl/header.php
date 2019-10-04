@@ -38,10 +38,8 @@
         <link rel="stylesheet" href="/css/libs/bootstrap-datepicker3.css"/>
         <script src="/scripts/libs/jquery-ui-min.js"></script>
         <script src="/scripts/libs/bootstrap-datepicker-min.js"></script>
-
-        <!-- Google Fonts and Font Awesome -->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Varela+Round&display=swap" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/ed4e9fbefd.js"></script>
+        <link href="/css/libs/fonts.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/libs/fontawesome/css/all.css"/>
 
         <script src="/scripts/variables.js"></script>
         <script src="/scripts/fonctions_annexes.js"></script>
