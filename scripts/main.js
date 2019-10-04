@@ -26,17 +26,14 @@ $(function () {
         {
             $('.results').html(emptyMessageError);
         }
-        else if (!isNaN(parseInt(minEntered)) && !isNaN(parseInt(maxEntered))) 
+        else
         {
             let result = randomNumber(minEntered, maxEntered);
-            if (minEntered < maxEntered)
-            {
-                $('.results').html("Nombre aléatoire compris entre " + minEntered + " inclus et " + maxEntered + " inclus : " + formatNumberResult(result));
-            }
-            else 
-            {
+            if(result === messageError) {
                 $('.results').html(messageError);
-            }
+            } else {
+                $('.results').html("Nombre aléatoire compris entre " + minEntered + " inclus et " + maxEntered + " inclus : " + formatNumberResult(result));
+            } 
         }
     });
 

@@ -10,7 +10,7 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 
 [Projet uniquement en français]
 
-[![FunctionProject](https://cloud.divlo.fr/public_files/others/FunctionProject/FunctionProject.png)](https://function.divlo.fr/)
+[![FunctionProject](/img/FunctionProject.png)](https://function.divlo.fr/)
 
 ## La liste des Fonctions Principales :   
 | Nom | Description | Paramètre(s) |

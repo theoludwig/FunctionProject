@@ -13,7 +13,7 @@
   </div>
   <div class="form-group">
 		<label for="numberToTest">Entrez votre nombre :</label>
-        <textarea name="numberToTest" type="text" id="numberToTest" placeholder="(e.g : 153)" class="form-control"></textarea>
+        <input name="numberToTest" type="number" id="numberToTest" placeholder="(e.g : 153)" class="form-control">
         <br>
         <div class="form-row text-center">
             <div class="col-12">
