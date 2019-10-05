@@ -23,8 +23,9 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **filterStudents(filteredLetter, students)** | Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée. | - filteredLetter : la lettre à filtré - students : la liste des prénoms  |
 | **randomQuote()** | Génère aléatoirement une citation ou un proverbe. | Aucun paramètre  |
 | **convertCurrency(value, currency, url)** | Convertis une valeur dans une devise dans une autre devise grâce à l'API [exchangeratesapi.io](https://exchangeratesapi.io/). | - value : la valeur à convertir - currency : la devise à avoir après conversion - url : l'url de la requête à l'API en fonction du paramètre dans l'url '?base=' |
-| **utf8ToBin(s)** | UTF-8 vers Binaire. | - s : la valeur à convertir  |
-| **binToUtf8(s)** | Binaire vers UTF-8. | - s : la valeur à convertir  |
+| **utf8ToBin(s)** | Texte en Binaire (UTF-8). | - s : la valeur à convertir  |
+| **binToUtf8(s)** | Binaire (UTF-8) en Texte. | - s : la valeur à convertir  |
+| **convertDecimalBinaryHexadecimal(value, option)** | Convertis des nombres de différents bases. | - value : la valeur à convertir - option : En quelle base convertir |
 | **convertArabicToRoman(nombre)** | Convertis un nombre arabe en nombre romain. | - nombre : le nombre à convertir  |
 | **convertRomanToArabic(str)** | Convertis un nombre romain en nombre arabe. | - str : le nombre romain à convertir  |
 | **armstrongNumber(nombre)** | Vérifie si un nombre fait partie des nombres d'Armstrong ou non. | - nombre : le nombre à tester  |

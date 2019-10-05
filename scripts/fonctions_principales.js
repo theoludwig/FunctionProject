@@ -184,8 +184,8 @@ function convertCurrency(value, currency, url) {
     });
 }
 
-// Convertis du texte (encodé en UTF-8) en binaire et l'inverse aussi (source : http://jsfiddle.net/47zwb41o)
-// UTF-8 vers Binaire
+// Convertis des nombres de différentes bases et convertis en UTF-8. (source : http://jsfiddle.net/47zwb41o)
+// Texte en Binaire (UTF-8)
 function utf8ToBin(s) {
     try {
         s = unescape( encodeURIComponent(s));
@@ -200,18 +200,51 @@ function utf8ToBin(s) {
         return s;
     }
 }
-// Binaire vers UTF-8
+// Binaire (UTF-8) en Texte
 function binToUtf8(s){
-    try {
-        var i = 0, l = s.length, chr, out = '';
-        for( ; i < l; i += 8){
-            chr = parseInt( s.substr(i, 8 ), 2).toString(16);
-            out += '%' + ((chr.length % 2 == 0) ? chr : '0' + chr);
-        }
-        return decodeURIComponent(out);
-    } catch (error) {
-        return s;
+try {
+    var i = 0, l = s.length, chr, out = '';
+    for( ; i < l; i += 8){
+        chr = parseInt( s.substr(i, 8 ), 2).toString(16);
+        out += '%' + ((chr.length % 2 == 0) ? chr : '0' + chr);
     }
+    return decodeURIComponent(out);
+} catch (error) {
+    return s;
+}
+}
+// Convertis des nombres de différents bases
+function convertDecimalBinaryHexadecimal(value, option) {
+try {
+    if (option === 'DecimalToBinary') {
+    value = value.replace(" ", "");
+    return parseInt(value).toString(2);
+    }
+    else if (option === 'BinaryToDecimal') {
+    return parseInt(value, 2);
+    }
+    else if (option === 'DecimalToHexadecimal') {
+    value = value.replace(" ", "");
+    return parseInt(value).toString(16).toUpperCase();
+    }
+    else if (option === 'HexadecimalToDecimal') {
+    return parseInt(value, 16);
+    }
+    else if (option === 'BinaryToHexadecimal') {
+    value = parseInt(value, 2);
+    return parseInt(value).toString(16).toUpperCase();
+    }
+    else if (option === 'HexadecimalToBinary') {
+    value = parseInt(value, 16);
+    return parseInt(value).toString(2);
+    }
+    else {
+    return messageError;
+    }
+} 
+catch (error) {
+    return messageError;
+}
 }
 
 // Convertis un nombre arabe en nombre romain

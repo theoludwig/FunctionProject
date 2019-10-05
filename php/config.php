@@ -63,10 +63,10 @@ switch ($currentpage) {
         $description = "Convertis une valeur dans une devise dans une autre devise.";
         $image = 'https://function.divlo.fr/img/function-image/convertCurrency.png';
         break;
-    case '/views/function-views/convertBinaryText.php':
-        $title = "Conversion d'un texte en binaire et vice-versa";
-        $description = "Convertis du texte (encodé en UTF-8) en binaire et l'inverse aussi.";
-        $image = 'https://function.divlo.fr/img/function-image/convertBinaryText.png';
+    case '/views/function-views/convertEncoding.php':
+        $title = "Conversion des Encodages de caractères";
+        $description = "Convertis des nombres de différentes bases et convertis en UTF-8.";
+        $image = 'https://function.divlo.fr/img/function-image/convertEncoding.png';
         break;
     case '/views/function-views/convertRomanArabicNumbers.php':
         $title = "Conversion d'un nombre arabe en nombre romain";

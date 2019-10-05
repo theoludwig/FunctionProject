@@ -170,29 +170,40 @@ $(function () {
         }
     });
 
-    $("#submitConvertBinaryText").click(function() 
+    $("#submitConvertEncoding").click(function() 
     {
-        let binaryTextValue = $('#binaryTextValue').val();
-        let convertIn = $("#convertIn option:selected").text();
-
-        if(isEmptyValue(binaryTextValue)) {
-            $('.results').html(emptyMessageError);
-        }
-        else if (convertIn === 'Texte') { 
-            // Le replace enlève les espaces
-            let textResult = binToUtf8(binaryTextValue.replace(/\s/g,'')); 
-
-            $('.results').html(textResult);
-        }
-        else if (convertIn === 'Binaire') {
-            // Les 2 replace permettent de rajouter un espace tout les 8 bits
-            let binaryResult = utf8ToBin(binaryTextValue);
-            binaryResult = binaryResult.replace(/(\d{8})/g, '$1 ').replace(/(^\s+|\s+$)/,''); 
-
-            $('.results').html(binaryResult);
-        }
-        else {
+        let value = $('#value').val();
+        let option = $("#option option:selected").val();
+        if(isEmptyValue(value))
+        {
             $('.results').html(messageError);
+        }
+        else 
+        {
+          if (option === 'DecimalToBinary' || option === 'BinaryToDecimal' || option === 'DecimalToHexadecimal' || option === 'HexadecimalToDecimal' || option === 'BinaryToHexadecimal' || option === 'HexadecimalToBinary') {
+            let result = convertDecimalBinaryHexadecimal(value, option);
+            if (result === messageError || isNaN(result)) {
+              $('.results').html(messageError);
+            } else {
+              $('.results').html(result);
+            }
+          }
+          else if (option === 'BinaryToText') {
+            // Le replace enlève les espaces
+            let textResult = binToUtf8(value.replace(/\s/g,'')); 
+  
+            $('.results').html(textResult);
+          }
+          else if (option === 'TextToBinary') {
+              // Les 2 replace permettent de rajouter un espace tout les 8 bits
+              let binaryResult = utf8ToBin(value);
+              binaryResult = binaryResult.replace(/(\d{8})/g, '$1 ').replace(/(^\s+|\s+$)/,''); 
+  
+              $('.results').html(binaryResult);
+          }
+          else {
+            $('.results').html(messageError);
+          }
         }
     });
 

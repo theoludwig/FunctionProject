@@ -81,9 +81,9 @@
     <div class="row">
         <div class="col-sm-12 col-md-6 pb-4">
             <div class="feature text-center pb-5">
-                <h2 class="function-list-title"><a href="./function-views/convertBinaryText.php">Conversion d'un texte en binaire et vice-versa</a></h2>
-                <a href="./function-views/convertBinaryText.php"><img class="function-list-image" src="/img/function-image/convertBinaryText.png" alt=""></a>
-                <p class="function-list-description">Convertis du texte (encodé en UTF-8) en binaire et l'inverse aussi.</p>
+                <h2 class="function-list-title"><a href="./function-views/convertEncoding.php">Conversion des Encodages de caractères</a></h2>
+                <a href="./function-views/convertEncoding.php"><img class="function-list-image" src="/img/function-image/convertEncoding.png" alt=""></a>
+                <p class="function-list-description">Convertis des nombres de différentes bases et convertis en UTF-8.</p>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 pb-4">
