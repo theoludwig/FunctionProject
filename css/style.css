@@ -81,6 +81,19 @@ header {
 #convertIn {
     width: 6.7em;
 }
+.function-list-title {
+    width: 85%;
+    padding-bottom: 1em;
+    margin: auto;
+}
+.function-list-image {
+    max-width: 160px;
+    padding-bottom: 20px;
+}
+.function-list-description {
+    width: 70%;
+    margin: auto;
+}
 .function-image {
     max-width: 130px;
     padding-bottom: 20px;
