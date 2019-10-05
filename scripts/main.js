@@ -201,6 +201,14 @@ $(function () {
   
               $('.results').html(binaryResult);
           }
+          else if (option === 'TextToHexadecimal') {
+            let result = utf8ToHex(value);
+            $('.results').html(result.toUpperCase());
+          }
+          else if (option === 'HexadecimalToText') {
+              let result = hexToUtf8(value.replace(/\s/g,''));
+              $('.results').html(result);
+          }
           else {
             $('.results').html(messageError);
           }

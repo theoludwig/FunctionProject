@@ -25,6 +25,8 @@
             <option value="HexadecimalToBinary">Hexadécimal en Binaire</option>
             <option value="TextToBinary">Texte en Binaire (UTF-8)</option>
             <option value="BinaryToText">Binaire (UTF-8) en Texte</option>
+            <option value="TextToHexadecimal">Texte en Hexadécimal (UTF-8)</option>
+            <option value="HexadecimalToText">Hexadécimal (UTF-8) en Texte</option>
         </select>
         <div class="form-row text-center">
             <div class="col-12">

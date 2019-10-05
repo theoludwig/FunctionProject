@@ -202,16 +202,41 @@ function utf8ToBin(s) {
 }
 // Binaire (UTF-8) en Texte
 function binToUtf8(s){
-try {
-    var i = 0, l = s.length, chr, out = '';
-    for( ; i < l; i += 8){
-        chr = parseInt( s.substr(i, 8 ), 2).toString(16);
-        out += '%' + ((chr.length % 2 == 0) ? chr : '0' + chr);
+    try {
+        var i = 0, l = s.length, chr, out = '';
+        for( ; i < l; i += 8){
+            chr = parseInt( s.substr(i, 8 ), 2).toString(16);
+            out += '%' + ((chr.length % 2 == 0) ? chr : '0' + chr);
+        }
+        return decodeURIComponent(out);
+    } catch (error) {
+        return s;
     }
-    return decodeURIComponent(out);
-} catch (error) {
-    return s;
 }
+// Texte en Hexadécimal (UTF-8)
+function utf8ToHex (s) {
+    try {
+        s = unescape( encodeURIComponent( s ) );
+        var chr, i = 0, l = s.length, out = '';
+        for( ; i < l; i++ ){
+            chr = s.charCodeAt( i ).toString( 16 );
+            out += ( chr.length % 2 == 0 ) ? chr : '0' + chr;
+            out += " ";
+        }
+        return out;
+    }
+    catch (error) {
+        return s;
+    }
+}
+// Hexadécimal (UTF-8) en Texte
+function hexToUtf8 (s) {
+    try {
+        return decodeURIComponent( s.replace( /../g, '%$&' ) );
+    }
+	catch (error) {
+        return s;
+    }
 }
 // Convertis des nombres de différents bases
 function convertDecimalBinaryHexadecimal(value, option) {
