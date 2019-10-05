@@ -182,7 +182,7 @@ $(function () {
         {
           if (option === 'DecimalToBinary' || option === 'BinaryToDecimal' || option === 'DecimalToHexadecimal' || option === 'HexadecimalToDecimal' || option === 'BinaryToHexadecimal' || option === 'HexadecimalToBinary') {
             let result = convertDecimalBinaryHexadecimal(value, option);
-            if (result === messageError || isNaN(result)) {
+            if (result === messageError) {
               $('.results').html(messageError);
             } else {
               $('.results').html(result);

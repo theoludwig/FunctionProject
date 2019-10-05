@@ -215,36 +215,54 @@ try {
 }
 // Convertis des nombres de différents bases
 function convertDecimalBinaryHexadecimal(value, option) {
-try {
-    if (option === 'DecimalToBinary') {
-    value = value.replace(" ", "");
-    return parseInt(value).toString(2);
+    try {
+        if (option === 'DecimalToBinary') {
+            value = value.replace(" ", "");
+            value = parseInt(value);
+            if (isNaN(value)) {
+                return messageError;
+            } else {
+                return value.toString(2);
+            }
+        }
+        else if (option === 'BinaryToDecimal') {
+            return parseInt(value, 2);
+        }
+        else if (option === 'DecimalToHexadecimal') {
+            value = value.replace(" ", "");
+            value = parseInt(value);
+            if (isNaN(value)) {
+                return messageError;
+            } else {
+                return value.toString(16).toUpperCase();
+            }
+        }
+        else if (option === 'HexadecimalToDecimal') {
+            return parseInt(value, 16); 
+        }
+        else if (option === 'BinaryToHexadecimal') {
+            value = parseInt(value, 2);
+            if (isNaN(value)) {
+                return messageError;
+            } else {
+                return parseInt(value).toString(16).toUpperCase();
+            }
+        }
+        else if (option === 'HexadecimalToBinary') {
+            value = parseInt(value, 16);
+            if (isNaN(value)) {
+                return messageError;
+            } else {
+                return parseInt(value).toString(2);
+            }
+        }
+        else {
+            return messageError;
+        }
+    } 
+    catch (error) {
+        return messageError;
     }
-    else if (option === 'BinaryToDecimal') {
-    return parseInt(value, 2);
-    }
-    else if (option === 'DecimalToHexadecimal') {
-    value = value.replace(" ", "");
-    return parseInt(value).toString(16).toUpperCase();
-    }
-    else if (option === 'HexadecimalToDecimal') {
-    return parseInt(value, 16);
-    }
-    else if (option === 'BinaryToHexadecimal') {
-    value = parseInt(value, 2);
-    return parseInt(value).toString(16).toUpperCase();
-    }
-    else if (option === 'HexadecimalToBinary') {
-    value = parseInt(value, 16);
-    return parseInt(value).toString(2);
-    }
-    else {
-    return messageError;
-    }
-} 
-catch (error) {
-    return messageError;
-}
 }
 
 // Convertis un nombre arabe en nombre romain
