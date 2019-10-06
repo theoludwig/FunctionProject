@@ -6,18 +6,26 @@
 
 <!-- Page Content -->
 <div class="container">
-  <h1>Bienvenue sur <span class="important">FunctionProject</span>! 🎉</h1>
-  <p class="mt-5">FunctionProject est un projet créé par <a href="https://divlo.fr/" target="_blank">Divlo</a> qui a pour but de rassembler plein de mini-programme (fonctions JavaScript) permettant de faire plusieurs choses comme <b>savoir la météo</b>, générer un <b>nombre aléatoire</b>, etc. 
-  <br> <br>
-  <div><p class="text-center">
-  <a href="./views/function-list.php">Cliquez ici pour accéder à la liste des fonctions.</a>
-  <br> <br>
-  L'intégralité du <a target="_blank" href="https://github.com/Divlo/FunctionProject">code source</a> de ce site est disponible sur <a href="https://github.com/Divlo">mon profil GitHub</a> <i class="fab fa-github"></i>.
-  <br>
-  Je suis débutant en programmation donc si je commets une erreur dans le code, n'hésitez pas à me le faire savoir <i class="fas fa-code"></i>.
-  <br> <br>
-  Vous pouvez m'envoyer vos avis, suggestion d'ajouts, éventuel bug/problème grâce à ce <a href="https://docs.google.com/forms/d/1NliUWi3lntHDM42Td0C47J0cZKgnYilxT_0UcdmVaog/" target="_blank">Feedback Formulaire</a> 📝.
-  </p></div>
+  <div class="row pb-5">
+    <h1>Bienvenue sur <span class="important">FunctionProject</span> <i class="fas fa-file-code"></i></h1>
+    <p class="pt-4 mx-auto"><a href="./views/function-list.php">Liste de Mini-programme</a> permettant de <b>savoir la météo</b>, générer un <b>nombre aléatoire</b>, etc.</p>
+  </div>
+  <div class="row">
+        <div class="col-sm-12 col-md-6 pb-4">
+            <div class="text-center pb-5">
+                <h2 class="function-list-title"><a target="_blank" href="https://github.com/Divlo/FunctionProject">Code Source :</a></h2>
+                <a target="_blank" href="https://github.com/Divlo/FunctionProject"><img class="function-list-image" src="/img/GitHub.png" alt=""></a>
+                <p class="function-list-description">Code source disponible sur  <a target="_blank" href="https://github.com/Divlo">mon profil GitHub</a> <i class="fab fa-github"></i>.</p>
+            </div>  
+        </div>
+        <div class="col-sm-12 col-md-6 pb-4">
+            <div class="text-center pb-5">
+                <h2 class="function-list-title"><a target="_blank" href="https://docs.google.com/forms/d/1NliUWi3lntHDM42Td0C47J0cZKgnYilxT_0UcdmVaog/">Donnez votre avis :</a></h2>
+                <a target="_blank" href="https://docs.google.com/forms/d/1NliUWi3lntHDM42Td0C47J0cZKgnYilxT_0UcdmVaog/"><img class="function-list-image" src="/img/Feedback-Formulaire.png" alt=""></a>
+                <p class="function-list-description">Vous pouvez m'envoyer votre avis sur le projet grâce au <a href="https://docs.google.com/forms/d/1NliUWi3lntHDM42Td0C47J0cZKgnYilxT_0UcdmVaog/" target="_blank">Feedback Formulaire</a> 📝.</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Footer -->
