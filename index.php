@@ -8,7 +8,7 @@
 <div class="container">
   <div class="row pb-5">
     <h1>Bienvenue sur <span class="important">FunctionProject</span> <i class="fas fa-file-code"></i></h1>
-    <p class="pt-4 mx-auto"><a href="./views/function-list.php">Liste de Mini-programme</a> permettant de <b>savoir la météo</b>, générer un <b>nombre aléatoire</b>, etc.</p>
+    <p class="pt-4 mx-auto"><a href="/views/function-list.php">Liste de Mini-programme</a> permettant de <a href="/views/function-views/weatherRequest.php">savoir la météo</a>, générer un <a href="/views/function-views/randomNumber.php">nombre aléatoire</a>, etc.</p>
   </div>
   <div class="row">
         <div class="col-sm-12 col-md-6 pb-4">

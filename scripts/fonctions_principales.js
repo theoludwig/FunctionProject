@@ -338,7 +338,11 @@ function convertArabicToRoman(nombre) {
         extraireChiffreRomain(correspondance[0], correspondance[1]);
     })
 
-    return chiffresRomains;
+    if (chiffresRomains === '') {
+        return messageError;
+    } else {
+        return chiffresRomains;
+    }
 }
 
 // Convertis un nombre romain en nombre arabe

@@ -224,8 +224,13 @@ $(function () {
             $('.results').html(emptyMessageError);
         }
         else if (!isNaN(parseInt(numbersValue)) && convertNumberType === "Nombre Romain") { 
-            let result = convertArabicToRoman(parseInt(numbersValue.replace(/\s/g,''))); 
-            $('.results').html(`<b>${formatNumberResult(numbersValue.replace(/\s/g,''))}</b> s'écrit <b>${result}</b> en chiffres romains.`);
+            let result = convertArabicToRoman(parseInt(numbersValue.replace(/\s/g,'')));
+            let numbersValueFormat = formatNumberResult(numbersValue.replace(/\s/g,''));
+            if (numbersValueFormat === messageError || result === messageError) {
+                $('.results').html(messageError);
+            } else {
+                $('.results').html(`<b>${numbersValueFormat}</b> s'écrit <b>${result}</b> en chiffres romains.`);
+            }
         }
         else if (convertNumberType === "Nombre Arabe") {
             if (!isNaN(parseInt(numbersValue))) {
@@ -233,7 +238,11 @@ $(function () {
             } else {
                 numbersValue = numbersValue.toUpperCase();
                 let result = convertRomanToArabic(numbersValue);
-                $('.results').html(`<b>${numbersValue}</b> s'écrit <b>${result}</b> en chiffres arabes.`);
+                if (result === 0) {
+                    $('.results').html(messageError);
+                } else {
+                    $('.results').html(`<b>${numbersValue}</b> s'écrit <b>${result}</b> en chiffres arabes.`);
+                }
             }
         }
         else {
