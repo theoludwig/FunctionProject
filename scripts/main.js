@@ -233,7 +233,7 @@ $(function () {
             }
         }
         else if (convertNumberType === "Nombre Arabe") {
-            if (!isNaN(parseInt(numbersValue))) {
+            if (!isNaN(Number(numbersValue))) {
                 $('.results').html(`<b>${numbersValue}</b> est déjà en chiffres arabes.`);
             } else {
                 numbersValue = numbersValue.toUpperCase();
