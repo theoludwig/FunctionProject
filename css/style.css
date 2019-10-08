@@ -75,8 +75,16 @@ header {
 .container {
     padding-bottom: 25px;
 }
-.inlineInput {
-    width: 25% !important;
+.selectInline {
+    display: inline !important;
+    width: 80px !important;
+    height: 40px !important;
+}
+#currencyOfTheValue, #currencyAfter {
+    width: 270px !important;
+}
+#option {
+    width: 315px !important;
 }
 #convertIn {
     width: 6.7em;

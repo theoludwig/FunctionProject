@@ -241,7 +241,7 @@ $(function () {
                 if (result === 0) {
                     $('.results').html(messageError);
                 } else {
-                    $('.results').html(`<b>${numbersValue}</b> s'écrit <b>${result}</b> en chiffres arabes.`);
+                    $('.results').html(`<b>${numbersValue}</b> s'écrit <b>${formatNumberResult(result)}</b> en chiffres arabes.`);
                 }
             }
         }

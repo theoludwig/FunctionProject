@@ -16,7 +16,7 @@
         <label for="firstValue">Entrez la distance que vous voulez convertir et sélectionner l'unité de celle-çi :</label>
         <br> 
         <input name="firstValue" type="text" class="inlineInput" id="firstValue" placeholder="(e.g : 50)" class="form-control">
-        <select id="firstValueUnit">
+        <select class="form-control selectInline" id="firstValueUnit">
             <option value="pm">pm</option>
             <option value="nm">nm</option>
             <option value="µm">µm</option>
@@ -33,7 +33,7 @@
         </select>
         <br> <br>
 		<label for="secondValue">Choisissez l'unité que vous voulez avoir après conversion :</label> <br>
-        <select id="secondValue">
+        <select class="form-control selectInline" id="secondValue">
             <option value="pm">pm</option>
             <option value="nm">nm</option>
             <option value="µm">µm</option>

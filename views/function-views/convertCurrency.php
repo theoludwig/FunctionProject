@@ -16,7 +16,7 @@
         <label for="value">Entrez le nombre à convertir et sélectionner la devise de celui-çi :</label>
         <br>
         <input name="value" type="text" class="inlineInput" id="value" placeholder="(e.g : 50)" class="form-control">
-        <select id="currencyOfTheValue">
+        <select class="form-control selectInline" id="currencyOfTheValue">
             <option value="EUR">Euro (€) - EUR</option>
             <option value="GBP">Livre sterling (£) - GBP</option>
             <option value="USD">Dollar Américain ($) - USD</option>
@@ -30,7 +30,7 @@
         </select>
         <br> <br>
 		<label for="currencyAfter">Choisissez la devise que voulez avoir après conversion :</label> <br>
-        <select id="currencyAfter">
+        <select class="form-control selectInline" id="currencyAfter">
             <option value="£">Livre sterling (£) - GBP</option>
             <option value="$ Américain">Dollar Américain ($) - USD</option>
             <option value="$ Canadien">Dollar Canadien ($) - CAD</option>

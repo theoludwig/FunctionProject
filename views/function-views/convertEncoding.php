@@ -16,7 +16,7 @@
         <textarea name="value" type="text" id="value" placeholder="Votre valeur..." class="form-control"></textarea>
         <br>
 		<label for="option">Choisissez une option : </label> <br>
-        <select id="option">
+        <select class="form-control selectInline" id="option">
         <option value="DecimalToBinary">Décimal en Binaire</option>
             <option value="BinaryToDecimal">Binaire en Décimal</option>
             <option value="DecimalToHexadecimal">Décimal en Hexadecimal</option>

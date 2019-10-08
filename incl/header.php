@@ -12,6 +12,7 @@
         <link rel="canonical" href="function.divlo.fr"/> 
         <meta name="Language" content="fr"/> 
         <meta charset="utf-8">
+        <meta name="theme-color" content="#ffd800">
 
         <!--Open Graph Metadata-->
         <meta property="og:title" content="<?php echo $title?>">

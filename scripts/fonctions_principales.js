@@ -174,8 +174,11 @@ function convertCurrency(value, currency, url) {
               if (currencySymboleAPI === undefined) {
                 currencySymboleAPI = 1;
               } 
-              $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + (currencySymboleAPI * value).toFixed(2) + ' ' + currency);
-              $('.rateDate').html("Dernier rafraîchissement du taux d'échange : " + jsonFixer.date);
+              let exchangeRateYear = jsonFixer.date[0] + jsonFixer.date[1] + jsonFixer.date[2] + jsonFixer.date[3]; 
+              let exchangeRateMonth = jsonFixer.date[5] + jsonFixer.date[6];
+              let exchangeRateDay = jsonFixer.date[8] + jsonFixer.date[9];
+              $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + formatNumberResult((currencySymboleAPI * value).toFixed(2)) + ' ' + currency);
+              $('.rateDate').html(`Dernier rafraîchissement du taux d'échange : ${exchangeRateDay}/${exchangeRateMonth}/${exchangeRateYear}`);
             } 
             catch (error) {
                 $('.results').html(messageError);
