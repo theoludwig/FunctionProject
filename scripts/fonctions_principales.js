@@ -363,6 +363,9 @@ function convertRomanToArabic(str) {
         //remove the matched Roman letter from the beginning
       }
     }
+    if (str != '') {
+        result = 0;
+    }
     return result;
 }
 
