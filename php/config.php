@@ -8,7 +8,7 @@ $functionlistActive = '';
 switch ($currentpage) {
     case '/index.php':
         $title = 'FunctionProject';
-        $description = 'FunctionProject est un projet créé par Divlo qui a pour but de rassembler plein de mini-programme (fonctions JavaScript) permettant de faire plusieurs choses comme savoir la météo, générer un nombre aléatoire, etc.';
+        $description = 'FunctionProject est un projet créé par Divlo qui a pour but de rassembler plein de mini-programme permettant de faire plusieurs choses comme savoir la météo, générer un nombre aléatoire, etc.';
         $image = 'https://function.divlo.fr/img/FunctionProject_icon.png';
         $indexActive = 'active';
         break;
