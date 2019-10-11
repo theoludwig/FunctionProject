@@ -77,7 +77,12 @@ switch ($currentpage) {
         $title = "Nombre d'Armstrong";
         $description = "Un nombre d'<a href='https://fr.wikipedia.org/wiki/Nombre_narcissique' target='_blank'>Armstrong</a> est un nombre qui est égal à la somme de ses chiffres portés à la puissance du nombre de chiffres le composant. Cette fonction permet de savoir si un nombre fait partie des nombres d'Armstrong ou non.";
         $image = 'https://function.divlo.fr/img/function-image/armstrongNumber.png';
-        break;
+        break; 
+    case '/views/function-views/heapAlgorithm.php':
+        $title = "Heap's algorithm";
+        $description = "<a href='https://en.wikipedia.org/wiki/Heap%27s_algorithm' target='_blank'>Heap's algorithm</a> est un algorithme qui génère toutes les permutations unique possibles d'une châine de caractère, c'est en quelque sorte toutes les possibilités d'anagramme d'un mot (en changeant de place les lettres d’un mot, permet d’en créer un nouveau), par contre les mots n'ont pas besoin d'être de vrais mots qui ont du sens.";
+        $image = 'https://function.divlo.fr/img/function-image/heapAlgorithm.png';
+        break; 
     default:
         $title = 'Erreur 404';
         $description = "Cette page n'existe pas!";

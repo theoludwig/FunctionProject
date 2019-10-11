@@ -96,11 +96,18 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-12 pb-4">
+        <div class="col-sm-12 col-md-6 pb-4">
             <div class="text-center pb-5">
                 <h2 class="function-list-title"><a href="./function-views/armstrongNumber.php">Nombre d'Armstrong</a></h2>
                 <a href="./function-views/armstrongNumber.php"><img class="function-list-image" src="/img/function-image/armstrongNumber.png" alt=""></a>
                 <p class="function-list-description">Vérifie si un nombre fait partie des nombres d'Armstrong ou non.</p>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-md-6 pb-4">
+            <div class="text-center pb-5">
+                <h2 class="function-list-title"><a href="./function-views/heapAlgorithm.php">Heap's algorithm</a></h2>
+                <a href="./function-views/heapAlgorithm.php"><img class="function-list-image" src="/img/function-image/heapAlgorithm.png" alt=""></a>
+                <p class="function-list-description">Génère toutes les permutations unique possibles d'une châine de caractère (en changeant de place les lettres du mot, permet d’en créer un nouveau qui n'a pas forcément de sens).</p>
             </div>
         </div>
     </div>

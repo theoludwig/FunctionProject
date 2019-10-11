@@ -254,7 +254,25 @@ $(function () {
         }
     });
 
+    $("#submitHeapAlgorithm").click(function() 
+    {
+        let value = $('#value').val();
 
+        if(isEmptyValue(value))
+        {
+            $('.results').html(emptyMessageError);
+        }
+        else 
+        {
+            let stringPermutationsResult = stringPermutations(value);
+            let result = "";
+            for (element in stringPermutationsResult) {
+                result = result + stringPermutationsResult[element] + "<br>";
+            }
+            $('.results').html(`Il y a ${formatNumberResult(stringPermutationsResult.length)} possibilités d'anagramme pour le mot "${value}" qui contient ${value.length} caractères, la liste : <br><br> ${result}`);
+        }
+    });
+    
     /* Permet d'afficher l'heure en temps réel sur le footer */
     window.onload = realDateTime('realDateTime');
 

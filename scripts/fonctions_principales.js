@@ -367,3 +367,23 @@ function armstrongNumber(number) {
         return `${number} n'est pas un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.`;
     }
 }
+
+// Retourne un tableau contenant toutes les possibilités d'anagramme d'un mot
+function stringPermutations(string) {
+    let results = [];
+  
+    if (string.length === 1) {
+      results.push(string);
+      return results;
+    }
+  
+    for (let i = 0; i < string.length; i++) {
+      let firstChar = string[i];
+      let charsLeft = string.substring(0, i) + string.substring(i + 1);
+      let innerPermutations = stringPermutations(charsLeft);
+      for (let i = 0; i < innerPermutations.length; i++) {
+        results.push(firstChar + innerPermutations[i]);
+      }
+    }
+    return results;
+}

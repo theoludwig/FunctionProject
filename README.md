@@ -31,6 +31,7 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **convertArabicToRoman(nombre)** | Convertis un nombre arabe en nombre romain. | - nombre : le nombre à convertir  |
 | **convertRomanToArabic(str)** | Convertis un nombre romain en nombre arabe. | - str : le nombre romain à convertir  |
 | **armstrongNumber(nombre)** | Vérifie si un nombre fait partie des nombres d'Armstrong ou non. | - nombre : le nombre à tester  |
+| **stringPermutations(string)** | Retourne un tableau contenant toutes les possibilités d'anagramme d'un mot | - string : le mot  |
 
 ## La liste des Fonctions Annexes :   
 | Nom | Description | Paramètre(s) |
