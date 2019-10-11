@@ -62,6 +62,7 @@ function calculateAge(birthDateEntered) {
     // Vérifie si la valeur entrée correspond à une date de naissance valide
     if(isValidDateFunction === true)
     {
+        ageYears = formatNumberResult(ageYears);
         // Si c'est ton anniversaire aujourd'hui
         if(birthDateDay === parseInt(day) && (parseInt(birthDateMonth) + 1) === parseInt(month))
         {
@@ -254,7 +255,7 @@ function convertDecimalBinaryHexadecimal(value, option) {
             }
         }
         else if (option === 'BinaryToDecimal') {
-            return parseInt(value, 2);
+            return formatNumberResult(parseInt(value, 2));
         }
         else if (option === 'DecimalToHexadecimal') {
             value = value.replace(" ", "");
@@ -266,7 +267,7 @@ function convertDecimalBinaryHexadecimal(value, option) {
             }
         }
         else if (option === 'HexadecimalToDecimal') {
-            return parseInt(value, 16); 
+            return formatNumberResult(parseInt(value, 16)); 
         }
         else if (option === 'BinaryToHexadecimal') {
             value = parseInt(value, 2);
@@ -295,24 +296,6 @@ function convertDecimalBinaryHexadecimal(value, option) {
 
 // Convertis un nombre arabe en nombre romain
 function convertArabicToRoman(nombre) {
-    // Tableau contenant chaque correspondance entre un nombre arabe et un nombre romain
-    const correspondances = 
-    [
-        [1000, "M"],
-        [900, "CM"],
-        [500, "D"],
-        [400, "CD"],
-        [100, "C"],
-        [90, "XC"],
-        [50, "L"],
-        [40, "XL"],
-        [10, "X"],
-        [9, "IX"],
-        [5, "V"],
-        [4, "IV"],
-        [1, "I"],
-    ];
-
     // Initialisation de la variable qui va contenir le résultat de la conversion
     let chiffresRomains = "";
 
@@ -337,7 +320,7 @@ function convertArabicToRoman(nombre) {
         }
     }
 
-    correspondances.forEach(correspondance => {
+    correspondancesRomainArabe.forEach(correspondance => {
         extraireChiffreRomain(correspondance[0], correspondance[1]);
     })
 
@@ -350,17 +333,13 @@ function convertArabicToRoman(nombre) {
 
 // Convertis un nombre romain en nombre arabe
 function convertRomanToArabic(str) {
-    var result = 0;
-    // the result is now a number, not a string
-    var decimal = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
-    var roman = ["M", "CM","D","CD","C", "XC", "L", "XL", "X","IX","V","IV","I"];
-    for (var i = 0;i<=decimal.length;i++) {
-      while (str.indexOf(roman[i]) === 0){
-      //checking for the first characters in the string
-        result += decimal[i];
-        //adding the decimal value to our result counter
-        str = str.replace(roman[i],'');
-        //remove the matched Roman letter from the beginning
+    let result = 0;
+    for (let i = 0;i < correspondancesRomainArabe.length; i++) {
+      while (str.indexOf(correspondancesRomainArabe[i][1]) === 0){
+        // Adding the decimal value to our result counter
+        result += correspondancesRomainArabe[i][0];
+        // Remove the matched Roman letter from the beginning
+        str = str.replace(correspondancesRomainArabe[i][1],'');
       }
     }
     if (str != '') {
@@ -381,9 +360,10 @@ function armstrongNumber(number) {
         resultString = resultString + " + " + numberString[i] + "<sup>" + numberStringLength + "</sup>";
     }
 
+    number = formatNumberResult(number);
     if (result === number) {
-        return `${formatNumberResult(number)} est un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.`;
+        return `${number} est un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.`;
     } else {
-        return `${formatNumberResult(number)} n'est pas un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.`;
+        return `${number} n'est pas un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.`;
     }
 }

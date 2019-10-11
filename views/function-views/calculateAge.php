@@ -14,12 +14,6 @@
   <div class="form-group">
 		<label for="birthDateValue">Entrez la date de naissance au format (dd/mm/yyyy) :</label>
         <input name="birthDateValue" type="text" id="birthDateValue" placeholder="Sélectionnez une date" class="form-control datepicker">
-        <br>
-        <div class="form-row text-center">
-            <div class="col-12">
-                <button type="submit" id="submitCalculateAge" class="btn btn-dark text-center">Envoyer</button>
-            </div>
-        </div>
         <br> <br>
 		<p class="results text-center"></p>
     </div>

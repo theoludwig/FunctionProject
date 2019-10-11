@@ -37,25 +37,17 @@ $(function () {
         }
     });
 
-    $("#submitCalculateAge").click(function() 
+    $("#birthDateValue").bind("keyup change", function() 
     {
         let birthDateEntered = $('#birthDateValue').val();
-
-        if(isEmptyValue(birthDateEntered))
+        let result = calculateAge(birthDateEntered);
+        if(result === messageError)
         {
-            $('.results').html(emptyMessageError);
+            $('.results').html(messageError);
         }
         else 
         {
-            let result = calculateAge(birthDateEntered);
-            if(result === messageError)
-            {
-                $('.results').html(messageError);
-            }
-            else 
-            {
-                $('.results').html(result);
-            }
+            $('.results').html(result);
         }
     });
 
@@ -250,14 +242,10 @@ $(function () {
         }
     });
 
-    $("#submitArmstrongNumber").click(function() 
+    $("#numberToTest").bind("keyup change", function() 
     {
         let numbersValue = $('#numberToTest').val();
-
-        if(isEmptyValue(numbersValue)) {
-            $('.results').html(emptyMessageError);
-        }
-        else if (!isNaN(parseInt(numbersValue))) { 
+        if (!isNaN(parseInt(numbersValue))) { 
             let result = armstrongNumber(parseFloat(numbersValue.replace(/\s/g,''))); 
             $('.results').html(result);
         }

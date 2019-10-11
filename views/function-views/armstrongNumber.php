@@ -14,13 +14,6 @@
   <div class="form-group">
 		<label for="numberToTest">Entrez votre nombre :</label>
         <input name="numberToTest" type="number" id="numberToTest" placeholder="(e.g : 153)" class="form-control">
-        <br>
-        <div class="form-row text-center">
-            <div class="col-12">
-                <br>
-                <button type="submit" id="submitArmstrongNumber" class="btn btn-dark text-center">Envoyer</button>
-            </div>
-        </div>
         <br> <br>
 		<p class="results text-center"></p>
     </div>
