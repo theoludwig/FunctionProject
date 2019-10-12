@@ -80,7 +80,7 @@ header {
     width: 80px !important;
     height: 40px !important;
 }
-#currencyOfTheValue, #currencyAfter {
+#currencyOfTheValue, #currencyAfter, #convertNumberType {
     width: 270px !important;
 }
 #option {

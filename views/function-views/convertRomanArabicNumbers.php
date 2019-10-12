@@ -16,7 +16,7 @@
         <input name="numbersArabic" type="text" id="numbersArabic" placeholder="(e.g : 50)" class="form-control">
         <br>
         <label for="convertNumberType">Convertir en : </label> <br>
-        <select id="convertNumberType">
+        <select class="form-control" id="convertNumberType">
             <option value="Nombre Romain">Nombre Romain</option>
             <option value="Nombre Arabe">Nombre Arabe</option>
         </select>
