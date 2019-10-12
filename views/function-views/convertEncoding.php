@@ -9,7 +9,7 @@
   <h1><span class="important"><?php echo $title?></span> :</h1>
   <p class="pt-3 text-center"><?php echo $description?></p>
   <div class="text-center">
-    <img class="function-image" src="/img/function-image/convertEncoding.png" alt="Convert Encoding">
+    <img class="function-image" src="/img/function-image/convertEncoding.png" alt="Binaire">
   </div>
   <div class="form-group">
 		<label for="value">Entrez votre valeur :</label>

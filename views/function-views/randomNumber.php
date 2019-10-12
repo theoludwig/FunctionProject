@@ -9,7 +9,7 @@
   <h1><span class="important"><?php echo $title?></span> :</h1>
   <p class="pt-3 text-center"><?php echo $description?></p>
   <div class="text-center">
-    <img class="function-image" src="/img/function-image/randomNumber.png" alt="Random Number">
+    <img class="function-image" src="/img/function-image/randomNumber.png" alt="Nombre aléatoire">
   </div>
   <div class="form-group">
 		<label for="minValue">Entrez la valeur minimale :</label>

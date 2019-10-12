@@ -10,7 +10,7 @@
   <p class="pt-3 text-center">
     <?php echo $description?> 
     <div class="text-center">
-        <img class="function-image" src="/img/function-image/randomQuote.png" alt="Random Quote">
+        <img class="function-image" src="/img/function-image/randomQuote.png" alt="Citation">
     </div>
     <br>
     <div class="text-center">

@@ -245,48 +245,43 @@ function hexToUtf8 (s) {
 // Convertis des nombres de différents bases
 function convertDecimalBinaryHexadecimal(value, option) {
     try {
-        if (option === 'DecimalToBinary') {
-            value = value.replace(" ", "");
-            value = parseInt(value);
-            if (isNaN(value)) {
+        switch (option) {
+            case 'DecimalToBinary':
+                value = value.replace(" ", "");
+                value = parseInt(value);
+                if (isNaN(value)) {
+                    return messageError;
+                } else {
+                    return value.toString(2);
+                }
+            case 'BinaryToDecimal':
+                return formatNumberResult(parseInt(value, 2));
+            case 'DecimalToHexadecimal':
+                value = value.replace(" ", "");
+                value = parseInt(value);
+                if (isNaN(value)) {
+                    return messageError;
+                } else {
+                    return value.toString(16).toUpperCase();
+                }
+            case 'HexadecimalToDecimal':
+                return formatNumberResult(parseInt(value, 16)); 
+            case 'BinaryToHexadecimal':
+                value = parseInt(value, 2);
+                if (isNaN(value)) {
+                    return messageError;
+                } else {
+                    return parseInt(value).toString(16).toUpperCase();
+                }   
+            case 'HexadecimalToBinary':
+                value = parseInt(value, 16);
+                if (isNaN(value)) {
+                    return messageError;
+                } else {
+                    return parseInt(value).toString(2);
+                }
+            default:
                 return messageError;
-            } else {
-                return value.toString(2);
-            }
-        }
-        else if (option === 'BinaryToDecimal') {
-            return formatNumberResult(parseInt(value, 2));
-        }
-        else if (option === 'DecimalToHexadecimal') {
-            value = value.replace(" ", "");
-            value = parseInt(value);
-            if (isNaN(value)) {
-                return messageError;
-            } else {
-                return value.toString(16).toUpperCase();
-            }
-        }
-        else if (option === 'HexadecimalToDecimal') {
-            return formatNumberResult(parseInt(value, 16)); 
-        }
-        else if (option === 'BinaryToHexadecimal') {
-            value = parseInt(value, 2);
-            if (isNaN(value)) {
-                return messageError;
-            } else {
-                return parseInt(value).toString(16).toUpperCase();
-            }
-        }
-        else if (option === 'HexadecimalToBinary') {
-            value = parseInt(value, 16);
-            if (isNaN(value)) {
-                return messageError;
-            } else {
-                return parseInt(value).toString(2);
-            }
-        }
-        else {
-            return messageError;
         }
     } 
     catch (error) {
