@@ -11,7 +11,7 @@ function weatherRequest() {
                     let city = json.name;
                     let showDateTimeValue = timeZone(json);
                 
-                    $('.results').html(`🌎 Position : <a href='https://www.google.com/maps/place/${city}/' class="yellow-color" target="_blank">${city}, ${json.sys.country}</a><br>⏰ Date et heure : ${showDateTimeValue}<br>☁️ Météo : ${capitalize(json.weather[0].description)}<br> 🌡️ Température : ${json.main.temp} °C<br> 💧 Humidité : ${json.main.humidity}% <br> <img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"/>`); 
+                    $('.results').html(`🌎 Position : <a href='https://www.google.com/maps/search/?api=1&query=${json.coord.lat},${json.coord.lon}' class="yellow-color" target="_blank">${city}, ${json.sys.country}</a><br>⏰ Date et heure : ${showDateTimeValue}<br>☁️ Météo : ${capitalize(json.weather[0].description)}<br> 🌡️ Température : ${json.main.temp} °C<br> 💧 Humidité : ${json.main.humidity}% <br> <img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"/>`); 
                 }
                 catch(error) {
                     $('.results').html("La ville que vous avez rentré n'existe pas (dans l'API).");
