@@ -9,7 +9,8 @@
   <h1><span class="important"><?php echo $title?></span> :</h1>
   <p class="pt-3 text-center"><?php echo $description?> <br> 
   Pour une meilleure précision, je recommande de préciser le pays de la ville. <br>
-  Exemple : Paris, FR
+  La météo est récupérée grâce à l'API <a href="https://openweathermap.org/" target="_blank">openweathermap.org</a>. <br> Il faut rentré le nom anglais de la ville (si il est différent qu'en français). <br>
+  Exemples : Paris, FR - London, UK - Moscow, RU - etc.
   </p>
   <div class="text-center">
     <img class="function-image" src="/img/function-image/weatherRequest.png" alt="Météo">

@@ -21,7 +21,6 @@ $(function () {
     {
         let minEntered = $('#minValue').val();
         let maxEntered = $('#maxValue').val(); 
-
         if(isEmptyValue(minEntered) || isEmptyValue(maxEntered))
         {
             $('.results').html(emptyMessageError);
@@ -41,14 +40,7 @@ $(function () {
     {
         let birthDateEntered = $('#birthDateValue').val();
         let result = calculateAge(birthDateEntered);
-        if(result === messageError)
-        {
-            $('.results').html(messageError);
-        }
-        else 
-        {
-            $('.results').html(result);
-        }
+        $('.results').html(result);
     });
 
     $("#submitConvertTemperature").click(function() 
@@ -56,7 +48,6 @@ $(function () {
         let temperatureValue = $('#temperatureValue').val();
         let degree = parseFloat(temperatureValue.slice(0, temperatureValue.length - 2));
         let unit = temperatureValue.slice(temperatureValue.length - 2);
-
         if(isEmptyValue(temperatureValue))
         {
             $('.results').html(emptyMessageError);
@@ -80,7 +71,6 @@ $(function () {
         let firstValue = $('#firstValue').val();
         let unitFirstValue = $("#firstValueUnit option:selected").text();
         let secondValue = $("#secondValue option:selected").text();
-
         if(isEmptyValue(firstValue) || isEmptyValue(secondValue))
         {
             $('.results').html(emptyMessageError);
@@ -89,14 +79,7 @@ $(function () {
         {
             firstValue = parseFloat(firstValue.replace(/\s/g,''));
             let result = convertDistance(firstValue, unitFirstValue, secondValue);
-            if(result === messageError)
-            {
-                $('.results').html(messageError);
-            }
-            else 
-            {
-                $('.results').html(result);
-            }
+            $('.results').html(result);
         }
     });
 
@@ -104,7 +87,6 @@ $(function () {
     {
         let nameEntered = $('#nameEntered').val();
         let filteredLetter = $("#filteredLetter").val();
-
         if(isEmptyValue(nameEntered) || isEmptyValue(filteredLetter))
         {
             $('.results').html(emptyMessageError);
@@ -150,9 +132,6 @@ $(function () {
         if(isEmptyValue(value) || isNaN(parseFloat(value)))
         {
             $('.results').html(emptyMessageError);
-            $("#value, #submitConvertCurrency").click(function() {
-                document.location.replace("../function-views/convertCurrency.php");
-            });
         }
         else 
         {
@@ -211,7 +190,6 @@ $(function () {
     {
         let numbersValue = $('#numbersArabic').val();
         let convertNumberType = $("#convertNumberType option:selected").text();
-
         if(isEmptyValue(numbersValue)) {
             $('.results').html(emptyMessageError);
         }
@@ -245,8 +223,9 @@ $(function () {
     $("#numberToTest").bind("keyup change", function() 
     {
         let numbersValue = $('#numberToTest').val();
-        if (!isNaN(parseInt(numbersValue))) { 
-            let result = armstrongNumber(parseFloat(numbersValue.replace(/\s/g,''))); 
+        numbersValue = parseInt(numbersValue.replace(/\s/g,''));
+        if (!isNaN(numbersValue) && numbersValue >= 0) { 
+            let result = armstrongNumber(numbersValue); 
             $('.results').html(result);
         }
         else {
@@ -257,7 +236,6 @@ $(function () {
     $("#submitHeapAlgorithm").click(function() 
     {
         let value = $('#value').val();
-
         if(isEmptyValue(value))
         {
             $('.results').html(emptyMessageError);

@@ -15,7 +15,7 @@
             <div class="text-center pb-5">
                 <h2 class="function-list-title"><a href="./function-views/weatherRequest.php">Météo</a></h2>
                 <a href="./function-views/weatherRequest.php"><img class="function-list-image" src="/img/function-image/weatherRequest.png" alt="Météo"></a>
-                <p class="function-list-description">Affiche la météo et l'heure local selon la ville.</p>
+                <p class="function-list-description">Affiche la météo et l'heure locale selon la ville.</p>
             </div>  
         </div>
         <div class="col-sm-12 col-md-6 pb-4">

@@ -40,7 +40,7 @@ switch ($currentpage) {
         break;
     case '/views/function-views/weatherRequest.php':
         $title = 'Météo';
-        $description = "Affiche la météo et l'heure local selon la ville.";
+        $description = "Affiche la météo et l'heure locale selon la ville.";
         $image = 'https://function.divlo.fr/img/function-image/weatherRequest.png';
         break;
     case '/views/function-views/filterStudents.php':

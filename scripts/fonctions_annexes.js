@@ -2,12 +2,7 @@
 
 // Vérifie si une valeur est vide
 function isEmptyValue(value) {
-    if (value === '' || value === null || value === undefined) {
-        return true
-    } 
-    else {
-        return false
-    }
+    return value === '' || value === null || value === undefined;
 }
 
 // Formate les nombres avec des espaces (ex : 76120 = 76 120)
@@ -92,23 +87,15 @@ function realDateTime(id)
     return true;
 }
 
-// Récupére le décalage en secondes à partir de l'heure UTC grâce à l'API
+// Récupére le décalage en secondes à partir de l'heure UTC grâce à l'API openweathermap.org
 function timeZone(json) {
-    if(json.name === 'Moscou') // Il faut ajouter + 1h de décallage à Moscou
-    {
-        timeZoneValue = (json.timezone / 60 / 60) + 1;
-    }
-    else
-    {
-        timeZoneValue = json.timezone / 60 / 60;
-    }
+    timeZoneValue = json.timezone / 60 / 60;
     let timeZoneStr = timeZoneValue.toString();
     return dateTimeUTC(timeZoneStr); 
 }
 
 // Vérifie si une date est valide par rapport à la date d'aujourd'hui 
 function isValidDate(s) {
-
     // Date à vérifier 
     let toVerifyDate = s.split('/');
     let splitedToVerifyDate = toVerifyDate[2] + '-' + (parseInt(toVerifyDate[1]) + 1) + '-' + toVerifyDate[0];

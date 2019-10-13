@@ -35,13 +35,12 @@ function randomNumber(min, max) {
 
 // Calcule l'âge de quelqu'un selon la date de naissance
 function calculateAge(birthDateEntered) {
-
     // Les variables de la fonction
-    let birthDateDay = parseInt(birthDateEntered[0] + birthDateEntered[1]);
-    let birthDateMonth = parseInt((birthDateEntered[3] + birthDateEntered[4]) - 1);
-    let birthDateYear = parseInt(birthDateEntered[6] + birthDateEntered[7] + birthDateEntered[8] + birthDateEntered[9]);
+    let birthDateDay = parseInt(birthDateEntered.substring(0, 2));
+    let birthDateMonth = parseInt((birthDateEntered.substring(3, 5)) - 1);
+    let birthDateYear = parseInt(birthDateEntered.substring(6, 10));
     dateTimeUTC('0');
-    day = parseInt(day)
+    day = parseInt(day);
     month = parseInt(month - 1);
     year = parseInt(year);
 
@@ -51,16 +50,14 @@ function calculateAge(birthDateEntered) {
     // Calcule l'âge - Moment.js
     let ageYears = dateNow.diff(birthDate, 'year');
     birthDate.add(ageYears, 'years');
-    
     let ageMonths = dateNow.diff(birthDate, 'months');
     birthDate.add(ageMonths, 'months');
-    
     let ageDays = dateNow.diff(birthDate, 'days');
 
     let isValidDateFunction = isValidDate(birthDateDay + '/' + birthDateMonth + '/' + birthDateYear); 
 
     // Vérifie si la valeur entrée correspond à une date de naissance valide
-    if(isValidDateFunction === true)
+    if(isValidDateFunction === true && !isNaN(ageDays))
     {
         ageYears = formatNumberResult(ageYears);
         // Si c'est ton anniversaire aujourd'hui
@@ -76,7 +73,7 @@ function calculateAge(birthDateEntered) {
     else 
     {
         return messageError;
-    }
+    }  
 }
 
 // Convertis des °C en °F et l'inverse aussi
