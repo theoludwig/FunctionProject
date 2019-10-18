@@ -7,9 +7,9 @@ function weatherRequest() {
         type: "POST",
             success: function(data) {
                 try {
-                    let json = jQuery.parseJSON(data);
-                    let city = json.name;
-                    let showDateTimeValue = timeZone(json);
+                    const json = jQuery.parseJSON(data);
+                    const city = json.name;
+                    const showDateTimeValue = timeZone(json);
                 
                     $('.results').html(`🌎 Position : <a href='https://www.google.com/maps/search/?api=1&query=${json.coord.lat},${json.coord.lon}' class="yellow-color" target="_blank">${city}, ${json.sys.country}</a><br>⏰ Date et heure : ${showDateTimeValue}<br>☁️ Météo : ${capitalize(json.weather[0].description)}<br> 🌡️ Température : ${json.main.temp} °C<br> 💧 Humidité : ${json.main.humidity}% <br> <img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"/>`); 
                 }
@@ -36,9 +36,9 @@ function randomNumber(min, max) {
 // Calcule l'âge de quelqu'un selon la date de naissance
 function calculateAge(birthDateEntered) {
     // Les variables de la fonction
-    let birthDateDay = parseInt(birthDateEntered.substring(0, 2));
-    let birthDateMonth = parseInt((birthDateEntered.substring(3, 5)) - 1);
-    let birthDateYear = parseInt(birthDateEntered.substring(6, 10));
+    const birthDateDay = parseInt(birthDateEntered.substring(0, 2));
+    const birthDateMonth = parseInt((birthDateEntered.substring(3, 5)) - 1);
+    const birthDateYear = parseInt(birthDateEntered.substring(6, 10));
     dateTimeUTC('0');
     day = parseInt(day);
     month = parseInt(month - 1);
@@ -54,7 +54,7 @@ function calculateAge(birthDateEntered) {
     birthDate.add(ageMonths, 'months');
     let ageDays = dateNow.diff(birthDate, 'days');
 
-    let isValidDateFunction = isValidDate(birthDateDay + '/' + birthDateMonth + '/' + birthDateYear); 
+    const isValidDateFunction = isValidDate(birthDateDay + '/' + birthDateMonth + '/' + birthDateYear); 
 
     // Vérifie si la valeur entrée correspond à une date de naissance valide
     if(isValidDateFunction === true && !isNaN(ageDays))
@@ -97,17 +97,17 @@ function convertTemperature(degree, unit) {
 // Convertis la longueur (distance) avec les unités allant de picomètre au Téramètre
 function convertDistance (firstValue, unitFirstValue, unitFinalValue) {
 
-    let reference = ["pm",null,null,"nm",null,null,"µm",null,null,"mm","cm","dm","m","dam","hm","km",null,null,"Mm",null,null,"Gm",null,null,"Tm"];
-    let index1 = reference.indexOf(unitFirstValue); 
-    let index2 = reference.indexOf(unitFinalValue);
+    const reference = ["pm",null,null,"nm",null,null,"µm",null,null,"mm","cm","dm","m","dam","hm","km",null,null,"Mm",null,null,"Gm",null,null,"Tm"];
+    const index1 = reference.indexOf(unitFirstValue); 
+    const index2 = reference.indexOf(unitFinalValue);
 
     // Condition qui vérifie si les valeurs entrées sont justes
     if (!isNaN(firstValue) && typeof unitFirstValue === 'string' && typeof unitFinalValue === 'string' && (index1.toString() && index2.toString()) != '-1')
     {
         // Conversion des longueurs : 
-        let difference = index1 - index2; 
-        let result = firstValue*Math.pow(10,difference);
-        let response = 'Conversion de longueur : ' + formatNumberResult(firstValue).toString() + ' ' + unitFirstValue + ' = ' + formatNumberResult(result) + ' ' + unitFinalValue;
+        const difference = index1 - index2; 
+        const result = firstValue*Math.pow(10,difference);
+        const response = 'Conversion de longueur : ' + formatNumberResult(firstValue).toString() + ' ' + unitFirstValue + ' = ' + formatNumberResult(result) + ' ' + unitFinalValue;
         return response;
     }
     else
@@ -134,8 +134,8 @@ function filterStudents(filteredLetter, students)
     else if (filteredStudents.length >= 2)
     {
         // Affiche la liste des prénoms...
-        let last = filteredStudents[filteredStudents.length - 1]; // Accéde au dernier élément du tableau
-        let totalfilteredLetterStudents = filteredStudents.length;
+        const last = filteredStudents[filteredStudents.length - 1]; // Accéde au dernier élément du tableau
+        const totalfilteredLetterStudents = filteredStudents.length;
         filteredStudents.pop(); // Supprime le dernier élément du tableau
         // filteredStudents.join(', ') permet de rajouter un espace entre chaque élément du tableau
         return ("Prénoms qui commence par " + filteredLetter + " (" + totalfilteredLetterStudents + ") : " + filteredStudents.join(', ') + ' et ' + last + '.');
@@ -148,8 +148,8 @@ function filterStudents(filteredLetter, students)
 
 // Génère aléatoirement une citation ou un proverbe
 function getRandomQuote() {
-    let randomNbr = randomNumber(0, (quotes.length - 1));
-    let randomQuotes = quotes[randomNbr];
+    const randomNbr = randomNumber(0, (quotes.length - 1));
+    const randomQuotes = quotes[randomNbr];
     return  '" ' + randomQuotes["quote"] + ' " <br> <br> - ' + randomQuotes["source"];
 }
 
@@ -172,9 +172,9 @@ function convertCurrency(value, currency, url) {
               if (currencySymboleAPI === undefined) {
                 currencySymboleAPI = 1;
               } 
-              let exchangeRateYear = jsonFixer.date[0] + jsonFixer.date[1] + jsonFixer.date[2] + jsonFixer.date[3]; 
-              let exchangeRateMonth = jsonFixer.date[5] + jsonFixer.date[6];
-              let exchangeRateDay = jsonFixer.date[8] + jsonFixer.date[9];
+              const exchangeRateYear = jsonFixer.date[0] + jsonFixer.date[1] + jsonFixer.date[2] + jsonFixer.date[3]; 
+              const exchangeRateMonth = jsonFixer.date[5] + jsonFixer.date[6];
+              const exchangeRateDay = jsonFixer.date[8] + jsonFixer.date[9];
               $('.results').html(formatNumberResult(value) + ' ' + jsonFixer.base + ' = ' + formatNumberResult((currencySymboleAPI * value).toFixed(2)) + ' ' + currency);
               $('.rateDate').html(`Dernier rafraîchissement du taux d'échange : ${exchangeRateDay}/${exchangeRateMonth}/${exchangeRateYear}`);
             } 

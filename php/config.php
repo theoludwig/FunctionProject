@@ -14,13 +14,13 @@ switch ($currentpage) {
         break;
     case '/views/function-list.php':
         $title = 'Liste des fonctions';
-        $description = 'La liste des mini-programmes (fonctions JavaScript).';
+        $description = 'La liste des mini-programmes.';
         $image = 'https://function.divlo.fr/img/FunctionProject_icon.png';
         $functionlistActive = 'active';
         break;
     case '/views/function-views/calculateAge.php':
         $title = 'Quelle âge avez-vous ?';
-        $description = "Calcule l'âge de quelqu'un selon la date de naissance.";
+        $description = "Calcule l'âge de quelqu'un selon ça date de naissance.";
         $image = 'https://function.divlo.fr/img/function-image/calculateAge.png';
         break;
     case '/views/function-views/convertDistance.php':
@@ -75,7 +75,7 @@ switch ($currentpage) {
         break;
     case '/views/function-views/armstrongNumber.php':
         $title = "Nombre d'Armstrong";
-        $description = "Un nombre d'<a href='https://fr.wikipedia.org/wiki/Nombre_narcissique' target='_blank'>Armstrong</a> est un nombre qui est égal à la somme de ses chiffres portés à la puissance du nombre de chiffres le composant. Cette fonction permet de savoir si un nombre fait partie des nombres d'Armstrong ou non.";
+        $description = "Un nombre d'<a href='https://fr.wikipedia.org/wiki/Nombre_narcissique' target='_blank'>Armstrong</a> est un nombre entier positif qui est égal à la somme de ses chiffres portés à la puissance du nombre de chiffres le composant. Cette fonction permet de savoir si un nombre fait partie des nombres d'Armstrong.";
         $image = 'https://function.divlo.fr/img/function-image/armstrongNumber.png';
         break; 
     case '/views/function-views/heapAlgorithm.php':

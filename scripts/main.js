@@ -4,8 +4,8 @@ $(function () {
 
     $( "#submitWeatherRequest" ).click(function() 
     {
-        let city = $('#cityName').val();
-        let cityName = city.split(' ').join('+'); 
+        const city = $('#cityName').val();
+        const cityName = city.split(' ').join('+'); 
         if(isEmptyValue(cityName))
         {
             $('.results').html(emptyMessageError);
@@ -19,15 +19,15 @@ $(function () {
 
     $("#submitRandomNumber").click(function() 
     {
-        let minEntered = $('#minValue').val();
-        let maxEntered = $('#maxValue').val(); 
+        const minEntered = $('#minValue').val();
+        const maxEntered = $('#maxValue').val(); 
         if(isEmptyValue(minEntered) || isEmptyValue(maxEntered))
         {
             $('.results').html(emptyMessageError);
         }
         else
         {
-            let result = randomNumber(minEntered, maxEntered);
+            const result = randomNumber(minEntered, maxEntered);
             if(result === messageError) {
                 $('.results').html(messageError);
             } else {
@@ -38,23 +38,23 @@ $(function () {
 
     $("#birthDateValue").bind("keyup change", function() 
     {
-        let birthDateEntered = $('#birthDateValue').val();
-        let result = calculateAge(birthDateEntered);
+        const birthDateEntered = $('#birthDateValue').val();
+        const result = calculateAge(birthDateEntered);
         $('.results').html(result);
     });
 
     $("#submitConvertTemperature").click(function() 
     {
-        let temperatureValue = $('#temperatureValue').val();
-        let degree = parseFloat(temperatureValue.slice(0, temperatureValue.length - 2));
-        let unit = temperatureValue.slice(temperatureValue.length - 2);
+        const temperatureValue = $('#temperatureValue').val();
+        const degree = parseFloat(temperatureValue.slice(0, temperatureValue.length - 2));
+        const unit = temperatureValue.slice(temperatureValue.length - 2);
         if(isEmptyValue(temperatureValue))
         {
             $('.results').html(emptyMessageError);
         }
         else 
         {
-            let result = convertTemperature(degree, unit);
+            const result = convertTemperature(degree, unit);
             if(result === messageError)
             {
                 $('.results').html(messageError);
@@ -69,8 +69,8 @@ $(function () {
     $("#submitConvertDistance").click(function() 
     {
         let firstValue = $('#firstValue').val();
-        let unitFirstValue = $("#firstValueUnit option:selected").text();
-        let secondValue = $("#secondValue option:selected").text();
+        const unitFirstValue = $("#firstValueUnit option:selected").text();
+        const secondValue = $("#secondValue option:selected").text();
         if(isEmptyValue(firstValue) || isEmptyValue(secondValue))
         {
             $('.results').html(emptyMessageError);
@@ -78,14 +78,14 @@ $(function () {
         else 
         {
             firstValue = parseFloat(firstValue.replace(/\s/g,''));
-            let result = convertDistance(firstValue, unitFirstValue, secondValue);
+            const result = convertDistance(firstValue, unitFirstValue, secondValue);
             $('.results').html(result);
         }
     });
 
     $("#submitFilterStudents").click(function() 
     {
-        let nameEntered = $('#nameEntered').val();
+        const nameEntered = $('#nameEntered').val();
         let filteredLetter = $("#filteredLetter").val();
         if(isEmptyValue(nameEntered) || isEmptyValue(filteredLetter))
         {
@@ -93,9 +93,9 @@ $(function () {
         }
         else if(filteredLetter.length === 1)
         {
-            let students = nameEntered.split(', ');
+            const students = nameEntered.split(', ');
             filteredLetter = capitalize(filteredLetter);
-            let result = filterStudents(filteredLetter, students);
+            const result = filterStudents(filteredLetter, students);
             $('.results').html(result);
         }
         else {
@@ -127,8 +127,8 @@ $(function () {
     $("#submitConvertCurrency").click(function() 
     {
         let value = $('#value').val();
-        let currencyOfTheValue = $("#currencyOfTheValue option:selected").val();
-        let currencyAfter = $("#currencyAfter option:selected").val();
+        const currencyOfTheValue = $("#currencyOfTheValue option:selected").val();
+        const currencyAfter = $("#currencyAfter option:selected").val();
         if(isEmptyValue(value) || isNaN(parseFloat(value)))
         {
             $('.results').html(emptyMessageError);
@@ -143,8 +143,8 @@ $(function () {
 
     $("#submitConvertEncoding").click(function() 
     {
-        let value = $('#value').val();
-        let option = $("#option option:selected").val();
+        const value = $('#value').val();
+        const option = $("#option option:selected").val();
         if(isEmptyValue(value))
         {
             $('.results').html(messageError);
@@ -152,32 +152,26 @@ $(function () {
         else 
         {
           if (option === 'DecimalToBinary' || option === 'BinaryToDecimal' || option === 'DecimalToHexadecimal' || option === 'HexadecimalToDecimal' || option === 'BinaryToHexadecimal' || option === 'HexadecimalToBinary') {
-            let result = convertDecimalBinaryHexadecimal(value, option);
-            if (result === messageError) {
-              $('.results').html(messageError);
-            } else {
-              $('.results').html(result);
-            }
+            const result = convertDecimalBinaryHexadecimal(value, option);
+            $('.results').html(result);
           }
           else if (option === 'BinaryToText') {
             // Le replace enlève les espaces
-            let textResult = binToUtf8(value.replace(/\s/g,'')); 
-  
+            const textResult = binToUtf8(value.replace(/\s/g,'')); 
             $('.results').html(textResult);
           }
           else if (option === 'TextToBinary') {
               // Les 2 replace permettent de rajouter un espace tout les 8 bits
               let binaryResult = utf8ToBin(value);
               binaryResult = binaryResult.replace(/(\d{8})/g, '$1 ').replace(/(^\s+|\s+$)/,''); 
-  
               $('.results').html(binaryResult);
           }
           else if (option === 'TextToHexadecimal') {
-            let result = utf8ToHex(value);
+            const result = utf8ToHex(value);
             $('.results').html(result.toUpperCase());
           }
           else if (option === 'HexadecimalToText') {
-              let result = hexToUtf8(value.replace(/\s/g,''));
+              const result = hexToUtf8(value.replace(/\s/g,''));
               $('.results').html(result);
           }
           else {
@@ -189,12 +183,12 @@ $(function () {
     $("#submitConvertRomanArabicNumbers").click(function() 
     {
         let numbersValue = $('#numbersArabic').val();
-        let convertNumberType = $("#convertNumberType option:selected").text();
+        const convertNumberType = $("#convertNumberType option:selected").text();
         if(isEmptyValue(numbersValue)) {
             $('.results').html(emptyMessageError);
         }
         else if (!isNaN(parseInt(numbersValue)) && convertNumberType === "Nombre Romain") { 
-            let result = convertArabicToRoman(parseInt(numbersValue.replace(/\s/g,'')));
+            const result = convertArabicToRoman(parseInt(numbersValue.replace(/\s/g,'')));
             let numbersValueFormat = formatNumberResult(numbersValue.replace(/\s/g,''));
             if (numbersValueFormat === messageError || result === messageError) {
                 $('.results').html(messageError);
@@ -207,7 +201,7 @@ $(function () {
                 $('.results').html(`<b>${numbersValue}</b> est déjà en chiffres arabes.`);
             } else {
                 numbersValue = numbersValue.toUpperCase();
-                let result = convertRomanToArabic(numbersValue);
+                const result = convertRomanToArabic(numbersValue);
                 if (result === 0) {
                     $('.results').html(messageError);
                 } else {
@@ -225,7 +219,7 @@ $(function () {
         let numbersValue = $('#numberToTest').val();
         numbersValue = parseInt(numbersValue.replace(/\s/g,''));
         if (!isNaN(numbersValue) && numbersValue >= 0) { 
-            let result = armstrongNumber(numbersValue); 
+            const result = armstrongNumber(numbersValue); 
             $('.results').html(result);
         }
         else {
@@ -235,14 +229,14 @@ $(function () {
 
     $("#submitHeapAlgorithm").click(function() 
     {
-        let value = $('#value').val();
+        const value = $('#value').val();
         if(isEmptyValue(value))
         {
             $('.results').html(emptyMessageError);
         }
         else 
         {
-            let stringPermutationsResult = stringPermutations(value);
+            const stringPermutationsResult = stringPermutations(value);
             let result = "";
             for (element in stringPermutationsResult) {
                 result = result + stringPermutationsResult[element] + "<br>";
@@ -255,7 +249,7 @@ $(function () {
     window.onload = realDateTime('realDateTime');
 
     /* Window Scroll Top Button */
-    var $btnScrollTop = $('.scroll-top-arrow');
+    const $btnScrollTop = $('.scroll-top-arrow');
     $btnScrollTop.on('click', function () {
         $('html, body').animate({scrollTop: 0}, 800);
         return false;
@@ -263,21 +257,21 @@ $(function () {
 
     /* Date Picker */
     $.fn.datepicker.dates['fr'] = {
-    days: ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
-    daysShort: ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."],
-    daysMin: ["d", "l", "ma", "me", "j", "v", "s"],
-    months: ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
-    monthsShort: ["janv.", "févr.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."],
-    today: "Aujourd'hui",
-    monthsTitle: "Mois",
-    clear: "Effacer",
-    weekStart: 1,
-    format: "dd/mm/yyyy"
+        days: ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
+        daysShort: ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."],
+        daysMin: ["d", "l", "ma", "me", "j", "v", "s"],
+        months: ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+        monthsShort: ["janv.", "févr.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."],
+        today: "Aujourd'hui",
+        monthsTitle: "Mois",
+        clear: "Effacer",
+        weekStart: 1,
+        format: "dd/mm/yyyy"
     };
     $('.datepicker').datepicker({
-    language: 'fr',
-    autoclose: true,
-    todayHighlight: true
+        language: 'fr',
+        autoclose: true,
+        todayHighlight: true
     })
 
 })

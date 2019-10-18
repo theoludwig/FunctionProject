@@ -28,7 +28,7 @@ function formatNumberResult(num) {
 function convertPuissanceToNumber(num) {
     if(!isNaN(num))
     {
-        let number = formatNumberResult((num).toFixed(0));
+        const number = formatNumberResult((num).toFixed(0));
         return number;
     }
     else
@@ -49,7 +49,7 @@ function dateTimeUTC(utc) {
     for (let index in utc) {
         result = result + utc[index];
     }
-    let enteredOffset = parseFloat(result)*60;
+    const enteredOffset = parseFloat(result)*60;
     timeNow.setMinutes(timeNow.getMinutes() + enteredOffset);
     return showDateTime(enteredOffset);
 }
@@ -90,23 +90,23 @@ function realDateTime(id)
 // Récupére le décalage en secondes à partir de l'heure UTC grâce à l'API openweathermap.org
 function timeZone(json) {
     timeZoneValue = json.timezone / 60 / 60;
-    let timeZoneStr = timeZoneValue.toString();
+    const timeZoneStr = timeZoneValue.toString();
     return dateTimeUTC(timeZoneStr); 
 }
 
 // Vérifie si une date est valide par rapport à la date d'aujourd'hui 
 function isValidDate(s) {
     // Date à vérifier 
-    let toVerifyDate = s.split('/');
-    let splitedToVerifyDate = toVerifyDate[2] + '-' + (parseInt(toVerifyDate[1]) + 1) + '-' + toVerifyDate[0];
-    let msToVerifyDate = Date.parse(splitedToVerifyDate);
+    const toVerifyDate = s.split('/');
+    const splitedToVerifyDate = toVerifyDate[2] + '-' + (parseInt(toVerifyDate[1]) + 1) + '-' + toVerifyDate[0];
+    const msToVerifyDate = Date.parse(splitedToVerifyDate);
 
     // Date courante
-    let currentDate = dateTimeUTC('0');
+    const currentDate = dateTimeUTC('0');
     currentDate = currentDate.substr(0,10);
-    let currentDateSplited = currentDate.split('/');
-    let currentDateFormat = currentDateSplited[2] + '-' + currentDateSplited[1] + '-' + currentDateSplited[0];
-    let msCurrentDate = Date.parse(currentDateFormat);
+    const currentDateSplited = currentDate.split('/');
+    const currentDateFormat = currentDateSplited[2] + '-' + currentDateSplited[1] + '-' + currentDateSplited[0];
+    const msCurrentDate = Date.parse(currentDateFormat);
 
     if(msToVerifyDate <= msCurrentDate) {
         return true;

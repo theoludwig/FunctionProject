@@ -32,7 +32,7 @@
             <div class="text-center pb-5">
                 <h2 class="function-list-title"><a href="./function-views/calculateAge.php">Quelle âge avez-vous ?</a></h2>
                 <a href="./function-views/calculateAge.php"><img class="function-list-image" src="/img/function-image/calculateAge.png" alt="Calendrier"></a>
-                <p class="function-list-description">Calcule l'âge de quelqu'un selon la date de naissance.</p>
+                <p class="function-list-description">Calcule l'âge de quelqu'un selon ça date de naissance.</p>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 pb-4">

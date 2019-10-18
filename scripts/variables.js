@@ -262,6 +262,10 @@ const quotes =
       source:"Henry Ford"
     },
     {
+      quote:"La différence entre la stupidité et le génie, c’est que le génie a ses limites.",
+      source:"Neji Hyûga (Naruto)"
+    },
+    {
       quote:"Rien n'est plus puissant qu'une idée dont l'heure est venue.",
       source:"Victor Hugo"
     }
