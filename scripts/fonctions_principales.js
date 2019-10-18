@@ -106,7 +106,7 @@ function convertDistance (firstValue, unitFirstValue, unitFinalValue) {
     }
 }
 
-// Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée
+// Affiche uniquement les prénoms (qui sont dans la liste) qui commencent par la lettre souhaitée
 function filterStudents(filteredLetter, students)
 {
     let filteredStudents = [];

@@ -4,7 +4,7 @@
 [À propos de Divlo](https://divlo.fr/) | [Youtube](https://www.youtube.com/c/Divlo) | [Twitch](https://www.twitch.tv/divlo) | [Twitter](https://twitter.com/Divlo_FR) | [Steam](https://steamcommunity.com/id/Divlo/) | [Discord](https://discordapp.com/invite/WWK2JPz)
 
 ## À propos de FunctionProject
-[FunctionProject](https://function.divlo.fr/) est un projet créé par [Divlo](https://divlo.fr/) qui a pour but de rassembler plein de mini-programme permettant de faire plusieurs choses comme **savoir la météo**, générer un **nombre aléatoire**, etc. 
+[FunctionProject](https://function.divlo.fr/) est un projet créé par [Divlo](https://divlo.fr/) qui a pour but de rassembler plein de mini-programmes permettant de faire plusieurs choses comme **savoir la météo**, générer un **nombre aléatoire**, etc. 
 
 Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 
@@ -38,6 +38,7 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | -- | -- | -- |
 | **isEmptyValue(value)** | Vérifie si une valeur est vide. | - value : valeur à testé |
 | **formatNumberResult(num)** | Formate les nombres avec des espaces (ex : 76120 = 76 120). | - num : nombre à formaté |
+| **isFloat(value)** | Vérifie si une string est un float (integer exclu).  | - value : valeur à testé |
 | **convertPuissanceToNumber(num)** | Convertit les puissances de 10 en nombre (ex: 1e+5 = 100 000). | - num : nombre à formaté |
 | **capitalize (s)** | Majuscule à la 1ère lettre d'une string. | - s : string à formaté |
 | **dateTimeUTC(utc)** | Donne la date et l'heure selon l'UTC (Universal Time Coordinated). | - utc : heure de décalage avec l'utc |

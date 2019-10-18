@@ -56,7 +56,7 @@
             <div class="text-center pb-5">
                 <h2 class="function-list-title"><a href="./function-views/filterStudents.php">Trie les prénoms par leur première lettre</a></h2>
                 <a href="./function-views/filterStudents.php"><img class="function-list-image" src="/img/function-image/filterStudents.png" alt="Carte étudiant"></a>
-                <p class="function-list-description">Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée.</p>
+                <p class="function-list-description">Affiche uniquement les prénoms (qui sont dans la liste) qui commencent par la lettre souhaitée.</p>
             </div>
         </div>
     </div>
@@ -107,7 +107,7 @@
             <div class="text-center pb-5">
                 <h2 class="function-list-title"><a href="./function-views/heapAlgorithm.php">Heap's algorithm</a></h2>
                 <a href="./function-views/heapAlgorithm.php"><img class="function-list-image" src="/img/function-image/heapAlgorithm.png" alt="Heap's algorithm"></a>
-                <p class="function-list-description">Génère toutes les permutations unique possibles d'une chaîne de caractère (en changeant de place les lettres du mot, permet d’en créer un nouveau qui n'a pas forcément de sens).</p>
+                <p class="function-list-description">Génère toutes les permutations uniques possibles d'une chaîne de caractère (en changeant de place les lettres du mot, permet d’en créer un nouveau qui n'a pas forcément de sens).</p>
             </div>
         </div>
     </div>

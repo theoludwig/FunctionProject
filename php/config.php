@@ -45,7 +45,7 @@ switch ($currentpage) {
         break;
     case '/views/function-views/filterStudents.php':
         $title = 'Trie les prénoms par leur première lettre';
-        $description = "Affiche uniquement les prénoms (qui sont dans la liste) qui commence par la lettre souhaitée.";
+        $description = "Affiche uniquement les prénoms (qui sont dans la liste) qui commencent par la lettre souhaitée.";
         $image = 'https://function.divlo.fr/img/function-image/filterStudents.png';
         break;
     case '/views/function-views/randomQuote.php':
@@ -80,7 +80,7 @@ switch ($currentpage) {
         break; 
     case '/views/function-views/heapAlgorithm.php':
         $title = "Heap's algorithm";
-        $description = "<a href='https://en.wikipedia.org/wiki/Heap%27s_algorithm' target='_blank'>Heap's algorithm</a> est un algorithme qui génère toutes les permutations unique possibles d'une chaîne de caractère, c'est en quelque sorte toutes les possibilités d'anagramme d'un mot (en changeant de place les lettres d’un mot, permet d’en créer un nouveau), par contre les mots n'ont pas besoin d'être de vrais mots qui ont du sens.";
+        $description = "<a href='https://en.wikipedia.org/wiki/Heap%27s_algorithm' target='_blank'>Heap's algorithm</a> est un algorithme qui génère toutes les permutations uniques possibles d'une chaîne de caractère, ce sont en quelque sorte toutes les possibilités d'anagramme d'un mot (en changeant de place, les lettres d’un mot, permettent d’en créer un nouveau), par contre les mots n'ont pas besoin d'être de vrais mots qui ont du sens.";
         $image = 'https://function.divlo.fr/img/function-image/heapAlgorithm.png';
         break; 
     default:
