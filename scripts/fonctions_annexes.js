@@ -7,32 +7,26 @@ function isEmptyValue(value) {
 
 // Formate les nombres avec des espaces (ex : 76120 = 76 120)
 function formatNumberResult(num) {
-    if (!isNaN(num))
-    {
-        if(num >= 1000)
-        {
-            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
-        }
-        else
-        {
-            return num;
-        }
+    if(!isNaN(num) && num >= 1000) {
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
     }
-    else 
-    {
-        return messageError;
+    else {
+        return num;
     }
+}
+
+// Vérifie si une string est un float (integer exclu)
+function isFloat(value) {
+    return !isNaN(value) && value.toString().indexOf('.') != -1;
 }
 
 // Convertit les puissances de 10 en nombre (ex: 1e+20 = 100 000 000 000 000 000 000), ne peut pas dépasser 1e+20 (21 ne fonctionne pas)
 function convertPuissanceToNumber(num) {
-    if(!isNaN(num))
-    {
+    if(!isNaN(num)) {
         const number = formatNumberResult((num).toFixed(0));
         return number;
     }
-    else
-    {
+    else {
         return messageError;
     }
 }
@@ -102,7 +96,7 @@ function isValidDate(s) {
     const msToVerifyDate = Date.parse(splitedToVerifyDate);
 
     // Date courante
-    const currentDate = dateTimeUTC('0');
+    let currentDate = dateTimeUTC('0');
     currentDate = currentDate.substr(0,10);
     const currentDateSplited = currentDate.split('/');
     const currentDateFormat = currentDateSplited[2] + '-' + currentDateSplited[1] + '-' + currentDateSplited[0];

@@ -39,8 +39,7 @@ $(function () {
     $("#birthDateValue").bind("keyup change", function() 
     {
         const birthDateEntered = $('#birthDateValue').val();
-        const result = calculateAge(birthDateEntered);
-        $('.results').html(result);
+        $('.results').html(calculateAge(birthDateEntered));
     });
 
     $("#submitConvertTemperature").click(function() 
@@ -48,21 +47,11 @@ $(function () {
         const temperatureValue = $('#temperatureValue').val();
         const degree = parseFloat(temperatureValue.slice(0, temperatureValue.length - 2));
         const unit = temperatureValue.slice(temperatureValue.length - 2);
-        if(isEmptyValue(temperatureValue))
-        {
+        if(isEmptyValue(temperatureValue)) {
             $('.results').html(emptyMessageError);
         }
-        else 
-        {
-            const result = convertTemperature(degree, unit);
-            if(result === messageError)
-            {
-                $('.results').html(messageError);
-            }
-            else 
-            {
-                $('.results').html(degree + " " + unit + " = " + result);
-            }
+        else {
+            $('.results').html(convertTemperature(degree, unit));
         }
     });
 
@@ -71,15 +60,12 @@ $(function () {
         let firstValue = $('#firstValue').val();
         const unitFirstValue = $("#firstValueUnit option:selected").text();
         const secondValue = $("#secondValue option:selected").text();
-        if(isEmptyValue(firstValue) || isEmptyValue(secondValue))
-        {
+        if(isEmptyValue(firstValue) || isEmptyValue(secondValue)) {
             $('.results').html(emptyMessageError);
         }
-        else 
-        {
+        else {
             firstValue = parseFloat(firstValue.replace(/\s/g,''));
-            const result = convertDistance(firstValue, unitFirstValue, secondValue);
-            $('.results').html(result);
+            $('.results').html(convertDistance(firstValue, unitFirstValue, secondValue));
         }
     });
 
@@ -87,16 +73,13 @@ $(function () {
     {
         const nameEntered = $('#nameEntered').val();
         let filteredLetter = $("#filteredLetter").val();
-        if(isEmptyValue(nameEntered) || isEmptyValue(filteredLetter))
-        {
+        if(isEmptyValue(nameEntered) || isEmptyValue(filteredLetter)) {
             $('.results').html(emptyMessageError);
         }
-        else if(filteredLetter.length === 1)
-        {
+        else if(filteredLetter.length === 1) {
             const students = nameEntered.split(', ');
             filteredLetter = capitalize(filteredLetter);
-            const result = filterStudents(filteredLetter, students);
-            $('.results').html(result);
+            $('.results').html(filterStudents(filteredLetter, students));
         }
         else {
             $('.results').html(messageError);
@@ -129,13 +112,11 @@ $(function () {
         let value = $('#value').val();
         const currencyOfTheValue = $("#currencyOfTheValue option:selected").val();
         const currencyAfter = $("#currencyAfter option:selected").val();
-        if(isEmptyValue(value) || isNaN(parseFloat(value)))
-        {
+        if(isEmptyValue(value) || isNaN(parseFloat(value))) {
             $('.results').html(emptyMessageError);
         }
-        else 
-        {
-            let url = 'https://api.exchangeratesapi.io/latest?base=' + currencyOfTheValue;
+        else {
+            const url = 'https://api.exchangeratesapi.io/latest?base=' + currencyOfTheValue;
             value = parseFloat(value);
             convertCurrency(value, currencyAfter, url);
         }
@@ -145,8 +126,7 @@ $(function () {
     {
         const value = $('#value').val();
         const option = $("#option option:selected").val();
-        if(isEmptyValue(value))
-        {
+        if(isEmptyValue(value)) {
             $('.results').html(messageError);
         }
         else 
@@ -183,14 +163,15 @@ $(function () {
     $("#submitConvertRomanArabicNumbers").click(function() 
     {
         let numbersValue = $('#numbersArabic').val();
+        numbersValue = numbersValue.replace(/\s/g,'');
         const convertNumberType = $("#convertNumberType option:selected").text();
         if(isEmptyValue(numbersValue)) {
             $('.results').html(emptyMessageError);
         }
-        else if (!isNaN(parseInt(numbersValue)) && convertNumberType === "Nombre Romain") { 
-            const result = convertArabicToRoman(parseInt(numbersValue.replace(/\s/g,'')));
-            let numbersValueFormat = formatNumberResult(numbersValue.replace(/\s/g,''));
-            if (numbersValueFormat === messageError || result === messageError) {
+        else if (!isNaN(Number(numbersValue)) && convertNumberType === "Nombre Romain") { 
+            const result = convertArabicToRoman(parseInt(numbersValue));
+            let numbersValueFormat = formatNumberResult(numbersValue);
+            if (result === messageError || isFloat(numbersValue)) {
                 $('.results').html(messageError);
             } else {
                 $('.results').html(`<b>${numbersValueFormat}</b> s'écrit <b>${result}</b> en chiffres romains.`);
@@ -218,9 +199,8 @@ $(function () {
     {
         let numbersValue = $('#numberToTest').val();
         numbersValue = parseInt(numbersValue.replace(/\s/g,''));
-        if (!isNaN(numbersValue) && numbersValue >= 0) { 
-            const result = armstrongNumber(numbersValue); 
-            $('.results').html(result);
+        if (!isNaN(numbersValue) && numbersValue >= 0) {  
+            $('.results').html(armstrongNumber(numbersValue));
         }
         else {
             $('.results').html(messageError);
@@ -230,12 +210,10 @@ $(function () {
     $("#submitHeapAlgorithm").click(function() 
     {
         const value = $('#value').val();
-        if(isEmptyValue(value))
-        {
+        if(isEmptyValue(value)) {
             $('.results').html(emptyMessageError);
         }
-        else 
-        {
+        else {
             const stringPermutationsResult = stringPermutations(value);
             let result = "";
             for (element in stringPermutationsResult) {
@@ -270,7 +248,7 @@ $(function () {
     };
     $('.datepicker').datepicker({
         language: 'fr',
-        autoclose: true,
+        autoclose: false,
         todayHighlight: true
     })
 

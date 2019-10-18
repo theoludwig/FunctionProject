@@ -1,6 +1,6 @@
 /* Fonctions Principales */
 
-// Affiche la météo et l'heure local selon la ville.
+// Affiche la météo et l'heure locale.
 function weatherRequest() {
     $.ajax({
         url: '/php/getWeatherJson.php', 
@@ -22,8 +22,7 @@ function weatherRequest() {
 
 // Génère un nombre aléatoire entre un minimum inclus et un maximum inclus 
 function randomNumber(min, max) {
-    if (!isNaN(min) && !isNaN(max))
-    {
+    if (!isNaN(min) && !isNaN(max)) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min +1)) + min;
@@ -33,7 +32,7 @@ function randomNumber(min, max) {
     }
 }
 
-// Calcule l'âge de quelqu'un selon la date de naissance
+// Calcule l'âge de quelqu'un selon ça date de naissance
 function calculateAge(birthDateEntered) {
     // Les variables de la fonction
     const birthDateDay = parseInt(birthDateEntered.substring(0, 2));
@@ -57,39 +56,32 @@ function calculateAge(birthDateEntered) {
     const isValidDateFunction = isValidDate(birthDateDay + '/' + birthDateMonth + '/' + birthDateYear); 
 
     // Vérifie si la valeur entrée correspond à une date de naissance valide
-    if(isValidDateFunction === true && !isNaN(ageDays))
-    {
+    if(isValidDateFunction === true && !isNaN(ageDays)) {
         ageYears = formatNumberResult(ageYears);
         // Si c'est ton anniversaire aujourd'hui
-        if(birthDateDay === parseInt(day) && (parseInt(birthDateMonth) + 1) === parseInt(month))
-        {
+        if(birthDateDay === parseInt(day) && (parseInt(birthDateMonth) + 1) === parseInt(month)) {
             return 'Vous avez ' + ageYears + ' ans. Joyeux Anniversaire! 🥳';
         }
-        else
-        {
+        else {
             return 'Vous avez ' + ageYears + ' ans, ' + ageMonths + ' mois et ' + ageDays + ' jour(s).';
         }
     }
-    else 
-    {
+    else {
         return messageError;
     }  
 }
 
 // Convertis des °C en °F et l'inverse aussi
 function convertTemperature(degree, unit) {
-    if (!isNaN(degree) && unit === "°C") 
-    {
+    if (!isNaN(degree) && unit === "°C") {
         const temperatureValue = ((degree * 9/5) + 32) + " °F";
-        return temperatureValue;
+        return degree + " " + unit + " = " + temperatureValue;
     }
-    else if (!isNaN(degree) && unit === "°F")
-    {
+    else if (!isNaN(degree) && unit === "°F") {
         const temperatureValue = (degree - 32) * 5/9 + " °C";
-        return temperatureValue;
+        return degree + " " + unit + " = " + temperatureValue;
     }
-    else 
-    {
+    else {
         return messageError; 
     }
 }
@@ -102,16 +94,14 @@ function convertDistance (firstValue, unitFirstValue, unitFinalValue) {
     const index2 = reference.indexOf(unitFinalValue);
 
     // Condition qui vérifie si les valeurs entrées sont justes
-    if (!isNaN(firstValue) && typeof unitFirstValue === 'string' && typeof unitFinalValue === 'string' && (index1.toString() && index2.toString()) != '-1')
-    {
+    if (!isNaN(firstValue) && typeof unitFirstValue === 'string' && typeof unitFinalValue === 'string' && (index1.toString() && index2.toString()) != '-1') {
         // Conversion des longueurs : 
         const difference = index1 - index2; 
         const result = firstValue*Math.pow(10,difference);
         const response = 'Conversion de longueur : ' + formatNumberResult(firstValue).toString() + ' ' + unitFirstValue + ' = ' + formatNumberResult(result) + ' ' + unitFinalValue;
         return response;
     }
-    else
-    {
+    else {
         return messageError;
     }
 }
@@ -120,19 +110,16 @@ function convertDistance (firstValue, unitFirstValue, unitFinalValue) {
 function filterStudents(filteredLetter, students)
 {
     let filteredStudents = [];
-    for(let i = 0; i < students.length; i++)
-    {
+    for(let i = 0; i < students.length; i++) {
         let studentBoucle = capitalize(students[i]);
         if (studentBoucle[0] === filteredLetter) {
             filteredStudents.push(studentBoucle);
         }
     }
-    if (filteredStudents.length === 1)
-    {
+    if (filteredStudents.length === 1) {
         return ("Prénom qui commence par " + filteredLetter + " : " + filteredStudents + '.');
     }
-    else if (filteredStudents.length >= 2)
-    {
+    else if (filteredStudents.length >= 2) {
         // Affiche la liste des prénoms...
         const last = filteredStudents[filteredStudents.length - 1]; // Accéde au dernier élément du tableau
         const totalfilteredLetterStudents = filteredStudents.length;
@@ -140,8 +127,7 @@ function filterStudents(filteredLetter, students)
         // filteredStudents.join(', ') permet de rajouter un espace entre chaque élément du tableau
         return ("Prénoms qui commence par " + filteredLetter + " (" + totalfilteredLetterStudents + ") : " + filteredStudents.join(', ') + ' et ' + last + '.');
     }
-    else
-    {
+    else {
         return ("Il n'y a pas de prénom commencant par " + filteredLetter + ".");
     }
 }
@@ -340,7 +326,7 @@ function convertRomanToArabic(str) {
     return result;
 }
 
-// Vérifie si un nombre fait partie des nombres d'Armstrong ou non 
+// Vérifie si un nombre fait partie des nombres d'Armstrong 
 function armstrongNumber(number) {
     let numberString = number.toString();
     let numberStringLength = numberString.length;

@@ -15,7 +15,7 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 ## La liste des Fonctions Principales :   
 | Nom | Description | Paramètre(s) |
 | -- | -- | -- |
-| **weatherRequest()** | Affiche la météo et l'heure locale selon la ville grâce à l'API : [openweathermap.org](https://openweathermap.org/). | Aucun paramètre |
+| **weatherRequest()** | Affiche la météo et l'heure locale grâce à l'API : [openweathermap.org](https://openweathermap.org/). | Aucun paramètre |
 | **randomNumber(min, max)** | Génère un nombre aléatoire entre un minimum inclus et un maximum inclus. | - min : Nombre Minimum - max : Nombre Maximum |
 | **calculateAge(birthDate)** | Calcule l'âge de quelqu'un selon ça date de naissance. | - birthDate : date de naissance au format (dd/mm/yyyy). |
 | **convertTemperature(degree,unit)** | Convertit des Degré Celsius en Degré Fahrenheit et l'inverse aussi. | - degre : Le nombre que vous voulez convertir - unite : l'unité du nombre que vous voulez convertir (°C ou °F)	|
@@ -30,7 +30,7 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **convertDecimalBinaryHexadecimal(value, option)** | Convertis des nombres de différents bases. | - value : la valeur à convertir - option : En quelle base convertir |
 | **convertArabicToRoman(nombre)** | Convertis un nombre arabe en nombre romain. | - nombre : le nombre à convertir  |
 | **convertRomanToArabic(str)** | Convertis un nombre romain en nombre arabe. | - str : le nombre romain à convertir  |
-| **armstrongNumber(nombre)** | Vérifie si un nombre fait partie des nombres d'Armstrong ou non. | - nombre : le nombre à tester  |
+| **armstrongNumber(nombre)** | Vérifie si un nombre fait partie des nombres d'Armstrong. | - nombre : le nombre à tester  |
 | **stringPermutations(string)** | Retourne un tableau contenant toutes les possibilités d'anagramme d'un mot | - string : le mot  |
 
 ## La liste des Fonctions Annexes :   

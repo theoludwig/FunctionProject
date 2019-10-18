@@ -15,7 +15,7 @@
             <div class="text-center pb-5">
                 <h2 class="function-list-title"><a href="./function-views/weatherRequest.php">Météo</a></h2>
                 <a href="./function-views/weatherRequest.php"><img class="function-list-image" src="/img/function-image/weatherRequest.png" alt="Météo"></a>
-                <p class="function-list-description">Affiche la météo et l'heure locale selon la ville.</p>
+                <p class="function-list-description">Affiche la météo et l'heure locale.</p>
             </div>  
         </div>
         <div class="col-sm-12 col-md-6 pb-4">
@@ -30,16 +30,16 @@
     <div class="row">
         <div class="col-sm-12 col-md-6 pb-4">
             <div class="text-center pb-5">
-                <h2 class="function-list-title"><a href="./function-views/calculateAge.php">Quelle âge avez-vous ?</a></h2>
+                <h2 class="function-list-title"><a href="./function-views/calculateAge.php">Quel âge avez-vous ?</a></h2>
                 <a href="./function-views/calculateAge.php"><img class="function-list-image" src="/img/function-image/calculateAge.png" alt="Calendrier"></a>
-                <p class="function-list-description">Calcule l'âge de quelqu'un selon ça date de naissance.</p>
+                <p class="function-list-description">Calcule l'âge selon la date de naissance.</p>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 pb-4">
             <div class="text-center pb-5">
                 <h2 class="function-list-title"><a href="./function-views/convertTemperature.php">Conversion de Température</a></h2>
                 <a href="./function-views/convertTemperature.php"><img class="function-list-image" src="/img/function-image/convertTemperature.png" alt="Thermomètre"></a>
-                <p class="function-list-description">Convertit des Degré Celsius en Degré Fahrenheit et l'inverse aussi.</p>
+                <p class="function-list-description">Convertis des Degré Celsius en Degré Fahrenheit et l'inverse aussi.</p>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@
             <div class="text-center pb-5">
                 <h2 class="function-list-title"><a href="./function-views/convertDistance.php">Conversion de Distance</a></h2>
                 <a href="./function-views/convertDistance.php"><img class="function-list-image" src="/img/function-image/convertDistance.png" alt="Règle"></a>
-                <p class="function-list-description">Convertit la longueur (distance) avec les unités allant de picomètre au Téramètre.</p>
+                <p class="function-list-description">Convertis la longueur (distance) avec les unités allant de picomètre au Téramètre.</p>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 pb-4">
@@ -107,7 +107,7 @@
             <div class="text-center pb-5">
                 <h2 class="function-list-title"><a href="./function-views/heapAlgorithm.php">Heap's algorithm</a></h2>
                 <a href="./function-views/heapAlgorithm.php"><img class="function-list-image" src="/img/function-image/heapAlgorithm.png" alt="Heap's algorithm"></a>
-                <p class="function-list-description">Génère toutes les permutations unique possibles d'une châine de caractère (en changeant de place les lettres du mot, permet d’en créer un nouveau qui n'a pas forcément de sens).</p>
+                <p class="function-list-description">Génère toutes les permutations unique possibles d'une chaîne de caractère (en changeant de place les lettres du mot, permet d’en créer un nouveau qui n'a pas forcément de sens).</p>
             </div>
         </div>
     </div>

@@ -19,18 +19,18 @@ switch ($currentpage) {
         $functionlistActive = 'active';
         break;
     case '/views/function-views/calculateAge.php':
-        $title = 'Quelle âge avez-vous ?';
-        $description = "Calcule l'âge de quelqu'un selon ça date de naissance.";
+        $title = 'Quel âge avez-vous ?';
+        $description = "Calcule l'âge selon la date de naissance.";
         $image = 'https://function.divlo.fr/img/function-image/calculateAge.png';
         break;
     case '/views/function-views/convertDistance.php':
         $title = 'Conversion de Distance';
-        $description = 'Convertit la longueur (distance) avec les unités allant de picomètre au Téramètre.';
+        $description = 'Convertis la longueur (distance) avec les unités allant de picomètre au Téramètre.';
         $image = 'https://function.divlo.fr/img/function-image/convertDistance.png';
         break;
     case '/views/function-views/convertTemperature.php':
         $title = 'Conversion de Température';
-        $description = "Convertit des Degré Celsius en Degré Fahrenheit et l'inverse aussi.";
+        $description = "Convertis des Degré Celsius en Degré Fahrenheit et l'inverse aussi.";
         $image = 'https://function.divlo.fr/img/function-image/convertTemperature.png';
         break;
     case '/views/function-views/randomNumber.php':
@@ -40,7 +40,7 @@ switch ($currentpage) {
         break;
     case '/views/function-views/weatherRequest.php':
         $title = 'Météo';
-        $description = "Affiche la météo et l'heure locale selon la ville.";
+        $description = "Affiche la météo et l'heure locale.";
         $image = 'https://function.divlo.fr/img/function-image/weatherRequest.png';
         break;
     case '/views/function-views/filterStudents.php':
@@ -80,7 +80,7 @@ switch ($currentpage) {
         break; 
     case '/views/function-views/heapAlgorithm.php':
         $title = "Heap's algorithm";
-        $description = "<a href='https://en.wikipedia.org/wiki/Heap%27s_algorithm' target='_blank'>Heap's algorithm</a> est un algorithme qui génère toutes les permutations unique possibles d'une châine de caractère, c'est en quelque sorte toutes les possibilités d'anagramme d'un mot (en changeant de place les lettres d’un mot, permet d’en créer un nouveau), par contre les mots n'ont pas besoin d'être de vrais mots qui ont du sens.";
+        $description = "<a href='https://en.wikipedia.org/wiki/Heap%27s_algorithm' target='_blank'>Heap's algorithm</a> est un algorithme qui génère toutes les permutations unique possibles d'une chaîne de caractère, c'est en quelque sorte toutes les possibilités d'anagramme d'un mot (en changeant de place les lettres d’un mot, permet d’en créer un nouveau), par contre les mots n'ont pas besoin d'être de vrais mots qui ont du sens.";
         $image = 'https://function.divlo.fr/img/function-image/heapAlgorithm.png';
         break; 
     default:
