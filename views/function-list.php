@@ -64,14 +64,14 @@
     <div class="row">
         <div class="col-sm-12 col-md-6 pb-4">
             <div class="text-center pb-5">
-                <h2 class="function-list-title"><a href="./function-views/randomQuote.php">Générateur de citation</a></h2>
+                <h2 class="function-list-title"><a href="./function-views/randomQuote.php">Générateur de citations</a></h2>
                 <a href="./function-views/randomQuote.php"><img class="function-list-image" src="/img/function-image/randomQuote.png" alt="Citation"></a>
                 <p class="function-list-description">Génère aléatoirement une citation ou un proverbe.</p>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 pb-4">
             <div class="text-center pb-5">
-                <h2 class="function-list-title"><a href="./function-views/convertCurrency.php">Conversion de devise</a></h2>
+                <h2 class="function-list-title"><a href="./function-views/convertCurrency.php">Conversion de devises</a></h2>
                 <a href="./function-views/convertCurrency.php"><img class="function-list-image" src="/img/function-image/convertCurrency.png" alt="Sac de pièces"></a>
                 <p class="function-list-description">Convertis une valeur dans une devise dans une autre devise.</p>
             </div>
