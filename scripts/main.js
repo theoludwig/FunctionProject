@@ -2,7 +2,14 @@ $(function () {
 
     /* ÉXECUTION DES FONCTONS */
 
-    $( "#submitWeatherRequest" ).click(() => {
+    // Touche entrer génère un clique
+    $("body").keydown(function(e){
+        if(e.which === 13){
+            $(".btn").click();
+        }
+    });
+
+    $("#submitWeatherRequest").click(() => {
         const city = $('#cityName').val();
         const cityName = city.split(' ').join('+'); 
         if(isEmptyValue(cityName)) {
