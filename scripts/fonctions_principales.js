@@ -9,7 +9,7 @@ function weatherRequest() {
                 try {
                     const json = jQuery.parseJSON(data);
                     const city = json.name;
-                    const showDateTimeValue = timeZone(json);
+                    const showDateTimeValue = dateTimeUTC((json.timezone / 60 / 60).toString()).showDateTimeValue;
                 
                     $('.results').html(`🌎 Position : <a href='https://www.google.com/maps/search/?api=1&query=${json.coord.lat},${json.coord.lon}' class="yellow-color" target="_blank">${city}, ${json.sys.country}</a><br>⏰ Date et heure : ${showDateTimeValue}<br>☁️ Météo : ${capitalize(json.weather[0].description)}<br> 🌡️ Température : ${json.main.temp} °C<br> 💧 Humidité : ${json.main.humidity}% <br> <img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"/>`); 
                 }
@@ -38,10 +38,10 @@ function calculateAge(birthDateEntered) {
     const birthDateDay = parseInt(birthDateEntered.substring(0, 2));
     const birthDateMonth = parseInt((birthDateEntered.substring(3, 5)) - 1);
     const birthDateYear = parseInt(birthDateEntered.substring(6, 10));
-    dateTimeUTC('0');
-    day = parseInt(day);
-    month = parseInt(month - 1);
-    year = parseInt(year);
+    const currentDateObject = dateTimeUTC('0');
+    const day = parseInt(currentDateObject.day);
+    const month = parseInt(currentDateObject.month - 1);
+    const year = parseInt(currentDateObject.year);
 
     let dateNow = moment([year, month, day]);
     let birthDate = moment([birthDateYear, birthDateMonth, birthDateDay]);
@@ -53,13 +53,13 @@ function calculateAge(birthDateEntered) {
     birthDate.add(ageMonths, 'months');
     let ageDays = dateNow.diff(birthDate, 'days');
 
-    const isValidDateFunction = isValidDate(birthDateDay + '/' + birthDateMonth + '/' + birthDateYear); 
+    const isValidDateFunction = isValidDate(birthDateDay + '/' + birthDateMonth + '/' + birthDateYear, currentDateObject.showDateTimeValue); 
 
     // Vérifie si la valeur entrée correspond à une date de naissance valide
     if(isValidDateFunction === true && !isNaN(ageDays)) {
         ageYears = formatNumberResult(ageYears);
         // Si c'est ton anniversaire aujourd'hui
-        if(birthDateDay === parseInt(day) && (parseInt(birthDateMonth) + 1) === parseInt(month)) {
+        if(birthDateDay === day && parseInt(birthDateMonth) === month) {
             return 'Vous avez ' + ageYears + ' ans. Joyeux Anniversaire! 🥳';
         }
         else {

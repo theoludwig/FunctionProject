@@ -2,31 +2,25 @@ $(function () {
 
     /* ÉXECUTION DES FONCTONS */
 
-    $( "#submitWeatherRequest" ).click(function() 
-    {
+    $( "#submitWeatherRequest" ).click(() => {
         const city = $('#cityName').val();
         const cityName = city.split(' ').join('+'); 
-        if(isEmptyValue(cityName))
-        {
+        if(isEmptyValue(cityName)) {
             $('.results').html(emptyMessageError);
         }
-        else 
-        {
+        else {
             createSessionCookie("city", cityName); 
             weatherRequest();
         }
     });
 
-    $("#submitRandomNumber").click(function() 
-    {
+    $("#submitRandomNumber").click(() => {
         const minEntered = $('#minValue').val();
         const maxEntered = $('#maxValue').val(); 
-        if(isEmptyValue(minEntered) || isEmptyValue(maxEntered))
-        {
+        if(isEmptyValue(minEntered) || isEmptyValue(maxEntered)) {
             $('.results').html(emptyMessageError);
         }
-        else
-        {
+        else {
             const result = randomNumber(minEntered, maxEntered);
             if(result === messageError) {
                 $('.results').html(messageError);
@@ -36,13 +30,13 @@ $(function () {
         }
     });
 
-    $("#birthDateValue").bind("keyup change", function() 
+    $("#birthDateValue").bind("keyup change", () => 
     {
         const birthDateEntered = $('#birthDateValue').val();
         $('.results').html(calculateAge(birthDateEntered));
     });
 
-    $("#submitConvertTemperature").click(function() 
+    $("#submitConvertTemperature").click(() => 
     {
         const temperatureValue = $('#temperatureValue').val();
         const degree = parseFloat(temperatureValue.slice(0, temperatureValue.length - 2));
@@ -55,7 +49,7 @@ $(function () {
         }
     });
 
-    $("#submitConvertDistance").click(function() 
+    $("#submitConvertDistance").click(() =>
     {
         let firstValue = $('#firstValue').val();
         const unitFirstValue = $("#firstValueUnit option:selected").text();
@@ -69,7 +63,7 @@ $(function () {
         }
     });
 
-    $("#submitFilterStudents").click(function() 
+    $("#submitFilterStudents").click(() => 
     {
         const nameEntered = $('#nameEntered').val();
         let filteredLetter = $("#filteredLetter").val();
@@ -87,13 +81,12 @@ $(function () {
     });
 
     let randomQuoteClicked;
-    $("#submitRandomQuote").click(function() 
-    {
+    $("#submitRandomQuote").click(() => {
         randomQuoteClicked = true;
         $('.resultsRandomQuote').html(getRandomQuote());
     });
     // Affichage d'une citation au chargement de la page
-    if (randomQuoteClicked != true && window.location.href.indexOf("randomQuote") > -1) {
+    if (randomQuoteClicked != true && window.location.href.includes("randomQuote")) {
         $('.resultsRandomQuote').html(getRandomQuote());
     }
 
@@ -107,8 +100,7 @@ $(function () {
         $( ".quote-list" ).append(resultat);
     }
 
-    $("#submitConvertCurrency").click(function() 
-    {
+    $("#submitConvertCurrency").click(() => {
         let value = $('#value').val();
         const currencyOfTheValue = $("#currencyOfTheValue option:selected").val();
         const currencyAfter = $("#currencyAfter option:selected").val();
@@ -122,15 +114,13 @@ $(function () {
         }
     });
 
-    $("#submitConvertEncoding").click(function() 
-    {
+    $("#submitConvertEncoding").click(() => {
         const value = $('#value').val();
         const option = $("#option option:selected").val();
         if(isEmptyValue(value)) {
             $('.results').html(messageError);
         }
-        else 
-        {
+        else {
           if (option === 'DecimalToBinary' || option === 'BinaryToDecimal' || option === 'DecimalToHexadecimal' || option === 'HexadecimalToDecimal' || option === 'BinaryToHexadecimal' || option === 'HexadecimalToBinary') {
             const result = convertDecimalBinaryHexadecimal(value, option);
             $('.results').html(result);
@@ -160,8 +150,7 @@ $(function () {
         }
     });
 
-    $("#submitConvertRomanArabicNumbers").click(function() 
-    {
+    $("#submitConvertRomanArabicNumbers").click(() => {
         let numbersValue = $('#numbersArabic').val();
         numbersValue = numbersValue.replace(/\s/g,'');
         const convertNumberType = $("#convertNumberType option:selected").text();
@@ -195,8 +184,7 @@ $(function () {
         }
     });
 
-    $("#numberToTest").bind("keyup change", function() 
-    {
+    $("#numberToTest").bind("keyup change", () => {
         let numbersValue = $('#numberToTest').val();
         numbersValue = parseInt(numbersValue.replace(/\s/g,''));
         if (!isNaN(numbersValue) && numbersValue >= 0) {  
@@ -207,8 +195,7 @@ $(function () {
         }
     });
 
-    $("#submitHeapAlgorithm").click(function() 
-    {
+    $("#submitHeapAlgorithm").click(() => {
         const value = $('#value').val();
         if(isEmptyValue(value)) {
             $('.results').html(emptyMessageError);

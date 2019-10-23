@@ -44,6 +44,5 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **dateTimeUTC(utc)** | Donne la date et l'heure selon l'UTC (Universal Time Coordinated). | - utc : heure de décalage avec l'utc |
 | **showDateTime(enteredOffset)** | Affiche la date et l'heure (format : dd/mm/yyyy - 00:00:00). | - enteredOffset : date à formaté |
 | **realDateTime(id)** | Affiche l'heure en temps réel. | - id : l'id de votre span/div où vous voulez afficher l'heure en temps réel |
-| **timeZone(json)** | Récupére le décalage en secondes à partir de l'heure UTC grâce à l'API openweathermap.org. | - json : le json de l'API |
 | **isValidDate(s)** | Vérifie si une date est valide par rapport à la date d'aujourd'hui.  | - s : la date à verifier (format : dd/mm/yyyy) |
 | **createSessionCookie(name, value)** | Créer un cookie de session  | - name : nom du cookie - value : valeur du cookie |
