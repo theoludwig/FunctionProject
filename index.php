@@ -6,10 +6,12 @@
 
 <!-- Page Content -->
 <div class="container">
-  <div class="row pb-5">
-    <h1>Bienvenue sur <span class="important">FunctionProject</span> <i class="fas fa-file-code"></i></h1>
-    <p class="pt-4 mx-auto"><a href="/views/function-list.php">Liste de Mini-programmes</a> permettant de <a href="/views/function-views/weatherRequest.php">connaître la météo</a>, générer un <a href="/views/function-views/randomNumber.php">nombre aléatoire</a>, etc.</p>
-  </div>
+    <div class="row">
+        <h1 class="pb-4">Bienvenue sur <span class="important">FunctionProject</span> <i class="fas fa-file-code"></i></h1>
+    </div>
+    <div class="row pb-5 pt-2">
+        <p class="mx-auto"><a href="/views/function-list.php">Liste de Mini-programmes</a> permettant de <a id="change" href="/views/function-views/weatherRequest.php">connaître la météo</a>...</p>
+    </div>
   <div class="row">
         <div class="col-sm-12 col-md-6 pb-4">
             <div class="text-center pb-5">
