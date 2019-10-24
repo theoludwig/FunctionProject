@@ -172,8 +172,94 @@ function convertCurrency(value, currency, url) {
 }
 
 // Convertis des nombres de différentes bases et convertis en UTF-8. (source : http://jsfiddle.net/47zwb41o)
+// DecimalToBinary
+function decimalToBinary(value) {
+    value = value.replace(" ", "");
+    value = Number(value);
+    if (isNaN(value)) {
+        return messageError;
+    } else {
+        return value.toString(2);
+    }
+}
+// BinaryToDecimal
+function binaryToDecimal(value) {
+    value = Number(value);
+    const result = formatNumberResult(parseInt(value, 2));
+    if (isNaN(result)) {
+        return messageError;
+    } else {
+        return result
+    }
+}
+// DecimalToHexadecimal
+function decimalToHexadecimal(value) {
+    value = value.replace(" ", "");
+    value = Number(value);
+    if (isNaN(value)) {
+        return messageError;
+    } else {
+        return value.toString(16).toUpperCase();
+    }
+}
+// HexadecimalToDecimal
+function hexadecimalToDecimal(value) {
+    const result = formatNumberResult(parseInt(value, 16));
+    if (isNaN(result)) {
+        return messageError;
+    } else {
+        return result;
+    }
+}
+// BinaryToHexadecimal 
+function binaryToHexadecimal(value) {
+    value = Number(value);
+    value = parseInt(value, 2);
+    if (isNaN(value)) {
+        return messageError;
+    } else {
+        return parseInt(value).toString(16).toUpperCase();
+    }   
+}
+// HexadecimalToBinary
+function hexadecimalToBinary(value) {
+    value = Number(value);
+    value = parseInt(value, 16);
+    if (isNaN(value)) {
+        return messageError;
+    } else {
+        return parseInt(value).toString(2);
+    }
+}
+// Each letters has its own codePoint (Unicode Code)
+function textToNumberUnicode(string) {
+    try {
+        let resultat = "";
+        for (let index in string) {
+          resultat = resultat + string.codePointAt(index) + " ";
+        }
+        return resultat;
+    }
+    catch(error) {
+        return messageError;
+    }
+}
+// Each codePoint has its own letter 
+function numberUnicodeToText(string) {
+    try {
+        const array = string.split(" ");
+        let resultat = "";
+        for (let index in array) {
+          resultat = resultat + String.fromCodePoint(parseInt(array[index]).toString());
+        }
+        return resultat;
+    }
+    catch(error) {
+        return messageError;
+    }
+}
 // Texte en Binaire (UTF-8)
-function utf8ToBin(s) {
+function textToBinary(s) {
     try {
         s = unescape( encodeURIComponent(s));
         var chr, i = 0, l = s.length, out = '';
@@ -188,7 +274,7 @@ function utf8ToBin(s) {
     }
 }
 // Binaire (UTF-8) en Texte
-function binToUtf8(s){
+function binaryToText(s){
     try {
         var i = 0, l = s.length, chr, out = '';
         for( ; i < l; i += 8){
@@ -201,7 +287,7 @@ function binToUtf8(s){
     }
 }
 // Texte en Hexadécimal (UTF-8)
-function utf8ToHex (s) {
+function textToHexadecimal (s) {
     try {
         s = unescape( encodeURIComponent( s ) );
         var chr, i = 0, l = s.length, out = '';
@@ -217,58 +303,12 @@ function utf8ToHex (s) {
     }
 }
 // Hexadécimal (UTF-8) en Texte
-function hexToUtf8 (s) {
+function hexadecimalToText (s) {
     try {
         return decodeURIComponent( s.replace( /../g, '%$&' ) );
     }
 	catch (error) {
         return s;
-    }
-}
-// Convertis des nombres de différents bases
-function convertDecimalBinaryHexadecimal(value, option) {
-    try {
-        switch (option) {
-            case 'DecimalToBinary':
-                value = value.replace(" ", "");
-                value = parseInt(value);
-                if (isNaN(value)) {
-                    return messageError;
-                } else {
-                    return value.toString(2);
-                }
-            case 'BinaryToDecimal':
-                return formatNumberResult(parseInt(value, 2));
-            case 'DecimalToHexadecimal':
-                value = value.replace(" ", "");
-                value = parseInt(value);
-                if (isNaN(value)) {
-                    return messageError;
-                } else {
-                    return value.toString(16).toUpperCase();
-                }
-            case 'HexadecimalToDecimal':
-                return formatNumberResult(parseInt(value, 16)); 
-            case 'BinaryToHexadecimal':
-                value = parseInt(value, 2);
-                if (isNaN(value)) {
-                    return messageError;
-                } else {
-                    return parseInt(value).toString(16).toUpperCase();
-                }   
-            case 'HexadecimalToBinary':
-                value = parseInt(value, 16);
-                if (isNaN(value)) {
-                    return messageError;
-                } else {
-                    return parseInt(value).toString(2);
-                }
-            default:
-                return messageError;
-        }
-    } 
-    catch (error) {
-        return messageError;
     }
 }
 

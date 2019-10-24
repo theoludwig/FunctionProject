@@ -17,16 +17,18 @@
         <br>
 		<label for="option">Choisissez une option : </label> <br>
         <select class="form-control selectInline" id="option">
-        <option value="DecimalToBinary">Décimal en Binaire</option>
-            <option value="BinaryToDecimal">Binaire en Décimal</option>
-            <option value="DecimalToHexadecimal">Décimal en Hexadecimal</option>
-            <option value="HexadecimalToDecimal">Hexadecimal en Décimal</option>
-            <option value="BinaryToHexadecimal">Binaire en Hexadécimal</option>
-            <option value="HexadecimalToBinary">Hexadécimal en Binaire</option>
-            <option value="TextToBinary">Texte en Binaire (UTF-8)</option>
-            <option value="BinaryToText">Binaire (UTF-8) en Texte</option>
-            <option value="TextToHexadecimal">Texte en Hexadécimal (UTF-8)</option>
-            <option value="HexadecimalToText">Hexadécimal (UTF-8) en Texte</option>
+            <option value="decimalToBinary">Décimal en Binaire</option>
+            <option value="binaryToDecimal">Binaire en Décimal</option>
+            <option value="decimalToHexadecimal">Décimal en Hexadecimal</option>
+            <option value="hexadecimalToDecimal">Hexadecimal en Décimal</option>
+            <option value="binaryToHexadecimal">Binaire en Hexadécimal</option>
+            <option value="hexadecimalToBinary">Hexadécimal en Binaire</option>
+            <option value="textToNumberUnicode">Chaque caractère a un nombre Unicode</option>
+            <option value="numberUnicodeToText">Chaque nombre Unicode a un caractère</option>
+            <option value="textToBinary">Texte en Binaire (UTF-8)</option>
+            <option value="binaryToText">Binaire (UTF-8) en Texte</option>
+            <option value="textToHexadecimal">Texte en Hexadécimal (UTF-8)</option>
+            <option value="hexadecimalToText">Hexadécimal (UTF-8) en Texte</option>
         </select>
         <div class="form-row text-center">
             <div class="col-12">

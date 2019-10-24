@@ -2,7 +2,7 @@ $(function () {
 
     /* ÉXECUTION DES FONCTONS */
 
-    // Touche entrer génère un clique
+    // Touche entrer génère un clique sur les classes .btn
     $("body").keydown(function(e){
         if(e.which === 13){
             $(".btn").click();
@@ -39,8 +39,7 @@ $(function () {
 
     $("#birthDateValue").bind("keyup change", () => 
     {
-        const birthDateEntered = $('#birthDateValue').val();
-        $('.results').html(calculateAge(birthDateEntered));
+        $('.results').html(calculateAge($('#birthDateValue').val()));
     });
 
     $("#submitConvertTemperature").click(() => 
@@ -104,7 +103,7 @@ $(function () {
         for (index in quotes) {
             resultat = resultat + `<tr> <td class="quote-element-list important">${quotes[index]["source"]}</td> <td class="quote-element-list">${quotes[index]["quote"]}</td> </tr>`;
         }
-        $( ".quote-list" ).append(resultat);
+        $(".quote-list").append(resultat);
     }
 
     $("#submitConvertCurrency").click(() => {
@@ -128,32 +127,22 @@ $(function () {
             $('.results').html(messageError);
         }
         else {
-          if (option === 'DecimalToBinary' || option === 'BinaryToDecimal' || option === 'DecimalToHexadecimal' || option === 'HexadecimalToDecimal' || option === 'BinaryToHexadecimal' || option === 'HexadecimalToBinary') {
-            const result = convertDecimalBinaryHexadecimal(value, option);
-            $('.results').html(result);
-          }
-          else if (option === 'BinaryToText') {
-            // Le replace enlève les espaces
-            const textResult = binToUtf8(value.replace(/\s/g,'')); 
-            $('.results').html(textResult);
-          }
-          else if (option === 'TextToBinary') {
-              // Les 2 replace permettent de rajouter un espace tout les 8 bits
-              let binaryResult = utf8ToBin(value);
-              binaryResult = binaryResult.replace(/(\d{8})/g, '$1 ').replace(/(^\s+|\s+$)/,''); 
-              $('.results').html(binaryResult);
-          }
-          else if (option === 'TextToHexadecimal') {
-            const result = utf8ToHex(value);
-            $('.results').html(result.toUpperCase());
-          }
-          else if (option === 'HexadecimalToText') {
-              const result = hexToUtf8(value.replace(/\s/g,''));
-              $('.results').html(result);
-          }
-          else {
-            $('.results').html(messageError);
-          }
+            // Objet qui recense toutes les fonctions de convertEncoding
+            const convertEncoding = { decimalToBinary, binaryToDecimal, decimalToHexadecimal, hexadecimalToDecimal, binaryToHexadecimal, hexadecimalToBinary, textToNumberUnicode, numberUnicodeToText, textToBinary, binaryToText, textToHexadecimal, hexadecimalToText };
+            try {
+                function executionFunction(option, value) {
+                    if (convertEncoding[option]) {
+                        return convertEncoding[option](value)
+                    } else {
+                        console.log(convertEncoding[option]);
+                        return messageError;
+                    }
+                }
+                $('.results').html(executionFunction(option, value));
+            } catch (error) {
+                $('.results').html(messageError);
+                console.log(error);
+            }
         }
     });
 
@@ -216,6 +205,21 @@ $(function () {
             $('.results').html(`Il y a ${formatNumberResult(stringPermutationsResult.length)} possibilités d'anagramme pour le mot "${value}" qui contient ${value.length} caractères, la liste : <br><br> ${result}`);
         }
     });
+
+    /* Changement du texte accueil (exemples de fonction) */
+    if(chemin === "/" || chemin === '/index.php') {
+        let index=-1;
+        function change() {
+            if(index === texteFonctionChange.length-1) {
+                index = 0;
+            }
+            else {
+                index++;
+            }
+            document.getElementById("change").innerHTML = texteFonctionChange[index];
+        }
+        setInterval(change,10000);
+    }
     
     /* Permet d'afficher l'heure en temps réel sur le footer */
     window.onload = realDateTime('realDateTime');
@@ -244,21 +248,6 @@ $(function () {
         language: 'fr',
         autoclose: false,
         todayHighlight: true
-    })
+    });
 
-})
-
-/* Changement du texte accueil (exemples de fonction) */
-if(chemin === "/" || chemin === '/index.php') {
-    let index=-1;
-    function change() {
-        if(index === texteFonctionChange.length-1) {
-            index = 0;
-        }
-        else {
-            index++;
-        }
-        document.getElementById("change").innerHTML = texteFonctionChange[index];
-    }
-    setInterval("change()",10000);
-}
+});
