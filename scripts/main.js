@@ -2,9 +2,9 @@ $(function () {
 
     /* ÉXECUTION DES FONCTONS */
 
-    // Touche entrer génère un clique sur les classes .btn
+    // Touche entrer génère un clique sur les classes .btn à part sur la page convertEncoding
     $("body").keydown(function(e){
-        if(e.which === 13){
+        if(e.which === 13 && chemin !== '/views/function-views/convertEncoding.php'){
             $(".btn").click();
         }
     });
@@ -92,7 +92,7 @@ $(function () {
         $('.resultsRandomQuote').html(getRandomQuote());
     });
     // Affichage d'une citation au chargement de la page
-    if (randomQuoteClicked != true && window.location.href.includes("randomQuote")) {
+    if (randomQuoteClicked != true && chemin === '/views/function-views/randomQuote.php') {
         $('.resultsRandomQuote').html(getRandomQuote());
     }
 
