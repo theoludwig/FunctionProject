@@ -131,17 +131,11 @@ $(function () {
             const convertEncoding = { decimalToBinary, binaryToDecimal, decimalToHexadecimal, hexadecimalToDecimal, binaryToHexadecimal, hexadecimalToBinary, textToNumberUnicode, numberUnicodeToText, textToBinary, binaryToText, textToHexadecimal, hexadecimalToText };
             try {
                 function executionFunction(option, value) {
-                    if (convertEncoding[option]) {
-                        return convertEncoding[option](value)
-                    } else {
-                        console.log(convertEncoding[option]);
-                        return messageError;
-                    }
+                    return convertEncoding[option](value)
                 }
                 $('.results').html(executionFunction(option, value));
             } catch (error) {
                 $('.results').html(messageError);
-                console.log(error);
             }
         }
     });

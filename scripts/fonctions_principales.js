@@ -262,13 +262,13 @@ function numberUnicodeToText(string) {
 function textToBinary(s) {
     try {
         s = unescape( encodeURIComponent(s));
-        var chr, i = 0, l = s.length, out = '';
+        let chr, i = 0, l = s.length, out = '';
         for( ; i < l; i ++ ){
             chr = s.charCodeAt( i ).toString(2);
             while(chr.length % 8 != 0 ){ chr = '0' + chr; }
             out += chr;
         }
-        return out;
+        return out.replace(/(\d{8})/g, '$1 ').replace(/(^\s+|\s+$)/,'');
     } catch (error) {
         return s;
     }
@@ -276,7 +276,8 @@ function textToBinary(s) {
 // Binaire (UTF-8) en Texte
 function binaryToText(s){
     try {
-        var i = 0, l = s.length, chr, out = '';
+        s = s.replace(/\s/g,'')
+        let i = 0, l = s.length, chr, out = '';
         for( ; i < l; i += 8){
             chr = parseInt( s.substr(i, 8 ), 2).toString(16);
             out += '%' + ((chr.length % 2 == 0) ? chr : '0' + chr);
@@ -290,13 +291,13 @@ function binaryToText(s){
 function textToHexadecimal (s) {
     try {
         s = unescape( encodeURIComponent( s ) );
-        var chr, i = 0, l = s.length, out = '';
+        let chr, i = 0, l = s.length, out = '';
         for( ; i < l; i++ ){
             chr = s.charCodeAt( i ).toString( 16 );
             out += ( chr.length % 2 == 0 ) ? chr : '0' + chr;
             out += " ";
         }
-        return out;
+        return out.toUpperCase();
     }
     catch (error) {
         return s;
@@ -305,6 +306,7 @@ function textToHexadecimal (s) {
 // Hexadécimal (UTF-8) en Texte
 function hexadecimalToText (s) {
     try {
+        s = s.replace(/\s/g,'');
         return decodeURIComponent( s.replace( /../g, '%$&' ) );
     }
 	catch (error) {
