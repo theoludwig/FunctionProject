@@ -33,11 +33,7 @@ function capitalize (s) {
 
 // Donne la date et l'heure selon l'UTC (Universal Time Coordinated)
 function dateTimeUTC(utc) {
-    let result = "";
-    for (let index in utc) {
-        result = result + utc[index];
-    }
-    const enteredOffset = parseFloat(result)*60;
+    const enteredOffset = parseFloat(utc)*60;
     timeNow.setMinutes(timeNow.getMinutes() + enteredOffset);
     return showDateTime(enteredOffset);
 }
