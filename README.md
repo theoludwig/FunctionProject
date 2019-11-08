@@ -1,7 +1,7 @@
 # FunctionProject
 ![Badge Status](https://cloud.divlo.fr/public_files/others/Trash/under_dev.svg)
 
-[À propos de Divlo](https://divlo.fr/) | [Youtube](https://www.youtube.com/c/Divlo) | [Twitch](https://www.twitch.tv/divlo) | [Twitter](https://twitter.com/Divlo_FR) | [Steam](https://steamcommunity.com/id/Divlo/) | [Discord](https://discordapp.com/invite/WWK2JPz)
+[À propos de Divlo](https://divlo.fr/) | [Youtube](https://www.youtube.com/c/Divlo) | [Twitch](https://www.twitch.tv/divlo) | [Twitter](https://twitter.com/Divlo_FR) | [E-mail](mailto:contact@divlo.fr)
 
 ## À propos de FunctionProject
 [FunctionProject](https://function.divlo.fr/) est un projet créé par [Divlo](https://divlo.fr/) qui a pour but de rassembler plein de mini-programmes permettant de faire plusieurs choses comme **savoir la météo**, générer un **nombre aléatoire**, etc. 
@@ -10,9 +10,33 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 
 [Projet uniquement en français]
 
-[![FunctionProject](/img/FunctionProject.png)](https://function.divlo.fr/)
+[![FunctionProject](./img/FunctionProject.png)](https://function.divlo.fr/)
 
-## La liste des Fonctions Principales :   
+## Installation
+**Note :** Vous aurez besoin d’un serveur Apache pour utiliser PHP (exemple: [XAMPP](https://www.apachefriends.org)).
+
+Cloner le dépôt en utilisant git :
+```text
+git clone https://github.com/Divlo/FunctionProject
+```
+
+Puis créer un nouveau fichier dans /php du nom  de 'keyVariable.php', puis vous mettrez ce code à l'intérieur, il faudra modifier la valeur de la variable '$apiWeather' par votre clé d'api de [openweathermap.org](https://openweathermap.org/).
+```php
+$apiWeather = 'votre clé api pour openweathermap.org';
+```
+
+Enjoy! =D
+
+## Librairies
+* [Fontawesome](https://fontawesome.com/) 
+* [Bootstrap](https://getbootstrap.com/)
+* [jQuery](https://jquery.com/)
+* [jQuery UI](https://jqueryui.com/)
+* [Moment.js](https://momentjs.com/)
+
+## La liste des Fonctions Principales :
+> Les fonctions principales se trouvent dans /scripts/fonctions_principales.js, n'hésitez pas à reprendre les fonctions pour vos projets personnels.
+
 | Nom | Description | Paramètre(s) |
 | -- | -- | -- |
 | **weatherRequest()** | Affiche la météo et l'heure locale grâce à l'API : [openweathermap.org](https://openweathermap.org/). | Aucun paramètre |
@@ -28,7 +52,9 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **armstrongNumber(nombre)** | Vérifie si un nombre fait partie des nombres d'Armstrong. | - nombre : le nombre à tester  |
 | **stringPermutations(string)** | Retourne un tableau contenant toutes les possibilités d'anagramme d'un mot | - string : le mot  |
 
-## La liste des Fonctions Annexes :   
+## La liste des Fonctions Annexes :  
+> Les fonctions annexes se trouvent dans /scripts/fonctions_annexes.js, n'hésitez pas à reprendre les fonctions pour vos projets personnels.
+
 | Nom | Description | Paramètre(s) |
 | -- | -- | -- |
 | **isEmptyValue(value)** | Vérifie si une valeur est vide. | - value : valeur à testé |
@@ -41,3 +67,6 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 | **realDateTime(id)** | Affiche l'heure en temps réel. | - id : l'id de votre span/div où vous voulez afficher l'heure en temps réel |
 | **isValidDate(s)** | Vérifie si une date est valide par rapport à la date d'aujourd'hui.  | - s : la date à verifier (format : dd/mm/yyyy) |
 | **createSessionCookie(name, value)** | Créer un cookie de session  | - name : nom du cookie - value : valeur du cookie |
+
+## License 
+Ce projet est sous licence MIT - voir le fichier [LICENSE](./LICENSE) pour plus de détails.

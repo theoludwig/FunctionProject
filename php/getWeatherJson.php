@@ -2,13 +2,13 @@
 // Rate limit of 1 request per 2 second
 session_start();
 if (isset($_SESSION['LAST_CALL'])) {
-$last = strtotime($_SESSION['LAST_CALL']);
-$curr = strtotime(date("Y-m-d h:i:s"));
-$sec =  abs($last - $curr);
-    if ($sec <= 2) {
-        $data = 'Rate Limit Exceeded';  
-        echo $data;        
-    }
+    $last = strtotime($_SESSION['LAST_CALL']);
+    $curr = strtotime(date("Y-m-d h:i:s"));
+    $sec =  abs($last - $curr);
+        if ($sec <= 2) {
+            $data = 'Rate Limit Exceeded';  
+            echo $data;        
+        }
 }
 $_SESSION['LAST_CALL'] = date("Y-m-d h:i:s");
  
