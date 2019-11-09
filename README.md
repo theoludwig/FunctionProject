@@ -20,8 +20,9 @@ Cloner le dépôt en utilisant git :
 git clone https://github.com/Divlo/FunctionProject
 ```
 
-Puis créer un nouveau fichier dans /php du nom  de 'keyVariable.php', puis vous mettrez ce code à l'intérieur, il faudra modifier la valeur de la variable '$apiWeather' par votre clé d'api de [openweathermap.org](https://openweathermap.org/).
+Puis créer un nouveau fichier dans ```/php``` du nom  de ```keyVariable.php```, puis vous mettrez ce code à l'intérieur, il faudra modifier la valeur de la variable '$apiWeather' par votre clé d'api de [openweathermap.org](https://openweathermap.org/).
 ```php
+<?php
 $apiWeather = 'votre clé api pour openweathermap.org';
 ```
 
@@ -39,7 +40,7 @@ Enjoy! =D
 
 | Nom | Description | Paramètre(s) |
 | -- | -- | -- |
-| **weatherRequest()** | Affiche la météo et l'heure locale grâce à l'API : [openweathermap.org](https://openweathermap.org/). | Aucun paramètre |
+| **weatherRequest()** | Affiche la météo et l'heure locale grâce à l'API : [openweathermap.org](https://openweathermap.org/). | Aucun paramètre, le nom de la ville où il faut récupérer la météo se récupère en php grâce au cookie fait en Javascript (voir main.js) |
 | **randomNumber(min, max)** | Génère un nombre aléatoire entre un minimum inclus et un maximum inclus. | - min : Nombre Minimum - max : Nombre Maximum |
 | **calculateAge(birthDate)** | Calcule l'âge de quelqu'un selon ça date de naissance. | - birthDate : date de naissance au format (dd/mm/yyyy). |
 | **convertTemperature(degree,unit)** | Convertit des Degré Celsius en Degré Fahrenheit et l'inverse aussi. | - degre : Le nombre que vous voulez convertir - unite : l'unité du nombre que vous voulez convertir (°C ou °F)	|
