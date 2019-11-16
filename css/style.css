@@ -80,6 +80,9 @@ header {
     width: 80px !important;
     height: 40px !important;
 }
+pre code {
+    color: #e83c8c !important;
+}
 #currencyOfTheValue, #currencyAfter, #convertNumberType {
     width: 270px !important;
 }

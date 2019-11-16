@@ -32,6 +32,7 @@ Enjoy! =D
 * [jQuery](https://jquery.com/)
 * [jQuery UI](https://jqueryui.com/)
 * [Moment.js](https://momentjs.com/)
+* [Marked.js](https://github.com/markedjs/marked)
 
 ## Documentation 
 La documentation est disponible sur [function.divlo.fr/documentation](https://function.divlo.fr/documentation).

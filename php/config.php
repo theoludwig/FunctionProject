@@ -83,6 +83,11 @@ switch ($currentpage) {
         $description = "<a href='https://en.wikipedia.org/wiki/Heap%27s_algorithm' target='_blank'>Heap's algorithm</a> est un algorithme qui génère toutes les permutations uniques possibles d'une chaîne de caractère, ce sont en quelque sorte toutes les possibilités d'anagramme d'un mot (en changeant de place, les lettres d’un mot, permettent d’en créer un nouveau), par contre les mots n'ont pas besoin d'être de vrais mots qui ont du sens.";
         $image = 'https://function.divlo.fr/img/function-image/heapAlgorithm.png';
         break; 
+    case '/views/function-views/convertMarkdown.php':
+        $title = "Markdown";
+        $description = "Convertis du Markdown en HTML.";
+        $image = 'https://function.divlo.fr/img/function-image/convertMarkdown.png';
+        break; 
     default:
         $title = 'Erreur 404';
         $description = "Cette page n'existe pas!";
