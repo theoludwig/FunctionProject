@@ -520,9 +520,9 @@ function convertRomanToArabic(str) {
     let result = 0;
     for (let i = 0;i < correspondancesRomainArabe.length; i++) {
       while (str.indexOf(correspondancesRomainArabe[i][1]) === 0){
-        // Adding the decimal value to our result counter
+        // Ajout de la valeur décimale au résultat
         result += correspondancesRomainArabe[i][0];
-        // Remove the matched Roman letter from the beginning
+        // Supprimer la lettre romaine correspondante du début
         str = str.replace(correspondancesRomainArabe[i][1],'');
       }
     }

@@ -34,8 +34,8 @@ Enjoy! =D
 * [Moment.js](https://momentjs.com/)
 
 ## Documentation 
-Pour le moment dans le dossier ```/__documentation```, bientôt un README.md pour bien comprendre comment fonctionne la doc.
-La documentation est disponible sur [function.divlo.fr/__documentation](https://function.divlo.fr/__documentation).
+La documentation est disponible sur [function.divlo.fr/documentation](https://function.divlo.fr/documentation).
+Dans la documentation, il y a la toutes les fonctions, ce qu'elles return, etc.
 
 ## Licence 
 Ce projet est sous licence MIT - voir le fichier [LICENSE](./LICENSE) pour plus de détails.

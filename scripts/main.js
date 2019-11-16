@@ -147,27 +147,27 @@ $(function () {
         if(isEmptyValue(numbersValue)) {
             $('.results').html(emptyMessageError);
         }
-        else if (!isNaN(Number(numbersValue)) && convertNumberType === "Nombre Romain") { 
-            const result = convertArabicToRoman(parseInt(numbersValue));
-            let numbersValueFormat = formatNumberResult(numbersValue);
-            if (result === messageError || isFloat(numbersValue)) {
-                $('.results').html(messageError);
+        else if (!isNaN(Number(numbersValue))) { 
+            if (convertNumberType === "Nombre Romain") {
+                const result = convertArabicToRoman(parseInt(numbersValue));
+                let numbersValueFormat = formatNumberResult(numbersValue);
+                if (result === messageError || isFloat(numbersValue)) {
+                    $('.results').html(messageError);
+                } else {
+                    $('.results').html(`<b>${numbersValueFormat}</b> s'écrit <b>${result}</b> en chiffres romains.`);
+                }
             } else {
-                $('.results').html(`<b>${numbersValueFormat}</b> s'écrit <b>${result}</b> en chiffres romains.`);
+                $('.results').html(`<b>${numbersValue}</b> est déjà en chiffres arabes.`);
             }
+
         }
         else if (convertNumberType === "Nombre Arabe") {
-            if (!isNaN(Number(numbersValue))) {
-                $('.results').html(`<b>${numbersValue}</b> est déjà en chiffres arabes.`);
-            } else {
-                numbersValue = numbersValue.toUpperCase();
-                const result = convertRomanToArabic(numbersValue);
+                const result = convertRomanToArabic(numbersValue.toUpperCase());
                 if (result === 0) {
                     $('.results').html(messageError);
                 } else {
                     $('.results').html(`<b>${numbersValue}</b> s'écrit <b>${formatNumberResult(result)}</b> en chiffres arabes.`);
                 }
-            }
         }
         else {
             $('.results').html(messageError);
@@ -191,12 +191,14 @@ $(function () {
             $('.results').html(emptyMessageError);
         }
         else {
+            const start = new Date();
             const stringPermutationsResult = stringPermutations(value);
             let result = "";
             for (element in stringPermutationsResult) {
                 result = result + stringPermutationsResult[element] + "<br>";
             }
-            $('.results').html(`Il y a ${formatNumberResult(stringPermutationsResult.length)} possibilités d'anagramme pour le mot "${value}" qui contient ${value.length} caractères, la liste : <br><br> ${result}`);
+            const end = new Date();
+            $('.results').html(`Temps d'éxecution du script : ${end - start} ms. <br>Il y a ${formatNumberResult(stringPermutationsResult.length)} possibilités d'anagramme pour le mot "${value}" qui contient ${value.length} caractères, la liste : <br><br> ${result}`);
         }
     });
 
