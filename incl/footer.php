@@ -10,7 +10,7 @@
         <script defer src="/scripts/libs/moment.js"></script>
         <script defer src="/scripts/libs/jquery-ui-min.js"></script>
         <script defer src="/scripts/libs/bootstrap-datepicker-min.js"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script defer src="/scripts/libs/marked.min.js"></script>
         <script defer src="/scripts/variables.js"></script>
         <script defer src="/scripts/fonctions_annexes.js"></script>
         <script defer src="/scripts/fonctions_principales.js"></script>
