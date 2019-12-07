@@ -231,7 +231,7 @@ $(function () {
     }
 
     /* Changement du logo du header selon la largeur de la fenêtre */
-    $(window).resize(function() {
+    function widthWindowChange() {
         const windowWidth = $(window).width();
         if(windowWidth < 463){
             $('#logo-header').attr('src', '/img/FunctionProject_icon.png');
@@ -243,10 +243,12 @@ $(function () {
             $('#logo-header').removeAttr('style');
             $('.navbar-brand').removeAttr('style');
         }
-    });
+    }
+    $(window).resize(widthWindowChange);
+    widthWindowChange();
     
     /* Permet d'afficher l'heure en temps réel sur le footer */
-    window.onload = realDateTime('realDateTime');
+    realDateTime('realDateTime');
 
     /* Window Scroll Top Button */
     const $btnScrollTop = $('.scroll-top-arrow');
