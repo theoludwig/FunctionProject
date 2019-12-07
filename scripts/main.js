@@ -229,6 +229,21 @@ $(function () {
         }
         setInterval(change,10000);
     }
+
+    /* Changement du logo du header selon la largeur de la fenêtre */
+    $(window).resize(function() {
+        const windowWidth = $(window).width();
+        if(windowWidth < 463){
+            $('#logo-header').attr('src', '/img/FunctionProject_icon.png');
+            $('#logo-header').attr('style', 'display: inline-block;width: 80%;');
+            $('.navbar-brand').attr('style', 'width: 30%;');
+        }
+        else {
+            $('#logo-header').attr('src', '/img/FunctionProject_brand-logo.png');
+            $('#logo-header').removeAttr('style');
+            $('.navbar-brand').removeAttr('style');
+        }
+    });
     
     /* Permet d'afficher l'heure en temps réel sur le footer */
     window.onload = realDateTime('realDateTime');

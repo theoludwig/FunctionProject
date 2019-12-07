@@ -47,21 +47,6 @@ header {
 .navbar {
     border-bottom: var(--border-header-footer);
 }
-#logo-small-screen {
-    display: none;
-}
-@media (max-width: 463px) {
-    #logo {
-        display: none;
-    }
-    .navbar-brand {
-        width: 30%;
-    }
-    #logo-small-screen {
-        display: inline-block;
-        width: 80%;
-    }
-}
 .nav-link {
     text-align: center !important;
 }
