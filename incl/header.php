@@ -45,7 +45,7 @@
                 <div class="container" id="header-container">
                     <!-- Brand -->
                     <a class="navbar-brand" href="/index.php">
-                        <img id="logo-header" src="/img/FunctionProject_brand-logo.png" alt="FunctionProject">
+                        <img id="logo-header" alt="FunctionProject">
                     </a>
 
                     <!-- Hamburger icon on Mobile -->

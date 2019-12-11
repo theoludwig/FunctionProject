@@ -15,5 +15,6 @@
         <script defer src="/scripts/fonctions_annexes.js"></script>
         <script defer src="/scripts/fonctions_principales.js"></script>
         <script defer src="/scripts/main.js"></script>
+        <script defer src="/scripts/executeFunction.js"></script>
     </body>
 </html>
