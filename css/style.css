@@ -1,3 +1,4 @@
+/* GENERAL */
 :root {
     --footer-height: 182px; 
     --border-header-footer: 3px rgba(255,255,255,0.7) solid;
@@ -5,8 +6,6 @@
     --text-color: rgb(222, 222, 222);
     --important: #ffd800;
 }
-
-/* GENERAL */
 html {
     position: relative;
     min-height: 100%;
@@ -61,18 +60,15 @@ header {
     padding-bottom: 25px;
 }
 .selectInline {
-    display: inline !important;
+    display: inline-block !important;
     width: 80px !important;
     height: 40px !important;
 }
 pre code {
     color: #e83c8c !important;
 }
-#currencyOfTheValue, #currencyAfter, #convertNumberType {
-    width: 270px !important;
-}
-#option {
-    width: 380px !important;
+#currencyOfTheValue, #currencyAfter, #convertNumberType, #option  {
+    width: auto !important;
 }
 #convertIn {
     width: 6.7em;
@@ -101,7 +97,6 @@ pre code {
     vertical-align: middle !important;
     line-height: 2;
 }
-
 .original-link-list {
     white-space: nowrap;
     overflow: hidden;

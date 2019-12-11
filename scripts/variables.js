@@ -20,6 +20,7 @@ texteFonctionChange = [
   `<a href="/views/function-views/armstrongNumber.php">vérifier si un nombre fait partie des nombres d'Armstrong</a>`,
   `<a href="/views/function-views/heapAlgorithm.php">génèrer toutes les permutations uniques possibles d'une chaîne de caractère</a>`,
   '<a href="/views/function-views/convertMarkdown.php">convertir du Markdown en HTML</a>',
+  '<a href="/views/function-views/linkShortener.php">raccourcir les liens trop longs</a>',
   '<a href="/views/function-views/weatherRequest.php">connaître la météo</a>'
 ];
 
