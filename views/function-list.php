@@ -103,7 +103,7 @@
                 <p class="function-list-description">Vérifie si un nombre fait partie des nombres d'Armstrong ou non.</p>
             </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-md-6 pb-4">
+        <div class="col-sm-12 col-md-6 pb-4">
             <div class="text-center pb-5">
                 <h2 class="function-list-title"><a href="./function-views/heapAlgorithm.php">Heap's algorithm</a></h2>
                 <a href="./function-views/heapAlgorithm.php"><img class="function-list-image" src="/img/function-image/heapAlgorithm.png" alt="Heap's algorithm"></a>
@@ -113,13 +113,19 @@
     </div>
     
     <div class="row">
-        <div class="col-sm-12 pb-4">
+        <div class="col-sm-12 col-md-6 pb-4">
             <div class="text-center pb-5">
                 <h2 class="function-list-title"><a href="./function-views/convertMarkdown.php">Markdown</a></h2>
                 <a href="./function-views/convertMarkdown.php"><img class="function-list-image" src="/img/function-image/convertMarkdown.png" alt="Markdown"></a>
                 <p class="function-list-description">Convertis du Markdown en HTML.</p>
             </div>
         </div>
+        <div class="col-sm-12 col-md-6 pb-4">
+            <div class="text-center pb-5">
+                <h2 class="function-list-title"><a href="./function-views/linkShortener.php">Raccourcisseurs de liens</a></h2>
+                <a href="./function-views/linkShortener.php"><img class="function-list-image" src="/img/function-image/linkShortener.png" alt="Raccourcisseurs de liens"></a>
+                <p class="function-list-description">Une URL trop longue ? Raccourcissez-là !</p>
+            </div>
     </div>
 
 </div>

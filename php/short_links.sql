@@ -1,0 +1,13 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+DROP TABLE IF EXISTS `short_links`;
+CREATE TABLE IF NOT EXISTS `short_links` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` text NOT NULL,
+  `shortcut` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+COMMIT;

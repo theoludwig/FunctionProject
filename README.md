@@ -24,6 +24,9 @@ Puis créer un nouveau fichier dans ```/php``` du nom  de ```keyVariable.php```,
 $apiWeather = 'votre clé api pour openweathermap.org';
 ```
 
+Sachez tout de même que vous ne pourrez pas utiliser la fonction linkShortener car elle dépend de [short-links.divlo.fr/](https://short-links.divlo.fr/).
+Cependant, vous avez accès à la structure de la base de donnée dans ```/php/short_links.sql```.
+
 Enjoy! =D
 
 ## Librairies

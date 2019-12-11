@@ -95,16 +95,6 @@ $(function () {
         $('.resultsRandomQuote').html(getRandomQuote());
     }
 
-    /* Permet d'afficher la liste des citations/proverbes */
-    if(chemin === "/views/quote-list.php") {
-        window.onload = $('.totalLengthQuote').html('Total de ' + quotes.length + ' citations.');
-        let resultat = "";
-        for (index in quotes) {
-            resultat = resultat + `<tr> <td class="quote-element-list important">${quotes[index]["source"]}</td> <td class="quote-element-list">${quotes[index]["quote"]}</td> </tr>`;
-        }
-        $(".quote-list").append(resultat);
-    }
-
     $("#submitConvertCurrency").click(() => {
         let value = $('#value').val();
         const currencyOfTheValue = $("#currencyOfTheValue option:selected").val();
@@ -212,4 +202,21 @@ $(function () {
         localStorage.setItem("texteMarkdown", textMarkdown);
         $('.results').html(convertedHTML);
     });
+
+	$('#formLinkShortener').submit((e) => {
+		e.preventDefault();
+		const postdata = $('#formLinkShortener').serialize();
+		$.ajax({  
+			type: 'POST',
+			url: '../../php/shortenLink.php', 
+			data: postdata,
+			success: (text) => {
+                try {
+                    $(".results").html(JSON.parse(text).message);
+                } catch (error) { 
+					$(".results").html("URL invalide.");
+				}
+			}
+		});
+	});
 });

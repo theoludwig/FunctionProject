@@ -12,10 +12,10 @@
     <img class="function-image" src="/img/function-image/filterStudents.png" alt="Carte étudiant">
   </div>
   <div class="form-group">
-		<label for="nameEntered">Entrez les prénoms :</label>
+		<label for="nameEntered">Entrer les prénoms :</label>
         <input name="nameEntered" type="text" id="nameEntered" placeholder="(e.g : 'Prénom1, Prénom2, Prénom3, ...')" class="form-control">
         <br>
-		<label for="filteredLetter">Entrez la lettre à filtré :</label>
+		<label for="filteredLetter">Entrer la lettre à filtré :</label>
         <input name="filteredLetter" type="text" id="filteredLetter" placeholder="(e.g : 'A')" class="form-control">
         <br>
         <div class="form-row text-center">

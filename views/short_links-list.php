@@ -8,19 +8,18 @@
 <div class="container">
     <h1><span class="important"><?php echo $title?></span> :</h1>
     <p class="pt-3 text-center">
-        <?php echo $description?> <br>
-        <span class="totalLengthQuote"></span><br>
-        <a href="/views/function-views/randomQuote.php">Revenir au générateur de citations/proverbes.</a>
+        <span class="totalLengthLinksList"></span><br>
+        <a href="/views/function-views/linkShortener.php">Revenir au raccourcisseur de liens.</a>
     </p>
 
     <table class="table table-bordered mt-5">
         <thead>
             <tr>
-                <th class="text-center" scope="col">Source</th>
-                <th class="text-center" scope="col">Citation/Proverbe</th>
+                <th class="text-center" scope="col">Liens originaux</th>
+                <th class="text-center" scope="col">Liens raccourcit</th>
             </tr>
         </thead>
-        <tbody class="quote-list text-center">
+        <tbody class="links-list text-center">
 
         </tbody>
     </table>

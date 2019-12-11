@@ -88,6 +88,16 @@ switch ($currentpage) {
         $description = "Convertis du Markdown en HTML.";
         $image = 'https://function.divlo.fr/img/function-image/convertMarkdown.png';
         break; 
+    case '/views/function-views/linkShortener.php':
+        $title = "Raccourcisseurs de liens";
+        $description = "Une URL trop longue ? Raccourcissez-là !";
+        $image = 'https://function.divlo.fr/img/function-image/linkShortener.png';
+        break; 
+    case '/views/short_links-list.php':
+        $title = 'Liste des liens récemment raccourcit';
+        $description = "La liste de vos liens raccourcit les plus récents.";
+        $image = 'https://function.divlo.fr/img/function-image/linkShortener.png';
+        break;
     default:
         $title = 'Erreur 404';
         $description = "Cette page n'existe pas!";

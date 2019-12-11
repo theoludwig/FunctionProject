@@ -34,12 +34,47 @@ $(function () {
     /* Permet d'afficher l'heure en temps réel sur le footer */
     realDateTime('realDateTime');
 
+    /* Permet d'afficher la liste des citations/proverbes */
+    if(chemin === "/views/quote-list.php") {
+        window.onload = $('.totalLengthQuote').html('Total de ' + quotes.length + ' citations.');
+        let resultat = "";
+        for (index in quotes) {
+            resultat = resultat + `<tr> <td class="quote-element-list important">${quotes[index]["source"]}</td> <td class="quote-element-list">${quotes[index]["quote"]}</td> </tr>`;
+        }
+        $(".quote-list").append(resultat);
+    }
+
+    /* Permet d'afficher la liste des liens récemment raccourcit */
+    if(chemin === "/views/short_links-list.php") {
+        try  {
+            const shortcuts = JSON.parse(getCookieValue("shortcuts"));
+            window.onload = $('.totalLengthLinksList').html(`Total de ${shortcuts.length} lien(s) raccourcit récemment.`);
+            let resultat = "";
+            for (element of shortcuts) {
+                resultat += `<tr> <td class="original-link-list"><a href="${element["url"]}" target="_blank">${element["url"]}</a></td> <td class="link-list"><a href="${element["shortcut"]}" target="_blank">${element["shortcut"]}</a></td> </tr>`;
+            }
+            $(".links-list").append(resultat);
+        } catch(error) {}
+    }
+
     /* Window Scroll Top Button */
     const $btnScrollTop = $('.scroll-top-arrow');
     $btnScrollTop.on('click', function () {
         $('html, body').animate({scrollTop: 0}, 800);
         return false;
     });
+
+    // Affiche l'input selon le choix de l'utilisateur sur la page linkShortener
+    if(chemin === '/views/function-views/linkShortener.php') {
+        $('.hideUserShortcut').hide();
+        $("#option").bind("keyup change", () => {
+            if ($("#option").val() == "userShortcut") {
+                $('.hideUserShortcut').show();
+            } else {
+                $('.hideUserShortcut').hide();
+            }
+        });
+    }
 
     /* Date Picker */
     $.fn.datepicker.dates['fr'] = {
