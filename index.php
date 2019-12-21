@@ -22,9 +22,9 @@
         </div>
         <div class="col-sm-12 col-md-6 pb-4">
             <div class="text-center pb-5">
-                <h2 class="function-list-title"><a target="_blank" href="https://docs.google.com/forms/d/1NliUWi3lntHDM42Td0C47J0cZKgnYilxT_0UcdmVaog/">Donnez votre avis :</a></h2>
-                <a target="_blank" href="https://docs.google.com/forms/d/1NliUWi3lntHDM42Td0C47J0cZKgnYilxT_0UcdmVaog/"><img class="function-list-image" src="/img/Feedback-Formulaire.png" alt=""></a>
-                <p class="function-list-description">Vous pouvez m'envoyer votre avis sur le projet grâce au <a href="https://docs.google.com/forms/d/1NliUWi3lntHDM42Td0C47J0cZKgnYilxT_0UcdmVaog/" target="_blank">Feedback Formulaire</a> 📝.</p>
+                <h2 class="function-list-title"><a href="/views/feedback-form_view.php">Donnez votre avis :</a></h2>
+                <a href="/views/feedback-form_view.php"><img class="function-list-image" src="/img/Feedback-Formulaire.png" alt=""></a>
+                <p class="function-list-description">Vous pouvez m'envoyer votre avis sur le projet grâce au <a href="/views/feedback-form_view.php">Feedback Formulaire</a> 📝.</p>
             </div>
         </div>
     </div>

@@ -104,6 +104,15 @@ pre code {
     max-width: 200px;
     vertical-align: middle;
 }
+.error {
+    color: #ff7f7f !important;
+}
+.success {
+    color: #90EE90 !important;
+}
+.italic {
+    font-style: italic;
+}
 
 /* FOOTER */
 footer

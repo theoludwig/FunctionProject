@@ -4,6 +4,7 @@ $currentpage = $_SERVER['PHP_SELF'];
 
 $indexActive = '';
 $functionlistActive = '';
+$feedbackActive = '';
 
 switch ($currentpage) {
     case '/index.php':
@@ -17,6 +18,17 @@ switch ($currentpage) {
         $description = 'La liste des mini-programmes.';
         $image = 'https://function.divlo.fr/img/FunctionProject_icon.png';
         $functionlistActive = 'active';
+        break;
+    case '/views/feedback-form_view.php':
+        $title = 'Feedback Formulaire';
+        $description = "Vous pouvez m'envoyer votre avis sur le projet grâce à ce formulaire 📝.";
+        $image = 'https://function.divlo.fr/img/Feedback-Formulaire.png';
+        $feedbackActive = 'active';
+        break;
+    case '/views/feedback-list.php':
+        $title = 'Liste des feedback';
+        $description = "La liste de tous les feedbacks publiés.";
+        $image = 'https://function.divlo.fr/img/Feedback-Formulaire.png';
         break;
     case '/views/function-views/calculateAge.php':
         $title = 'Quel âge avez-vous ?';
