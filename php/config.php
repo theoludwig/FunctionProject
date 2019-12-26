@@ -110,6 +110,11 @@ switch ($currentpage) {
         $description = "La liste de vos liens raccourcit les plus récents.";
         $image = 'https://function.divlo.fr/img/function-image/linkShortener.png';
         break;
+    case '/views/function-views/toDoList.php':
+        $title = 'Liste de choses à faire';
+        $description = "La liste des choses à faire.";
+        $image = 'https://function.divlo.fr/img/function-image/toDoList.png';
+        break;
     default:
         $title = 'Erreur 404';
         $description = "Cette page n'existe pas!";

@@ -126,6 +126,17 @@
                 <a href="./function-views/linkShortener.php"><img class="function-list-image" src="/img/function-image/linkShortener.png" alt="Raccourcisseurs de liens"></a>
                 <p class="function-list-description">Une URL trop longue ? Raccourcissez-là !</p>
             </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 pb-4">
+            <div class="text-center pb-5">
+                <h2 class="function-list-title"><a href="./function-views/toDoList.php">Liste de choses à faire</a></h2>
+                <a href="./function-views/toDoList.php"><img class="function-list-image" src="/img/function-image/toDoList.png" alt="ToDoList"></a>
+                <p class="function-list-description"></p>
+            </div>
+        </div>
     </div>
 
 </div>
