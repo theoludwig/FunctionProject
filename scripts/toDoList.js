@@ -18,10 +18,16 @@ function addTask(task, id, done, trash) {
     if(trash) { 
         return; 
     }
-    const item = `<li class="item" id=${id}>
-                    <i class="fa ${(done) ? check : unCheck} co" id="complete"></i>
-                    <p class="text ${(done) ? lineThrough : ""}">${task}</p>
-                    <i class="fas fa-trash-alt de" id="removeTask"></i>
+    const item = `<li class="item row" id=${id}>
+                    <div class="col-2">
+                        <i class="fa ${(done) ? check : unCheck} co" id="complete"></i>
+                    </div>
+                    <div class="col-8">
+                        <p class="text text-center ${(done) ? lineThrough : ""}">${task}</p>
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-trash-alt de" id="removeTask"></i>
+                    </div>
                   </li>
                 `;
     list.insertAdjacentHTML("beforeend", item);
@@ -49,19 +55,19 @@ btnAddTask.addEventListener('click', (event) => {addTaskElement(event)});
 list.addEventListener('click', (event) => {
     const element = event.target; 
     const elementJob = element.getAttribute('id');
-    const elementId = element.parentNode.getAttribute('id');
+    const elementId = element.parentNode.parentNode.getAttribute('id');
 
     /* Tâche compléter */
     if(elementJob == "complete") {
         element.classList.toggle(check);
         element.classList.toggle(unCheck);
-        element.parentNode.querySelector(".text").classList.toggle(lineThrough);
+        element.parentNode.parentNode.querySelector(".text").classList.toggle(lineThrough);
         tasksListArray[elementId].done = tasksListArray[elementId].done ? false : true;
     }
 
     /* Supprime une tâche */
     else if(elementJob == "removeTask") {
-        element.parentNode.parentNode.removeChild(element.parentNode);
+        element.parentNode.parentNode.remove();
         tasksListArray[elementId].trash = true;
     }
     localStorage.setItem("tasks", JSON.stringify(tasksListArray));

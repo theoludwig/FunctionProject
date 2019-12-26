@@ -163,10 +163,6 @@ footer i:hover
 }
 .clear{
     width : 30px;
-    height: 30px;
-    position: absolute;
-    right:20px;
-    top: 20px;
 }
 .clear i{
     font-size: 27px;
@@ -192,7 +188,7 @@ footer i:hover
     margin:0;
 }
 .item{
-    height: 45px;
+    height: 100%;
     min-height: 45px;
     position: relative;
     border-bottom: 1px solid rgba(0,0,0,0.1);
@@ -214,13 +210,8 @@ footer i:hover
     color:#6eb200;
 }
 .item p.text {
-    position: absolute;
-    padding:0;
-    margin:0;
+    margin-top: 10px;
     font-size: 20px;
-    left:50px;
-    top:10px;
-    max-width:285px;
     transition: 0.2s;
     color: #181818;
 }
