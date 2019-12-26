@@ -21,6 +21,7 @@ texteFonctionChange = [
   `<a href="/views/function-views/heapAlgorithm.php">génèrer toutes les permutations uniques possibles d'une chaîne de caractère</a>`,
   '<a href="/views/function-views/convertMarkdown.php">convertir du Markdown en HTML</a>',
   '<a href="/views/function-views/linkShortener.php">raccourcir les liens trop longs</a>',
+  '<a href="/views/function-views/toDoList.php">faire une liste de choses à faire</a>',
   '<a href="/views/function-views/weatherRequest.php">connaître la météo</a>'
 ];
 
