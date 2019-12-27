@@ -185,13 +185,11 @@ function filterStudents(filteredLetter, students)
  * @description Génère aléatoirement une citation ou un proverbe.
  * @requires {@link variables.js: quotes}
  * @requires {@link fonctions_principales.js: randomNumber}
- * @returns {string} - une citation au hasard à partir de la constante 'quotes' dans variables.js
- * @example getRandomQuote() → " Ne fais jamais rien contre ta conscience, même si l'Etat te le demande. " <br> <br> - Albert Einstein
+ * @returns {object} - une citation au hasard à partir de la constante 'quotes' dans variables.js
+ * @example getRandomQuote() → { quote: "Ne fais jamais rien contre ta conscience, même si l'Etat te le demande.", source: "Albert Einstein" }
  */
 function getRandomQuote() {
-    const randomNbr = randomNumber(0, (quotes.length - 1));
-    const randomQuotes = quotes[randomNbr];
-    return  '" ' + randomQuotes["quote"] + ' " <br> <br> - ' + randomQuotes["source"];
+    return quotes[randomNumber(0, (quotes.length - 1))];
 } 
 
 /** 

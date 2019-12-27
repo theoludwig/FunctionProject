@@ -23,8 +23,12 @@
                 <button type="submit" id="submitRandomQuote" class="btn btn-dark text-center">Générer une nouvelle citation</button>
             </div>
         </div>
-        <br> <br>
-		<p class="resultsRandomQuote text-center"></p>
+        <br> 
+        <p class="resultsRandomQuote text-center"></p>
+        <br>
+        <div class="text-center">
+            <a target="_blank" id="twitterLink" class="btn btn-lg btn-primary"><i class="fab fa-twitter"></i> Twitter</a>
+        </div>
     </div>
 </div>
 
