@@ -15,6 +15,7 @@ body {
     color: var(--text-color);
     font-family: 'Montserrat', 'Arial', sans-serif;
     margin: 0 0 var(--footer-height); /* bottom = footer height */
+    padding-top: 96px; /* Hauteur de la navbar */
 }
 .important {
     color: var(--important);
@@ -44,6 +45,13 @@ header {
     padding-bottom: 0;
 }
 .navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: var(--background-color);
     border-bottom: var(--border-header-footer);
 }
 .nav-link {
