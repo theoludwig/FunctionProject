@@ -39,7 +39,7 @@
         <link rel="stylesheet" href="/css/style.css">
     </head>
     
-    <body>
+    <body class="d-flex flex-column">
         <header>    
             <nav class="navbar navbar-expand-lg navbar-dark static-top">
                 <div class="container" id="header-container">

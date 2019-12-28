@@ -1,6 +1,5 @@
         <footer class="text-center">
             <div class="container-fluid">
-                <!-- <a href="#" class="scroll-top-arrow important"><i class="fas fa-arrow-up"></i></a> -->
                 <div class="row">
                     <div class="col-12">
                         <a href="#" class="scroll-top-arrow important"><i class="fas fa-arrow-up"></i></a>

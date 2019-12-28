@@ -38,9 +38,6 @@ p {
 }
 
 /* HEADER */
-header {
-    margin-bottom: 4%;
-}
 #header-container {
     padding-bottom: 0;
 }
@@ -59,13 +56,13 @@ header {
 }
 
 /* CONTENT */
+main {
+    padding-top: 81px;
+}
 @media (max-width: 576px) {
     .container {
         width: 90% !important;
     }
-}
-.container {
-    padding-bottom: 25px;
 }
 .selectInline {
     display: inline-block !important;
