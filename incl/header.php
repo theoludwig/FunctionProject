@@ -39,16 +39,18 @@
         <link rel="stylesheet" href="/css/animationsScroll.css">
         <link rel="stylesheet" href="/css/loader.css">
         <link rel="stylesheet" href="/css/style.css">
+
+        <!-- Preload Script -->
+        <script>
+            /* Au chargement de la page */
+            window.addEventListener('load', () => {
+                document.querySelector('body').classList.remove('loading');
+                document.getElementById('preloader').remove();
+            }); 
+        </script>
     </head>
     
     <body class="loading d-flex flex-column">
-
-        <!-- Preload -->
-        <div id="overlay"></div>
-        <div id="preloader">
-            <div class="preload-icon"><span></span><span></span></div>
-            <div class="preload-text">Loading ...</div>
-        </div>
 
         <div class="mainContent">
             <header>    
