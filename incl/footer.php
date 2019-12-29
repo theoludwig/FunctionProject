@@ -12,6 +12,7 @@
 
         <!-- Scripts JS -->
         <script defer src="/scripts/libs/jquery-min.js"></script>
+        <script defer src="/scripts/libs/plugins/jquery.appear.min.js"></script>
         <script defer src="/scripts/libs/bootstrap-min.js"></script>
         <script defer src="/scripts/libs/moment.js"></script>
         <script defer src="/scripts/libs/jquery-ui-min.js"></script>

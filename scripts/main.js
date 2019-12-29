@@ -1,4 +1,19 @@
 $(function () {
+
+    /* Apparition au défilement avec animation */
+    function setWindowScrollAppear() {
+        var $animate = $('.animate-up, .animate-down, .animate-left, .animate-right');
+        $animate.appear();
+        $animate.on('appear', function (event, affected) {
+            for (var i = 0; i < affected.length; i++) {
+                console.log(affected[i]);
+                $(affected[i]).addClass('animated');
+            }
+        });
+        $.force_appear();
+    }
+    setWindowScrollAppear();
+
     /* Changement du texte accueil (exemples de fonction) */
     if(chemin === "/" || chemin === '/index.php') {
         let index=-1;

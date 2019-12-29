@@ -11,7 +11,7 @@
             <h1>La liste des <span class="important">Fonctions</span> :</h1>
         </div>
 
-        <div class="row pt-4">
+        <div class="row pt-4 animate-up">
             <div class="col-sm-12 col-md-6 pb-4">
                 <div class="text-center pb-5">
                     <h2 class="function-list-title"><a href="./function-views/weatherRequest.php">Météo</a></h2>
@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row animate-up">
             <div class="col-sm-12 col-md-6 pb-4">
                 <div class="text-center pb-5">
                     <h2 class="function-list-title"><a href="./function-views/calculateAge.php">Quel âge avez-vous ?</a></h2>
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row animate-up">
             <div class="col-sm-12 col-md-6 pb-4">
                 <div class="text-center pb-5">
                     <h2 class="function-list-title"><a href="./function-views/convertDistance.php">Conversion de Distance</a></h2>
@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row animate-up">
             <div class="col-sm-12 col-md-6 pb-4">
                 <div class="text-center pb-5">
                     <h2 class="function-list-title"><a href="./function-views/randomQuote.php">Générateur de citations</a></h2>
@@ -79,7 +79,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row animate-up">
             <div class="col-sm-12 col-md-6 pb-4">
                 <div class="text-center pb-5">
                     <h2 class="function-list-title"><a href="./function-views/convertEncoding.php">Conversion des Encodages de caractères</a></h2>
@@ -96,7 +96,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row animate-up">
             <div class="col-sm-12 col-md-6 pb-4">
                 <div class="text-center pb-5">
                     <h2 class="function-list-title"><a href="./function-views/armstrongNumber.php">Nombre d'Armstrong</a></h2>
@@ -113,7 +113,7 @@
             </div>
         </div>
         
-        <div class="row">
+        <div class="row animate-up">
             <div class="col-sm-12 col-md-6 pb-4">
                 <div class="text-center pb-5">
                     <h2 class="function-list-title"><a href="./function-views/convertMarkdown.php">Markdown</a></h2>
@@ -130,7 +130,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row animate-up">
             <div class="col-12 pb-4">
                 <div class="text-center pb-5">
                     <h2 class="function-list-title"><a href="./function-views/toDoList.php">Liste de choses à faire</a></h2>

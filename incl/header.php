@@ -36,6 +36,7 @@
         <link rel="stylesheet" href="/css/libs/bootstrap-datepicker3.css">
         <link rel="stylesheet" href="/css/libs/fonts.css">
         <link rel="stylesheet" href="/css/libs/fontawesome/css/all.css">
+        <link rel="stylesheet" href="/css/animationsScroll.css">
         <link rel="stylesheet" href="/css/style.css">
     </head>
     
