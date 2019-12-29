@@ -16,19 +16,21 @@
     <div class="text-center">
       <img class="function-image" src="/img/function-image/weatherRequest.png" alt="Météo">
     </div>
-    <div class="form-group">
-      <label for="cityName">Entrez le nom d'une ville :</label>
-          <input name="cityName" type="text" id="cityName" placeholder="(e.g : Paris, FR)" class="form-control">
-          <br>
-          <div class="form-row text-center">
-              <div class="col-12">
-                  <button type="submit" id="submitWeatherRequest" class="btn btn-dark text-center">Envoyer</button>
-              </div>
-          </div>
-          <br> <br>
-      <p class="results text-center"></p>
+    <form id="weatherForm" action="#" method="POST">
+      <div class="form-group">
+        <label for="cityName">Entrez le nom d'une ville :</label>
+            <input name="city" type="text" id="cityName" placeholder="(e.g : Paris, FR)" class="form-control">
+            <br>
+            <div class="form-row text-center">
+                <div class="col-12">
+                    <button type="submit" id="submitWeatherRequest" class="btn btn-dark text-center">Envoyer</button>
+                </div>
+            </div>
+            <br> <br>
+        <p class="results text-center"></p>
+        </div>
       </div>
-  </div>
+  </form>
 </main>
 
 <!-- Footer -->

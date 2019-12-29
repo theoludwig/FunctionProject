@@ -12,10 +12,11 @@
  * @example  
  * Ajoute au DOM de la page dans la div .results, la météo de la ville demandée.
  */ 
-function weatherRequest() {
+function weatherRequest(cityData) {
     $.ajax({
+        type: 'POST',
         url: '/php/getWeatherJson.php', 
-        type: "POST",
+        data: cityData,
             success: function(data) {
                 try {
                     const json = jQuery.parseJSON(data);

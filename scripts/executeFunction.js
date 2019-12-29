@@ -8,15 +8,16 @@ $(function () {
         }
     });
 
-    $("#submitWeatherRequest").click(() => {
+    $("#submitWeatherRequest").click((event) => {
+        event.preventDefault();
         const city = $('#cityName').val();
-        const cityName = city.split(' ').join('+'); 
+        const cityName = city.split(' ').join('+');
+        const data = `city=${cityName}`; 
         if(isEmptyValue(cityName)) {
             $('.results').html(emptyMessageError);
         }
         else {
-            createSessionCookie("city", cityName); 
-            weatherRequest();
+            weatherRequest(data);
         }
     });
 
