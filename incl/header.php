@@ -37,38 +37,40 @@
         <link rel="stylesheet" href="/css/libs/fonts.css">
         <link rel="stylesheet" href="/css/libs/fontawesome/css/all.css">
         <link rel="stylesheet" href="/css/animationsScroll.css">
+        <link rel="stylesheet" href="/css/loader.css">
         <link rel="stylesheet" href="/css/style.css">
     </head>
     
-    <body class="d-flex flex-column">
-        <header>    
-            <nav class="navbar navbar-expand-lg navbar-dark static-top">
-                <div class="container" id="header-container">
-                    <!-- Brand -->
-                    <a class="navbar-brand" href="/index.php">
-                        <img id="logo-header" alt="FunctionProject">
-                    </a>
+    <body class="loading d-flex flex-column">
+        <div class="mainContent">
+            <header>    
+                <nav class="navbar navbar-expand-lg navbar-dark static-top">
+                    <div class="container" id="header-container">
+                        <!-- Brand -->
+                        <a class="navbar-brand" href="/index.php">
+                            <img id="logo-header" alt="FunctionProject">
+                        </a>
 
-                    <!-- Hamburger icon on Mobile -->
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <!-- Hamburger icon on Mobile -->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
-                    <!-- Navigation -->
-                    <div class="collapse navbar-collapse" id="navbarResponsive">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item <?php echo $indexActive?>">
-                                <a class="nav-link" href="/index.php">Accueil</a>
-                            </li>
-                            <li class="nav-item <?php echo $functionlistActive?>">
-                                <a class="nav-link" href="/views/function-list.php">Liste des fonctions</a>
-                            </li>
-                            <li class="nav-item <?php echo $feedbackActive?>">
-                                <a class="nav-link" href="/views/feedback-form_view.php">Feedback Formulaire</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" target="_blank" href="https://github.com/Divlo/FunctionProject">Code Source</a>
-                            </li>
-                        </ul>
+                        <!-- Navigation -->
+                        <div class="collapse navbar-collapse" id="navbarResponsive">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item <?php echo $indexActive?>">
+                                    <a class="nav-link" href="/index.php">Accueil</a>
+                                </li>
+                                <li class="nav-item <?php echo $functionlistActive?>">
+                                    <a class="nav-link" href="/views/function-list.php">Liste des fonctions</a>
+                                </li>
+                                <li class="nav-item <?php echo $feedbackActive?>">
+                                    <a class="nav-link" href="/views/feedback-form_view.php">Feedback Formulaire</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" target="_blank" href="https://github.com/Divlo/FunctionProject">Code Source</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
-        </header>
+                </nav>
+            </header>
