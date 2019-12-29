@@ -42,6 +42,14 @@
     </head>
     
     <body class="loading d-flex flex-column">
+
+        <!-- Preload -->
+        <div id="overlay"></div>
+        <div id="preloader">
+            <div class="preload-icon"><span></span><span></span></div>
+            <div class="preload-text">Loading ...</div>
+        </div>
+
         <div class="mainContent">
             <header>    
                 <nav class="navbar navbar-expand-lg navbar-dark static-top">

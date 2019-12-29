@@ -11,13 +11,6 @@
         </footer>
     </div>
 
-        <!-- Preload -->
-        <div id="overlay"></div>
-        <div id="preloader">
-            <div class="preload-icon"><span></span><span></span></div>
-            <div class="preload-text">Loading ...</div>
-        </div>
-
         <!-- Scripts JS -->
         <script defer src="/scripts/libs/jquery-min.js"></script>
         <script defer src="/scripts/libs/plugins/jquery.appear.min.js"></script>
