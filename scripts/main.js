@@ -6,7 +6,6 @@ $(function () {
         $animate.appear();
         $animate.on('appear', function (event, affected) {
             for (var i = 0; i < affected.length; i++) {
-                console.log(affected[i]);
                 $(affected[i]).addClass('animated');
             }
         });
