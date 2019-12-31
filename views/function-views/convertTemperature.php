@@ -12,18 +12,20 @@
     <div class="text-center">
       <img class="function-image" src="/img/function-image/convertTemperature.png" alt="Thermomètre">
     </div>
-    <div class="form-group">
-      <label for="temperatureValue">Entrez la température :</label>
-          <input name="temperatureValue" type="text" id="temperatureValue" placeholder="(e.g : 23°C)" class="form-control">
-          <br>
-          <div class="form-row text-center">
-              <div class="col-12">
-                  <button type="submit" id="submitConvertTemperature" class="btn btn-dark text-center">Envoyer</button>
-              </div>
-          </div>
-          <br> <br>
-      <p class="results text-center"></p>
-      </div>
+    <form id="convertTemperatureForm" action="#" method="POST">
+      <div class="form-group">
+        <label for="temperatureValue">Entrez la température :</label>
+            <input name="temperatureValue" type="text" id="temperatureValue" placeholder="(e.g : 23°C)" class="form-control">
+            <br>
+            <div class="form-row text-center">
+                <div class="col-12">
+                    <button type="submit" id="submitConvertTemperature" class="btn btn-dark text-center">Envoyer</button>
+                </div>
+            </div>
+            <br> <br>
+            <p class="results text-center"></p>
+        </div>
+    </form>
   </div>
 </main>
 

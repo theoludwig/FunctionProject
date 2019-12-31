@@ -29,7 +29,7 @@ function formatNumberResult(num) {
 
 /** 
  * @function isFloat
- * @description Vérifie si une string est un float (integer exclu).
+ * @description Vérifie si un nombre est un float (integer exclu).
  * @param {number} value 
  * @returns {boolean} 
  * @example isFloat(76120.474) → true
