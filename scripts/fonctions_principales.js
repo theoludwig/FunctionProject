@@ -549,11 +549,11 @@ function armstrongNumber(number) {
         resultString = resultString + " + " + numberString[i] + "<sup>" + numberStringLength + "</sup>";
     }
 
-    number = formatNumberResult(number);
+    const formattedNumber = formatNumberResult(number);
     if (result === number) {
-        return `${number} est un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.`;
+        return `${formattedNumber} est un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.`;
     } else {
-        return `${number} n'est pas un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.`;
+        return `${formattedNumber} n'est pas un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.`;
     }
 } 
 

@@ -39,6 +39,9 @@
         <link rel="stylesheet" href="/css/animationsScroll.css">
         <link rel="stylesheet" href="/css/loader.css">
         <link rel="stylesheet" href="/css/style.css">
+        <?php if($toDoListCSS) { ?>
+        <link rel="stylesheet" href="/css/toDoList.css">
+        <?php } ?>
 
         <!-- Preload Script -->
         <script>

@@ -5,6 +5,7 @@ $currentpage = $_SERVER['PHP_SELF'];
 $indexActive = '';
 $functionlistActive = '';
 $feedbackActive = '';
+$toDoListCSS = false;
 
 switch ($currentpage) {
     case '/index.php':
@@ -114,6 +115,7 @@ switch ($currentpage) {
         $title = 'Liste de choses à faire';
         $description = "La liste des choses à faire.";
         $image = 'https://function.divlo.fr/img/function-image/toDoList.png';
+        $toDoListCSS = true;
         break;
     default:
         $title = 'Erreur 404';

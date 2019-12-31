@@ -1,0 +1,112 @@
+/* ToDo List */
+
+/* ------------ header ------------ */
+.header{
+    height:100%;
+    background-color: #fff;
+    border-radius: 15px 15px 0 0;
+    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+.toDoListTitle {
+    color: #181818;
+    font-family: 'Montserrat', 'Arial', sans-serif;
+}
+.clear{
+    width : 30px;
+}
+.clear i{
+    font-size: 27px;
+    color: #181818;
+}
+.clear i:hover{
+    cursor: pointer;
+    transform: rotate(60deg);
+}
+
+/* ------------ content ------------ */
+.content{
+    height: 350px;
+    max-height:350px;
+    overflow: auto;
+    background-color: #fff;
+}
+.content::-webkit-scrollbar { 
+    display: none; 
+}
+.content ul{
+    padding:0;
+    margin:0;
+}
+.item{
+    height: 100%;
+    min-height: 45px;
+    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.item i.co{
+    position: absolute;
+    font-size: 25px;
+    padding-left:5px;
+    left:15px;
+    top:10px;
+}
+.item i.co:hover{
+    cursor: pointer;
+}
+.fa-check-circle{
+    color:#6eb200;
+}
+.item p.text {
+    margin-top: 10px;
+    font-size: 20px;
+    transition: 0.2s;
+    color: #181818;
+}
+.lineThrough {
+    text-decoration: line-through;
+    color : #ccc;
+}
+.item i.de{
+    color: #363636;
+    position: absolute;
+    font-size: 25px;
+    right:15px;
+    top:10px;
+}
+.item i.de:hover{
+    color:#af0000;
+    cursor: pointer;
+}
+/* ------------ add item ------------ */
+.add-to-do{
+    position: relative;
+    height:80px;
+    padding: 10px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-radius: 0 0 15px 15px;
+    background-color: #fff;
+}
+.add-to-do i{
+    position: absolute;
+    font-size: 40px;
+    color: #4162f6;
+}
+
+.add-to-do input{
+    position: absolute;
+    left: 50px;
+    height: 35px;
+    border: none;
+    font-size: 20px;
+    padding-left:10px;
+    max-width: 50%;
+}
+.add-to-do input::-webkit-input-placeholder { 
+    color: #4162f6;
+    font-family: sans-serif;
+    font-size: 20px;
+}
