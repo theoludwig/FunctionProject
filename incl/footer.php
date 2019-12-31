@@ -29,12 +29,12 @@
         <script defer src="/scripts/variables.js"></script>
         <script defer src="/scripts/fonctions_annexes.js"></script>
         <script defer src="/scripts/main.js"></script>
-        <script defer src="/scripts/executeFunction.js"></script>
         <?php 
             // Ajouts des scripts personnalisés pour chaque page
             foreach ($scripts as $script) {
                 echo $script;
             }
         ?>
+
     </body>
 </html>

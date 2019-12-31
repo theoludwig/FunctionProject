@@ -40,7 +40,5 @@
     </div>
 </main>
 
-<script defer src="/scripts/toDoList.js"></script>
-
 <!-- Footer -->
 <?php include("../../incl/footer.php");?>
