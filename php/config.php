@@ -6,6 +6,7 @@ $indexActive = '';
 $functionlistActive = '';
 $feedbackActive = '';
 $toDoListCSS = false;
+$dataPickerCSS = false;
 $scripts = array();
 
 switch ($currentpage) {
@@ -39,6 +40,7 @@ switch ($currentpage) {
         $title = 'Quel âge avez-vous ?';
         $description = "Calcule l'âge selon la date de naissance.";
         $image = 'https://function.divlo.fr/img/function-image/calculateAge.png';
+        $dataPickerCSS = true;
         $scripts = array('<script defer src="/scripts/libs/moment.js"></script>', '<script defer src="/scripts/libs/jquery-ui-min.js"></script>', '<script defer src="/scripts/libs/bootstrap-datepicker-min.js"></script>', '<script type="module" defer src="/scripts/execute-function/calculateAge_DOM.js"></script>');
         break;
     case '/views/function-views/convertDistance.php':

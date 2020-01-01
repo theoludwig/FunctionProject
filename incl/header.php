@@ -33,9 +33,11 @@
 
         <!-- Styles CSS -->
         <link rel="stylesheet" href="/css/libs/bootstrap-min.css">
+        <?php if($dataPickerCSS) { ?>
         <link rel="stylesheet" href="/css/libs/bootstrap-datepicker3.css">
+        <?php } ?>
         <link rel="stylesheet" href="/css/libs/fonts.css">
-        <link rel="stylesheet" href="/css/libs/fontawesome/css/all.css">
+        <link rel="stylesheet" href="/css/libs/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="/css/animationsScroll.css">
         <link rel="stylesheet" href="/css/loader.css">
         <link rel="stylesheet" href="/css/style.css">
