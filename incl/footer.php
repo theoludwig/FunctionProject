@@ -20,12 +20,7 @@
 
         <!-- Scripts JS -->
         <script defer src="/scripts/libs/jquery-min.js"></script>
-        <script defer src="/scripts/libs/plugins/jquery.appear.min.js"></script>
         <script defer src="/scripts/libs/bootstrap-min.js"></script>
-        <script defer src="/scripts/libs/moment.js"></script>
-        <script defer src="/scripts/libs/jquery-ui-min.js"></script>
-        <script defer src="/scripts/libs/bootstrap-datepicker-min.js"></script>
-        <script defer src="/scripts/libs/marked.min.js"></script>
         <script defer src="/scripts/main.js"></script>
         <?php 
             // Ajouts des scripts personnalisés pour chaque page

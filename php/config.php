@@ -21,7 +21,7 @@ switch ($currentpage) {
         $description = 'La liste des mini-programmes.';
         $image = 'https://function.divlo.fr/img/FunctionProject_icon.png';
         $functionlistActive = 'active';
-        $scripts = array('<script type="module" defer src="/scripts/pagesJS/functions-list.js"></script>');
+        $scripts = array('<script defer src="/scripts/libs/plugins/jquery.appear.min.js"></script>', '<script type="module" defer src="/scripts/pagesJS/functions-list.js"></script>');
         break;
     case '/views/feedback-form_view.php':
         $title = 'Feedback Formulaire';
@@ -39,7 +39,7 @@ switch ($currentpage) {
         $title = 'Quel âge avez-vous ?';
         $description = "Calcule l'âge selon la date de naissance.";
         $image = 'https://function.divlo.fr/img/function-image/calculateAge.png';
-        $scripts = array('<script type="module" defer src="/scripts/execute-function/calculateAge_DOM.js"></script>');
+        $scripts = array('<script defer src="/scripts/libs/moment.js"></script>', '<script defer src="/scripts/libs/jquery-ui-min.js"></script>', '<script defer src="/scripts/libs/bootstrap-datepicker-min.js"></script>', '<script type="module" defer src="/scripts/execute-function/calculateAge_DOM.js"></script>');
         break;
     case '/views/function-views/convertDistance.php':
         $title = 'Conversion de Distance';
@@ -117,7 +117,7 @@ switch ($currentpage) {
         $title = "Markdown";
         $description = "Convertis du Markdown en HTML.";
         $image = 'https://function.divlo.fr/img/function-image/convertMarkdown.png';
-        $scripts = array('<script type="module" defer src="/scripts/execute-function/convertMarkdown_DOM.js"></script>');
+        $scripts = array('<script defer src="/scripts/libs/marked.min.js"></script>', '<script type="module" defer src="/scripts/execute-function/convertMarkdown_DOM.js"></script>');
         break; 
     case '/views/function-views/linkShortener.php':
         $title = "Raccourcisseurs de liens";
