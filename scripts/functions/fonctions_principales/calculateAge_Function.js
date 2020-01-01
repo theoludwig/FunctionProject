@@ -1,7 +1,12 @@
+import { formatNumberResult } from '../fonctions_annexes/formatNumberResult_Function.js';
+import { isValidDate } from '../fonctions_annexes/isValidDate_Function.js';
+import { dateTimeUTC } from '../fonctions_annexes/dateTimeManagement_Functions.js';
+
 /** 
  * @function calculateAge
  * @description Calcule l'âge de quelqu'un selon ça date de naissance.
- * @requires {@link fonctions_annexes.js: formatNumberResult, isValidDate} 
+ * @requires {@link fonctions_annexes.js: formatNumberResult, isValidDate, dateTimeUTC} 
+ * @requires {@link main.js: messageError}
  * @requires {@link "external:moment.js"}
  * @see {@link https://momentjs.com/}
  * @param {string} birthDateEntered - Date de naissance (dd/mm/yyyy)

@@ -1,4 +1,5 @@
 import { decimalToBinary, binaryToDecimal, decimalToHexadecimal, hexadecimalToDecimal, binaryToHexadecimal, hexadecimalToBinary, textToNumberUnicode, numberUnicodeToText, textToBinary, binaryToText, textToHexadecimal, hexadecimalToText } from '../functions/fonctions_principales/convertEncoding_Functions.js';
+import { isEmptyValue } from '../functions/fonctions_annexes/isEmptyValue_Function.js';
 
 $(function () {
     $("#convertEncodingForm").submit((event) => {

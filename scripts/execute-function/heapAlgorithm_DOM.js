@@ -1,4 +1,6 @@
 import { heapAlgorithm } from '../functions/fonctions_principales/heapAlgorithm_Function.js';
+import { isEmptyValue } from '../functions/fonctions_annexes/isEmptyValue_Function.js';
+import { formatNumberResult } from '../functions/fonctions_annexes/formatNumberResult_Function.js';
 
 $(function () {
     $("#heapAlgorithmForm").submit((event) => {

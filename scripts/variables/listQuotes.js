@@ -1,99 +1,4 @@
-/* LES VARIABLES */
-
-let chemin = window.location.pathname;
-
-/* Messages d'erreur */
-const emptyMessageError = "Vous ne pouvez pas rentré de valeur vide.";
-const messageError = "Vous n'avez pas rentré de valeur valide.";
-
-/* Variable du texte accueil (exemples de fonction) */
-texteFonctionChange = [
-  '<a href="/views/function-views/randomNumber.php">générer des nombres aléatoires</a>',
-  `<a href="/views/function-views/calculateAge.php">calculer votre âge</a>`, 
-  '<a href="/views/function-views/convertTemperature.php">convertir des températures</a>',
-  '<a href="/views/function-views/convertDistance.php">convertir des distances</a>',
-  '<a href="/views/function-views/filterStudents.php">trier des prénoms par leur première lettre</a>',
-  '<a href="/views/function-views/randomQuote.php">générer des citations</a>',
-  '<a href="/views/function-views/convertCurrency.php">convertir des devises</a>',
-  '<a href="/views/function-views/convertEncoding.php">convertir des nombres de différentes bases.</a>',
-  '<a href="/views/function-views/convertRomanArabicNumbers.php">convertir des nombres arabes en nombres romains</a>',
-  `<a href="/views/function-views/armstrongNumber.php">vérifier si un nombre fait partie des nombres d'Armstrong</a>`,
-  `<a href="/views/function-views/heapAlgorithm.php">génèrer toutes les permutations uniques possibles d'une chaîne de caractère</a>`,
-  '<a href="/views/function-views/convertMarkdown.php">convertir du Markdown en HTML</a>',
-  '<a href="/views/function-views/linkShortener.php">raccourcir les liens trop longs</a>',
-  '<a href="/views/function-views/toDoList.php">faire une liste de choses à faire</a>',
-  '<a href="/views/function-views/weatherRequest.php">connaître la météo</a>'
-];
-
-/* Variables pour les fonctions */
-let timeNow = new Date();
-let utcOffset = timeNow.getTimezoneOffset();
-timeNow.setMinutes(timeNow.getMinutes() + utcOffset);
-
-// Variable pour convertRomanArabicNumbers
-const correspondancesRomainArabe = 
-[
-    [1000, "M"],
-    [900, "CM"],
-    [500, "D"],
-    [400, "CD"],
-    [100, "C"],
-    [90, "XC"],
-    [50, "L"],
-    [40, "XL"],
-    [10, "X"],
-    [9, "IX"],
-    [5, "V"],
-    [4, "IV"],
-    [1, "I"],
-];
-
-// Variable pour convertCurrency
-const correspondancesMonnaie = 
-[
-{
-  currency:"£",
-  symbol:"GBP"
-},
-{
-  currency: "$ Américain",
-  symbol: "USD"
-},
-{
-  currency: "$ Canadien",
-  symbol: "CAD"
-},
-{
-  currency: "$ Australien",
-  symbol: "AUD"
-},
-{
-  currency: "$ Mexicain",
-  symbol: "MXN"
-},
-{
-  currency: "CHF",
-  symbol: "CHF"
-},
-{
-  currency: "₽",
-  symbol: "RUB"
-},
-{
-  currency: "R$",
-  symbol: "BRL"
-},
-{
-  currency: "¥",
-  symbol: "JPY"
-},
-{
-  currency: "€",
-  symbol: "EUR"
-},
-];
-
-// Variable pour randomQuote 
+/* Variable pour randomQuote */
 const quotes = 
 [
     {
@@ -289,3 +194,6 @@ const quotes =
       source:"Victor Hugo"
     }
 ];
+
+/* Exports */
+export { quotes };

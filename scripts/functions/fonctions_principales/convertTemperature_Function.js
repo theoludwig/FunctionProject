@@ -7,16 +7,13 @@
  * @example convertTemperature(23, '°C') → 23 °C = 73.4 °F
  */
 function convertTemperature(degree, unit) {
-    if (!isNaN(degree) && unit === "°C") {
+    if (unit === "°C") {
         const temperatureValue = ((degree * 9/5) + 32) + " °F";
         return degree + " " + unit + " = " + temperatureValue;
     }
-    else if (!isNaN(degree) && unit === "°F") {
+    else if (unit === "°F") {
         const temperatureValue = (degree - 32) * 5/9 + " °C";
         return degree + " " + unit + " = " + temperatureValue;
-    }
-    else {
-        return messageError; 
     }
 } 
 

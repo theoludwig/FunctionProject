@@ -26,8 +26,6 @@
         <script defer src="/scripts/libs/jquery-ui-min.js"></script>
         <script defer src="/scripts/libs/bootstrap-datepicker-min.js"></script>
         <script defer src="/scripts/libs/marked.min.js"></script>
-        <script defer src="/scripts/variables.js"></script>
-        <script defer src="/scripts/fonctions_annexes.js"></script>
         <script defer src="/scripts/main.js"></script>
         <?php 
             // Ajouts des scripts personnalisés pour chaque page

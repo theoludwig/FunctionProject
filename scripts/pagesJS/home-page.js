@@ -1,3 +1,5 @@
+import { texteFonctionChange } from '../variables/homeFunctionExample.js';
+
 $(function () {  
     /* Changement du texte accueil (exemples de fonction) */
     let index=-1;

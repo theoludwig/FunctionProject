@@ -1,6 +1,9 @@
+import { capitalize } from '../fonctions_annexes/capitalize_Function.js';
+
 /** 
  * @function filterStudents
  * @description Affiche uniquement les prénoms (qui sont dans la liste) qui commencent par la lettre souhaitée.
+ * @requires {@link fonctions_annexes.js: capitalize} 
  * @param {string} filteredLetter - La lettre à filtré
  * @param {array} students - La liste des prénoms
  * @returns {string} - Prénoms qui commence par filteredLetter (totalfilteredLetterStudents) : filteredStudents

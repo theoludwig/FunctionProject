@@ -1,3 +1,5 @@
+import { formatNumberResult } from '../fonctions_annexes/formatNumberResult_Function.js';
+
 /** 
  * @function armstrongNumber
  * @description Vérifie si un nombre fait partie des nombres d'Armstrong.

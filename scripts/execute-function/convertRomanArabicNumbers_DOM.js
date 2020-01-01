@@ -1,4 +1,7 @@
 import { convertArabicToRoman, convertRomanToArabic } from '../functions/fonctions_principales/convertRomanArabicNumbers_Functions.js';
+import { isEmptyValue } from '../functions/fonctions_annexes/isEmptyValue_Function.js';
+import { formatNumberResult } from '../functions/fonctions_annexes/formatNumberResult_Function.js';
+import { isFloat } from '../functions/fonctions_annexes/isFloat_Function.js';
 
 $(function () {
     $("#convertRomanArabicNumbersForm").submit((event) => {
@@ -13,7 +16,7 @@ $(function () {
             if (convertNumberType === "Nombre Romain") {
                 const result = convertArabicToRoman(parseInt(numbersValue));
                 let numbersValueFormat = formatNumberResult(numbersValue);
-                if (result === messageError || isFloat(numbersValue)) {
+                if (result === '' || isFloat(numbersValue)) {
                     $('.results').html(messageError);
                 } else {
                     $('.results').html(`<b>${numbersValueFormat}</b> s'écrit <b>${result}</b> en chiffres romains.`);

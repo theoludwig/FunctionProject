@@ -1,4 +1,6 @@
 import { filterStudents } from '../functions/fonctions_principales/filterStudents_Function.js';
+import { isEmptyValue } from '../functions/fonctions_annexes/isEmptyValue_Function.js';
+import { capitalize } from '../functions/fonctions_annexes/capitalize_Function.js';
 
 $(function () {
     $("#filterStudentsForm").submit((event) => {

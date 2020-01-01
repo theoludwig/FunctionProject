@@ -1,3 +1,6 @@
+import { formatNumberResult } from '../fonctions_annexes/formatNumberResult_Function.js';
+import { correspondancesMonnaie } from '../../variables/currencyReference.js';
+
 /** 
  * @function convertCurrency
  * @description Convertis une valeur dans une devise dans une autre devise grâce à l'API exchangeratesapi.io.

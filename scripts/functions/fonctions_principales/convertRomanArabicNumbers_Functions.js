@@ -1,3 +1,5 @@
+import { correspondancesRomainArabe } from '../../variables/romanArabicNumbersReference.js';
+
 /** 
  * @function convertArabicToRoman
  * @description Convertis un nombre arabe en nombre romain.
@@ -35,11 +37,7 @@ function convertArabicToRoman(nombre) {
         extraireChiffreRomain(correspondance[0], correspondance[1]);
     });
 
-    if (chiffresRomains === '') {
-        return messageError;
-    } else {
         return chiffresRomains;
-    }
 } 
 
 /** 

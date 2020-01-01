@@ -14,21 +14,21 @@ switch ($currentpage) {
         $description = 'FunctionProject est un projet créé par Divlo qui a pour but de rassembler plein de mini-programme permettant de faire plusieurs choses comme savoir la météo, générer un nombre aléatoire, etc.';
         $image = 'https://function.divlo.fr/img/FunctionProject_icon.png';
         $indexActive = 'active';
-        $scripts = array('<script defer src="/scripts/pagesJS/home-page.js"></script>');
+        $scripts = array('<script type="module" defer src="/scripts/pagesJS/home-page.js"></script>');
         break;
     case '/views/function-list.php':
         $title = 'Liste des fonctions';
         $description = 'La liste des mini-programmes.';
         $image = 'https://function.divlo.fr/img/FunctionProject_icon.png';
         $functionlistActive = 'active';
-        $scripts = array('<script defer src="/scripts/pagesJS/functions-list.js"></script>');
+        $scripts = array('<script type="module" defer src="/scripts/pagesJS/functions-list.js"></script>');
         break;
     case '/views/feedback-form_view.php':
         $title = 'Feedback Formulaire';
         $description = "Vous pouvez m'envoyer votre avis sur le projet grâce à ce formulaire 📝.";
         $image = 'https://function.divlo.fr/img/Feedback-Formulaire.png';
         $feedbackActive = 'active';
-        $scripts = array('<script defer src="/scripts/execute-function/feedbackForm_DOM.js"></script>');
+        $scripts = array('<script type="module" defer src="/scripts/execute-function/feedbackForm_DOM.js"></script>');
         break;
     case '/views/feedback-list.php':
         $title = 'Liste des feedback';
@@ -81,7 +81,7 @@ switch ($currentpage) {
         $title = 'Liste des citations';
         $description = "La liste de toutes les citations ou proverbes (aimé par Divlo).";
         $image = 'https://function.divlo.fr/img/function-image/randomQuote.png';
-        $scripts = array('<script defer src="/scripts/pagesJS/quote-list.js"></script>');
+        $scripts = array('<script type="module" defer src="/scripts/pagesJS/quote-list.js"></script>');
         break;
     case '/views/function-views/convertCurrency.php':
         $title = 'Conversion de devise';
@@ -123,20 +123,20 @@ switch ($currentpage) {
         $title = "Raccourcisseurs de liens";
         $description = "Une URL trop longue ? Raccourcissez-là !";
         $image = 'https://function.divlo.fr/img/function-image/linkShortener.png';
-        $scripts = array('<script defer src="/scripts/execute-function/linkShortener_DOM.js"></script>');
+        $scripts = array('<script type="module" defer src="/scripts/execute-function/linkShortener_DOM.js"></script>');
         break; 
     case '/views/short_links-list.php':
         $title = 'Liste des liens récemment raccourcit';
         $description = "La liste de vos liens raccourcit les plus récents.";
         $image = 'https://function.divlo.fr/img/function-image/linkShortener.png';
-        $scripts = array('<script defer src="/scripts/pagesJS/short_links-list.js"></script>');
+        $scripts = array('<script type="module" defer src="/scripts/pagesJS/short_links-list.js"></script>');
         break;
     case '/views/function-views/toDoList.php':
         $title = 'Liste de choses à faire';
         $description = "La liste des choses à faire.";
         $image = 'https://function.divlo.fr/img/function-image/toDoList.png';
         $toDoListCSS = true;
-        $scripts = array('<script defer src="/scripts/execute-function/toDoList_DOM.js"></script>');
+        $scripts = array('<script type="module" defer src="/scripts/execute-function/toDoList_DOM.js"></script>');
         break;
     default:
         $title = 'Erreur 404';

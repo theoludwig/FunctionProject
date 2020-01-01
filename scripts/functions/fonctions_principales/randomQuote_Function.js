@@ -1,4 +1,5 @@
 import { randomNumber } from './randomNumber_Function.js';
+import { quotes } from '../../variables/listQuotes.js';
 
 /** 
  * @function randomQuote

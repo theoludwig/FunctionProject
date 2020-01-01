@@ -1,6 +1,9 @@
+import { formatNumberResult } from '../fonctions_annexes/formatNumberResult_Function.js';
+
 /** 
  * @function convertDistance
  * @description Convertis la longueur (distance) avec les unités allant de picomètre au Téramètre.
+ * @requires {@link fonctions_annexes.js: formatNumberResult} 
  * @param {number} firstValue - Le nombre que vous voulez convertir
  * @param {string} unitFirstValue - L'unité du nombre que vous voulez convertir
  * @param {string} unitFinalValue -  L'unité de votre nombre après la conversion
@@ -14,7 +17,7 @@ function convertDistance (firstValue, unitFirstValue, unitFinalValue) {
     const index2 = reference.indexOf(unitFinalValue);
 
     // Condition qui vérifie si les valeurs entrées sont justes
-    if (!isNaN(firstValue) && typeof unitFirstValue === 'string' && typeof unitFinalValue === 'string' && (index1.toString() && index2.toString()) != '-1') {
+    if ((index1.toString() && index2.toString()) !== '-1') {
         // Conversion des longueurs : 
         const difference = index1 - index2; 
         const result = firstValue*Math.pow(10,difference);

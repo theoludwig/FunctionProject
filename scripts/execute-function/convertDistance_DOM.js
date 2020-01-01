@@ -1,4 +1,5 @@
 import { convertDistance } from '../functions/fonctions_principales/convertDistance_Function.js';
+import { isEmptyValue } from '../functions/fonctions_annexes/isEmptyValue_Function.js';
 
 $(function () {
     $("#convertDistanceForm").submit((event) => {

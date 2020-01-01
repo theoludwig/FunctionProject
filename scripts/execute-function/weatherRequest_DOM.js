@@ -1,4 +1,5 @@
 import { weatherRequest } from '../functions/fonctions_principales/weatherRequest_Function.js';
+import { isEmptyValue } from '../functions/fonctions_annexes/isEmptyValue_Function.js';
 
 $(function () {
     $("#weatherForm").submit((event) => {
