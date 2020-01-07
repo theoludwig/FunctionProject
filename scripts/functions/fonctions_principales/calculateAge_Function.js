@@ -36,10 +36,10 @@ function calculateAge(birthDateEntered) {
     const isValidDateFunction = isValidDate(birthDateDay + '/' + birthDateMonth + '/' + birthDateYear, currentDateObject.showDateTimeValue); 
 
     // Vérifie si la valeur entrée correspond à une date de naissance valide
-    if(isValidDateFunction === true && !isNaN(ageDays)) {
+    if(isValidDateFunction && !isNaN(ageDays)) {
         ageYears = formatNumberResult(ageYears);
         // Si c'est ton anniversaire aujourd'hui
-        if(birthDateDay === day && parseInt(birthDateMonth) === month) {
+        if(birthDateDay === day && birthDateMonth === month) {
             return 'Vous avez ' + ageYears + ' ans. Joyeux Anniversaire! 🥳';
         }
         else {
