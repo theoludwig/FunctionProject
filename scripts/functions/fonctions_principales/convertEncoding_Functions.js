@@ -1,3 +1,5 @@
+import { formatNumberResult } from '../fonctions_annexes/formatNumberResult_Function.js';
+
 // Convertis des nombres de différentes bases et convertis en UTF-8. (source : http://jsfiddle.net/47zwb41o)
 /** 
  * @function decimalToBinary
