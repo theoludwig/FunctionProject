@@ -14,15 +14,15 @@ $(function () {
 				}
 			}
 		});
-
-		// Affiche l'input selon le choix de l'utilisateur sur la page linkShortener
-		$('.hideUserShortcut').hide();
-		$("#option").bind("keyup change", () => {
-			if ($("#option").val() == "userShortcut") {
-				$('.hideUserShortcut').show();
-			} else {
-				$('.hideUserShortcut').hide();
-			}
-		});
-    });
+	});
+	
+	// Affiche l'input selon le choix de l'utilisateur sur la page linkShortener
+	$('.hideUserShortcut').hide();
+	$("#option").bind("keyup change", () => {
+		if ($("#option").val() == "userShortcut") {
+			$('.hideUserShortcut').show();
+		} else {
+			$('.hideUserShortcut').hide();
+		}
+	});
 });

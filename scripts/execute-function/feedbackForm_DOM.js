@@ -1,18 +1,18 @@
 $(function () {
-	$('#formLinkShortener').submit((event) => {
-		event.preventDefault();
-		const postdata = $('#formLinkShortener').serialize();
+	$('#feedbackForm').submit((e) => {
+		e.preventDefault();
+		const postdata = $('#feedbackForm').serialize();
 		$.ajax({  
 			type: 'POST',
-			url: '../../php/shortenLink.php', 
+			url: '../../php/feedbackForm.php', 
 			data: postdata,
-			success: (text) => {
-                try {
-                    $(".results").html(JSON.parse(text).message);
-                } catch (error) { 
-					$(".results").html("URL invalide.");
-				}
+            success: (response) => {
+                const result = JSON.parse(response);
+                $(".results").html(result.message);
+                if(result.isSuccess) {
+                    $("#feedbackForm")[0].reset();
+                }
 			}
 		});
-    });
+	});
 });
