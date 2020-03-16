@@ -10,32 +10,5 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 
 [![FunctionProject](./img/FunctionProject.png)](https://function.divlo.fr/)
 
-## Installation
-**Note :** Vous aurez besoin d’un serveur Apache pour utiliser PHP (exemple: [XAMPP](https://www.apachefriends.org)).
-
-Cloner le dépôt en utilisant git :
-```text
-git clone https://github.com/Divlo/FunctionProject
-```
-
-Puis créer un nouveau fichier dans ```/php``` du nom  de ```keyVariable.php```, puis vous mettrez ce code à l'intérieur, il faudra modifier la valeur de la variable '$apiWeather' par votre clé d'api de [openweathermap.org](https://openweathermap.org/).
-```php
-<?php
-$apiWeather = 'votre clé api pour openweathermap.org';
-```
-
-Sachez tout de même que vous ne pourrez pas utiliser la fonction linkShortener car elle dépend de [short-links.divlo.fr/](https://short-links.divlo.fr/).
-Cependant, vous avez accès à la structure de la base de donnée dans ```/php/database_structure/short_links.sql```.
-
-Enjoy! =D
-
-## Librairies
-* [Fontawesome](https://fontawesome.com/) 
-* [Bootstrap](https://getbootstrap.com/)
-* [jQuery](https://jquery.com/)
-* [jQuery UI](https://jqueryui.com/)
-* [Moment.js](https://momentjs.com/)
-* [Marked.js](https://github.com/markedjs/marked)
-
 ## Licence 
 Ce projet est sous licence MIT - voir le fichier [LICENSE](./LICENSE) pour plus de détails.
