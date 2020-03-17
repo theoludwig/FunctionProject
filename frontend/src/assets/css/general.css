@@ -1,0 +1,53 @@
+/* GENERAL */
+:root {
+    --border-header-footer: 3px rgba(255, 255, 255, .7) solid;
+    --background-color: #181818;
+    --text-color: rgb(222, 222, 222);
+    --important: #ffd800;
+}
+html {
+    line-height: initial;
+}
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    padding-top: 99px;
+}
+p {
+    font-size: 18px;
+    line-height: 1.9;
+}
+h2 {
+    font-size: 1.8em;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* CONTENT */
+.content {
+    flex-grow: 1;
+    display: flex;
+}
+.centeredContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* UTILITIES */
+.text-center {
+    text-align: center;
+    word-break: break-word;
+}
+a, .important {
+    color: var(--important);
+    text-decoration: none;
+}
