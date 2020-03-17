@@ -4,7 +4,7 @@
  * @param {Object} object { httpStatus, customProperties{Object}, result }
  * @param {Boolean} isSuccess (false par defaut)
  */
-function sendResponse (res, object, isSuccess = false) {
+function sendResponse(res, object, isSuccess = false) {
     res.status(object.httpStatus || 200).json({ isSuccess, ...object.customProperties, result: object.result }); 
 }
 
