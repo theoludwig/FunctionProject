@@ -38,7 +38,7 @@ exports.armstrongNumberOutput = (res, argsObject) => {
     
     // Si ce n'est pas un nombre
     number = parseInt(number);
-    if (isNaN(number) && number >= 0) {
+    if (isNaN(number) || number <= 0) {
         return sendResponse(res, { result: "Veuillez rentré un nombre valide.", httpStatus: 400 });
     }
 

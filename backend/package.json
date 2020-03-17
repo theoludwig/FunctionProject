@@ -10,11 +10,13 @@
   "author": "Divlo",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.19.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "helmet": "^3.21.3"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "morgan": "^1.9.1",
     "nodemon": "^2.0.2"
   }
