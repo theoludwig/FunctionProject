@@ -8,7 +8,5 @@
 
 Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
 
-[![FunctionProject](./img/FunctionProject.png)](https://function.divlo.fr/)
-
 ## Licence 
 Ce projet est sous licence MIT - voir le fichier [LICENSE](./LICENSE) pour plus de détails.
