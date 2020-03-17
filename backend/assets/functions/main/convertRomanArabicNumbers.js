@@ -88,19 +88,19 @@ exports.convertRomanToArabicOutput = (res, argsObject) => {
         return sendResponse(res, generalError);
     }
         
-    return sendResponse(res, { result, httpStatus: 200 }, true);
+    return sendResponse(res, { result }, true);
 }
 
 exports.convertArabicToRomanOutput = (res, argsObject) => {
     let { number } = argsObject;
-    number = parseInt(number);
-
+    
     // S'il n'y a pas les champs obligatoire
     if (!(number)) {
         return sendResponse(res, requiredFields);
     }
-
+    
     // Si ce n'est pas un nombre
+    number = parseInt(number);
     if (isNaN(number)) {
         return sendResponse(res, { result: "Veuillez rentré un nombre valide.", httpStatus: 400 });
     }

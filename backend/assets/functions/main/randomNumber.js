@@ -15,15 +15,15 @@ function randomNumber(min, max) {
 /* OUTPUTS */
 exports.randomNumberOutput = (res, argsObject) => {
     let { min, max } = argsObject;
-    min = parseInt(min);
-    max = parseInt(max);
-
+    
     // S'il n'y a pas les champs obligatoire
     if (!(min && max)) {
         return sendResponse(res, requiredFields);
     }
-
-    // Si ce n'est pas des nombres
+    
+    // Si ce ne sont pas des nombres
+    min = parseInt(min);
+    max = parseInt(max);
     if (isNaN(min) || isNaN(max)) {
         return sendResponse(res, { result: "Les paramètres min et max doivent être des nombres...", httpStatus: 400 });
     }

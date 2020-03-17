@@ -5,7 +5,7 @@
  * @param {Boolean} isSuccess (false par defaut)
  */
 function sendResponse (res, object, isSuccess = false) {
-    res.status(object.httpStatus || 200).send({ isSuccess, ...object.customProperties, result: object.result }); 
+    res.status(object.httpStatus || 200).json({ isSuccess, ...object.customProperties, result: object.result }); 
 }
 
 module.exports = sendResponse;
