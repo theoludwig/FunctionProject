@@ -4,6 +4,7 @@ const { convertDistanceOutput }                                  = require('./ma
 const { convertTemperatureOutput }                               = require('./main/convertTemperature');
 const { armstrongNumberOutput }                                  = require('./main/armstrongNumber');
 const { weatherRequestOutput }                                   = require('./main/weatherRequest');
+const { convertCurrencyOutput }                                  = require('./main/convertCurrency');
 
 const functionObject = {
     randomNumber        : randomNumberOutput,
@@ -12,7 +13,8 @@ const functionObject = {
     convertDistance     : convertDistanceOutput,
     convertTemperature  : convertTemperatureOutput,
     armstrongNumber     : armstrongNumberOutput,
-    weatherRequest      : weatherRequestOutput
+    weatherRequest      : weatherRequestOutput,
+    convertCurrency     : convertCurrencyOutput
 };
 
 // Choisi la fonction à exécuter
