@@ -1,3 +1,14 @@
 .Functions__title {
     padding: 20px 0 20px 0;
+    margin-bottom: 0;
+}
+
+.Functions__search-container {
+    margin-bottom: 50px;
+}
+.Functions__select-option {
+    color: rgb(221, 220, 220);
+}
+.Functions__search-input {
+    width: 35%;
 }

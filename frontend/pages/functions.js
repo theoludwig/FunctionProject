@@ -14,9 +14,16 @@ const Functions = () => (
         <div className="container text-center">
 
             <div className="row justify-content-center">
-                <div className="col-24">
-                    <h1 className="Functions__title">Fonctions</h1>
-                </div>
+                <h1 className="Functions__title">Fonctions</h1>
+            </div>
+
+            <div className="Functions__search-container row justify-content-center">
+                <select className="form-control">
+                    {/* TODO: API Call to fetch categories */}
+                    <option>Toutes catégories</option>
+                    <option className="Functions__select-option" style={{ backgroundColor: "#406880" }}>✨ Utilitaires</option>
+                </select>
+                <input type="search" className="form-control Functions__search-input" name="search" id="search" placeholder="🔎 Rechercher..."></input>
             </div>
 
             <div className="row justify-content-center">
