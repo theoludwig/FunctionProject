@@ -11,11 +11,10 @@ const Functions = () => (
             image="/images/FunctionProject_icon_small.png" 
         />
         
-        <div className="container-fluid text-center">
-
+        <div className="container text-center">
 
             <div className="row justify-content-center">
-                <div className="col-16">
+                <div className="col-24">
                     <h1 className="Functions__title">Fonctions</h1>
                 </div>
             </div>

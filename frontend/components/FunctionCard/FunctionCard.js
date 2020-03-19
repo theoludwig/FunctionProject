@@ -3,7 +3,7 @@ import './FunctionCard.css';
 
 const FunctionCard = (props) =>  (
     <Link href={`/functions/${props.slug}`}>
-        <div className="FunctionCard col-sm-16 col-md-7 col-xl-5">
+        <div className="FunctionCard col-sm-24 col-md-10 col-xl-7">
             <img className="FunctionCard__image" alt={props.title} src={props.image} />
             <h2 className="FunctionCard__title">{props.title}</h2>
             <p className="FunctionCard__description">{props.description}</p>
