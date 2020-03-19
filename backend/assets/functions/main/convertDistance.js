@@ -1,4 +1,4 @@
-const sendResponse                     = require('../../utils/sendResponse');
+const errorHandling                    = require('../../utils/errorHandling');
 const { requiredFields, generalError } = require('../../config/errors');
 
 const correspondancesDistance = ["pm", null, null, "nm", null, null, "µm", null, null, "mm", "cm", "dm", "m", "dam", "hm", "km", null, null, "Mm", null, null, "Gm", null, null, "Tm"];
@@ -27,18 +27,18 @@ function convertDistance(firstValue, unitFirstValue, unitFinalValue) {
 }
 
 /* OUTPUTS */
-exports.convertDistanceOutput = (res, argsObject) => {
+exports.convertDistanceOutput = ({ res, next }, argsObject) => {
     let { number, numberUnit, finalUnit } = argsObject;
     
     // S'il n'y a pas les champs obligatoire
     if (!(number && numberUnit && finalUnit)) {
-        return sendResponse(res, requiredFields);
+        return errorHandling(next, requiredFields);
     }
     
     // Si ce n'est pas un nombre
     number = parseInt(number);
     if (isNaN(number)) {
-        return sendResponse(res, { result: "Veuillez rentré un nombre valide.", httpStatus: 400 });
+        return errorHandling(next, { message: "Veuillez rentré un nombre valide.", statusCode: 400 });
     }
 
     const result = convertDistance(number, numberUnit, finalUnit);
@@ -46,5 +46,5 @@ exports.convertDistanceOutput = (res, argsObject) => {
         return sendResponse(res, generalError);
     }
 
-    return sendResponse(res, { result }, true);
+    return res.status(200).json(result);
 }

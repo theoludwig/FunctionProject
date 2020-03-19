@@ -1,4 +1,4 @@
-const sendResponse       = require('../../utils/sendResponse');
+const errorHandling      = require('../../utils/errorHandling');
 const moment             = require('moment');
 const { requiredFields } = require('../../config/errors');
 
@@ -20,7 +20,7 @@ function calculateAge(currentDate, { birthDateDay, birthDateMonth, birthDateYear
 }
 
 /* OUTPUTS */
-exports.calculateAgeOutput = (res, argsObject) => {
+exports.calculateAgeOutput = ({ res, next }, argsObject) => {
     let { birthDateDay, birthDateMonth, birthDateYear } = argsObject;
     birthDateDay   = parseInt(birthDateDay);
     birthDateMonth = parseInt(birthDateMonth);
@@ -28,16 +28,15 @@ exports.calculateAgeOutput = (res, argsObject) => {
     
     // S'il n'y a pas les champs obligatoire
     if (!(birthDateDay && birthDateMonth && birthDateYear)) {
-        return sendResponse(res, requiredFields);
+        return errorHandling(next, requiredFields);
     }
     
     // Si ce n'est pas une date valide
     const currentDate = new Date();
     const birthDate   = new Date(birthDateYear, birthDateMonth - 1, birthDateDay);
     if (!(currentDate > birthDate)) {
-        return sendResponse(res, { result: "Veuillez rentré une date valide...", httpStatus: 400 });
+        return errorHandling(next, { message: "Veuillez rentré une date valide...", statusCode: 400 });
     }
 
-    const result = calculateAge(currentDate, { birthDateYear, birthDateMonth, birthDateDay });
-    return sendResponse(res, { result }, true);
+    return res.status(200).json(calculateAge(currentDate, { birthDateYear, birthDateMonth, birthDateDay }));
 }

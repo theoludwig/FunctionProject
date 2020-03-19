@@ -1,4 +1,4 @@
-const sendResponse                     = require('../../utils/sendResponse');
+const errorHandling                    = require('../../utils/errorHandling');
 const { requiredFields, generalError } = require('../../config/errors');
 
 /* Variable pour convertRomanArabicNumbers */
@@ -67,12 +67,12 @@ function convertRomanToArabic(str) {
 } 
 
 /* OUTPUTS */
-exports.convertRomanToArabicOutput = (res, argsObject) => {
+exports.convertRomanToArabicOutput = ({ res, next }, argsObject) => {
     let { romanNumber } = argsObject;
     
     // S'il n'y a pas les champs obligatoire
     if (!(romanNumber)) {
-        return sendResponse(res, requiredFields);
+        return errorHandling(next, requiredFields);
     }
 
     // Formate le paramètre
@@ -80,30 +80,30 @@ exports.convertRomanToArabicOutput = (res, argsObject) => {
         romanNumber = romanNumber.toUpperCase(); 
     } 
     catch { 
-        return sendResponse(res, generalError); 
+        return errorHandling(next, generalError); 
     }
 
     const result = convertRomanToArabic(romanNumber);
     if (result === 0) {
-        return sendResponse(res, generalError);
+        return errorHandling(next, generalError);
     }
         
-    return sendResponse(res, { result }, true);
+    return res.status(200).json({ result });
 }
 
-exports.convertArabicToRomanOutput = (res, argsObject) => {
+exports.convertArabicToRomanOutput = ({ res, next }, argsObject) => {
     let { number } = argsObject;
     
     // S'il n'y a pas les champs obligatoire
     if (!(number)) {
-        return sendResponse(res, requiredFields);
+        return errorHandling(next, requiredFields);
     }
     
     // Si ce n'est pas un nombre
     number = parseInt(number);
     if (isNaN(number)) {
-        return sendResponse(res, { result: "Veuillez rentré un nombre valide.", httpStatus: 400 });
+        return errorHandling(next, { message: "Veuillez rentré un nombre valide.", statusCode: 400 });
     }
 
-    return sendResponse(res, { result: convertArabicToRoman(number) }, true);
+    return res.status(200).json({ result: convertArabicToRoman(number) });
 }

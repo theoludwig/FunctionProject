@@ -1,4 +1,4 @@
-const sendResponse       = require('../../utils/sendResponse');
+const errorHandling      = require('../../utils/errorHandling');
 const { requiredFields } = require('../../config/errors');
 const formatNumberResult = require('../secondary/formatNumberResult');
 
@@ -28,19 +28,19 @@ function armstrongNumber(number) {
 }
 
 /* OUTPUTS */
-exports.armstrongNumberOutput = (res, argsObject) => {
+exports.armstrongNumberOutput = ({ res, next }, argsObject) => {
     let { number } = argsObject;
     
     // S'il n'y a pas les champs obligatoire
     if (!(number)) {
-        return sendResponse(res, requiredFields);
+        return errorHandling(next, requiredFields);
     }
     
     // Si ce n'est pas un nombre
     number = parseInt(number);
     if (isNaN(number) || number <= 0) {
-        return sendResponse(res, { result: "Veuillez rentré un nombre valide.", httpStatus: 400 });
+        return errorHandling(next, { message: "Veuillez rentré un nombre valide.", statusCode: 400 });
     }
 
-    return sendResponse(res, { result: armstrongNumber(number) }, true);
+    return res.status(200).json(armstrongNumber(number));
 }

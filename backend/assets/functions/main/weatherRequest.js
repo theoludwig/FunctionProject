@@ -1,6 +1,6 @@
 const axios               = require('axios');
 const Queue               = require('smart-request-balancer');
-const sendResponse        = require('../../utils/sendResponse');
+const errorHandling       = require('../../utils/errorHandling');
 const { requiredFields }  = require('../../config/errors');
 const { WEATHER_API_KEY } = require('../../config/config');
 
@@ -25,13 +25,13 @@ exports.weatherRequestOutput = async (res, argsObject) => {
 
     // S'il n'y a pas les champs obligatoire
     if (!(cityName)) {
-        return sendResponse(res, requiredFields);
+        return errorHandling(next, requiredFields);
     }
 
     // Récupère les données météo grâce à l'API : openweathermap.org. (→ avec limite de 50 requêtes par minute)
     queue.request(() => {
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&lang=fr&units=metric&appid=${WEATHER_API_KEY}`)
-            .then((response) => sendResponse(res, { result: response.data }, true))
-            .catch(() => sendResponse(res, { result: "La ville n'existe pas (dans l'API de openweathermap.org).", httpStatus: 404 }));
+            .then((response) => res.status(200).json(response.data))
+            .catch(() => errorHandling(next, { message: "La ville n'existe pas (dans l'API de openweathermap.org).", statusCode: 404 }));
     }, 'everyone', 'weatherRequest');
 }

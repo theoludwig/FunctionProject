@@ -1,10 +1,10 @@
+const errorHandling     = require('../assets/utils/errorHandling');
 const functionToExecute = require('../assets/functions/functionObject');
-const sendResponse      = require('../assets/utils/sendResponse');
 
-exports.executeFunctionName = (req, res, _next) => {
+exports.executeFunctionName = (req, res, next) => {
     const functionOutput = functionToExecute(req.params.functionName);
     if (functionOutput !== undefined) {
-        return functionOutput(res, req.body);
+        return functionOutput({ res, next }, req.body);
     }  
-    return sendResponse(res, { result: "La fonction n'existe pas.", httpStatus: 404 });
+    return errorHandling(next, { message: "La fonction n'existe pas.", statusCode: 404 });
 }

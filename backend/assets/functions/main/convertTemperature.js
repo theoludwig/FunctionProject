@@ -1,4 +1,4 @@
-const sendResponse                     = require('../../utils/sendResponse');
+const errorHandling                    = require('../../utils/errorHandling');
 const { requiredFields, generalError } = require('../../config/errors');
 
 /** 
@@ -29,24 +29,24 @@ function convertTemperature(degree, unit) {
 } 
 
 /* OUTPUTS */
-exports.convertTemperatureOutput = (res, argsObject) => {
+exports.convertTemperatureOutput = ({ res, next }, argsObject) => {
     let { degree, unit } = argsObject;
     
     // S'il n'y a pas les champs obligatoire
     if (!(degree && unit)) {
-        return sendResponse(res, requiredFields);
+        return errorHandling(next, requiredFields);
     }
     
     // Si ce n'est pas un nombre
     degree = parseInt(degree);
     if (isNaN(degree)) {
-        return sendResponse(res, { result: "Veuillez rentré un nombre valide.", httpStatus: 400 });
+        return errorHandling(next, { message: "Veuillez rentré un nombre valide.", statusCode: 400 });
     }
 
     const result = convertTemperature(degree, unit);
     if (!result) {
-        return sendResponse(res, generalError);
+        return errorHandling(next, generalError);
     }
 
-    return sendResponse(res, { result }, true);
+    return res.status(200).json({ result });
 }

@@ -1,4 +1,4 @@
-const sendResponse       = require('../../utils/sendResponse');
+const errorHandling      = require('../../utils/errorHandling');
 const { requiredFields } = require('../../config/errors');
 
 /** 
@@ -13,20 +13,20 @@ function randomNumber(min, max) {
 }
 
 /* OUTPUTS */
-exports.randomNumberOutput = (res, argsObject) => {
+exports.randomNumberOutput = ({ res, next }, argsObject) => {
     let { min, max } = argsObject;
     
     // S'il n'y a pas les champs obligatoire
     if (!(min && max)) {
-        return sendResponse(res, requiredFields);
+        return errorHandling(next, requiredFields);
     }
     
     // Si ce ne sont pas des nombres
     min = parseInt(min);
     max = parseInt(max);
     if (isNaN(min) || isNaN(max)) {
-        return sendResponse(res, { result: "Les paramètres min et max doivent être des nombres...", httpStatus: 400 });
+        return errorHandling(next, { message: "Les paramètres min et max doivent être des nombres...", statusCode: 400 });
     }
 
-    return sendResponse(res, { result: randomNumber(min, max) }, true);
+    return res.status(200).json({ result: randomNumber(min, max) });
 }
