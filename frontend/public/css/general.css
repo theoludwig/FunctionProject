@@ -50,6 +50,12 @@ a:hover {
     text-align: center;
     word-break: break-word;
 }
+.justify-content-center {
+    justify-content: center;
+}
+.align-items-center {
+    align-items: center;
+}
 a, .important {
     color: var(--important);
     text-decoration: none;

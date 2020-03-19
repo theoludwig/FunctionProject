@@ -39,6 +39,7 @@ export default function Header() {
                 <nav className="Header__navbar">
                     <ul className={"navbar__list " + navbarList}>
                         <NavigationLink name="Accueil" path="/" />
+                        <NavigationLink name="Fonctions" path="/functions" />
                     </ul>
                 </nav>
 
