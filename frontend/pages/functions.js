@@ -18,7 +18,7 @@ const Functions = () => (
             </div>
 
             <div className="Functions__search-container row justify-content-center">
-                <select className="form-control">
+                <select className="Functions__select form-control">
                     {/* TODO: API Call to fetch categories */}
                     <option>Toutes catégories</option>
                     <option className="Functions__select-option" style={{ backgroundColor: "#406880" }}>✨ Utilitaires</option>

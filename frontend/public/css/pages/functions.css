@@ -10,5 +10,19 @@
     color: rgb(221, 220, 220);
 }
 .Functions__search-input {
-    width: 35%;
+    width: 40%;
+}
+/* col-sm */
+@media (max-width: 576px) {
+    .Functions__search-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .Functions__select {
+        width: 90%;
+        margin-bottom: 5px;
+    }
+    .Functions__search-input {
+        width: 90%;
+    }
 }
