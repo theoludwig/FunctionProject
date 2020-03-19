@@ -20,6 +20,9 @@ exports.convertCurrencyOutput = ({ res, next }, argsObject) => {
     axios.get(`https://api.exchangeratesapi.io/latest?base=${baseCurrency}`)
         .then((response) => {
             const rate = response.data.rates[finalCurrency];
+            if (!rate) {
+                return errorHandling(next, { message: "La devise n'existe pas.", statusCode: 404 });
+            }
             const result = rate * number;
             const dateObject = new Date(response.data.date);
             const year = dateObject.getFullYear();
