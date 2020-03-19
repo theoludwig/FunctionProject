@@ -5,6 +5,7 @@ const { convertTemperatureOutput }                               = require('./ma
 const { armstrongNumberOutput }                                  = require('./main/armstrongNumber');
 const { weatherRequestOutput }                                   = require('./main/weatherRequest');
 const { convertCurrencyOutput }                                  = require('./main/convertCurrency');
+const { calculateAgeOutput }                                     = require('./main/calculateAge');
 
 const functionObject = {
     randomNumber        : randomNumberOutput,
@@ -14,7 +15,8 @@ const functionObject = {
     convertTemperature  : convertTemperatureOutput,
     armstrongNumber     : armstrongNumberOutput,
     weatherRequest      : weatherRequestOutput,
-    convertCurrency     : convertCurrencyOutput
+    convertCurrency     : convertCurrencyOutput,
+    calculateAge        : calculateAgeOutput
 };
 
 // Choisi la fonction à exécuter
