@@ -7,8 +7,11 @@ import api from '../config/api';
 
 const Functions = () => {
 
-    const [categories, setCategories] = useState([]);
+    // State de recherche et de catégories
+    const [categories, setCategories]   = useState([]);
+    const [inputSearch, setInputSearch] = useState({ search: "", selectedCategory: "0" });
 
+    // State pour afficher les fonctions
     const [functions, setFunctions]                 = useState([]);
     const [isLoadingFunctions, setLoadingFunctions] = useState(true);
     const [pageFunctions, setPageFunctions]         = useState(1);
@@ -21,11 +24,11 @@ const Functions = () => {
                 setCategories(result.data);
             })
             .catch((error) => console.error(error));
-        }, []);
+    }, []);
         
-    // Récupère les fonctions
+    // Récupère les fonctions si la page change
     useEffect(() => {
-        api.get(`/functions?page=${pageFunctions}&limit=10`)
+        api.get(`/functions?page=${pageFunctions}&limit=10&categoryId=${inputSearch.selectedCategory}&search=${inputSearch.search}`)
             .then((result) => {
                 setLoadingFunctions(false);
                 sethasMoreFunctions(result.data.hasMore);
@@ -34,9 +37,27 @@ const Functions = () => {
             .catch((error) => console.error(error));
     }, [pageFunctions]);
 
+    // Récupère les fonctions si la catégorie/recherche change
+    useEffect(() => {
+        api.get(`/functions?page=${pageFunctions}&limit=10&categoryId=${inputSearch.selectedCategory}&search=${inputSearch.search}`)
+            .then((result) => {
+                setLoadingFunctions(false);
+                sethasMoreFunctions(result.data.hasMore);
+                setFunctions(result.data.rows);
+            })
+            .catch((error) => console.error(error));
+    }, [inputSearch.selectedCategory, inputSearch.search]);
+
     const loadMore = () => {
         setLoadingFunctions(true);
         setPageFunctions(pageFunctions + 1);
+    }
+
+    const handleChange = (event) => {
+        setLoadingFunctions(true);
+        const inputSearchNew = { ...inputSearch };
+        inputSearchNew[event.target.name] = event.target.value;
+        setInputSearch(inputSearchNew);
     }
 
     return (
@@ -53,31 +74,29 @@ const Functions = () => {
                 </div>
     
                 <div className="Functions__search-container row justify-content-center">
-                    <select className="Functions__select form-control">
+                    <select name="selectedCategory" value={inputSearch.selectedCategory} onChange={handleChange} className="Functions__select form-control">
                         <option value="0">Toutes catégories</option>
                         {categories.map((category) => (
                             <option key={category.id} value={category.id} className="Functions__select-option" style={{ backgroundColor: category.color }}>{category.name}</option>
                         ))}
                     </select>
-                    <input type="search" className="form-control Functions__search-input" name="search" id="search" placeholder="🔎 Rechercher..."></input>
+                    <input value={inputSearch.search} onChange={handleChange} type="search" className="form-control Functions__search-input" name="search" id="search" placeholder="🔎 Rechercher..."></input>
                 </div>
     
                 <div className="row justify-content-center">
-
                     {functions.map((f) => (
                         <FunctionCard key={f.id} slug={f.slug} image={API_URL + f.image} title={f.title} description={f.description} category={f.categorie} publicationDate={new Date(f.createdAt).toLocaleDateString('fr-FR')} />   
                     ))}
-
-                    {
-                        !isLoadingFunctions && hasMoreFunctions 
-                        ? 
-                            <button className="btn btn-dark" onClick={loadMore}>Charger plus de fonctions ?</button> 
-                        : !hasMoreFunctions ?
-                            null
-                        :
-                        <p>Chargement...</p>
-                    }
                 </div>
+                {
+                    !isLoadingFunctions && hasMoreFunctions 
+                    ? 
+                        <button className="btn btn-dark" onClick={loadMore}>Charger plus de fonctions ?</button> 
+                    : !hasMoreFunctions ?
+                        null
+                    :
+                    <p>Chargement...</p>
+                }
             </div>
         </Fragment>
     );
