@@ -3,22 +3,36 @@ const { serverError }   = require('../assets/config/errors');
 const Functions         = require('../models/functions');
 const Categories        = require('../models/categories');
 const functionToExecute = require('../assets/functions/functionObject');
+const Sequelize         = require('sequelize');
+
+function helperQueryNumber(value, defaultValue) {
+    if (value && !isNaN(value)) return parseInt(value);
+    return defaultValue;
+}
 
 exports.getFunctions = (req, res, next) => {
-    // TODO: Trier et chercher par catégories
-    let page = 1;
-    let limit = 10;
-    if (req.query.page && !isNaN(req.query.page)) {
-        page = parseInt(req.query.page);
-    }
-    if (req.query.limit && !isNaN(req.query.limit)) {
-        limit = parseInt(req.query.limit);
-    }
+    const page = helperQueryNumber(req.query.page, 1);
+    const limit = helperQueryNumber(req.query.limit, 10);
+    const categoryId = helperQueryNumber(req.query.categoryId, 0);
+    let search = req.query.search;
+    try { search = search.toLowerCase(); } catch {}
     const offset = (page - 1) * limit;
     Functions.findAndCountAll({ 
         limit, 
         offset, 
-        where: { isOnline: 1 },
+        where: { 
+            isOnline: 1,
+            // Trie par catégorie
+            ... (categoryId !== 0) && { categorieId: categoryId },
+            // Recherche
+            ... (search != undefined) && { 
+                [Sequelize.Op.or]: [
+                    { title: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('title')), 'LIKE', `%${search}%`) },
+                    { slug: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('slug')), 'LIKE', `%${search}%`) },
+                    { description: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('description')), 'LIKE', `%${search}%`) }
+                ]
+            }
+        },
         include: [
             { model: Categories, attributes: ["name", "color"] }
         ] 
