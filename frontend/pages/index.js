@@ -9,6 +9,7 @@ const Home = () => (
             image="/images/FunctionProject_icon_small.png" 
         />
         <div>Home</div>
+        {console.log('%c ⚙️ FunctionProject', 'color: #ffd800; font-weight: bold; background-color: #181818;padding: 10px;border-radius: 10px;font-size: 20px')}
     </Fragment>
 );
 
