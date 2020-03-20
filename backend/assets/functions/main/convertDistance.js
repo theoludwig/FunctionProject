@@ -43,7 +43,7 @@ exports.convertDistanceOutput = ({ res, next }, argsObject) => {
 
     const result = convertDistance(number, numberUnit, finalUnit);
     if (!result) {
-        return sendResponse(res, generalError);
+        return errorHandling(next, generalError);
     }
 
     return res.status(200).json(result);

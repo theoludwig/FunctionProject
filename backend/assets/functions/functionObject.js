@@ -6,6 +6,7 @@ const { armstrongNumberOutput }                                  = require('./ma
 const { weatherRequestOutput }                                   = require('./main/weatherRequest');
 const { convertCurrencyOutput }                                  = require('./main/convertCurrency');
 const { calculateAgeOutput }                                     = require('./main/calculateAge');
+const { heapAlgorithmOutput }                                    = require('./main/heapAlgorithm');
 
 const functionObject = {
     randomNumber        : randomNumberOutput,
@@ -16,7 +17,8 @@ const functionObject = {
     armstrongNumber     : armstrongNumberOutput,
     weatherRequest      : weatherRequestOutput,
     convertCurrency     : convertCurrencyOutput,
-    calculateAge        : calculateAgeOutput
+    calculateAge        : calculateAgeOutput,
+    heapAlgorithm       : heapAlgorithmOutput
 };
 
 // Choisi la fonction à exécuter
