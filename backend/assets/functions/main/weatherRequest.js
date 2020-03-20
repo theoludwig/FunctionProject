@@ -20,7 +20,7 @@ const queue = new Queue({
 });
 
 /* OUTPUTS */
-exports.weatherRequestOutput = async (res, argsObject) => {
+exports.weatherRequestOutput = async ({ res, next }, argsObject) => {
     let { cityName } = argsObject;
 
     // S'il n'y a pas les champs obligatoire
