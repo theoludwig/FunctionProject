@@ -27,6 +27,12 @@
     }   
 }
 
+.FunctionCard__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
 .FunctionCard__image {
     width: 150px;
 }
