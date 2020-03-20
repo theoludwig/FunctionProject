@@ -4,6 +4,11 @@ const errors = {
         statusCode: 400
     },
 
+    serverError: {
+        message: "Le serveur n'a pas pu traiter votre requête.",
+        statusCode: 500
+    },
+
     requiredFields: {
         message: "Vous devez remplir tous les champs...",
         statusCode: 400
