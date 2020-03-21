@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import Loader from '../components/Loader';
 
 class MyDocument extends Document {
     static async getInitialProps(ctx) {
@@ -11,7 +12,12 @@ class MyDocument extends Document {
             <Html lang="fr">
                 <Head />
                 <body>
-                    <Main />
+                    <div id="preloader">
+                        <Loader />
+                    </div>
+                    <div className="isLoading">
+                        <Main />
+                    </div>
                     <NextScript />
                 </body>
             </Html>

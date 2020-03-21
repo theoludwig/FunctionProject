@@ -1,7 +1,7 @@
 import { Fragment, useState, useEffect, useRef, useCallback } from 'react';
 import HeadTag from '../components/HeadTag';
 import FunctionCard from '../components/FunctionCard/FunctionCard';
-import Loader from '../components/Loader/Loader';
+import Loader from '../components/Loader';
 import '../public/css/pages/functions.css';
 import { API_URL } from '../config/config';
 import api from '../config/api';
@@ -91,7 +91,7 @@ const Functions = () => {
                         return <FunctionCard key={f.id} slug={f.slug} image={API_URL + f.image} title={f.title} description={f.description} category={f.categorie} publicationDate={new Date(f.createdAt).toLocaleDateString('fr-FR')} />;
                     })}
                 </div>
-                {isLoadingFunctions && <Loader width="100px" height="100px" />}
+                {isLoadingFunctions && <Loader />}
             </div>
         </Fragment>
     );

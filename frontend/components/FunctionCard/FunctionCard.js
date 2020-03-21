@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useState, forwardRef } from 'react';
-import Loader from '../Loader/Loader';
+import Loader from '../Loader';
 import './FunctionCard.css';
 
 const FunctionCard = forwardRef((props, ref) => {
