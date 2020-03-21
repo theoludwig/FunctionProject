@@ -12,6 +12,7 @@
     "axios": "^0.19.2",
     "next": "9.3.1",
     "next-fonts": "^1.0.3",
+    "nprogress": "^0.2.0",
     "react": "16.13.0",
     "react-dom": "16.13.0"
   }
