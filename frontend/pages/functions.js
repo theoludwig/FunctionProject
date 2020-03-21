@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from 'react';
+import { Fragment, useState, useEffect, useRef, useCallback } from 'react';
 import HeadTag from '../components/HeadTag';
 import FunctionCard from '../components/FunctionCard/FunctionCard';
 import Loader from '../components/Loader/Loader';
@@ -17,6 +17,19 @@ const Functions = () => {
     const [functionsData, setFunctionsData]         = useState({ hasMore: true, rows: [] });
     const [isLoadingFunctions, setLoadingFunctions] = useState(true);
     const [pageFunctions, setPageFunctions]         = useState(1);
+
+    // Permet la pagination au scroll
+    const observer = useRef();
+    const lastFunctionCardRef = useCallback((node) => {
+        if (isLoadingFunctions) return;
+        if (observer.current) observer.current.disconnect();
+        observer.current = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && functionsData.hasMore) {
+                setPageFunctions(pageFunctions + 1);
+            }
+        }, { threshold: 1 });
+        if (node) observer.current.observe(node);
+    }, [isLoadingFunctions, functionsData.hasMore]);
 
     const getFunctionsData = () => {
         setLoadingFunctions(true);
@@ -39,10 +52,6 @@ const Functions = () => {
     useEffect(() => {
         getFunctionsData().then((data) => setFunctionsData(data));
     }, [inputSearch.selectedCategory, inputSearch.search]);
-
-    const loadMore = () => {
-        setPageFunctions(pageFunctions + 1);
-    }
 
     const handleChange = (event) => {
         const inputSearchNew = { ...inputSearch };
@@ -74,20 +83,15 @@ const Functions = () => {
                 </div>
     
                 <div className="row justify-content-center">
-                    {functionsData.rows.map((f) => (
-                        <FunctionCard key={f.id} slug={f.slug} image={API_URL + f.image} title={f.title} description={f.description} category={f.categorie} publicationDate={new Date(f.createdAt).toLocaleDateString('fr-FR')} />   
-                    ))}
+                    {functionsData.rows.map((f, index) => {
+                        // Si c'est le dernier élément
+                        if (functionsData.rows.length === index + 1) {
+                            return <FunctionCard ref={lastFunctionCardRef} key={f.id} slug={f.slug} image={API_URL + f.image} title={f.title} description={f.description} category={f.categorie} publicationDate={new Date(f.createdAt).toLocaleDateString('fr-FR')} />;
+                        }
+                        return <FunctionCard key={f.id} slug={f.slug} image={API_URL + f.image} title={f.title} description={f.description} category={f.categorie} publicationDate={new Date(f.createdAt).toLocaleDateString('fr-FR')} />;
+                    })}
                 </div>
-                {    
-                    isLoadingFunctions ?
-                        <Loader width="100px" height="100px" />
-                    : functionsData.hasMore ?
-                        <div className="row justify-content-center">
-                            <button className="btn btn-dark" style={{marginBottom: "50px"}} onClick={loadMore}>Charger plus de fonctions ?</button> 
-                        </div>
-                    :
-                        null
-                }
+                {isLoadingFunctions && <Loader width="100px" height="100px" />}
             </div>
         </Fragment>
     );

@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { useState, Fragment } from 'react';
+import { useState, Fragment, forwardRef } from 'react';
 import Loader from '../Loader/Loader';
 import './FunctionCard.css';
 
-const FunctionCard = (props) => {
+const FunctionCard = forwardRef((props, ref) => {
 
     const [isLoading, setIsLoading] = useState(true);
 
@@ -14,8 +14,9 @@ const FunctionCard = (props) => {
     return (
         <Link href={`/functions/${props.slug}`}>
             <Fragment>
-                <div className={"FunctionCard col-sm-24 col-md-10 col-xl-7"}>
-                    {isLoading && <Loader width="100px" height="100px" />} 
+                {/* Elément à une hauteur pendant chargement */}
+                <div ref={ref} style={isLoading ? { height: "200px", justifyContent: "center" } : null} className={"FunctionCard col-sm-24 col-md-10 col-xl-7"}>
+                    {isLoading && <Loader width="125px" height="125px" />} 
                     <div className={`FunctionCard__container ${isLoading ? "d-none" : ""}`}>
                         <div className="FunctionCard__top">
                             <img onLoad={handleLoad} className="FunctionCard__image" alt={props.title} src={props.image} />
@@ -31,6 +32,6 @@ const FunctionCard = (props) => {
             </Fragment>
         </Link>
     );
-} 
+}) 
 
 export default FunctionCard;
