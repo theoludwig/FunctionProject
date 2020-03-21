@@ -12,10 +12,15 @@ const FunctionCard = forwardRef((props, ref) => {
     }
 
     return (
-        <Link href={`/functions/${props.slug}`}>
-            {/* Elément à une hauteur pendant chargement */}
+        <Link 
+            href={"/functions/[slug]"} 
+            as={`/functions/${props.slug}`}
+        >
+            {/* FunctionCard a une hauteur pendant chargement */}
             <div ref={ref} style={isLoading ? { height: "360px", justifyContent: "center" } : null} className={"FunctionCard col-sm-24 col-md-10 col-xl-7"}>
+
                 {isLoading && <Loader width="125px" height="125px" />} 
+
                 <div className={`FunctionCard__container ${isLoading ? "d-none" : ""}`}>
                     <div className="FunctionCard__top">
                         <img onLoad={handleLoad} className="FunctionCard__image" alt={props.title} src={props.image} />

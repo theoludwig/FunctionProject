@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 const HeadTag = ({ title, image, description }) => (
     <Head>
-        <title>{title}</title>
+        <title>{title || ""}</title>
         <link rel="icon" type="image/png" href={image} />
 
         {/* Meta Tag */}
