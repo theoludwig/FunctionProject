@@ -11,6 +11,12 @@
     cursor: pointer;
     transition: all .3s;
 }
+.FunctionCard__container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 .FunctionCard:hover {
     transform: translateY(-7px);
 }

@@ -60,6 +60,9 @@ a, .important {
     color: var(--important);
     text-decoration: none;
 }
+.d-none {
+    display: none !important;
+}
 .form-control {
     display: block;
     height: calc(1.5em + .75rem + 2px);
