@@ -14,7 +14,9 @@
     "next-fonts": "^1.0.3",
     "nprogress": "^0.2.0",
     "react": "16.13.0",
-    "react-dom": "16.13.0"
+    "react-dom": "16.13.0",
+    "react-swipeable-views": "^0.13.9",
+    "react-swipeable-views-utils": "^0.13.9"
   },
   "devDependencies": {
     "cross-env": "^7.0.2"
