@@ -35,7 +35,10 @@ exports.getFunctions = (req, res, next) => {
         },
         include: [
             { model: Categories, attributes: ["name", "color"] }
-        ] 
+        ],
+        attributes: {
+            exclude: ["updatedAt", "utilizationForm", "article", "isOnline"]
+        }
     })
         .then((result) => {
             const { count, rows } = result;

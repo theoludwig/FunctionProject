@@ -3,7 +3,6 @@ import HeadTag from '../../components/HeadTag';
 import FunctionCard from '../../components/FunctionCard/FunctionCard';
 import Loader from '../../components/Loader';
 import '../../public/css/pages/functions.css';
-import { API_URL } from '../../config/config';
 import api from '../../config/api';
 import useAPI from '../../hooks/useAPI';
 
@@ -86,9 +85,9 @@ const Functions = () => {
                     {functionsData.rows.map((f, index) => {
                         // Si c'est le dernier élément
                         if (functionsData.rows.length === index + 1) {
-                            return <FunctionCard ref={lastFunctionCardRef} key={f.id} slug={f.slug} image={API_URL + f.image} title={f.title} description={f.description} category={f.categorie} publicationDate={new Date(f.createdAt).toLocaleDateString('fr-FR')} />;
+                            return <FunctionCard ref={lastFunctionCardRef} key={f.id} slug={f.slug} image={f.image} title={f.title} description={f.description} category={f.categorie} publicationDate={new Date(f.createdAt).toLocaleDateString('fr-FR')} type={f.type} />;
                         }
-                        return <FunctionCard key={f.id} slug={f.slug} image={API_URL + f.image} title={f.title} description={f.description} category={f.categorie} publicationDate={new Date(f.createdAt).toLocaleDateString('fr-FR')} />;
+                        return <FunctionCard key={f.id} slug={f.slug} image={f.image} title={f.title} description={f.description} category={f.categorie} publicationDate={new Date(f.createdAt).toLocaleDateString('fr-FR')} type={f.type} />;
                     })}
                 </div>
                 {isLoadingFunctions && <Loader />}

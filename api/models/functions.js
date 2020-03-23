@@ -9,11 +9,11 @@ module.exports = sequelize.define('function', {
         primaryKey: true
     },
     title: {
-        type: Sequelize.STRING(255),
+        type: Sequelize.STRING,
         allowNull: false,
     },
     slug: {
-        type: Sequelize.STRING(255),
+        type: Sequelize.STRING,
         allowNull: false,
     },
     description: {
@@ -23,6 +23,18 @@ module.exports = sequelize.define('function', {
     image: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    type: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    article: {
+        type: Sequelize.TEXT,
+        allowNull: true
+    },
+    utilizationForm: {
+        type: Sequelize.JSON,
+        allowNull: true
     },
     isOnline: {
         type: Sequelize.BOOLEAN,

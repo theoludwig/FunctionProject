@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useState, forwardRef } from 'react';
 import Loader from '../Loader';
 import './FunctionCard.css';
+import { API_URL } from '../../config/config';
 
 const FunctionCard = forwardRef((props, ref) => {
 
@@ -11,9 +12,11 @@ const FunctionCard = forwardRef((props, ref) => {
         setIsLoading(false);
     }
 
+    const isFormOrArticle = (props.type === 'form' || props.type === 'article');
+
     return (
         <Link 
-            href={"/functions/[slug]"} 
+            href={isFormOrArticle ? "/functions/[slug]" : `/functions/${props.slug}`} 
             as={`/functions/${props.slug}`}
         >
             {/* FunctionCard a une hauteur pendant chargement */}
@@ -23,7 +26,7 @@ const FunctionCard = forwardRef((props, ref) => {
 
                 <div className={`FunctionCard__container ${isLoading ? "d-none" : ""}`}>
                     <div className="FunctionCard__top">
-                        <img onLoad={handleLoad} className="FunctionCard__image" alt={props.title} src={props.image} />
+                        <img onLoad={handleLoad} className="FunctionCard__image" alt={props.title} src={API_URL + props.image} />
                         <h2 className="FunctionCard__title">{props.title}</h2>
                         <p className="FunctionCard__description">{props.description}</p>
                     </div>

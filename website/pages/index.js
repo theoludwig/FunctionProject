@@ -19,21 +19,17 @@ const Home = () => {
 
     return (
         <Fragment>
-            <HeadTag 
-                title="FunctionProject" 
-                description="FunctionProject est un projet créé par Divlo qui a pour but de rassembler plein de mini-programme permettant de faire plusieurs choses comme savoir la météo, générer un nombre aléatoire, etc." 
-                image="/images/FunctionProject_icon_small.png" 
-            />
+            <HeadTag />
              <div className="Home__container container-fluid text-center">
 
-                <AutoPlaySwipeableViews enableMouseEvents interval={30000}>
+                <AutoPlaySwipeableViews enableMouseEvents interval={15000}>
 
                     {/* Slide 1 */}
                     <div className="row align-items-center justify-content-center">
                         <div className="col-24">
                             <h1 className="Home__title-important important">FunctionProject</h1>
                             <p className="Home__description">
-                                Apprenez la programmation grâce à l'apprentissage par projet.<br/>
+                                Apprenez la programmation grâce à l'apprentissage par projet alias fonction.<br/>
                                 Découvrez la liste des fonctions disponibles : 
                             </p>
                         </div>
@@ -49,8 +45,9 @@ const Home = () => {
                         <div className="col-24">
                             <h1 className="Home__title-important important">Code Source</h1>
                             <p className="Home__description">
-                                Le partage est essentiel afin de progresser tous ensemble. <br/>
-                                Par conséquent le code source du projet est disponible sur mon profil GitHub :
+                                Le partage est essentiel afin de progresser. <br/>
+                                Par conséquent chaque fonction a un article expliquant comment elle fonctionne et <br/>
+                                le code source du projet est disponible sur mon profil GitHub :
                             </p>
                         </div>
                         <div className="col-24">

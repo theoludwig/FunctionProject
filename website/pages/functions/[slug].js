@@ -5,18 +5,18 @@ import { API_URL } from '../../config/config';
 
 const FunctionComponent = () => {
 
-    const router = useRouter();
+    const { slug } = useRouter().query;
 
     return (
         <Fragment>
             <HeadTag 
-                title={router.query.slug}
-                description={router.query.slug}
-                image={`${API_URL}/images/functions/${router.query.slug}.png`} 
+                title={slug}
+                description={slug}
+                image={`${API_URL}/images/functions/${slug}.png`} 
             />
             <div className="container text-center">
                 <div className="row justify-content-center">
-                    <h1>{router.query.slug}</h1>
+                    <h1>{slug}</h1>
                 </div>
             </div>
         </Fragment>
