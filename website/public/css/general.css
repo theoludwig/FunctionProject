@@ -26,9 +26,6 @@ p {
     font-size: 18px;
     line-height: 1.9;
 }
-h2 {
-    font-size: 1.8em;
-}
 a:hover {
     text-decoration: underline;
 }
@@ -75,6 +72,10 @@ a:hover {
 }
 .align-items-center {
     align-items: center;
+}
+.title-important {
+    color: var(--important);
+    font-weight: 500;
 }
 a, .important {
     color: var(--important);

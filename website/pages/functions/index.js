@@ -1,4 +1,5 @@
 import { Fragment, useState, useEffect, useRef, useCallback } from 'react';
+import { useRouter } from 'next/router';
 import HeadTag from '../../components/HeadTag';
 import FunctionCard from '../../components/FunctionCard/FunctionCard';
 import Loader from '../../components/Loader';
@@ -7,6 +8,8 @@ import api from '../../config/api';
 import useAPI from '../../hooks/useAPI';
 
 const Functions = () => {
+
+    const { categoryId } = useRouter().query;
 
     // State de recherche et de catégories
     const [, categories]                = useAPI('/categories');
@@ -39,6 +42,13 @@ const Functions = () => {
         });
     }
     
+    // Récupère la catégorie avec la query categoryId
+    useEffect(() => {
+        if (categoryId) {
+            handleChange({ target: { name: "selectedCategory", value: categoryId } });
+        }
+    }, [categoryId]);
+
     // Récupère les fonctions si la page change
     useEffect(() => {
         getFunctionsData().then((data) => setFunctionsData({ 

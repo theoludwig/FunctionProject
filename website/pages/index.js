@@ -27,7 +27,7 @@ const Home = () => {
                     {/* Slide 1 */}
                     <div className="row align-items-center justify-content-center">
                         <div className="col-24">
-                            <h1 className="Home__title-important important">FunctionProject</h1>
+                            <h1 className="title-important">FunctionProject</h1>
                             <p className="Home__description">
                                 Apprenez la programmation grâce à l'apprentissage par projet alias fonction.<br/>
                                 Découvrez la liste des fonctions disponibles : 
@@ -43,7 +43,7 @@ const Home = () => {
                     {/* Slide 2 */}
                     <div className="row align-items-center justify-content-center">
                         <div className="col-24">
-                            <h1 className="Home__title-important important">Code Source</h1>
+                            <h1 className="title-important">Code Source</h1>
                             <p className="Home__description">
                                 Le partage est essentiel afin de progresser. <br/>
                                 Par conséquent chaque fonction a un article expliquant comment elle fonctionne et <br/>
