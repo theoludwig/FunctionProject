@@ -43,7 +43,7 @@ exports.getFunctions = (req, res, next) => {
         .then((result) => {
             const { count, rows } = result;
             const hasMore = (page * limit) < count;
-            res.status(200).json({ totalItems: count,  hasMore, rows });
+            return res.status(200).json({ totalItems: count,  hasMore, rows });
         })
         .catch((error) => {
             console.log(error);
@@ -51,8 +51,31 @@ exports.getFunctions = (req, res, next) => {
         });
 }
 
-exports.executeFunctionName = (req, res, next) => {
-    const functionOutput = functionToExecute(req.params.functionName);
+exports.getFunctionBySlug = (req, res, next) => {
+    const { slug } = req.params;
+    Functions.findOne({ 
+        where: { slug, isOnline: 1 },
+        attributes: {
+            exclude: ["updatedAt", "isOnline"]
+        },
+        include: [
+            { model: Categories, attributes: ["name", "color"] }
+        ]
+    })
+        .then((result) => {
+            if (!result) {
+                return errorHandling(next, { message: "La fonction n'existe pas.", statusCode: 404 });
+            }
+            return res.status(200).json(result);
+        })
+        .catch((error) => {
+            console.log(error);
+            errorHandling(next, serverError);
+        });
+}
+
+exports.executeFunctionBySlug = (req, res, next) => {
+    const functionOutput = functionToExecute(req.params.slug);
     if (functionOutput !== undefined) {
         return functionOutput({ res, next }, req.body);
     }  

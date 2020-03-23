@@ -8,9 +8,12 @@ FunctionsRouter.route('/')
     // Récupère les fonctions
     .get(functionsController.getFunctions);
 
-FunctionsRouter.route('/:functionName')
+FunctionsRouter.route('/:slug')
+
+    // Récupère les informations de la fonction par son slug
+    .get(functionsController.getFunctionBySlug)
 
     // Exécute la fonction demandée en paramètre
-    .post(functionsController.executeFunctionName);
+    .post(functionsController.executeFunctionBySlug);
 
 module.exports = FunctionsRouter;
