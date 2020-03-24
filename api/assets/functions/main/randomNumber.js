@@ -1,5 +1,6 @@
 const errorHandling      = require('../../utils/errorHandling');
 const { requiredFields } = require('../../config/errors');
+const formatNumberResult = require('../secondary/formatNumberResult');
 
 /** 
  * @description Génère un nombre aléatoire entre un minimum inclus et un maximum inclus. 
@@ -28,5 +29,6 @@ exports.randomNumberOutput = ({ res, next }, argsObject) => {
         return errorHandling(next, { message: "Les paramètres min et max doivent être des nombres...", statusCode: 400 });
     }
 
-    return res.status(200).json({ result: randomNumber(min, max) });
+    const result = randomNumber(min, max);
+    return res.status(200).json({ result, resultHTML: `<p>${formatNumberResult(result)}</p>` });
 }

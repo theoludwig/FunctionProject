@@ -1,36 +1,34 @@
 const errorHandling                    = require('../../utils/errorHandling');
 const { requiredFields, generalError } = require('../../config/errors');
+const formatNumberResult               = require('../secondary/formatNumberResult');
 
 /** 
  * @description Convertis des °C en °F et l'inverse aussi.
  * @param {Number} degree - Nombre de degrès
- * @param {String} unit - Unité du nombre (°C ou °F)
+ * @param {String} unit - Unité du nombre (°C ou °F) après conversion
  * @returns {Object} false si arguments non valides et sinon un objet contenant la string et le nombre résultat
- * @examples convertTemperature(23, '°C') → { resultNumber: 73.4, resultString: "73.4 °F" }
+ * @examples convertTemperature(23, '°C') → { result: 73.4, resultHTML: "73.4 °F" }
  */
 function convertTemperature(degree, unit) {
     let temperatureValue = 0;
-    let temperatureUnit;
     if (unit === "°C") {
-        temperatureUnit = "°F";
-        temperatureValue = ((degree * 9/5) + 32);
+        temperatureValue = (degree - 32) * 5/9;
     }
     else if (unit === "°F") {
-        temperatureUnit = "°C";
-        temperatureValue = (degree - 32) * 5/9;
+        temperatureValue = ((degree * 9/5) + 32);
     }
     else {
         return false;
     }
     return {
-        resultNumber: temperatureValue,
-        resultString: `${temperatureValue} ${temperatureUnit}`
+        result: temperatureValue,
+        resultHTML: `<p>${formatNumberResult(temperatureValue)} ${unit}</p>`
     };
 } 
 
 /* OUTPUTS */
 exports.convertTemperatureOutput = ({ res, next }, argsObject) => {
-    let { degree, unit } = argsObject;
+    let { degree, unitToConvert } = argsObject;
     
     // S'il n'y a pas les champs obligatoire
     if (!(degree && unit)) {
@@ -43,7 +41,7 @@ exports.convertTemperatureOutput = ({ res, next }, argsObject) => {
         return errorHandling(next, { message: "Veuillez rentré un nombre valide.", statusCode: 400 });
     }
 
-    const result = convertTemperature(degree, unit);
+    const result = convertTemperature(degree, unitToConvert);
     if (!result) {
         return errorHandling(next, generalError);
     }

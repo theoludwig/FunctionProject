@@ -1,5 +1,6 @@
 const errorHandling                    = require('../../utils/errorHandling');
 const { requiredFields, generalError } = require('../../config/errors');
+const formatNumberResult               = require('../secondary/formatNumberResult');
 
 const correspondancesDistance = ["pm", null, null, "nm", null, null, "µm", null, null, "mm", "cm", "dm", "m", "dam", "hm", "km", null, null, "Mm", null, null, "Gm", null, null, "Tm"];
 
@@ -19,8 +20,8 @@ function convertDistance(firstValue, unitFirstValue, unitFinalValue) {
         const difference = index1 - index2; 
         const result = firstValue * Math.pow(10, difference);
         return {
-            resultNumber: result,
-            resultString: `${result} ${unitFinalValue}`
+            result,
+            resultHTML: `<p>Conversion de longueur : ${formatNumberResult(firstValue)} ${unitFirstValue} = ${formatNumberResult(result)} ${unitFinalValue}</p>`
         };
     }
     return false;
@@ -34,7 +35,7 @@ exports.convertDistanceOutput = ({ res, next }, argsObject) => {
     if (!(number && numberUnit && finalUnit)) {
         return errorHandling(next, requiredFields);
     }
-    
+
     // Si ce n'est pas un nombre
     number = parseInt(number);
     if (isNaN(number)) {

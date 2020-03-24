@@ -11,12 +11,11 @@ function helperQueryNumber(value, defaultValue) {
 }
 
 exports.getFunctions = (req, res, next) => {
-    const page = helperQueryNumber(req.query.page, 1);
-    const limit = helperQueryNumber(req.query.limit, 10);
+    const page       = helperQueryNumber(req.query.page, 1);
+    const limit      = helperQueryNumber(req.query.limit, 10);
     const categoryId = helperQueryNumber(req.query.categoryId, 0);
-    let search = req.query.search;
-    try { search = search.toLowerCase(); } catch {}
-    const offset = (page - 1) * limit;
+    const search     = req.query.search.toLowerCase();
+    const offset     = (page - 1) * limit;
     Functions.findAndCountAll({ 
         limit, 
         offset, 

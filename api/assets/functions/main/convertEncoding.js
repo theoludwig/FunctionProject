@@ -239,5 +239,5 @@ exports.convertEncodingOutput = ({ res, next }, argsObject) => {
         return errorHandling(next, generalError);
     }
 
-    return res.status(200).json({ result });
+    return res.status(200).json({ result, resultHTML: `<p>${result}</p>` });
 }

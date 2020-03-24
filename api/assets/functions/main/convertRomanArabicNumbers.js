@@ -76,12 +76,7 @@ exports.convertRomanToArabicOutput = ({ res, next }, argsObject) => {
     }
 
     // Formate le paramètre
-    try { 
-        romanNumber = romanNumber.toUpperCase(); 
-    } 
-    catch { 
-        return errorHandling(next, generalError); 
-    }
+    romanNumber = romanNumber.toUpperCase(); 
 
     const result = convertRomanToArabic(romanNumber);
     if (result === 0) {

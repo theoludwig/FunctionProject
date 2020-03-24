@@ -1,5 +1,6 @@
 const errorHandling      = require('../../utils/errorHandling');
 const { requiredFields } = require('../../config/errors');
+const formatNumberResult = require('../secondary/formatNumberResult');
 
 /** 
  * @description Retourne un tableau contenant toutes les possibilités d'anagramme d'un mot.
@@ -36,11 +37,16 @@ exports.heapAlgorithmOutput = ({ res, next }, argsObject) => {
     }
 
     // Si la chaîne de caractère dépasse LIMIT_CHARACTERS caractères
-    const LIMIT_CHARACTERS = 8;
+    const LIMIT_CHARACTERS = 7;
     if (string.length > LIMIT_CHARACTERS) {
         return errorHandling(next, { message: `Par souci de performance, vous ne pouvez pas exécuter cette fonction avec un mot dépassant ${LIMIT_CHARACTERS} caractères.`, statusCode: 400 });
     }
 
     const result = heapAlgorithm(string);
-    return res.status(200).json(result);
+    let resultHTML = `<p>Il y a ${formatNumberResult(result.length)} possibilités d'anagramme pour le mot "${string}" qui contient ${string.length} caractères, la liste : <br/><br/>`;
+    result.forEach((string) => {
+        resultHTML += string + "<br/>";
+    });
+    resultHTML += "</p>";
+    return res.status(200).json({ result, resultHTML });
 }

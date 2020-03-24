@@ -23,7 +23,7 @@ function armstrongNumber(number) {
     const isArmstrongNumber = (result === number); 
     return {
         isArmstrongNumber,
-        htmlExplanation: `${formattedNumber} ${isArmstrongNumber ? "" : "n'"}est pas un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.`
+        resultHTML: `<p>${formattedNumber} ${isArmstrongNumber ? "" : "n'"}est pas un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.</p>`
     }    
 }
 
@@ -35,7 +35,7 @@ exports.armstrongNumberOutput = ({ res, next }, argsObject) => {
     if (!(number)) {
         return errorHandling(next, requiredFields);
     }
-    
+
     // Si ce n'est pas un nombre
     number = parseInt(number);
     if (isNaN(number) || number <= 0) {
