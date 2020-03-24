@@ -6,6 +6,7 @@
     list-style: none;
     border-bottom: 1px solid #d9e2ef;
     margin-bottom: -1px;
+    margin-top: 30px;
 }
 .FunctionTabs__nav-item {
     margin-bottom: -1px;
@@ -19,6 +20,7 @@
     border-top-right-radius: .375rem;
     display: block;
     padding: .5rem 1rem;
+    transition: .2s;
 }
 .FunctionTabs__nav-link-active {
     border-color: #d9e2ef #d9e2ef #fff;

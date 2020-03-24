@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import api from '../config/api';
+import api from '../utils/api';
 
 /**
  * @param {String} url 

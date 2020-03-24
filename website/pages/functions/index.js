@@ -4,7 +4,7 @@ import HeadTag from '../../components/HeadTag';
 import FunctionCard from '../../components/FunctionCard/FunctionCard';
 import Loader from '../../components/Loader';
 import '../../public/css/pages/functions.css';
-import api from '../../config/api';
+import api from '../../utils/api';
 import useAPI from '../../hooks/useAPI';
 
 const Functions = () => {
@@ -13,7 +13,7 @@ const Functions = () => {
 
     // State de recherche et de catégories
     const [, categories]                = useAPI('/categories');
-    const [inputSearch, setInputSearch] = useState({ search: "", selectedCategory: "0" });
+    const [inputSearch, setInputSearch] = useState({ search: "", selectedCategory: categoryId || "0" });
 
     // State pour afficher les fonctions
     const [functionsData, setFunctionsData]         = useState({ hasMore: true, rows: [] });
