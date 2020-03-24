@@ -1,7 +1,3 @@
-const timeNow = new Date();
-const utcOffset = timeNow.getTimezoneOffset();
-timeNow.setMinutes(timeNow.getMinutes() + utcOffset);
-
 /** 
  * @description Donne la date et l'heure selon l'UTC (Universal Time Coordinated).
  * @param {String} utc Heure de décalage par rapport à l'UTC 
@@ -9,9 +5,12 @@ timeNow.setMinutes(timeNow.getMinutes() + utcOffset);
  * @examples dateTimeUTC('0') 
  */ 
 function dateTimeUTC(utc) {
+    const timeNow = new Date();
+    const utcOffset = timeNow.getTimezoneOffset();
+    timeNow.setMinutes(timeNow.getMinutes() + utcOffset);
     const enteredOffset = parseFloat(utc)*60;
     timeNow.setMinutes(timeNow.getMinutes() + enteredOffset);
-    return showDateTime(enteredOffset);
+    return showDateTime(timeNow);
 } 
 
 /** 
@@ -21,7 +20,7 @@ function dateTimeUTC(utc) {
  * @returns {Object} Retourne un objet contenant l'année, le mois, le jour, l'heure, les minutes, les secondes et la date formaté
  * @examples dateTimeUTC('0') → dateTimeUTC vous renvoie l'exécution de showDateTime
  */ 
-function showDateTime(enteredOffset) {
+function showDateTime(timeNow) {
     const year    = timeNow.getFullYear();
     const month   = ('0'+(timeNow.getMonth()+1)).slice(-2);
     const day     = ('0'+timeNow.getDate()).slice(-2);
@@ -38,8 +37,7 @@ function showDateTime(enteredOffset) {
         second: second,
         showDateTimeValue: showDateTimeValue
     };
-    timeNow.setMinutes(timeNow.getMinutes() - enteredOffset);
     return objectDateTime;
 }
 
-module.exports = { showDateTime, dateTimeUTC };
+module.exports = dateTimeUTC;

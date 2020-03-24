@@ -4,7 +4,7 @@ const { requiredFields } = require('../../config/errors');
 const formatNumberResult = require('../secondary/formatNumberResult');
 
 /* OUTPUTS */
-exports.convertCurrencyOutput = ({ res, next }, argsObject) => {
+module.exports = convertCurrencyOutput = ({ res, next }, argsObject) => {
     let { number, baseCurrency, finalCurrency } = argsObject;
     
     // S'il n'y a pas les champs obligatoire

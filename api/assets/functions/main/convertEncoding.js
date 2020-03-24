@@ -214,12 +214,11 @@ function hexadecimalToText (s) {
 
 /* OUTPUTS */
 const convertEncoding = { decimalToBinary, binaryToDecimal, decimalToHexadecimal, hexadecimalToDecimal, binaryToHexadecimal, hexadecimalToBinary, textToNumberUnicode, numberUnicodeToText, textToBinary, binaryToText, textToHexadecimal, hexadecimalToText };
-
 function executeFunction(option, value) {
     return convertEncoding[option](value);
 }
 
-exports.convertEncodingOutput = ({ res, next }, argsObject) => {
+module.exports = convertEncodingOutput = ({ res, next }, argsObject) => {
     let { value, functionName } = argsObject;
     
     // S'il n'y a pas les champs obligatoire
@@ -227,9 +226,9 @@ exports.convertEncodingOutput = ({ res, next }, argsObject) => {
         return errorHandling(next, requiredFields);
     }
 
-    // Si la fonction de convertEncoding n'existe pas
+    // Si la fonction n'existe pas
     if (!convertEncoding.hasOwnProperty(functionName)) {
-        return errorHandling(next, { message: "Cette conversion de convertEncoding n'existe pas." });
+        return errorHandling(next, { message: "Cette conversion n'existe pas.", statusCode: 400 });
     } 
 
     const result = executeFunction(functionName, value);

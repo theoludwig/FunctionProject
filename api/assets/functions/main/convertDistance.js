@@ -28,7 +28,7 @@ function convertDistance(firstValue, unitFirstValue, unitFinalValue) {
 }
 
 /* OUTPUTS */
-exports.convertDistanceOutput = ({ res, next }, argsObject) => {
+module.exports = convertDistanceOutput = ({ res, next }, argsObject) => {
     let { number, numberUnit, finalUnit } = argsObject;
     
     // S'il n'y a pas les champs obligatoire

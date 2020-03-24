@@ -20,7 +20,7 @@ function calculateAge(currentDate, { birthDateDay, birthDateMonth, birthDateYear
 }
 
 /* OUTPUTS */
-exports.calculateAgeOutput = ({ res, next }, argsObject) => {
+module.exports = calculateAgeOutput = ({ res, next }, argsObject) => {
     let { birthDate } = argsObject;
     
     // S'il n'y a pas les champs obligatoire

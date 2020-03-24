@@ -28,7 +28,7 @@ function heapAlgorithm(string) {
 } 
 
 /* OUTPUTS */
-exports.heapAlgorithmOutput = ({ res, next }, argsObject) => {
+module.exports = heapAlgorithmOutput = ({ res, next }, argsObject) => {
     let { string } = argsObject;
     
     // S'il n'y a pas les champs obligatoire

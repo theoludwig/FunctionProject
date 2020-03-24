@@ -3,7 +3,7 @@ const Queue               = require('smart-request-balancer');
 const errorHandling       = require('../../utils/errorHandling');
 const { requiredFields }  = require('../../config/errors');
 const { WEATHER_API_KEY } = require('../../config/config');
-const { dateTimeUTC }     = require('../secondary/dateTimeManagement');
+const dateTimeUTC         = require('../secondary/dateTimeManagement');
 const capitalize          = require('../secondary/capitalize');
 
 const queue = new Queue({
@@ -22,7 +22,7 @@ const queue = new Queue({
 });
 
 /* OUTPUTS */
-exports.weatherRequestOutput = ({ res, next }, argsObject) => {
+module.exports = weatherRequestOutput = ({ res, next }, argsObject) => {
     let { cityName } = argsObject;
 
     // S'il n'y a pas les champs obligatoire

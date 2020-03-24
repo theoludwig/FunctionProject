@@ -28,7 +28,7 @@ function armstrongNumber(number) {
 }
 
 /* OUTPUTS */
-exports.armstrongNumberOutput = ({ res, next }, argsObject) => {
+module.exports = armstrongNumberOutput = ({ res, next }, argsObject) => {
     let { number } = argsObject;
     
     // S'il n'y a pas les champs obligatoire

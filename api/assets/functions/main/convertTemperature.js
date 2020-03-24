@@ -27,7 +27,7 @@ function convertTemperature(degree, unit) {
 } 
 
 /* OUTPUTS */
-exports.convertTemperatureOutput = ({ res, next }, argsObject) => {
+module.exports = convertTemperatureOutput = ({ res, next }, argsObject) => {
     let { degree, unitToConvert } = argsObject;
     
     // S'il n'y a pas les champs obligatoire

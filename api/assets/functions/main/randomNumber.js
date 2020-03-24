@@ -14,7 +14,7 @@ function randomNumber(min, max) {
 }
 
 /* OUTPUTS */
-exports.randomNumberOutput = ({ res, next }, argsObject) => {
+module.exports = randomNumberOutput = ({ res, next }, argsObject) => {
     let { min, max } = argsObject;
     
     // S'il n'y a pas les champs obligatoire
