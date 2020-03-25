@@ -82,13 +82,13 @@ const Functions = () => {
                 </div>
 
                 <div className="Functions__search-container row justify-content-center">
-                    <select name="selectedCategory" value={inputSearch.selectedCategory} onChange={handleChange} className="Functions__select form-control">
+                    <select name="selectedCategory" value={inputSearch.selectedCategory} onChange={handleChange} className="Functions__select Functions__form-control">
                         <option value="0">Toutes catégories</option>
                         {categories.map((category) => (
                             <option key={category.id} value={category.id} className="Functions__select-option" style={{ backgroundColor: category.color }}>{category.name}</option>
                         ))}
                     </select>
-                    <input value={inputSearch.search} onChange={handleChange} type="search" className="form-control Functions__search-input" name="search" id="search" placeholder="🔎 Rechercher..."></input>
+                    <input value={inputSearch.search} onChange={handleChange} type="search" className="Functions__form-control Functions__search-input" name="search" id="search" placeholder="🔎 Rechercher..."></input>
                 </div>
     
                 <div className="row justify-content-center">

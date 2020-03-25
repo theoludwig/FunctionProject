@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import Loader from '../Loader';
-import './FunctionForm.css';
+import Loader from './Loader';
 import htmlParser from 'html-react-parser';
-import api from '../../utils/api';
+import api from '../utils/api';
 
 const FunctionForm = (props) => {
     // console.log(props);
@@ -48,24 +47,24 @@ const FunctionForm = (props) => {
                     let inputResult;
                     switch(input.type) {
                         case "text" || "number":
-                            inputResult = (<input onChange={handleChange} type={input.type} name={input.name} id={input.name} placeholder={input.placeholder} className="FunctionForm__control" />);
+                            inputResult = (<input onChange={handleChange} type={input.type} name={input.name} id={input.name} placeholder={input.placeholder} className="form-control" />);
                             break;
                         default:
                             inputResult = (<p>Erreur, l'input n'est pas valide...</p>);
                     }
                     return (
-                        <div key={index} className="FunctionForm__group">
-                            <label className="FunctionForm__label"  htmlFor={input.name}>{input.label}</label>
+                        <div key={index} className="form-group">
+                            <label className="form-label"  htmlFor={input.name}>{input.label}</label>
                             {inputResult}
                         </div>
                     );
                 })}
                 
-                <div className="FunctionForm__submit text-center">
+                <div className="form-group text-center">
                     <button type="submit" className="btn btn-dark">Envoyer</button>
                 </div>
             </form>
-            <div className="FunctionForm__result text-center">
+            <div className="form-result text-center">
                 {
                     (isLoading) ? 
                         <Loader />

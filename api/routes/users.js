@@ -9,7 +9,7 @@ const UsersRouter = Router();
 UsersRouter.post('/login', usersController.login);
 
 // Permet de s'inscrire
-UsersRouter.post('/signup', [
+UsersRouter.post('/register', [
     body('email')
         .isEmail()
         .withMessage("Veuillez rentré une adresse mail valide.")
@@ -31,7 +31,7 @@ UsersRouter.post('/signup', [
         .trim()
         .not()
         .isEmpty()
-        .withMessage("Votre nom ne peut pas être vide.")
+        .withMessage("Vous devez avoir un nom (ou pseudo).")
         .isAlphanumeric()
         .withMessage("Votre nom ne peut contenir que des lettres ou/et des nombres.")
         .custom((async (name) => {
@@ -44,7 +44,7 @@ UsersRouter.post('/signup', [
                 return console.log(error);
             }
         }))
-], usersController.signup);
+], usersController.register);
 
 // Confirme l'inscription
 UsersRouter.get('/confirm-email/:tempToken', usersController.confirmEmail);

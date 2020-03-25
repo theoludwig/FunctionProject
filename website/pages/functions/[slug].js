@@ -3,7 +3,7 @@ import HeadTag from '../../components/HeadTag';
 import FunctionComponentTop from '../../components/FunctionComponentTop';
 import FunctionTabsTop from '../../components/FunctionTabs/FunctionTabsTop';
 import FunctionTabs from '../../components/FunctionTabs/FunctionTabs';
-import FunctionForm from '../../components/FunctionForm/FunctionForm';
+import FunctionForm from '../../components/FunctionForm';
 import redirect from '../../utils/redirect';
 import api from '../../utils/api';
 import { API_URL } from '../../utils/config';

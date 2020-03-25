@@ -5,17 +5,10 @@ import './Header.css';
 
 export default function Header() {
 
-    const [hamburgerIcon, setHamburgerIcon] = useState("");
-    const [navbarList, setNavbarList] = useState("");
+    const [isActive, setIsActive] = useState(false);
 
     const toggleNavbar = () => {
-        if (hamburgerIcon) {
-            setHamburgerIcon("");
-            setNavbarList("");
-        } else {
-            setHamburgerIcon("Header__hamburger-active");
-            setNavbarList("navbar__list-active");
-        }
+        setIsActive(!isActive);
     }
 
     return (
@@ -31,15 +24,17 @@ export default function Header() {
                 </Link>
 
                 {/* Hamburger icon on Mobile */}
-                <div onClick={toggleNavbar} className={"Header__hamburger " + hamburgerIcon}>
+                <div onClick={toggleNavbar} className={`Header__hamburger ${(isActive) ? "Header__hamburger-active" : ""}`}>
                     <span></span>
                 </div>
 
                 {/* Navigation */}
                 <nav className="Header__navbar">
-                    <ul className={"navbar__list " + navbarList}>
+                    <ul className={`navbar__list ${(isActive) ? "navbar__list-active" : ""}`}>
                         <NavigationLink name="Accueil" path="/" />
                         <NavigationLink name="Fonctions" path="/functions" />
+                        <NavigationLink name="S'inscrire" path="/register" />
+                        <NavigationLink name="Connexion" path="/login" />
                     </ul>
                 </nav>
 

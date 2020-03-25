@@ -10,7 +10,7 @@ const { EMAIL_INFO, HOST }          = require('../assets/config/config');
 const { signupEmail }               = require('../assets/config/emails');
 const Users                         = require('../models/users');
 
-exports.signup = async (req, res, next) => {
+exports.register = async (req, res, next) => {
     const { name, email, password } = req.body;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -47,7 +47,7 @@ exports.login = async (req, res, next) => {
         const token = jwt.sign({ 
             email: user.email, userId: user.id
         }, JWT_SECRET, { expiresIn: '1h' });
-        return res.status(200).json({ token, id: user.id, name: user.name, email: user.email, logo: user.logo, isAdmin: user.isAdmin, createdAt: user.createdAt });
+        return res.status(200).json({ token, id: user.id, name: user.name, email: user.email, biography: user.biography, logo: user.logo, isPublicEmail: user.isPublicEmail, isAdmin: user.isAdmin, createdAt: user.createdAt });
     } catch (error) {
         console.log(error);
         errorHandling(next, serverError);
