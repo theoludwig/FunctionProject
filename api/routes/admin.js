@@ -10,9 +10,7 @@ const Categories      = require('../models/categories');
 const AdminRouter = Router();
 
 // Permet de créé une fonction
-AdminRouter.post('/functions', 
-    isAuth, 
-    isAdmin, 
+AdminRouter.post('/functions', isAuth, isAdmin, 
     fileUpload({ 
         useTempFiles: true, 
         safeFileNames: true,
@@ -75,5 +73,8 @@ AdminRouter.post('/functions',
     ], 
     adminController.postFunction
 );
+
+// Supprime une fonction avec son id
+AdminRouter.delete('/functions/:id', isAuth, isAdmin, adminController.deleteFunction);
 
 module.exports = AdminRouter;
