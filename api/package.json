@@ -11,13 +11,18 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-validator": "^6.4.0",
     "helmet": "^3.21.3",
+    "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "mysql2": "^2.1.0",
+    "nodemailer": "^6.4.6",
     "sequelize": "^5.21.5",
-    "smart-request-balancer": "^2.1.1"
+    "smart-request-balancer": "^2.1.1",
+    "uuid": "^7.0.2"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

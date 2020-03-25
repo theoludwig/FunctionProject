@@ -1,45 +1,50 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../assets/utils/database');
 
-module.exports = sequelize.define('function', {
+module.exports = sequelize.define('user', {
     id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true
     },
-    title: {
+    name: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    slug: {
+    email: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    description: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    image: {
+    password: {
         type: Sequelize.STRING,
         allowNull: false,
-        defaultValue: "/images/functions/default.png"
     },
-    type: {
+    biography: {
+        type: Sequelize.TEXT,
+    },
+    logo: {
         type: Sequelize.STRING,
-        allowNull: false
+        defaultValue: "/images/users/default.png"
     },
-    article: {
+    isConfirmed: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false 
+    },
+    isPublicEmail: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false 
+    },
+    isAdmin: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+    },
+    tempToken: {
         type: Sequelize.TEXT,
         allowNull: true
     },
-    utilizationForm: {
-        type: Sequelize.JSON,
+    tempExpirationToken: {
+        type: Sequelize.DATE,
         allowNull: true
-    },
-    isOnline: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: 0
     }
 });

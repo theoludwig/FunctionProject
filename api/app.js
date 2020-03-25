@@ -22,6 +22,8 @@ app.use(express.json());
 app.use('/images', express.static(path.join(__dirname, "assets", "images")));
 app.use('/functions', require('./routes/functions'));
 app.use('/categories', require('./routes/categories'));
+app.use('/users', require('./routes/users'));
+app.use('/admin', require('./routes/admin'));
 
 /* Errors Handling */
 app.use((_req, _res, next) => errorHandling(next, { statusCode: 404, message: "La route n'existe pas!" })); // 404
