@@ -11,25 +11,22 @@ const FunctionForm = (props) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = (event) => {
+        setIsLoading(true);
         event.preventDefault();
         api.post(`/functions/${props.slug}`, inputState)
             .then((response) => {
                 setMessage(response.data.resultHTML);
+                setIsLoading(false);
             })
             .catch((error) => {
                 setMessage(error.response.data.message);
+                setIsLoading(false);
             });
-            setIsLoading(false);
     }
 
     const handleChange = (event) => {
         const inputStateNew = { ...inputState };
         inputStateNew[event.target.name] = event.target.value;
-        if (event.target.value !== "") {
-            setIsLoading(true);
-        } else {
-            setIsLoading(false);
-        }
         setInputState(inputStateNew);
     }
 

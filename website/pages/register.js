@@ -18,13 +18,16 @@ const Register = () => {
     }
 
     const handleSubmit = (event) => {
+        setIsLoading(true);
         event.preventDefault();
         api.post('/users/register', inputState)
             .then(({ data }) => {
                 setMessage(`<p class="form-success"><b>Succès:</b> ${data.result}</p>`);
+                setIsLoading(false);
             })
             .catch((error) => {
                 setMessage(`<p class="form-error"><b>Erreur:</b> ${error.response.data.message}</p>`);
+                setIsLoading(false);
             });
     }
 
