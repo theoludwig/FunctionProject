@@ -22,6 +22,7 @@ UsersRouter.post('/register', [
             } catch (error) {
                 return console.log(error);
             }
+            return true;
         }))
         .normalizeEmail(),
     body('password')
@@ -34,16 +35,19 @@ UsersRouter.post('/register', [
         .withMessage("Vous devez avoir un nom (ou pseudo).")
         .isAlphanumeric()
         .withMessage("Votre nom ne peut contenir que des lettres ou/et des nombres.")
-        .custom((async (name) => {
+        .isLength({ max: 30 })
+        .withMessage("Votre nom est trop long")
+        .custom(async (name) => {
             try {
                 const user = await Users.findOne({ where: { name } });
                 if (user) {
                     return Promise.reject("Le nom existe déjà...");
                 }
             } catch (error) {
-                return console.log(error);
+                console.log(error);
             }
-        }))
+            return true;
+        })
 ], usersController.register);
 
 // Confirme l'inscription

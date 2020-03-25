@@ -4,7 +4,7 @@ const FunctionComponentTop = (props) => (
     <div className="container-fluid">
         <div className="row justify-content-center text-center">
             <div className="FunctionComponent__top col-24">
-                <img src={props.API_URL + props.image} alt={props.title} />
+                <img style={{ width: '150px' }} src={props.API_URL + props.image} alt={props.title} />
                 <h1 className="FunctionComponent__title title-important">{props.title}</h1>
                 <p className="FunctionComponent__description">{props.description}</p>
                 <div className="FunctionCard__info">

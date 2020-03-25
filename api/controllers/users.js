@@ -7,7 +7,7 @@ const { serverError, generalError } = require('../assets/config/errors');
 const { JWT_SECRET }                = require('../assets/config/config');
 const transporter                   = require('../assets/config/transporter');
 const { EMAIL_INFO, HOST }          = require('../assets/config/config');
-const { signupEmail }               = require('../assets/config/emails');
+const { emailTemplate }             = require('../assets/config/emails');
 const Users                         = require('../models/users');
 
 exports.register = async (req, res, next) => {
@@ -24,9 +24,9 @@ exports.register = async (req, res, next) => {
             from: `"FunctionProject" <${EMAIL_INFO.auth.user}>`,
             to: email,
             subject: "FunctionProject - Confirmer l'inscription",
-            html: signupEmail(`${HOST}/users/confirm-email/${tempToken}`)
+            html: emailTemplate("Veuillez confirmer l'inscription", "Oui, je m'inscris.", `${HOST}/users/confirm-email/${tempToken}`, "Si vous avez reçu ce message par erreur, il suffit de le supprimer. Vous ne serez pas inscrit si vous ne cliquez pas sur le lien de confirmation ci-dessus.")
         });
-        return res.status(201).json({ result: "Vous y êtes presque, veuillez vérifier votre boite d'emails pour confirmer l'inscription." });
+        return res.status(201).json({ result: "Vous y êtes presque, veuillez vérifier vos emails pour confirmer l'inscription." });
     } catch (error) {
         console.log(error);
         errorHandling(next, serverError);
@@ -36,7 +36,7 @@ exports.register = async (req, res, next) => {
 exports.login = async (req, res, next) => {
     const { email, password } = req.body;
     try {
-        const user = await Users.findOne({ where: { email, confirmed: true } });
+        const user = await Users.findOne({ where: { email, isConfirmed: true } });
         if (!user) {
             return errorHandling(next, { message: "Le mot de passe ou l'adresse email n'est pas valide.", statusCode: 400 });
         }
