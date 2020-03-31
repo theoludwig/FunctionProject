@@ -1,6 +1,7 @@
 const config = {
     PORT: process.env.PORT || 8080,
     HOST: process.env.HOST,
+    FRONT_END_HOST: process.env.FRONT_END_HOST,
     WEATHER_API_KEY: process.env.OpenWeatherMap_API_KEY,
     DATABASE: {
         host: process.env.DB_HOST,

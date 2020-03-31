@@ -8,6 +8,9 @@ const UsersRouter = Router();
 // Permet de se connecter
 UsersRouter.post('/login', usersController.login);
 
+// TODO: Récupère les informations public d'un profil
+// UsersRouter.get('/profile/:userName', usersController.getUserInfo);
+
 // Permet de s'inscrire
 UsersRouter.post('/register', [
     body('email')
@@ -52,5 +55,19 @@ UsersRouter.post('/register', [
 
 // Confirme l'inscription
 UsersRouter.get('/confirm-email/:tempToken', usersController.confirmEmail);
+
+// Demande une réinitialisation du mot de passe 
+UsersRouter.post('/reset-password', [
+    body('email')
+        .isEmail()
+        .withMessage("Veuillez rentré une adresse mail valide.")
+], usersController.resetPassword);
+
+// Nouveau mot de passe
+UsersRouter.put('/reset-password', [
+    body('password')
+        .isLength({ min: 4 })
+        .withMessage("Votre mot de passe est trop court!")
+], usersController.newPassword);
 
 module.exports = UsersRouter;
