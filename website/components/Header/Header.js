@@ -6,8 +6,8 @@ import './Header.css';
 
 export default function Header() {
 
-    const { isAuth, logoutUser }  = useContext(UserContext);
-    const [isActive, setIsActive] = useState(false);
+    const { isAuth, logoutUser, user } = useContext(UserContext);
+    const [isActive, setIsActive]      = useState(false);
 
     const toggleNavbar = () => {
         setIsActive(!isActive);
@@ -44,7 +44,12 @@ export default function Header() {
                                 </Fragment>
                             :
                                 <Fragment>
-                                    <NavigationLink name="Profil" path="/profile" />
+                                    {/* <NavigationLink name="Mon Profil" path={`/profile/${user.name}`} /> */}
+                                    <li className="navbar-item">
+                                        <Link href={"/profile/[name]"} as={`/profile/${user.name}`}>
+                                            <a className={"navbar-link"}>Mon Profil</a>
+                                        </Link>
+                                    </li>
                                     <li className="navbar-item">
                                         <Link href={"/"}>
                                             <a onClick={logoutUser} className="navbar-link">Se déconnecter</a>

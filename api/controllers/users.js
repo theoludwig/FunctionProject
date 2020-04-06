@@ -9,6 +9,10 @@ const transporter                    = require('../assets/config/transporter');
 const { EMAIL_INFO, HOST }           = require('../assets/config/config');
 const { emailTemplate }              = require('../assets/config/emails');
 const Users                          = require('../models/users');
+const Favorites                      = require('../models/favorites');
+const Functions                      = require('../models/functions');
+const Categories                     = require('../models/categories');
+const Comments                       = require('../models/comments');
 
 exports.register = async (req, res, next) => {
     const { name, email, password } = req.body;
@@ -126,6 +130,56 @@ exports.newPassword = async (req, res, next) => {
         user.tempExpirationToken = null;
         await user.save();
         return res.status(200).json({ result: "Le mot de passe a bien été modifié!" });
+    } catch (error) {
+        console.log(error);
+        errorHandling(next, serverError);
+    }
+}
+
+exports.getUserInfo = async (req, res, next) => {
+    const { name } = req.params;
+    try {
+        const user = await Users.findOne({ 
+            where: { name },
+            attributes: {
+                exclude: ["updatedAt", "isAdmin", "isConfirmed", "password", "tempToken", "tempExpirationToken"]
+            }, 
+        });
+        if (!user) {
+            return errorHandling(next, { message: "L'utilisateur n'existe pas.", statusCode: 404 });
+        }
+        const favorites = await Favorites.findAll({ 
+            where: { userId: user.id },
+            include: [
+                { model: Functions, attributes: { exclude: ["updatedAt", "utilizationForm", "article", "isOnline"] }, include: { model: Categories, attributes: ["name", "color"] } }
+            ] 
+        });
+        const favoritesArray = favorites.map((favorite) => favorite.function);
+        const comments = await Comments.findAll({
+            where: { userId: user.id },
+            include: [
+                { model: Functions, attributes: { exclude: ["updatedAt", "utilizationForm", "article", "isOnline"] } }
+            ]
+        });
+        const commentsArray = comments.map((commentObject) => {
+            return {
+                id: commentObject.id,
+                message: commentObject.message,
+                createdAt: commentObject.createdAt,
+                function: commentObject.function.dataValues
+            };
+        });
+        const userObject = {
+            // Si Public Email
+            ... (user.isPublicEmail) && { email: user.email },
+            name: user.name,
+            biography: user.biography,
+            logo: user.logo,
+            createdAt: user.createdAt,
+            favoritesArray,
+            commentsArray
+        };
+        return res.status(200).json(userObject);
     } catch (error) {
         console.log(error);
         errorHandling(next, serverError);

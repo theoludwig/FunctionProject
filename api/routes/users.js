@@ -18,8 +18,8 @@ UsersRouter.post('/login', [
         .withMessage(requiredFields.message)
 ], usersController.login);
 
-// TODO: Récupère les informations public d'un profil
-// UsersRouter.get('/profile/:userName', usersController.getUserInfo);
+// Récupère les informations public d'un profil
+UsersRouter.get('/:name', usersController.getUserInfo);
 
 // Permet de s'inscrire
 UsersRouter.post('/register', [

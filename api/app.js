@@ -24,6 +24,8 @@ app.use('/functions', require('./routes/functions'));
 app.use('/categories', require('./routes/categories'));
 app.use('/users', require('./routes/users'));
 app.use('/admin', require('./routes/admin'));
+app.use('/favorites', require('./routes/favorites'));
+app.use('/comments', require('./routes/comments'));
 
 /* Errors Handling */
 app.use((_req, _res, next) => errorHandling(next, { statusCode: 404, message: "La route n'existe pas!" })); // 404
@@ -36,9 +38,25 @@ app.use((error, _req, res, _next) => {
 /* Database Relations */
 const Functions  = require('./models/functions');
 const Categories = require('./models/categories');
+const Users      = require('./models/users');
+const Favorites  = require('./models/favorites');
+const Comments   = require('./models/comments');
 
+// A function has a category
 Categories.hasOne(Functions, { constraints: true, onDelete: 'CASCADE'});
 Functions.belongsTo(Categories);
+
+// Users can have favorites functions
+Users.hasMany(Favorites);
+Favorites.belongsTo(Users, { constraints: false });
+Functions.hasMany(Favorites);
+Favorites.belongsTo(Functions, { constraints: false });
+
+// Users can post comments on functions
+Users.hasMany(Comments);
+Comments.belongsTo(Users);
+Functions.hasMany(Comments);
+Comments.belongsTo(Functions);
 
 /* Server */
 // sequelize.sync({ force: true })

@@ -24,6 +24,7 @@ const Register = () => {
             .then(({ data }) => {
                 setMessage(`<p class="form-success"><b>Succès:</b> ${data.result}</p>`);
                 setIsLoading(false);
+                setInputState({});
             })
             .catch((error) => {
                 setMessage(`<p class="form-error"><b>Erreur:</b> ${error.response.data.message}</p>`);
