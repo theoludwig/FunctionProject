@@ -1,12 +1,22 @@
-const { Router }      = require('express');
-const { body }        = require('express-validator');
-const usersController = require('../controllers/users');
-const Users           = require('../models/users');
+const { Router }         = require('express');
+const { body }           = require('express-validator');
+const usersController    = require('../controllers/users');
+const { requiredFields } = require('../assets/config/errors');
+const Users              = require('../models/users');
 
 const UsersRouter = Router();
 
 // Permet de se connecter
-UsersRouter.post('/login', usersController.login);
+UsersRouter.post('/login', [
+    body('email')
+        .not()
+        .isEmpty()
+        .withMessage(requiredFields.message),
+    body('password')
+        .not()
+        .isEmpty()
+        .withMessage(requiredFields.message)
+], usersController.login);
 
 // TODO: Récupère les informations public d'un profil
 // UsersRouter.get('/profile/:userName', usersController.getUserInfo);

@@ -1,11 +1,13 @@
 /* Libraries Imports */
-import { Fragment } from 'react';
 import Router from 'next/router'
 import NProgress from 'nprogress';
 
 /* Components Imports */
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+
+/* Contexts Imports */
+import UserContextProvider from '../contexts/UserContext';
 
 /* CSS Imports */
 import '../public/fonts/Montserrat/Montserrat.css';
@@ -19,13 +21,13 @@ Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
   
 const App = ({ Component, pageProps }) => (
-    <Fragment>
+    <UserContextProvider>
         <Header />
             <div className="content container-fluid">
                 <Component {...pageProps} />
             </div>
         <Footer />
-    </Fragment>
+    </UserContextProvider>
 );
 
 export default App;

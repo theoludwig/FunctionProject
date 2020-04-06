@@ -16,13 +16,6 @@ const Error404 = () => (
                 Cette page n'existe pas! <Link href={"/"}><a>Revenir à la page d'accueil ?</a></Link>
             </p>
         </div>
-        <style>
-            {`
-                #__next {
-                    padding-top: 0;
-                }
-            `}
-        </style>
     </Fragment>
 );
 

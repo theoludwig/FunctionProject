@@ -1,8 +1,28 @@
-import { Fragment } from 'react';
+import { Fragment, useContext, useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import htmlParser from 'html-react-parser';
+import Loader from '../components/Loader';
 import HeadTag from '../components/HeadTag';
+import { UserContext } from '../contexts/UserContext';
 import '../public/css/pages/register-login.css';
 
 const Login = () => {
+
+    const router                                    = useRouter();
+    const [inputState, setInputState]               = useState({});
+    const { loginUser, messageLogin, loginLoading } = useContext(UserContext);
+
+    const handleChange = () => {
+        const inputStateNew = { ...inputState };
+        inputStateNew[event.target.name] = event.target.value;
+        setInputState(inputStateNew);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        loginUser(inputState);
+    }
 
     return (
         <Fragment>
@@ -14,26 +34,40 @@ const Login = () => {
                 <div className="row Register-Login__row justify-content-center">
                     <div className="col-20">
                         <h1 className="Register-Login__title">Se connecter</h1>
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div className="form-group">
-                                <label className="form-label" htmlFor="name">Email :</label>
-                                <input type="email" name="email" id="email" className="form-control" placeholder="email@gmail.com" />
+                                <label className="form-label" htmlFor="email">Email :</label>
+                                <input onChange={handleChange} type="email" name="email" id="email" className="form-control" placeholder="email@gmail.com" />
                             </div>
 
                             <div className="form-group">
-                                <label className="form-label" htmlFor="name">Mot de passe :</label>
-                                <input type="password" name="password" id="password" className="form-control" placeholder="******" />
+                                <label className="form-label" htmlFor="password">Mot de passe :</label>
+                                <input onChange={handleChange} type="password" name="password" id="password" className="form-control" placeholder="******" />
+                                <p>
+                                    <Link href={"/register"}>
+                                        <a className="Register-Login__Forgot-password">Mot de passe oublié ?</a>
+                                    </Link>
+                                </p>
                             </div>
 
                             <div className="form-group text-center">
                                 <button type="submit" className="btn btn-dark">Envoyer</button>
                             </div>
                         </form>
-                        <div className="form-result text-center"></div>
+                        <div className="form-result text-center">
+                            {(router.query.isConfirmed !== undefined) && <p className="form-success"><b>Succès:</b> Votre compte a bien été confirmé, vous pouvez maintenant vous connectez!</p>}
+                            {
+                                (loginLoading) ? 
+                                    <Loader />
+                                :
+                                    htmlParser(messageLogin)
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
         </Fragment>
     );
 }
+
 export default Login;

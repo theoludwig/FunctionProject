@@ -35,14 +35,21 @@ exports.register = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
     const { email, password } = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return errorHandling(next, { message: errors.array()[0].msg, statusCode: 400 });
+    }
     try {
-        const user = await Users.findOne({ where: { email, isConfirmed: true } });
+        const user = await Users.findOne({ where: { email } });
         if (!user) {
             return errorHandling(next, { message: "Le mot de passe ou l'adresse email n'est pas valide.", statusCode: 400 });
         }
         const isEqual = await bcrypt.compare(password, user.password);
         if (!isEqual) {
             return errorHandling(next, { message: "Le mot de passe ou l'adresse email n'est pas valide.", statusCode: 400 });
+        }
+        if (!user.isConfirmed) {
+            return errorHandling(next, { message: "Vous devez valider votre adresse email pour votre première connexion.", statusCode: 400 });
         }
         const token = jwt.sign({ 
             email: user.email, userId: user.id
@@ -67,7 +74,7 @@ exports.confirmEmail = async (req, res, next) => {
         user.tempToken = null;
         user.isConfirmed = true;
         await user.save();
-        return res.redirect(`${FRONT_END_HOST}/login`);
+        return res.redirect(`${FRONT_END_HOST}/login?isConfirmed=true`);
     } catch (error) {
         console.log(error);
         errorHandling(next, serverError);

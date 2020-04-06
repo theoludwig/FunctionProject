@@ -12,3 +12,11 @@
 .Register-Login__title {
     text-align: center;
 }
+.Register-Login__Forgot-password {
+    color: var(--text-color);
+    font-size: 16px;
+}
+.Register-Login__Forgot-password:hover {
+    color: var(--important);
+    text-decoration: none;
+}

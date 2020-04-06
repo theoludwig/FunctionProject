@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { Fragment, useState, useContext } from 'react';
+import { UserContext } from '../../contexts/UserContext';
 import Link from 'next/link';
 import NavigationLink from './NavigationLink';
 import './Header.css';
 
 export default function Header() {
 
+    const { isAuth, logoutUser }  = useContext(UserContext);
     const [isActive, setIsActive] = useState(false);
 
     const toggleNavbar = () => {
@@ -33,8 +35,23 @@ export default function Header() {
                     <ul className={`navbar__list ${(isActive) ? "navbar__list-active" : ""}`}>
                         <NavigationLink name="Accueil" path="/" />
                         <NavigationLink name="Fonctions" path="/functions" />
-                        <NavigationLink name="S'inscrire" path="/register" />
-                        <NavigationLink name="Connexion" path="/login" />
+
+                        {
+                            (!isAuth) ? 
+                                <Fragment>
+                                    <NavigationLink name="S'inscrire" path="/register" />
+                                    <NavigationLink name="Connexion" path="/login" />
+                                </Fragment>
+                            :
+                                <Fragment>
+                                    <NavigationLink name="Profil" path="/profile" />
+                                    <li className="navbar-item">
+                                        <Link href={"/"}>
+                                            <a onClick={logoutUser} className="navbar-link">Se déconnecter</a>
+                                        </Link>
+                                    </li>
+                                </Fragment>
+                        }
                     </ul>
                 </nav>
 
