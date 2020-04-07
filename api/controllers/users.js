@@ -1,3 +1,4 @@
+const path                           = require('path');
 const { validationResult }           = require('express-validator');
 const bcrypt                         = require('bcryptjs');
 const jwt                            = require('jsonwebtoken');
@@ -13,6 +14,55 @@ const Favorites                      = require('../models/favorites');
 const Functions                      = require('../models/functions');
 const Categories                     = require('../models/categories');
 const Comments                       = require('../models/comments');
+
+async function handleEditUser(res, { name, email, biography, isPublicEmail }, userId, logoName) {
+    const user = await Users.findOne({ where: { id: userId } });
+    user.name = name;
+    user.email = email;
+    user.biography = biography;
+    user.isPublicEmail = isPublicEmail;
+    if (logoName != undefined) {
+        user.logo = `/images/users/${logoName}`;
+    }
+    await user.save();
+    return res.status(200).json({ message: "Le profil a bien été modifié!" });
+}
+
+exports.putUser = (req, res, next) => {
+    const { name, email, biography, isPublicEmail } = req.body;
+    const logo = req.files.logo;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return errorHandling(next, { message: errors.array()[0].msg, statusCode: 400 });
+    }
+    if (logo != undefined) {
+        if (!logo || logo.truncated && (
+            logo.mimetype !== 'image/png' || 
+            logo.mimetype !== 'image/jpg' || 
+            logo.mimetype !== 'image/jpeg' ||
+            logo.mimetype !== 'image/gif'
+        )) {
+            return errorHandling(next, { message:"Le profil doit avoir une image valide.", statusCode: 400 });
+        }
+        const logoName = name + uuid.v4() + logo.name;
+        logo.mv(path.join(__dirname, '..', 'assets', 'images', 'users') + '/' + logoName, async (error) => {
+            if (error) return errorHandling(next, serverError);
+            try {
+                return handleEditUser(res, { name, email, biography, isPublicEmail }, req.userId, logoName);
+            } catch (error) {
+                console.log(error);
+                return errorHandling(next, serverError);
+            }
+        });
+    } else {
+        try {
+            return handleEditUser(res, { name, email, biography, isPublicEmail }, req.userId, null);
+        } catch (error) {
+            console.log(error);
+            return errorHandling(next, serverError);
+        }
+    }
+}
 
 exports.register = async (req, res, next) => {
     const { name, email, password } = req.body;
@@ -33,7 +83,7 @@ exports.register = async (req, res, next) => {
         return res.status(201).json({ result: "Vous y êtes presque, veuillez vérifier vos emails pour confirmer l'inscription." });
     } catch (error) {
         console.log(error);
-        errorHandling(next, serverError);
+        return errorHandling(next, serverError);
     }
 }
 
@@ -57,11 +107,11 @@ exports.login = async (req, res, next) => {
         }
         const token = jwt.sign({ 
             email: user.email, userId: user.id
-        }, JWT_SECRET, { expiresIn: '1h' });
+        }, JWT_SECRET, { expiresIn: '3h' });
         return res.status(200).json({ token, id: user.id, name: user.name, email: user.email, biography: user.biography, logo: user.logo, isPublicEmail: user.isPublicEmail, isAdmin: user.isAdmin, createdAt: user.createdAt });
     } catch (error) {
         console.log(error);
-        errorHandling(next, serverError);
+        return errorHandling(next, serverError);
     }
 }
 
@@ -81,7 +131,7 @@ exports.confirmEmail = async (req, res, next) => {
         return res.redirect(`${FRONT_END_HOST}/login?isConfirmed=true`);
     } catch (error) {
         console.log(error);
-        errorHandling(next, serverError);
+        return errorHandling(next, serverError);
     }
 }
 
@@ -109,7 +159,7 @@ exports.resetPassword = async (req, res, next) => {
         return res.status(200).json({ result: "Demande de réinitialisation du mot de passe réussi, veuillez vérifier vos emails!" });
     } catch (error) {
         console.log(error);
-        errorHandling(next, serverError);
+        return errorHandling(next, serverError);
     }
 }
 
@@ -132,7 +182,7 @@ exports.newPassword = async (req, res, next) => {
         return res.status(200).json({ result: "Le mot de passe a bien été modifié!" });
     } catch (error) {
         console.log(error);
-        errorHandling(next, serverError);
+        return errorHandling(next, serverError);
     }
 }
 
@@ -156,10 +206,12 @@ exports.getUserInfo = async (req, res, next) => {
         });
         const favoritesArray = favorites.map((favorite) => favorite.function);
         const comments = await Comments.findAll({
+            limit: 10,
             where: { userId: user.id },
             include: [
                 { model: Functions, attributes: { exclude: ["updatedAt", "utilizationForm", "article", "isOnline"] } }
-            ]
+            ],
+            order: [['createdAt', 'DESC']]
         });
         const commentsArray = comments.map((commentObject) => {
             return {
@@ -182,6 +234,6 @@ exports.getUserInfo = async (req, res, next) => {
         return res.status(200).json(userObject);
     } catch (error) {
         console.log(error);
-        errorHandling(next, serverError);
+        return errorHandling(next, serverError);
     }
 }

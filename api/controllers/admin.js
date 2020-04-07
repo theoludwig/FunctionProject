@@ -10,7 +10,6 @@ exports.postFunction = (req, res, next) => {
     const image = req.files.image;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        console.log(errors.array())
         return errorHandling(next, { message: errors.array()[0].msg, statusCode: 400 });
     }
     if (!image || image.truncated && (
@@ -28,7 +27,7 @@ exports.postFunction = (req, res, next) => {
             return res.status(201).json({ message: "La fonction a été correctement ajouté!"});
         } catch (error) {
             console.log(error);
-            errorHandling(next, serverError);
+            return errorHandling(next, serverError);
         }
     });
 }
@@ -48,6 +47,6 @@ exports.deleteFunction = async (req, res, next) => {
         res.status(200).json({ message: "La fonction a été correctement supprimé!"});
     } catch (error) {
         console.log(error);
-        errorHandling(next, serverError);
+        return errorHandling(next, serverError);
     }
 }

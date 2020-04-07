@@ -37,7 +37,8 @@ exports.getFunctions = (req, res, next) => {
         ],
         attributes: {
             exclude: ["updatedAt", "utilizationForm", "article", "isOnline"]
-        }
+        },
+        order: [['createdAt', 'DESC']]
     })
         .then((result) => {
             const { count, rows } = result;
@@ -46,7 +47,7 @@ exports.getFunctions = (req, res, next) => {
         })
         .catch((error) => {
             console.log(error);
-            errorHandling(next, serverError);
+            return errorHandling(next, serverError);
         });
 }
 
@@ -69,7 +70,7 @@ exports.getFunctionBySlug = (req, res, next) => {
         })
         .catch((error) => {
             console.log(error);
-            errorHandling(next, serverError);
+            return errorHandling(next, serverError);
         });
 }
 

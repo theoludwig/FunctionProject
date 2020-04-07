@@ -8,6 +8,6 @@ exports.getCategories = (_req, res, next) => {
         })
         .catch((error) => {
             console.log(error);
-            errorHandling(next, serverError);
+            return errorHandling(next, serverError);
         });
 }
