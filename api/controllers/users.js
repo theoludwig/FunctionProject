@@ -14,6 +14,7 @@ const Favorites                      = require('../models/favorites');
 const Functions                      = require('../models/functions');
 const Categories                     = require('../models/categories');
 const Comments                       = require('../models/comments');
+const deleteFilesNameStartWith       = require('../assets/utils/deleteFilesNameStartWith');
 
 async function handleEditUser(res, { name, email, biography, isPublicEmail }, userId, logoName) {
     const user = await Users.findOne({ where: { id: userId } });
@@ -44,7 +45,14 @@ exports.putUser = (req, res, next) => {
         )) {
             return errorHandling(next, { message:"Le profil doit avoir une image valide.", statusCode: 400 });
         }
-        const logoName = name + uuid.v4() + logo.name;
+        const logoName = name + req.userId + uuid.v4() + logo.name;
+        // Supprime les anciens logo
+        try {
+            deleteFilesNameStartWith(`${name + req.userId}`, path.join(__dirname, '..', 'assets', 'images', 'users'));
+        } catch (error) {
+            console.log(error);
+            return errorHandling(next, serverError);
+        }
         logo.mv(path.join(__dirname, '..', 'assets', 'images', 'users') + '/' + logoName, async (error) => {
             if (error) return errorHandling(next, serverError);
             try {
