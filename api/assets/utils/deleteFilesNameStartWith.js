@@ -9,7 +9,7 @@ function deleteFilesNameStartWith(pattern, dirPath = __dirname) {
         // Iterate through the found file names
         for (const name of fileNames) {
             // If file name matches the pattern
-            if (name.startsWith(pattern)) {
+            if (name.startsWith(pattern) && name !== 'default.png') {
                 console.log(name)
                 fs.unlinkSync(path.join(dirPath, name));
             }

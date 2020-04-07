@@ -11,7 +11,7 @@ const Register = () => {
     const [message, setMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     
-    const handleChange = () => {
+    const handleChange = (event) => {
         const inputStateNew = { ...inputState };
         inputStateNew[event.target.name] = event.target.value;
         setInputState(inputStateNew);

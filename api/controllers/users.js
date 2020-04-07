@@ -19,14 +19,27 @@ const deleteFilesNameStartWith       = require('../assets/utils/deleteFilesNameS
 async function handleEditUser(res, { name, email, biography, isPublicEmail }, userId, logoName) {
     const user = await Users.findOne({ where: { id: userId } });
     user.name = name;
-    user.email = email;
-    user.biography = biography;
+    if (user.email !== email) {
+        const tempToken = uuid.v4();
+        user.email = email;
+        user.isConfirmed = false;
+        user.tempToken = tempToken;
+        await transporter.sendMail({
+            from: `"FunctionProject" <${EMAIL_INFO.auth.user}>`,
+            to: email,
+            subject: "FunctionProject - Confirmer l'email",
+            html: emailTemplate("Veuillez confirmer l'email", "Oui, je confirme.", `${HOST}/users/confirm-email/${tempToken}`, "Si vous avez reçu ce message par erreur, il suffit de le supprimer. Votre email ne serez pas confirmé si vous ne cliquez pas sur le lien de confirmation ci-dessus.")
+        });
+    }
+    if (biography != undefined) {
+        user.biography = biography;
+    }
     user.isPublicEmail = isPublicEmail;
     if (logoName != undefined) {
         user.logo = `/images/users/${logoName}`;
     }
     await user.save();
-    return res.status(200).json({ message: "Le profil a bien été modifié!" });
+    return res.status(200).json({ id: user.id, name: user.name, email: user.email, biography: user.biography, logo: user.logo, isPublicEmail: user.isPublicEmail, isAdmin: user.isAdmin, createdAt: user.createdAt });
 }
 
 exports.putUser = (req, res, next) => {
@@ -115,7 +128,7 @@ exports.login = async (req, res, next) => {
         }
         const token = jwt.sign({ 
             email: user.email, userId: user.id
-        }, JWT_SECRET, { expiresIn: '3h' });
+        }, JWT_SECRET, { expiresIn: '6h' });
         return res.status(200).json({ token, id: user.id, name: user.name, email: user.email, biography: user.biography, logo: user.logo, isPublicEmail: user.isPublicEmail, isAdmin: user.isAdmin, createdAt: user.createdAt });
     } catch (error) {
         console.log(error);
@@ -198,7 +211,7 @@ exports.getUserInfo = async (req, res, next) => {
     const { name } = req.params;
     try {
         const user = await Users.findOne({ 
-            where: { name },
+            where: { name, isConfirmed: true },
             attributes: {
                 exclude: ["updatedAt", "isAdmin", "isConfirmed", "password", "tempToken", "tempExpirationToken"]
             }, 
@@ -232,6 +245,7 @@ exports.getUserInfo = async (req, res, next) => {
         const userObject = {
             // Si Public Email
             ... (user.isPublicEmail) && { email: user.email },
+            isPublicEmail: user.isPublicEmail,
             name: user.name,
             biography: user.biography,
             logo: user.logo,

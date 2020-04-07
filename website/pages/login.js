@@ -13,7 +13,7 @@ const Login = () => {
     const [inputState, setInputState]               = useState({});
     const { loginUser, messageLogin, loginLoading } = useContext(UserContext);
 
-    const handleChange = () => {
+    const handleChange = (event) => {
         const inputStateNew = { ...inputState };
         inputStateNew[event.target.name] = event.target.value;
         setInputState(inputStateNew);
@@ -55,7 +55,8 @@ const Login = () => {
                             </div>
                         </form>
                         <div className="form-result text-center">
-                            {(router.query.isConfirmed !== undefined) && <p className="form-success"><b>Succès:</b> Votre compte a bien été confirmé, vous pouvez maintenant vous connectez!</p>}
+                            {(router.query.isConfirmed !== undefined && messageLogin === "") && <p className="form-success"><b>Succès:</b> Votre compte a bien été confirmé, vous pouvez maintenant vous connectez!</p>}
+                            {(router.query.isSuccessEdit !== undefined && messageLogin === "") && <p className="form-success"><b>Succès:</b> Votre profil a bien été modifié, vous pouvez maintenant vous connectez!</p>}
                             {
                                 (loginLoading) ? 
                                     <Loader />

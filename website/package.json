@@ -8,6 +8,9 @@
     "start": "cross-env NODE_ENV=production node server"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
     "@zeit/next-css": "^1.0.1",
     "axios": "^0.19.2",
     "date-and-time": "^0.13.1",

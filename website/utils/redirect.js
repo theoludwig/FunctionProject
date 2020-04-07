@@ -1,9 +1,9 @@
 function redirect(ctx, path) {
-    if (ctx.res) {
+    if (ctx.res != undefined) {
         ctx.res.writeHead(302, { Location: path });
         ctx.res.end();
     } else {
-        document.location.pathname = path;
+        document.location.href = path;
     }
 }
 
