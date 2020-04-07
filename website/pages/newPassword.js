@@ -4,13 +4,14 @@ import Loader from '../components/Loader';
 import HeadTag from '../components/HeadTag';
 import '../public/css/pages/register-login.css';
 import api from '../utils/api';
+import redirect from '../utils/redirect';
 
-const Register = () => {
-    
+const newPassword = (props) => {
+
     const [inputState, setInputState] = useState({});
-    const [message, setMessage] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-    
+    const [message, setMessage]       = useState("");
+    const [isLoading, setIsLoading]   = useState(false);
+
     const handleChange = () => {
         const inputStateNew = { ...inputState };
         inputStateNew[event.target.name] = event.target.value;
@@ -20,7 +21,7 @@ const Register = () => {
     const handleSubmit = (event) => {
         setIsLoading(true);
         event.preventDefault();
-        api.post('/users/register', inputState)
+        api.put('/users/reset-password', { ...inputState, tempToken: props.token })
             .then(({ data }) => {
                 setMessage(`<p class="form-success"><b>Succès:</b> ${data.result}</p>`);
                 setIsLoading(false);
@@ -35,29 +36,18 @@ const Register = () => {
     return (
         <Fragment>
             <HeadTag 
-                title="S'inscrire - FunctionProject" 
-                description="Créer un compte." 
+                title="Nouveau mot de passe - FunctionProject" 
+                description="Mise à jour du mot de passe." 
             />
             <div className="container Register-Login__container">
                 <div className="row Register-Login__row justify-content-center">
                     <div className="col-20">
-                        <h1 className="Register-Login__title">S'inscrire</h1>
+                        <h1 className="Register-Login__title">Nouveau mot de passe</h1>
                         <form onSubmit={handleSubmit}>
                             <div className="form-group">
-                                <label className="form-label" htmlFor="name">Nom :</label>
-                                <input onChange={handleChange} type="text" name="name" id="name" className="form-control" placeholder="Divlo" />
-                            </div>
-
-                            <div className="form-group">
-                                <label className="form-label" htmlFor="name">Email :</label>
-                                <input onChange={handleChange} type="email" name="email" id="email" className="form-control" placeholder="email@gmail.com" />
-                            </div>
-
-                            <div className="form-group">
-                                <label className="form-label" htmlFor="name">Mot de passe :</label>
+                                <label className="form-label" htmlFor="password">Mot de passe :</label>
                                 <input onChange={handleChange} type="password" name="password" id="password" className="form-control" placeholder="******" />
                             </div>
-
                             <div className="form-group text-center">
                                 <button type="submit" className="btn btn-dark">Envoyer</button>
                             </div>
@@ -76,4 +66,12 @@ const Register = () => {
         </Fragment>
     );
 }
-export default Register;
+
+newPassword.getInitialProps = (context) => {
+    if (context.query.token != undefined) {
+        return context.query;
+    }
+    return redirect(context, '/404');
+}
+
+export default newPassword;

@@ -1,6 +1,7 @@
 import { Fragment, useState, useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import NavigationLink from './NavigationLink';
 import './Header.css';
 
@@ -8,6 +9,7 @@ export default function Header() {
 
     const { isAuth, logoutUser, user } = useContext(UserContext);
     const [isActive, setIsActive]      = useState(false);
+    const { pathname }                 = useRouter();
 
     const toggleNavbar = () => {
         setIsActive(!isActive);
@@ -44,10 +46,9 @@ export default function Header() {
                                 </Fragment>
                             :
                                 <Fragment>
-                                    {/* <NavigationLink name="Mon Profil" path={`/profile/${user.name}`} /> */}
                                     <li className="navbar-item">
                                         <Link href={"/profile/[name]"} as={`/profile/${user.name}`}>
-                                            <a className={"navbar-link"}>Mon Profil</a>
+                                            <a className={`navbar-link ${pathname === "/profile/[name]" ? "navbar-link-active" : null}`}>Mon Profil</a>
                                         </Link>
                                     </li>
                                     <li className="navbar-item">

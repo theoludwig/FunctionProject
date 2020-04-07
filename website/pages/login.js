@@ -27,7 +27,7 @@ const Login = () => {
     return (
         <Fragment>
             <HeadTag 
-                title="Se connecter" 
+                title="Se connecter - FunctionProject" 
                 description="Connexion à FunctionProject." 
             />
             <div className="container Register-Login__container">
@@ -44,7 +44,7 @@ const Login = () => {
                                 <label className="form-label" htmlFor="password">Mot de passe :</label>
                                 <input onChange={handleChange} type="password" name="password" id="password" className="form-control" placeholder="******" />
                                 <p>
-                                    <Link href={"/register"}>
+                                    <Link href={"/forgotPassword"}>
                                         <a className="Register-Login__Forgot-password">Mot de passe oublié ?</a>
                                     </Link>
                                 </p>

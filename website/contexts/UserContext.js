@@ -41,9 +41,9 @@ function UserContextProvider(props) {
     }
 
     const logoutUser = () => {
+        cookies.remove('user');
         setUser(null);
         setIsAuth(false);
-        cookies.remove('user');
     } 
 
     return (
