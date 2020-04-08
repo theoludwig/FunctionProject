@@ -22,6 +22,7 @@ module.exports = sequelize.define('user', {
     },
     biography: {
         type: Sequelize.TEXT,
+        defaultValue: ""
     },
     logo: {
         type: Sequelize.STRING,

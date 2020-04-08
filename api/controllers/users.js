@@ -56,7 +56,7 @@ exports.putUser = (req, res, next) => {
             logo.mimetype !== 'image/jpeg' ||
             logo.mimetype !== 'image/gif'
         )) {
-            return errorHandling(next, { message:"Le profil doit avoir une image valide.", statusCode: 400 });
+            return errorHandling(next, { message:"Le profil doit avoir une image valide (PNG, JPG, GIF) et moins de 5mo.", statusCode: 400 });
         }
         const logoName = name + req.userId + uuid.v4() + logo.name;
         // Supprime les anciens logo

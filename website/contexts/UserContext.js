@@ -14,45 +14,56 @@ function UserContextProvider(props) {
     const [messageLogin, setMessageLogin] = useState("");
 
     useEffect(() => {
-        const user = cookies.get('user');
-        setUser(user);
-        if (user != undefined) {
+        const newUser = cookies.get('user');
+        if (newUser != undefined) {
             setIsAuth(true);
+            setUser(newUser);
         }
     }, []);
 
-    const loginUser = ({ email, password }) => {
-        setLoginLoading(true);
-        api.post('/users/login', { email, password })
-            .then((response) => {
-                const user = response.data;
-                changeUserValue(user);
-                setIsAuth(true);
-                setMessageLogin('<p class="form-success"><b>Succès:</b> Connexion réussi!</p>');
-                setLoginLoading(false);
-            })
-            .catch((error) => {
-                setMessageLogin(`<p class="form-error"><b>Erreur:</b> ${error.response.data.message}</p>`);
-                setLoginLoading(false);
-                setIsAuth(false);
-                setUser(null);
-            });
-    }
+    useEffect(() => {
+        if (isAuth) {
+            setMessageLogin('<p class="form-error"><b>Erreur:</b> Vous devez être déconnecter avant de vous connecter.</p>');
+        } else {
+            setMessageLogin("");
+        }
+    }, [isAuth]);
 
     const logoutUser = () => {
-        cookies.remove('user');
+        cookies.remove('user', { path: '/' });
         setUser(null);
         setIsAuth(false);
     } 
 
-    const changeUserValue = (user) => {
-        cookies.remove('user');
-        cookies.set('user', user);
-        setUser(user);
+    const changeUserValue = (newUser) => {
+        cookies.remove('user', { path: '/' });
+        cookies.set('user', newUser, { path: '/' });
+        setUser(newUser);
+    }
+ 
+    const loginUser = ({ email, password }) => {
+        setLoginLoading(true);
+        return new Promise(async (next) => {
+            try {
+                const response = await api.post('/users/login', { email, password });
+                const newUser = response.data;
+                changeUserValue(newUser);
+                setIsAuth(true);
+                setMessageLogin('<p class="form-success"><b>Succès:</b> Connexion réussi!</p>');
+                setLoginLoading(false);
+                return next({ isSuccess: true, newUser });
+            } catch (error) {
+                setMessageLogin(`<p class="form-error"><b>Erreur:</b> ${error.response.data.message}</p>`);
+                setLoginLoading(false);
+                setIsAuth(false);
+                setUser(null);
+                return next({ isSuccess: false });
+            }
+        });
     }
 
     return (
-        <UserContext.Provider value={{ user, loginUser, logoutUser, loginLoading, messageLogin, isAuth, changeUserValue }}>
+        <UserContext.Provider value={{ user, loginUser, logoutUser, loginLoading, messageLogin, isAuth, changeUserValue, setMessageLogin }}>
             {props.children}
         </UserContext.Provider>
     );

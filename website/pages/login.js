@@ -5,13 +5,14 @@ import htmlParser from 'html-react-parser';
 import Loader from '../components/Loader';
 import HeadTag from '../components/HeadTag';
 import { UserContext } from '../contexts/UserContext';
+import redirect from '../utils/redirect';
 import '../public/css/pages/register-login.css';
 
 const Login = () => {
 
-    const router                                    = useRouter();
-    const [inputState, setInputState]               = useState({});
-    const { loginUser, messageLogin, loginLoading } = useContext(UserContext);
+    const router                                            = useRouter();
+    const [inputState, setInputState]                       = useState({});
+    const { loginUser, messageLogin, loginLoading, isAuth } = useContext(UserContext);
 
     const handleChange = (event) => {
         const inputStateNew = { ...inputState };
@@ -19,9 +20,14 @@ const Login = () => {
         setInputState(inputStateNew);
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        loginUser(inputState);
+        if (!isAuth) {
+            const loginObject = await loginUser(inputState); 
+            if (loginObject.isSuccess) {
+                redirect({}, `/profile/${loginObject.newUser.name}`);
+            }
+        }
     }
 
     return (

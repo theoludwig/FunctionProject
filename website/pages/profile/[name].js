@@ -21,7 +21,7 @@ const Profile = (props) => {
     const publicationDate = `${('0'+createdAt.getDate()).slice(-2)}/${('0'+(createdAt.getMonth()+1)).slice(-2)}/${createdAt.getFullYear()}`;
 
     const { isAuth, user, logoutUser } = useContext(UserContext);
-    const [isOpen, setIsOpen]               = useState(false);
+    const [isOpen, setIsOpen]          = useState(false);
     
     let defaultInputState = {};
     if (isAuth) {
@@ -81,7 +81,7 @@ const Profile = (props) => {
                                             <FontAwesomeIcon icon={faTimes} style={{ width: '1.5rem', color: 'red' }} />
                                         </span>
                                         <h2 className="text-center">Éditer le profil</h2>
-                                        <p className="text-center"><em>(Vous devrez vous reconnecter après la sauvegarde) <br/> Si vous changez votre adresse email, vous devrez la confirmer (vérifier vos emails).</em></p>
+                                        <p className="text-center"><em>(Vous devrez vous reconnecter après la sauvegarde) <br/> Si vous changez votre adresse email, vous devrez la confirmer comme à l'inscription (vérifier vos emails).</em></p>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@ const Profile = (props) => {
 
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="logo">Logo <em>(400x400 recommandé)</em> :</label>
-                                        <br/>
+                                        <p style={{ margin: 0 }}><em>Si aucun fichier est choisi, le logo ne sera pas modifié.</em></p>
                                         <input onChange={handleChange} accept="image/jpeg,image/jpg,image/png,image/gif" type="file" name="logo" id="logo" />
                                     </div>
 
