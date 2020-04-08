@@ -1,20 +1,20 @@
-const path                           = require('path');
-const { validationResult }           = require('express-validator');
-const bcrypt                         = require('bcryptjs');
-const jwt                            = require('jsonwebtoken');
-const uuid                           = require('uuid');
-const errorHandling                  = require('../assets/utils/errorHandling');
-const { serverError, generalError }  = require('../assets/config/errors');
-const { JWT_SECRET, FRONT_END_HOST } = require('../assets/config/config');
-const transporter                    = require('../assets/config/transporter');
-const { EMAIL_INFO, HOST }           = require('../assets/config/config');
-const { emailTemplate }              = require('../assets/config/emails');
-const Users                          = require('../models/users');
-const Favorites                      = require('../models/favorites');
-const Functions                      = require('../models/functions');
-const Categories                     = require('../models/categories');
-const Comments                       = require('../models/comments');
-const deleteFilesNameStartWith       = require('../assets/utils/deleteFilesNameStartWith');
+const path                                                         = require('path');
+const { validationResult }                                         = require('express-validator');
+const bcrypt                                                       = require('bcryptjs');
+const jwt                                                          = require('jsonwebtoken');
+const ms                                                           = require('ms');
+const uuid                                                         = require('uuid');
+const errorHandling                                                = require('../assets/utils/errorHandling');
+const { serverError, generalError }                                = require('../assets/config/errors');
+const { JWT_SECRET, FRONT_END_HOST, EMAIL_INFO, HOST, TOKEN_LIFE } = require('../assets/config/config');
+const transporter                                                  = require('../assets/config/transporter');
+const { emailTemplate }                                            = require('../assets/config/emails');
+const Users                                                        = require('../models/users');
+const Favorites                                                    = require('../models/favorites');
+const Functions                                                    = require('../models/functions');
+const Categories                                                   = require('../models/categories');
+const Comments                                                     = require('../models/comments');
+const deleteFilesNameStartWith                                     = require('../assets/utils/deleteFilesNameStartWith');
 
 async function handleEditUser(res, { name, email, biography, isPublicEmail }, userId, logoName) {
     const user = await Users.findOne({ where: { id: userId } });
@@ -128,8 +128,8 @@ exports.login = async (req, res, next) => {
         }
         const token = jwt.sign({ 
             email: user.email, userId: user.id
-        }, JWT_SECRET, { expiresIn: '6h' });
-        return res.status(200).json({ token, id: user.id, name: user.name, email: user.email, biography: user.biography, logo: user.logo, isPublicEmail: user.isPublicEmail, isAdmin: user.isAdmin, createdAt: user.createdAt });
+        }, JWT_SECRET, { expiresIn: TOKEN_LIFE });
+        return res.status(200).json({ token, id: user.id, name: user.name, email: user.email, biography: user.biography, logo: user.logo, isPublicEmail: user.isPublicEmail, isAdmin: user.isAdmin, createdAt: user.createdAt, expiresIn: Math.round(ms(TOKEN_LIFE) / 1000) });
     } catch (error) {
         console.log(error);
         return errorHandling(next, serverError);

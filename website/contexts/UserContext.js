@@ -34,12 +34,6 @@ function UserContextProvider(props) {
         setUser(null);
         setIsAuth(false);
     } 
-
-    const changeUserValue = (newUser) => {
-        cookies.remove('user', { path: '/' });
-        cookies.set('user', newUser, { path: '/' });
-        setUser(newUser);
-    }
  
     const loginUser = ({ email, password }) => {
         setLoginLoading(true);
@@ -47,7 +41,9 @@ function UserContextProvider(props) {
             try {
                 const response = await api.post('/users/login', { email, password });
                 const newUser = response.data;
-                changeUserValue(newUser);
+                cookies.remove('user', { path: '/' });
+                cookies.set('user', newUser, { path: '/', maxAge: newUser.expiresIn });
+                setUser(newUser);
                 setIsAuth(true);
                 setMessageLogin('<p class="form-success"><b>Succès:</b> Connexion réussi!</p>');
                 setLoginLoading(false);
@@ -63,7 +59,7 @@ function UserContextProvider(props) {
     }
 
     return (
-        <UserContext.Provider value={{ user, loginUser, logoutUser, loginLoading, messageLogin, isAuth, changeUserValue, setMessageLogin }}>
+        <UserContext.Provider value={{ user, loginUser, logoutUser, loginLoading, messageLogin, isAuth, setMessageLogin }}>
             {props.children}
         </UserContext.Provider>
     );

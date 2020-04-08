@@ -18,7 +18,8 @@ const config = {
           user: process.env.EMAIL_USER, 
           pass: process.env.EMAIL_PASSWORD
         }
-    }
+    },
+    TOKEN_LIFE: '1 week'
 };
 
 module.exports = config;
