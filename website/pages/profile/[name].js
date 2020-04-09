@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Fragment, useContext, useState } from 'react';
+import { Fragment, useContext, useState, useEffect } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -22,15 +22,15 @@ const Profile = (props) => {
 
     const { isAuth, user, logoutUser } = useContext(UserContext);
     const [isOpen, setIsOpen]          = useState(false);
-    
-    let defaultInputState = {};
-    if (isAuth) {
-        defaultInputState = { name: user.name, email: user.email, biography: user.biography, isPublicEmail: user.isPublicEmail };
-    }
-    const [inputState, setInputState] = useState(defaultInputState);
-    
-    const [message, setMessage]       = useState("");
-    const [isLoading, setIsLoading]   = useState(false);
+    const [inputState, setInputState]  = useState({});
+    const [message, setMessage]        = useState("");
+    const [isLoading, setIsLoading]    = useState(false);
+
+    useEffect(() => {
+        if (isAuth) {
+            setInputState({ name: user.name, email: user.email, biography: user.biography, isPublicEmail: user.isPublicEmail });
+        }
+    }, [isAuth]);
 
     const toggleModal = () => setIsOpen(!isOpen);
 
