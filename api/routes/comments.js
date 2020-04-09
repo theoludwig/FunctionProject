@@ -1,11 +1,15 @@
 const { Router }         = require('express');
 const commentsController = require('../controllers/comments');
+const isAuth             = require('../middlewares/isAuth');
 
 const CommentsRouter = Router();
 
-// CommentsRouter.route('/')
+CommentsRouter.route('/:functionId')
 
-//     // Récupère les catégories
-//     .get(commentsController.getCategories);
+    // Récupère les commentaires
+    .get(commentsController.getCommentsByFunctionId)
+
+    // Permet à un utilisateur de poster un commentaire sur une fonction
+    .post(isAuth, commentsController.postCommentsByFunctionId);
 
 module.exports = CommentsRouter;
