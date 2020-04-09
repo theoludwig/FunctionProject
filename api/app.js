@@ -54,9 +54,9 @@ Favorites.belongsTo(Functions, { constraints: false });
 
 // Users can post comments on functions
 Users.hasMany(Comments);
-Comments.belongsTo(Users);
+Comments.belongsTo(Users, { constraints: false });
 Functions.hasMany(Comments);
-Comments.belongsTo(Functions);
+Comments.belongsTo(Functions, { constraints: false });
 
 /* Server */
 // sequelize.sync({ force: true })

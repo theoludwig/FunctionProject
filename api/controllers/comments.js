@@ -3,6 +3,7 @@ const Comments          = require('../models/comments');
 const Users             = require('../models/users');
 const Functions         = require('../models/functions');
 const helperQueryNumber = require('../assets/utils/helperQueryNumber');
+const { serverError }   = require('../assets/config/errors');
 
 exports.getCommentsByFunctionId = (req, res, next) => {
     const { functionId } = req.params;

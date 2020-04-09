@@ -43,7 +43,7 @@ exports.deleteFunction = async (req, res, next) => {
             const filePath = path.join(__dirname, '..', 'assets', result.image);
             fs.unlinkSync(filePath); // supprime le fichier
         }
-        await Functions.destroy({ where: { id } });
+        await result.destroy();
         res.status(200).json({ message: "La fonction a été correctement supprimé!"});
     } catch (error) {
         console.log(error);

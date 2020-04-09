@@ -1,5 +1,6 @@
-const errorHandling = require('../assets/utils/errorHandling');
-const Categories    = require('../models/categories');
+const errorHandling   = require('../assets/utils/errorHandling');
+const Categories      = require('../models/categories');
+const { serverError } = require('../assets/config/errors');
 
 exports.getCategories = (_req, res, next) => {
     Categories.findAll()
