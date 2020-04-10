@@ -41,6 +41,9 @@ a:hover {
     justify-content: center;
     align-items: center;
 }
+div[aria-hidden="true"] > * {
+    display: none;
+}
 
 /* LOADING */
 .isLoading {

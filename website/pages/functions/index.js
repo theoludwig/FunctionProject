@@ -3,9 +3,9 @@ import { useRouter } from 'next/router';
 import HeadTag from '../../components/HeadTag';
 import FunctionCard from '../../components/FunctionCard/FunctionCard';
 import Loader from '../../components/Loader';
-import '../../public/css/pages/functions.css';
 import api from '../../utils/api';
 import useAPI from '../../hooks/useAPI';
+import '../../public/css/pages/functions.css';
 
 const Functions = () => {
 

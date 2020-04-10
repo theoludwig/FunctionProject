@@ -52,7 +52,7 @@ const Profile = (props) => {
             formData.append('isPublicEmail', inputState.isPublicEmail);
             formData.append('logo', inputState.logo);
     
-            api.put('/users/', formData, { headers: { 'Authorization': user.token } })
+            api.put('/users/', formData, { headers: { 'Authorization': token } })
                 .then(() => {
                     setIsLoading(false);
                     logoutUser();

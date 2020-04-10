@@ -38,8 +38,11 @@ exports.postCommentsByFunctionId = async (req, res, next) => {
         if (!resultFunction) {
             return errorHandling(next, { message: "La fonction n'existe pas.", statusCode: 404 });
         }
-        await Comments.create({ message, userId: req.userId, functionId });
-        return res.status(201).json({ result: "Le commentaire a bien été ajouté!" });
+        if (!message) {
+            return errorHandling(next, { message: "Vous ne pouvez pas poster de commentaire vide.", statusCode: 400 });
+        }
+        const comment = await Comments.create({ message, userId: req.userId, functionId });
+        return res.status(201).json(comment);
     } catch (error) {
         console.log(error);
         return errorHandling(next, serverError);   

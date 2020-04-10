@@ -38,6 +38,6 @@ const FunctionCard = forwardRef((props, ref) => {
             </div>
         </Link>
     );
-}) 
+}); 
 
 export default FunctionCard;

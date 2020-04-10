@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import Loader from './Loader';
 import htmlParser from 'html-react-parser';
 import api from '../utils/api';
@@ -38,7 +38,7 @@ const FunctionForm = (props) => {
         );
     }
     return (
-        <div className="FunctionComponent__slide">
+        <Fragment>
             <form onSubmit={handleSubmit}>
                 {props.inputArray.map((input, index) => {
                     let inputResult;
@@ -69,7 +69,7 @@ const FunctionForm = (props) => {
                         htmlParser(message)
                 }
             </div>
-        </div>
+        </Fragment>
     );
 }
 
