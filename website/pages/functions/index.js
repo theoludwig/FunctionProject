@@ -20,6 +20,26 @@ const Functions = () => {
     const [isLoadingFunctions, setLoadingFunctions] = useState(true);
     const [pageFunctions, setPageFunctions]         = useState(1);
 
+    // Récupère la catégorie avec la query categoryId
+    useEffect(() => {
+        if (categoryId) {
+            handleChange({ target: { name: "selectedCategory", value: categoryId } });
+        }
+    }, [categoryId]);
+
+    // Récupère les fonctions si la page change
+    useEffect(() => {
+        getFunctionsData().then((data) => setFunctionsData({ 
+            hasMore: data.hasMore, 
+            rows: [...functionsData.rows, ...data.rows] 
+        }));
+    }, [pageFunctions]);
+
+    // Récupère les fonctions si la catégorie/recherche change
+    useEffect(() => {
+        getFunctionsData().then((data) => setFunctionsData(data));
+    }, [inputSearch.selectedCategory, inputSearch.search]);
+
     // Permet la pagination au scroll
     const observer = useRef();
     const lastFunctionCardRef = useCallback((node) => {
@@ -41,26 +61,6 @@ const Functions = () => {
             next(result.data);
         });
     }
-    
-    // Récupère la catégorie avec la query categoryId
-    useEffect(() => {
-        if (categoryId) {
-            handleChange({ target: { name: "selectedCategory", value: categoryId } });
-        }
-    }, [categoryId]);
-
-    // Récupère les fonctions si la page change
-    useEffect(() => {
-        getFunctionsData().then((data) => setFunctionsData({ 
-            hasMore: data.hasMore, 
-            rows: [...functionsData.rows, ...data.rows] 
-        }));
-    }, [pageFunctions]);
-
-    // Récupère les fonctions si la catégorie/recherche change
-    useEffect(() => {
-        getFunctionsData().then((data) => setFunctionsData(data));
-    }, [inputSearch.selectedCategory, inputSearch.search]);
 
     const handleChange = (event) => {
         const inputSearchNew = { ...inputSearch };

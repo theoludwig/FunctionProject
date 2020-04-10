@@ -19,3 +19,16 @@
 .FunctionComponent__slide {
     margin-top: 30px;
 }
+.FunctionComponent__image {
+    width: 150px;
+}
+.FunctionComponent__star-favorite {
+    color: var(--important);
+    width: 2em !important;
+    height: 2em !important;
+    position: absolute;
+    right: 0;
+    top: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+}

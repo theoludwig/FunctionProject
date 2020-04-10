@@ -11,6 +11,7 @@ const CommentCard = forwardRef((props, ref) => {
     const { isAuth, user } = useContext(UserContext);
 
     const deleteCommentById = async () => {
+        props.manageComment.setLoadingComments(true);
         if (isAuth && user.token != undefined) {
             try {
                 await api.delete(`/comments?commentId=${props.id}`, { headers: { 'Authorization': user.token } });
@@ -20,6 +21,7 @@ const CommentCard = forwardRef((props, ref) => {
                 props.manageComment.setCommentsData({ hasMore: props.manageComment.commentsData.hasMore, rows: newCommentsData.rows });
             } catch {}
         }
+        props.manageComment.setLoadingComments(false);
     }
 
     return (

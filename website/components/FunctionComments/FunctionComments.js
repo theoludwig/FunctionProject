@@ -17,6 +17,14 @@ const FunctionComments = ({ functionId }) => {
     const [isLoadingComments, setLoadingComments] = useState(true);
     const [pageComments, setPageComments]         = useState(1);
 
+    // Récupère les commentaires si la page change
+    useEffect(() => {
+        getCommentsData().then((data) => setCommentsData({ 
+            hasMore: data.hasMore, 
+            rows: [...commentsData.rows, ...data.rows] 
+        }));
+    }, [pageComments]);
+
     // Permet la pagination au scroll
     const observer = useRef();
     const lastCommentCardRef = useCallback((node) => {
@@ -38,14 +46,6 @@ const FunctionComments = ({ functionId }) => {
             next(result.data);
         });
     }
-
-    // Récupère les commentaires si la page change
-    useEffect(() => {
-        getCommentsData().then((data) => setCommentsData({ 
-            hasMore: data.hasMore, 
-            rows: [...commentsData.rows, ...data.rows] 
-        }));
-    }, [pageComments]);
 
     const handleChange = (event) => {
         const inputStateNew = { ...inputState };
@@ -102,9 +102,9 @@ const FunctionComments = ({ functionId }) => {
                     {commentsData.rows.map((comment, index) => {
                         // Si c'est le dernier élément
                         if (commentsData.rows.length === index + 1) {
-                            return <CommentCard key={comment.id} ref={lastCommentCardRef} { ...comment } manageComment={{ setCommentsData, commentsData }} />;
+                            return <CommentCard key={comment.id} ref={lastCommentCardRef} { ...comment } manageComment={{ setCommentsData, commentsData, setLoadingComments }} />;
                         }
-                        return <CommentCard key={comment.id} { ...comment } manageComment={{ setCommentsData, commentsData }} />;
+                        return <CommentCard key={comment.id} { ...comment } manageComment={{ setCommentsData, commentsData, setLoadingComments }} />;
                     })}
                 </div>
             </div>
