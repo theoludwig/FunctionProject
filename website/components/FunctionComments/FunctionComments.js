@@ -54,6 +54,7 @@ const FunctionComments = ({ functionId }) => {
     }
 
     const handleSubmit = async (event) => {
+        setLoadingComments(true);
         event.preventDefault();
         const token = user.token;
         if (isAuth && token != undefined && inputState.commentPost != undefined) {
@@ -61,9 +62,10 @@ const FunctionComments = ({ functionId }) => {
                 const response = await api.post(`/comments/${functionId}`, { message: inputState.commentPost }, { headers: { 'Authorization': token } });
                 const comment = { ...response.data, user: { name: user.name, logo: user.logo } };
                 setCommentsData({ hasMore: commentsData.hasMore, rows: [comment, ...commentsData.rows] });
-                setInputState({});
+                setInputState({ commentPost: "" });
             } catch { }
         }
+        setLoadingComments(false);
     }
 
     return (
@@ -100,9 +102,9 @@ const FunctionComments = ({ functionId }) => {
                     {commentsData.rows.map((comment, index) => {
                         // Si c'est le dernier élément
                         if (commentsData.rows.length === index + 1) {
-                            return <CommentCard key={comment.id} ref={lastCommentCardRef} { ...comment } />;
+                            return <CommentCard key={comment.id} ref={lastCommentCardRef} { ...comment } manageComment={{ setCommentsData, commentsData }} />;
                         }
-                        return <CommentCard key={comment.id} { ...comment } />;
+                        return <CommentCard key={comment.id} { ...comment } manageComment={{ setCommentsData, commentsData }} />;
                     })}
                 </div>
             </div>

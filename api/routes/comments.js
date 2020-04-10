@@ -4,6 +4,11 @@ const isAuth             = require('../middlewares/isAuth');
 
 const CommentsRouter = Router();
 
+CommentsRouter.route('/')
+
+    // Supprime un commentaire
+    .delete(isAuth, commentsController.deleteCommentById);
+
 CommentsRouter.route('/:functionId')
 
     // Récupère les commentaires

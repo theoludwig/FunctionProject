@@ -48,3 +48,18 @@ exports.postCommentsByFunctionId = async (req, res, next) => {
         return errorHandling(next, serverError);   
     }
 }
+
+exports.deleteCommentById = async (req, res, next) => {
+    const { commentId } = req.query;
+    try {
+        const comment = await Comments.findOne({ where: { userId: req.userId, id: parseInt(commentId) } });
+        if (!comment) {
+            return errorHandling(next, { message: "Le commentaire n'existe pas.", statusCode: 404 });
+        }
+        await comment.destroy();
+        return res.status(200).json({ message: "Le commentaire a bien été supprimé." });
+    } catch (error) {
+        console.log(error);
+        return errorHandling(next, serverError);   
+    }
+}
