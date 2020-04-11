@@ -55,7 +55,12 @@ const FunctionsList = (props) => {
     const getFunctionsData = () => {
         setLoadingFunctions(true);
         return new Promise(async (next) => {
-            const result = await api.get(`/functions?page=${pageFunctions}&limit=10&categoryId=${inputSearch.selectedCategory}&search=${inputSearch.search}`);
+            const URL = `${(props.isAdmin) ? "/admin/functions" : "/functions"}?page=${pageFunctions}&limit=10&categoryId=${inputSearch.selectedCategory}&search=${inputSearch.search}`;
+            const result = await api.get(URL, {
+                headers: {
+                    ...(props.isAdmin && props.token != undefined) && { 'Authorization': props.token }
+                }
+            });
             setLoadingFunctions(false);
             next(result.data);
         });

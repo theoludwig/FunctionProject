@@ -18,6 +18,6 @@ module.exports = (req, _res, next) => {
         })
         .catch((error) => {
             console.log(error);
-            errorHandling(next, serverError);
+            return errorHandling(next, serverError);
         });
 }
