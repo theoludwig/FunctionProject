@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useState, forwardRef } from 'react';
+import date from 'date-and-time';
 import Loader from '../Loader';
 import './FunctionCard.css';
 import { API_URL } from '../../utils/config';
@@ -16,8 +17,18 @@ const FunctionCard = forwardRef((props, ref) => {
 
     return (
         <Link 
-            href={isFormOrArticle ? "/functions/[slug]" : `/functions/${props.slug}`} 
-            as={`/functions/${props.slug}`}
+            { 
+                ...(props.isAdmin) ? 
+                {
+                    href: "/admin/[slug]",
+                    as: `/admin/${props.slug}`
+                } 
+                    : 
+                {
+                    href: (isFormOrArticle) ? "/functions/[slug]" : `/functions/${props.slug}`,
+                    as: `/functions/${props.slug}`
+                }
+            }
         >
             {/* FunctionCard a une hauteur pendant chargement */}
             <div ref={ref} style={isLoading ? { height: "360px", justifyContent: "center" } : null} className={"FunctionCard col-sm-24 col-md-10 col-xl-7"}>
@@ -31,8 +42,8 @@ const FunctionCard = forwardRef((props, ref) => {
                         <p className="FunctionCard__description">{props.description}</p>
                     </div>
                     <div className="FunctionCard__info">
-                        <p className="FunctionCard__category" style={{ backgroundColor: props.category.color }}>{props.category.name}</p>
-                        <p className="FunctionCard__publication-date">{props.publicationDate}</p>
+                        <p className="FunctionCard__category" style={{ backgroundColor: props.categorie.color }}>{props.categorie.name}</p>
+                        <p className="FunctionCard__publication-date">{date.format(new Date(props.createdAt), 'DD/MM/YYYY', true)}</p>
                     </div>
                 </div>
             </div>

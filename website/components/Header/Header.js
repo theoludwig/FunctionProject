@@ -37,7 +37,6 @@ export default function Header() {
                     <ul className={`navbar__list ${(isActive) ? "navbar__list-active" : ""}`}>
                         <NavigationLink name="Accueil" path="/" />
                         <NavigationLink name="Fonctions" path="/functions" />
-
                         {
                             (!isAuth) ? 
                                 <Fragment>
@@ -57,6 +56,10 @@ export default function Header() {
                                         </Link>
                                     </li>
                                 </Fragment>
+                        }
+                        {
+                            (isAuth && user.isAdmin) &&
+                                <NavigationLink name="Admin" path="/admin" />
                         }
                     </ul>
                 </nav>

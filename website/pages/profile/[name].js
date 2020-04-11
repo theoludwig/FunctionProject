@@ -169,7 +169,7 @@ const Profile = (props) => {
                             <div className="row justify-content-center">
                                 {props.favoritesArray.map((favorite) => {
                                     return (
-                                        <FunctionCard key={favorite.id} slug={favorite.slug} image={favorite.image} title={favorite.title} description={favorite.description} type={favorite.type} category={favorite.categorie} publicationDate={date.format(new Date(favorite.createdAt), 'DD/MM/YYYY', true)} />
+                                        <FunctionCard key={favorite.id} { ...favorite } />
                                     );
                                 })}
                             </div>
