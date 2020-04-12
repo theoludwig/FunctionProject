@@ -100,4 +100,17 @@ AdminRouter.route('/functions/:id')
     // Supprime une fonction avec son id
     .delete(isAuth, isAdmin, adminController.deleteFunction);
 
+AdminRouter.route('/categories')
+
+    // Crée une catégorie
+    .post(isAuth, isAdmin, adminController.postCategory);
+
+AdminRouter.route('/categories/:id')
+
+    // Modifier une catégorie avec son id
+    .put(isAuth, isAdmin, adminController.putCategory)
+
+    // Supprime une fonction avec son id
+    .delete(isAuth, isAdmin, adminController.deleteCategory);
+
 module.exports = AdminRouter;

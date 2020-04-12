@@ -69,8 +69,8 @@ exports.postFunction = (req, res, next) => {
     image.mv(path.join(__dirname, '..', 'assets', 'images', 'functions') + '/' + imageName, async (error) => {
         if (error) return errorHandling(next, serverError);
         try {
-            await Functions.create({ title, slug, description, type, categorieId, image: `/images/functions/${imageName}` });
-            return res.status(201).json({ message: "La fonction a été correctement ajouté!"});
+            const result = await Functions.create({ title, slug, description, type, categorieId, image: `/images/functions/${imageName}` });
+            return res.status(201).json({ message: "La fonction a été correctement ajouté!", result });
         } catch (error) {
             console.log(error);
             return errorHandling(next, serverError);
@@ -91,6 +91,56 @@ exports.deleteFunction = async (req, res, next) => {
         }
         await result.destroy();
         res.status(200).json({ message: "La fonction a été correctement supprimé!"});
+    } catch (error) {
+        console.log(error);
+        return errorHandling(next, serverError);
+    }
+}
+
+exports.postCategory = async (req, res, next) => {
+    const { name, color } = req.body;
+    if (!(name && color)) {
+        return errorHandling(next, { message: "La catégorie doit avoir un nom et une couleur." });
+    }
+    try {
+        const result = await Categories.create({ name, color });
+        return res.status(201).json({ message: "La catégorie a bien été crée!", result });
+    } catch (error) {
+        console.log(error);
+        return errorHandling(next, serverError);
+    }
+}
+
+exports.putCategory = async (req, res, next) => {
+    const { name, color } = req.body;
+    const { id }          = req.params;
+    if (!(name && color && id)) {
+        return errorHandling(next, { message: "La catégorie doit avoir un nom, une couleur et un id." });
+    }
+    try {
+        const category = await Categories.findOne({ where: { id } });
+        if (!category) {
+            return errorHandling(next, { message: "La catégorie n'existe pas." });
+        }
+        category.name = name;
+        category.color = color;
+        const result = await category.save();
+        return res.status(200).json({ message: "La catégorie a bien été modifié!", result });
+    } catch (error) {
+        console.log(error);
+        return errorHandling(next, serverError);
+    }
+}
+
+exports.deleteCategory = async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        const category = await Categories.findOne({ where: { id } });
+        if (!category) {
+            return errorHandling(next, { message: "La catégorie n'existe pas." });
+        }
+        await category.destroy();
+        return res.status(200).json({ message: "La catégorie a bien été supprimé!" });
     } catch (error) {
         console.log(error);
         return errorHandling(next, serverError);
