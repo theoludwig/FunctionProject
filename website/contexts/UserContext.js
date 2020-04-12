@@ -47,13 +47,13 @@ function UserContextProvider(props) {
                 setIsAuth(true);
                 setMessageLogin('<p class="form-success"><b>Succès:</b> Connexion réussi!</p>');
                 setLoginLoading(false);
-                return next({ isSuccess: true, newUser });
+                return next();
             } catch (error) {
                 setMessageLogin(`<p class="form-error"><b>Erreur:</b> ${error.response.data.message}</p>`);
                 setLoginLoading(false);
                 setIsAuth(false);
                 setUser(null);
-                return next({ isSuccess: false });
+                return next();
             }
         });
     }

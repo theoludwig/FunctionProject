@@ -5,7 +5,7 @@ import htmlParser from 'html-react-parser';
 import Loader from '../components/Loader';
 import HeadTag from '../components/HeadTag';
 import { UserContext } from '../contexts/UserContext';
-import redirect from '../utils/redirect';
+import withoutAuth from '../hoc/withoutAuth';
 import '../public/css/pages/register-login.css';
 
 const Login = () => {
@@ -23,10 +23,7 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!isAuth) {
-            const loginObject = await loginUser(inputState); 
-            if (loginObject.isSuccess) {
-                redirect({}, `/profile/${loginObject.newUser.name}`);
-            }
+            await loginUser(inputState); 
         }
     }
 
@@ -77,4 +74,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default withoutAuth(Login);

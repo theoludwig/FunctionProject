@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Fragment, useState, useEffect } from 'react';
 import Cookies from "universal-cookie";
 import HeadTag from '../../components/HeadTag';
@@ -9,8 +10,8 @@ import redirect from '../../utils/redirect';
 import htmlParser from 'html-react-parser';
 import Loader from '../../components/Loader';
 import useAPI from '../../hooks/useAPI';
-import '../../public/css/pages/admin.css';
 import api from '../../utils/api';
+import '../../public/css/pages/admin.css';
 
 const Admin = (props) => {
 
@@ -149,6 +150,9 @@ const Admin = (props) => {
                         <div className="col-24">
                             <h1 className="Functions__title">Administration</h1>
                             <button onClick={toggleModal} style={{ margin: '0 0 40px 0' }} className="btn btn-dark">Crée une nouvelle fonction</button>
+                            <Link href={"/admin/manageCategories"}>
+                                <button style={{ margin: '0 0 0 20px' }} className="btn btn-dark">Gérer les catégories</button>
+                            </Link>
                         </div>
                     </FunctionsList>
             }

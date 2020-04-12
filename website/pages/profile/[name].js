@@ -16,10 +16,6 @@ import '../../public/css/pages/profile.css';
 
 const Profile = (props) => {
 
-    // Constantes
-    const createdAt = new Date(props.createdAt);
-    const publicationDate = `${('0'+createdAt.getDate()).slice(-2)}/${('0'+(createdAt.getMonth()+1)).slice(-2)}/${createdAt.getFullYear()}`;
-
     const { isAuth, user, logoutUser } = useContext(UserContext);
     const [isOpen, setIsOpen]          = useState(false);
     const [inputState, setInputState]  = useState({});
@@ -148,7 +144,7 @@ const Profile = (props) => {
                                     <div className="col-24 text-center">
                                         {(props.biography != undefined) && <p>{props.biography}</p>}
                                         {(props.email != undefined) && <p><span className="important">Email :</span> {props.email}</p>}
-                                        <p><span className="important">Date de création :</span> {publicationDate}</p>
+                                        <p><span className="important">Date de création du compte :</span> {date.format(new Date(props.createdAt), 'DD/MM/YYYY à HH:mm', true)}</p>
                                     </div>
 
                                     {(isAuth && user.name === props.name) &&                            

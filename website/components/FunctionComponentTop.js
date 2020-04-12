@@ -3,8 +3,10 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
+import date from 'date-and-time';
 import { UserContext } from '../contexts/UserContext';
 import api from '../utils/api';
+import { API_URL } from '../utils/config';
 import './FunctionCard/FunctionCard.css';
 
 const FunctionComponentTop = (props) => {
@@ -47,14 +49,14 @@ const FunctionComponentTop = (props) => {
                         <FontAwesomeIcon onClick={toggleFavorite} { ...(isFavorite) ? { icon: faStar } : { icon: farStar } } title={(isFavorite) ? "Retirer la fonction des favoris" : "Ajouter la fonction aux favoris"} className="FunctionComponent__star-favorite" />
                     }
 
-                    <img className="FunctionComponent__image" src={props.API_URL + props.image} alt={props.title} />
+                    <img className="FunctionComponent__image" src={API_URL + props.image} alt={props.title} />
                     <h1 className="FunctionComponent__title title-important">{props.title}</h1>
                     <p className="FunctionComponent__description">{props.description}</p>
                     <div className="FunctionCard__info">
                         <Link href={`/functions?categoryId=${props.categorieId}`}>
                             <a className="FunctionCard__category" style={{ backgroundColor: props.categorie.color, color: 'inherit' }}>{props.categorie.name}</a>
                         </Link>
-                        <p className="FunctionCard__publication-date">{props.publicationDate}</p>
+                        <p className="FunctionCard__publication-date">{date.format(new Date(props.createdAt), 'DD/MM/YYYY', true)}</p>
                     </div>
                 </div>
             </div>

@@ -9,18 +9,13 @@ import { API_URL } from '../../utils/config';
 import '../../public/css/pages/FunctionComponent.css';
 
 const FunctionComponent = (props) => {
-    
-    // Constantes
-    const createdAt = new Date(props.createdAt);
-    const publicationDate = `${('0'+createdAt.getDate()).slice(-2)}/${('0'+(createdAt.getMonth()+1)).slice(-2)}/${createdAt.getFullYear()}`;
-
     return (
         <FunctionTabsContextProvider>
             <HeadTag title={props.title} description={props.description} image={API_URL + props.image} />
             <div className="container-fluid">
                 <FunctionTabsTop type={props.type} />
-                <FunctionComponentTop { ...props } API_URL={API_URL} publicationDate={publicationDate} />
-                <FunctionTabManager functionInfo={props} />
+                <FunctionComponentTop { ...props } />
+                <FunctionTabManager { ...props } />
             </div>
         </FunctionTabsContextProvider>
     );

@@ -3,15 +3,15 @@ import FunctionForm from './FunctionForm';
 import FunctionComments from './FunctionComments/FunctionComments';
 
 const FunctionTabManager = (props) => {
-    if (props.functionInfo.type === "form") {
+    if (props.type === "form") {
         return (
-            <FunctionTabs type={props.functionInfo.type}>
+            <FunctionTabs type={props.type}>
                 <div className="FunctionComponent__slide">
-                    <FunctionForm inputArray={ [...props.functionInfo.utilizationForm || []] } slug={props.functionInfo.slug} />
+                    <FunctionForm inputArray={ [...props.utilizationForm || []] } slug={props.slug} />
                 </div>
                 <div className="FunctionComponent__slide text-center">Article</div>
                 <div className="FunctionComponent__slide">
-                    <FunctionComments functionId={props.functionInfo.id} />
+                    <FunctionComments functionId={props.id} />
                 </div>
             </FunctionTabs>
         );
@@ -21,7 +21,7 @@ const FunctionTabManager = (props) => {
         <FunctionTabs type={props.type}>
             <div className="FunctionComponent__slide text-center">Article</div>
             <div className="FunctionComponent__slide">
-                <FunctionComments functionId={props.functionInfo.id} />
+                <FunctionComments functionId={props.id} />
             </div>
         </FunctionTabs>
     );
