@@ -90,12 +90,12 @@ const Admin = (props) => {
                                     <form onSubmit={handleSubmit}>
                                         <div className="form-group">
                                             <label className="form-label" htmlFor="title">Titre :</label>
-                                            <input value={inputState.name} onChange={handleChange} type="text" name="title" id="title" className="form-control" placeholder="(e.g : Nombre aléatoire)" />
+                                            <input value={inputState.title} onChange={handleChange} type="text" name="title" id="title" className="form-control" placeholder="(e.g : Nombre aléatoire)" />
                                         </div>
 
                                         <div className="form-group">
                                             <label className="form-label" htmlFor="slug">Slug :</label>
-                                            <input value={inputState.name} onChange={handleChange} type="text" name="slug" id="slug" className="form-control" placeholder="(e.g : randomNumber)" />
+                                            <input value={inputState.slug} onChange={handleChange} type="text" name="slug" id="slug" className="form-control" placeholder="(e.g : randomNumber)" />
                                         </div>
 
                                         <div className="form-group">
