@@ -130,7 +130,7 @@ const manageCategories = (props) => {
                         <div className="row justify-content-center">
                             <div className="col-24">
                                 <h1>Gérer les catégories</h1>
-                                <button onClick={() => { setDefaultInputState(defaultCategoryState); toggleModal(); }} style={{ margin: '0 0 40px 0' }} className="btn btn-dark">Ajouter une catégorie</button>
+                                <button onClick={() => { setDefaultInputState(defaultCategoryState); toggleModal(); setIsEditing(false); }} style={{ margin: '0 0 40px 0' }} className="btn btn-dark">Ajouter une catégorie</button>
                             </div>
                         </div>    
                         <div className="row justify-content-center">
