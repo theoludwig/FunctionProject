@@ -9,12 +9,13 @@ const helperQueryNumber        = require('../assets/utils/helperQueryNumber');
 const Sequelize                = require('sequelize');
 const deleteFilesNameStartWith = require('../assets/utils/deleteFilesNameStartWith');
 
-const handleEditFunction = async (res, resultFunction, { title, slug, description, type, categorieId }, imageName = false) => {
+const handleEditFunction = async (res, resultFunction, { title, slug, description, type, categorieId, isOnline }, imageName = false) => {
     resultFunction.title       = title;
     resultFunction.slug        = slug;
     resultFunction.description = description;
     resultFunction.type        = type;
     resultFunction.categorieId = categorieId;
+    resultFunction.isOnline    = isOnline;
     if (imageName) {
         resultFunction.image = `/images/functions/${imageName}`;
     }
@@ -113,9 +114,9 @@ exports.postFunction = (req, res, next) => {
 }
 
 exports.putFunction = async (req, res, next) => {
-    const { id }                                          = req.params;
-    const { title, slug, description, type, categorieId } = req.body;
-    const image                                           = req.files.image;
+    const { id }                                                    = req.params;
+    const { title, slug, description, type, categorieId, isOnline } = req.body;
+    const image                                                     = req.files.image;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return errorHandling(next, { message: errors.array()[0].msg, statusCode: 400 });
@@ -150,11 +151,11 @@ exports.putFunction = async (req, res, next) => {
             deleteFilesNameStartWith(slug, functionPath, () => {
                 image.mv(path.join(functionPath, imageName), async (error) => {
                     if (error) return errorHandling(next, serverError);
-                    return await handleEditFunction(res, resultFunction, { title, slug, description, type, categorieId }, imageName);
+                    return await handleEditFunction(res, resultFunction, { title, slug, description, type, categorieId, isOnline }, imageName);
                 });
             });
         } else {
-            return await handleEditFunction(res, resultFunction, { title, slug, description, type, categorieId });
+            return await handleEditFunction(res, resultFunction, { title, slug, description, type, categorieId, isOnline });
         }
     } catch (error) {
         console.log(error);
