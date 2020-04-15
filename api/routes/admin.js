@@ -95,10 +95,12 @@ AdminRouter.route('/functions')
             })
     ], adminController.postFunction);
 
-AdminRouter.route('/functions/:id')
+AdminRouter.route('/functions/:slug')
 
     // Récupère les informations d'une fonction
-    .get(isAuth, isAdmin, adminController.getFunctionById)
+    .get(isAuth, isAdmin, adminController.getFunctionBySlug);
+
+AdminRouter.route('/functions/:id')
 
     // Modifie information basique d'une fonction
     .put(isAuth, isAdmin, 

@@ -63,10 +63,10 @@ exports.getFunctions = (req, res, next) => {
         });
 }
 
-exports.getFunctionById = (req, res, next) => {
-    const { id } = req.params;
+exports.getFunctionBySlug = (req, res, next) => {
+    const { slug } = req.params;
     Functions.findOne({ 
-        where: { id },
+        where: { slug },
         include: [
             { model: Categories, attributes: ["name", "color"] }
         ]
