@@ -63,6 +63,26 @@ exports.getFunctions = (req, res, next) => {
         });
 }
 
+exports.getFunctionById = (req, res, next) => {
+    const { id } = req.params;
+    Functions.findOne({ 
+        where: { id },
+        include: [
+            { model: Categories, attributes: ["name", "color"] }
+        ]
+    })
+        .then((result) => {
+            if (!result) {
+                return errorHandling(next, { message: "La fonction n'existe pas.", statusCode: 404 });
+            }
+            return res.status(200).json(result);
+        })
+        .catch((error) => {
+            console.log(error);
+            return errorHandling(next, serverError);
+        });
+}
+
 exports.postFunction = (req, res, next) => {
     const { title, slug, description, type, categorieId } = req.body;
     const image = req.files.image;
@@ -136,6 +156,44 @@ exports.putFunction = async (req, res, next) => {
         } else {
             return await handleEditFunction(res, resultFunction, { title, slug, description, type, categorieId });
         }
+    } catch (error) {
+        console.log(error);
+        return errorHandling(next, serverError);
+    }
+}
+
+exports.putFunctionArticle = async (req, res, next) => {
+    const { id }      = req.params;
+    const { article } = req.body;
+
+    try {
+        // Vérifie si la fonction existe
+        const resultFunction = await Functions.findOne({ where: { id } });
+        if (!resultFunction) {
+            return errorHandling(next, { message: "La fonction n'existe pas.", statusCode: 404 });
+        }
+        resultFunction.article = article;
+        const result = await resultFunction.save();
+        return res.status(200).json(result);
+    } catch (error) {
+        console.log(error);
+        return errorHandling(next, serverError);
+    }
+}
+
+exports.putFunctionForm = async (req, res, next) => {
+    const { id }   = req.params;
+    const { form } = req.body;
+
+    try {
+        // Vérifie si la fonction existe
+        const resultFunction = await Functions.findOne({ where: { id } });
+        if (!resultFunction) {
+            return errorHandling(next, { message: "La fonction n'existe pas.", statusCode: 404 });
+        }
+        resultFunction.form = form;
+        const result = await resultFunction.save();
+        return res.status(200).json(result);
     } catch (error) {
         console.log(error);
         return errorHandling(next, serverError);

@@ -97,6 +97,9 @@ AdminRouter.route('/functions')
 
 AdminRouter.route('/functions/:id')
 
+    // Récupère les informations d'une fonction
+    .get(isAuth, isAdmin, adminController.getFunctionById)
+
     // Modifie information basique d'une fonction
     .put(isAuth, isAdmin, 
         fileUpload({ 
@@ -169,6 +172,14 @@ AdminRouter.route('/functions/:id')
 
     // Supprime une fonction avec son id
     .delete(isAuth, isAdmin, adminController.deleteFunction);
+
+AdminRouter.route('/functions/article/:id')
+
+    .put(isAuth, isAdmin, adminController.putFunctionArticle);
+
+AdminRouter.route('/functions/form/:id')
+
+    .put(isAuth, isAdmin, adminController.putFunctionForm);
 
 AdminRouter.route('/categories')
 
