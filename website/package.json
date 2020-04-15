@@ -18,12 +18,14 @@
     "html-react-parser": "^0.10.2",
     "next": "9.3.2",
     "next-fonts": "^1.0.3",
+    "notyf": "^3.6.0",
     "nprogress": "^0.2.0",
     "react": "16.13.0",
     "react-color": "^2.18.0",
     "react-dom": "16.13.0",
     "react-swipeable-views": "^0.13.9",
     "react-swipeable-views-utils": "^0.13.9",
+    "suneditor-react": "^2.9.1",
     "universal-cookie": "^4.0.3"
   },
   "devDependencies": {
