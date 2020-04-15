@@ -35,14 +35,14 @@ async function handleEditUser(res, { name, email, biography, isPublicEmail }, us
         user.biography = biography;
     }
     user.isPublicEmail = isPublicEmail;
-    if (logoName != undefined) {
+    if (logoName != undefined && `/images/users/${logoName}` !== user.logo) {
         user.logo = `/images/users/${logoName}`;
     }
     await user.save();
     return res.status(200).json({ id: user.id, name: user.name, email: user.email, biography: user.biography, logo: user.logo, isPublicEmail: user.isPublicEmail, isAdmin: user.isAdmin, createdAt: user.createdAt });
 }
 
-exports.putUser = (req, res, next) => {
+exports.putUser = async (req, res, next) => {
     const { name, email, biography, isPublicEmail } = req.body;
     const logo = req.files.logo;
     const errors = validationResult(req);
@@ -58,26 +58,24 @@ exports.putUser = (req, res, next) => {
         )) {
             return errorHandling(next, { message:"Le profil doit avoir une image valide (PNG, JPG, GIF) et moins de 5mo.", statusCode: 400 });
         }
-        const logoName = name + req.userId + uuid.v4() + logo.name;
+        const splitedLogoName = logo.name.split('.');
+        if (splitedLogoName.length !== 2) return errorHandling(next, serverError);
+        const logoName = name + req.userId + '.' + splitedLogoName[1];
         // Supprime les anciens logo
         try {
-            deleteFilesNameStartWith(`${name + req.userId}`, path.join(__dirname, '..', 'assets', 'images', 'users'));
+            deleteFilesNameStartWith(`${name + req.userId}`, path.join(__dirname, '..', 'assets', 'images', 'users'), async () => {
+                logo.mv(path.join(__dirname, '..', 'assets', 'images', 'users', logoName), async (error) => {
+                    if (error) return errorHandling(next, serverError);
+                    return await handleEditUser(res, { name, email, biography, isPublicEmail }, req.userId, logoName);
+                });
+            });
         } catch (error) {
             console.log(error);
             return errorHandling(next, serverError);
         }
-        logo.mv(path.join(__dirname, '..', 'assets', 'images', 'users') + '/' + logoName, async (error) => {
-            if (error) return errorHandling(next, serverError);
-            try {
-                return handleEditUser(res, { name, email, biography, isPublicEmail }, req.userId, logoName);
-            } catch (error) {
-                console.log(error);
-                return errorHandling(next, serverError);
-            }
-        });
     } else {
         try {
-            return handleEditUser(res, { name, email, biography, isPublicEmail }, req.userId, null);
+            return await handleEditUser(res, { name, email, biography, isPublicEmail }, req.userId, null);
         } catch (error) {
             console.log(error);
             return errorHandling(next, serverError);

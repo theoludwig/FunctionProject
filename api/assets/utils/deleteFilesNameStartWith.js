@@ -1,19 +1,18 @@
 const fs   = require("fs");
 const path = require("path");
 
-function deleteFilesNameStartWith(pattern, dirPath = __dirname) {
-    // Get all file names in directory
-    fs.readdir(path.resolve(dirPath), (err, fileNames) => {
-        if (err) throw err;
-        console.log(dirPath);
-        // Iterate through the found file names
+function deleteFilesNameStartWith(pattern, dirPath, callback) {
+    fs.readdir(path.resolve(dirPath), (_error, fileNames) => {
         for (const name of fileNames) {
-            // If file name matches the pattern
-            if (name.startsWith(pattern) && name !== 'default.png') {
-                console.log(name)
-                fs.unlinkSync(path.join(dirPath, name));
+            const splitedName = name.split('.');
+            if (splitedName.length === 2) {
+                const fileName = splitedName[0];
+                if (fileName === pattern && name !== 'default.png') {
+                    return fs.unlink(path.join(dirPath, name), callback);
+                }
             }
         }
+        return callback();
     });
 }
 

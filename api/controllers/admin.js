@@ -126,10 +126,12 @@ exports.putFunction = async (req, res, next) => {
             if (splitedImageName.length !== 2) return errorHandling(next, serverError);
             const imageName = slug + '.' + splitedImageName[1];
             // Supprime les anciennes images
-            deleteFilesNameStartWith(slug, path.join(__dirname, '..', 'assets', 'images', 'functions'));
-            image.mv(path.join(__dirname, '..', 'assets', 'images', 'functions', imageName), async (error) => {
-                if (error) return errorHandling(next, serverError);
-                return await handleEditFunction(res, resultFunction, { title, slug, description, type, categorieId }, imageName);
+            const functionPath = path.join(__dirname, '..', 'assets', 'images', 'functions');
+            deleteFilesNameStartWith(slug, functionPath, () => {
+                image.mv(path.join(functionPath, imageName), async (error) => {
+                    if (error) return errorHandling(next, serverError);
+                    return await handleEditFunction(res, resultFunction, { title, slug, description, type, categorieId }, imageName);
+                });
             });
         } else {
             return await handleEditFunction(res, resultFunction, { title, slug, description, type, categorieId });

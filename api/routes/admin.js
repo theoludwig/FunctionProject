@@ -97,7 +97,7 @@ AdminRouter.route('/functions')
 
 AdminRouter.route('/functions/:id')
 
-    // Modifier information basique d'une fonction
+    // Modifie information basique d'une fonction
     .put(isAuth, isAdmin, 
         fileUpload({ 
             useTempFiles: true, 
@@ -180,7 +180,7 @@ AdminRouter.route('/categories/:id')
     // Modifier une catégorie avec son id
     .put(isAuth, isAdmin, adminController.putCategory)
 
-    // Supprime une fonction avec son id
+    // Supprime une catégorie avec son id
     .delete(isAuth, isAdmin, adminController.deleteCategory);
 
 module.exports = AdminRouter;
