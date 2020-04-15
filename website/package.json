@@ -25,7 +25,7 @@
     "react-dom": "16.13.0",
     "react-swipeable-views": "^0.13.9",
     "react-swipeable-views-utils": "^0.13.9",
-    "suneditor-react": "^2.9.1",
+    "suneditor-react": "^2.8.0",
     "universal-cookie": "^4.0.3"
   },
   "devDependencies": {

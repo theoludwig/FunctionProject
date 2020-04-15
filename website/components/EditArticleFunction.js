@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import 'suneditor/dist/css/suneditor.min.css';
 import dynamic from 'next/dynamic';
-import htmlParser from 'html-react-parser';
 import { complex } from '../utils/sunEditorConfig';
 import api from '../utils/api';
+import FunctionArticle from '../components/FunctionArticle';
 import 'notyf/notyf.min.css'; // for React and Vue
+import 'suneditor/dist/css/suneditor.min.css';
 
 const SunEditor = dynamic(
     () => import('suneditor-react'),
@@ -36,9 +36,7 @@ const EditArticleFunction = (props) => {
     return (
         <div className="container-fluid">
             <SunEditor setContents={props.functionInfo.article} lang="fr" onChange={handleEditorChange} setOptions={{ buttonList: complex, callBackSave: handleSave }} />
-            <div className="container-fluid">
-                {htmlParser(htmlContent)}
-            </div>
+            <FunctionArticle article={htmlContent} />
         </div>
     );
 }

@@ -1,15 +1,7 @@
-import htmlParser from 'html-react-parser';
 import FunctionTabs from './FunctionTabs/FunctionTabs';
 import FunctionForm from './FunctionForm';
+import FunctionArticle from './FunctionArticle';
 import FunctionComments from './FunctionComments/FunctionComments';
-
-const Article = ({ article }) => {
-    return (
-        <div className="container-fluid">
-            {(article != undefined) && htmlParser(article)}
-        </div>
-    );
-}
 
 const FunctionTabManager = (props) => {
     if (props.type === "form") {
@@ -19,7 +11,7 @@ const FunctionTabManager = (props) => {
                     <FunctionForm inputArray={ [...props.utilizationForm || []] } slug={props.slug} />
                 </div>
                 <div className="FunctionComponent__slide">
-                    <Article article={props.article} />
+                    <FunctionArticle article={props.article} />
                 </div>
                 <div className="FunctionComponent__slide">
                     <FunctionComments functionId={props.id} />
@@ -31,7 +23,7 @@ const FunctionTabManager = (props) => {
     return (
         <FunctionTabs type={props.type}>
             <div className="FunctionComponent__slide">
-                <Article article={props.article} />
+                <FunctionArticle article={props.article} />
             </div>
             <div className="FunctionComponent__slide">
                 <FunctionComments functionId={props.id} />
