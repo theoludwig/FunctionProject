@@ -4,6 +4,7 @@ import SwipeableViews from 'react-swipeable-views';
 import HeadTag from '../../components/HeadTag';
 import AddEditFunction from '../../components/AddEditFunction';
 import EditArticleFunction from '../../components/EditArticleFunction';
+import EditFormFunction from '../../components/EditFormFunction';
 import redirect from '../../utils/redirect';
 import api from '../../utils/api';
 import { API_URL } from '../../utils/config';
@@ -12,7 +13,7 @@ import '../../public/css/pages/admin.css';
 
 const AdminFunctionComponent = (props) => {
 
-    const [slideIndex, setSlideIndex] = useState(0);
+    const [slideIndex, setSlideIndex] = useState(2);
 
     return (
         <Fragment>
@@ -46,6 +47,9 @@ const AdminFunctionComponent = (props) => {
                         </div>
                         <div className="Admin__Function-slide">
                             <EditArticleFunction { ...props } />
+                        </div>
+                        <div className="Admin__Function-slide">
+                            <EditFormFunction { ...props } />
                         </div>
                     </SwipeableViews>
                 </div>

@@ -3,8 +3,8 @@ import dynamic from 'next/dynamic';
 import { complex } from '../utils/sunEditorConfig';
 import api from '../utils/api';
 import FunctionArticle from '../components/FunctionArticle';
-import 'notyf/notyf.min.css'; // for React and Vue
-import 'suneditor/dist/css/suneditor.min.css';
+import 'notyf/notyf.min.css';
+import '../public/css/suneditor.min.css';
 
 const SunEditor = dynamic(
     () => import('suneditor-react'),
@@ -30,7 +30,9 @@ const EditArticleFunction = (props) => {
         try {
             await api.put(`/admin/functions/article/${props.functionInfo.id}`, { article: content }, { headers: { 'Authorization': props.user.token } });
             notyf.success('Sauvegardé!');
-        } catch {}
+        } catch {
+            notyf.error('Erreur!');
+        }
     }
 
     return (

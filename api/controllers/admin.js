@@ -192,7 +192,7 @@ exports.putFunctionForm = async (req, res, next) => {
         if (!resultFunction) {
             return errorHandling(next, { message: "La fonction n'existe pas.", statusCode: 404 });
         }
-        resultFunction.form = form;
+        resultFunction.utilizationForm = form;
         const result = await resultFunction.save();
         return res.status(200).json(result);
     } catch (error) {

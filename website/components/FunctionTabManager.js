@@ -8,7 +8,7 @@ const FunctionTabManager = (props) => {
         return (
             <FunctionTabs type={props.type}>
                 <div className="FunctionComponent__slide">
-                    <FunctionForm inputArray={ [...props.utilizationForm || []] } slug={props.slug} />
+                    <FunctionForm inputsArray={ [...props.utilizationForm || []] } slug={props.slug} />
                 </div>
                 <div className="FunctionComponent__slide">
                     <FunctionArticle article={props.article} />

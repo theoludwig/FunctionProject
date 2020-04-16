@@ -4,7 +4,6 @@ import htmlParser from 'html-react-parser';
 import api from '../utils/api';
 
 const FunctionForm = (props) => {
-    // console.log(props);
 
     const [inputState, setInputState] = useState({});
     const [message, setMessage] = useState("");
@@ -30,7 +29,7 @@ const FunctionForm = (props) => {
         setInputState(inputStateNew);
     }
 
-    if (props.inputArray.length <= 0) {
+    if (props.inputsArray.length <= 0) {
         return (
             <div className="FunctionComponent__slide text-center">
                 <p>La fonction n'est pas encore disponible.</p>
@@ -40,7 +39,7 @@ const FunctionForm = (props) => {
     return (
         <Fragment>
             <form onSubmit={handleSubmit}>
-                {props.inputArray.map((input, index) => {
+                {props.inputsArray.map((input, index) => {
                     let inputResult;
                     switch(input.type) {
                         case "text" || "number":
