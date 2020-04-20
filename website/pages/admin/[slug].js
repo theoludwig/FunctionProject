@@ -13,7 +13,7 @@ import '../../public/css/pages/admin.css';
 
 const AdminFunctionComponent = (props) => {
 
-    const [slideIndex, setSlideIndex] = useState(2);
+    const [slideIndex, setSlideIndex] = useState(0);
 
     return (
         <Fragment>

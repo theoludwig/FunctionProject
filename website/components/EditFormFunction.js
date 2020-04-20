@@ -74,6 +74,7 @@ const EditFormFunction = (props) => {
                             <select value={input.type} onChange={handleChangeInput} name="type" id={`type-${index}`} className="form-control">
                                 <option value="text">text</option>
                                 <option value="number">number</option>
+                                <option value="calendar">calendar</option>
                             </select>
 
                             <div className="form-group text-center">

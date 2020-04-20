@@ -29,7 +29,7 @@ const Home = () => {
                         <div className="col-24">
                             <h1 className="title-important">FunctionProject</h1>
                             <p className="Home__description">
-                                Apprenez la programmation grâce à l'apprentissage par projet alias fonction.<br/>
+                                Apprenez la programmation grâce à l'apprentissage par projet alias fonction (en <span className="important">JavaScript</span>).<br/>
                                 Découvrez la liste des fonctions disponibles : 
                             </p>
                         </div>
