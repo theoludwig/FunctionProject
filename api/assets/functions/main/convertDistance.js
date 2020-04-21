@@ -21,7 +21,7 @@ function convertDistance(firstValue, unitFirstValue, unitFinalValue) {
         const result = firstValue * Math.pow(10, difference);
         return {
             result,
-            resultHTML: `<p>Conversion de longueur : ${formatNumberResult(firstValue)} ${unitFirstValue} = ${formatNumberResult(result)} ${unitFinalValue}</p>`
+            resultHTML: `<p>${formatNumberResult(firstValue)} ${unitFirstValue} = ${formatNumberResult(result)} ${unitFinalValue}</p>`
         };
     }
     return false;
@@ -37,7 +37,7 @@ module.exports = convertDistanceOutput = ({ res, next }, argsObject) => {
     }
 
     // Si ce n'est pas un nombre
-    number = parseInt(number);
+    number = parseFloat(number);
     if (isNaN(number)) {
         return errorHandling(next, { message: "Veuillez rentré un nombre valide.", statusCode: 400 });
     }

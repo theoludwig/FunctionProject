@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import api from '../utils/api';
 import 'notyf/notyf.min.css';
 
@@ -12,11 +12,30 @@ const EditFormFunction = (props) => {
         setInputsArray(newInputsArray);
     }
 
-    const handleChangeInput = (event) => {
+    const addOption = (event) => {
         const newInputsArray = [...inputsArray];
-        const index = event.target.id.split('-')[1];
-        const inputObject = newInputsArray[index];
+        const index          = event.target.id.split('-')[1];
+        const inputObject    = newInputsArray[index];
+        inputObject.options.push({ name: "", value: "" });
+        setInputsArray(newInputsArray);
+    }
+
+    const handleChangeOption = (inputIndex, optionIndex, event) => {
+        const newInputsArray = [...inputsArray];
+        const inputObject    = newInputsArray[inputIndex];
+        const optionObject   = inputObject.options[optionIndex];
+        optionObject[event.target.name] = event.target.value;
+        setInputsArray(newInputsArray);
+    }
+
+    const handleChangeInput = (event) => {
+        const       newInputsArray     = [...inputsArray];
+        const       index              = event.target.id.split('-')[1];
+        const       inputObject        = newInputsArray[index];
         inputObject[event.target.name] = event.target.value;
+        if (event.target.value === "select") {
+            inputObject.options = [];
+        }
         setInputsArray(newInputsArray);
     }
 
@@ -39,8 +58,16 @@ const EditFormFunction = (props) => {
 
     const handleRemoveInput = (event) => {
         const newInputsArray = [...inputsArray];
-        const index = event.target.id.split('-')[1];
+        const index          = event.target.id.split('-')[1];
         newInputsArray.splice(index, 1);
+        setInputsArray(newInputsArray);
+    }
+
+    const handleRemoveOption = (inputIndex, optionIndex) => {
+        const newInputsArray = [...inputsArray];
+        const inputObject    = newInputsArray[inputIndex];
+        const optionsArray   = inputObject.options;
+        optionsArray.splice(optionIndex, 1);
         setInputsArray(newInputsArray);
     }
 
@@ -58,28 +85,63 @@ const EditFormFunction = (props) => {
                 {inputsArray.map((input, index) => {
                     return (
                         <div key={index} className="form-group Admin__Input-group">
-                            <label className="form-label" htmlFor="nameInput1">Nom de l'input :</label>
+
+                            <div className="text-center">
+                                <button type="button" onClick={handleRemoveInput} id={`remove-${index}`} className="btn btn-dark">Supprimer l'input</button>
+                            </div>
+
+                            <label className="form-label" htmlFor={`name-${index}`}>Nom de l'input :</label>
                             <input value={input.name} onChange={handleChangeInput} type="text" name="name" id={`name-${index}`} className="form-control" placeholder="(e.g : cityName)" />
                             <br/>
 
-                            <label className="form-label" htmlFor="labelInput1">Label :</label>
+                            <label className="form-label" htmlFor={`label-${index}`}>Label :</label>
                             <input value={input.label} onChange={handleChangeInput} type="text" name="label" id={`label-${index}`} className="form-control" placeholder="(e.g : Entrez le nom d'une ville :)" />
                             <br/>
                             
-                            <label className="form-label" htmlFor="placeholderInput1">Placeholder :</label>
-                            <input value={input.placeholder} onChange={handleChangeInput} type="text" name="placeholder" id={`placeholder-${index}`} className="form-control" placeholder="(e.g : Paris, FR)" />
-                            <br/>
+                            {(input.type !== "select") && 
+                                <Fragment>
+                                    <label className="form-label" htmlFor={`placeholder-${index}`}>Placeholder :</label>
+                                    <input value={input.placeholder} onChange={handleChangeInput} type="text" name="placeholder" id={`placeholder-${index}`} className="form-control" placeholder="(e.g : Paris, FR)" />
+                                    <br/>
+                                </Fragment>
+                            }
 
-                            <label className="form-label" htmlFor="typeInput1">Type :</label>
+                            <label className="form-label" htmlFor={`type-${index}`}>Type :</label>
                             <select value={input.type} onChange={handleChangeInput} name="type" id={`type-${index}`} className="form-control">
                                 <option value="text">text</option>
-                                <option value="number">number</option>
+                                <option value="integer">Number integer</option>
+                                <option value="float">Number float</option>
                                 <option value="calendar">calendar</option>
+                                <option value="select">select</option>
                             </select>
 
-                            <div className="form-group text-center">
-                                <button type="button" onClick={handleRemoveInput} id={`remove-${index}`} className="btn btn-dark">Supprimer l'input</button>
-                            </div>
+                            {(input.type === "select") &&
+                                <div style={{ marginTop: '50px' }}>
+
+                                    <label className="form-label">Options :</label>
+
+                                    {input.options.map((option, optionIndex) => {
+                                        return (
+                                            <div key={optionIndex} style={{ margin: "0 0 30px 0" }} className="form-group Admin__Input-group">
+                                                <div className="text-center">
+                                                    <button type="button" onClick={() => handleRemoveOption(index, optionIndex)} className="btn btn-dark">Supprimer l'option</button>
+                                                </div>
+
+                                                <label className="form-label" htmlFor={`optionName-${optionIndex}-${index}`}>Nom de l'option</label>
+                                                <input onChange={(event) => handleChangeOption(index, optionIndex, event)} value={option.name} id={`optionName-${optionIndex}-${index}`} name="name" type="text"className="form-control" placeholder="Nom de l'option" />
+
+                                                <br />
+                                                <label className="form-label" htmlFor={`optionValue-${optionIndex}-${index}`}>Valeur de l'option</label>
+                                                <input onChange={(event) => handleChangeOption(index, optionIndex, event)} value={option.value} id={`optionValue-${optionIndex}-${index}`} name="value" type="text"className="form-control" placeholder="Valeur de l'option" />
+                                            </div>
+                                        );
+                                    })}
+
+                                    <div className="form-group text-center">
+                                        <button id={`optionAdd-${index}`} onClick={addOption} type="button" className="btn btn-dark">Ajouter une option</button>
+                                    </div>
+                                </div> 
+                            }
                         </div>
                     );
                 })}

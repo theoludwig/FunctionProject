@@ -22,7 +22,7 @@ function convertTemperature(degree, unit) {
     }
     return {
         result: temperatureValue,
-        resultHTML: `<p>${formatNumberResult(temperatureValue)} ${unit}</p>`
+        resultHTML: `<p>${formatNumberResult(degree)} ${(unit === '°C') ? "°F" : "°C"} = ${formatNumberResult(temperatureValue)} ${unit}</p>`
     };
 } 
 
@@ -31,12 +31,12 @@ module.exports = convertTemperatureOutput = ({ res, next }, argsObject) => {
     let { degree, unitToConvert } = argsObject;
     
     // S'il n'y a pas les champs obligatoire
-    if (!(degree && unit)) {
+    if (!(degree && unitToConvert)) {
         return errorHandling(next, requiredFields);
     }
     
     // Si ce n'est pas un nombre
-    degree = parseInt(degree);
+    degree = parseFloat(degree);
     if (isNaN(degree)) {
         return errorHandling(next, { message: "Veuillez rentré un nombre valide.", statusCode: 400 });
     }

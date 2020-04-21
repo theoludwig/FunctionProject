@@ -49,11 +49,18 @@ const FunctionForm = (props) => {
                 {props.inputsArray.map((input, index) => {
                     switch (input.type) {
                         case "text":
-                        case "number":
                             return (
                                 <div key={index} className="form-group">
-                                    <label className="form-label"  htmlFor={input.name}>{input.label}</label>
-                                    <input onChange={handleChange} type={input.type} name={input.name} id={input.name} placeholder={input.placeholder} className="form-control" />
+                                    <label className="form-label" htmlFor={input.name}>{input.label}</label>
+                                    <input onChange={handleChange} type="text" name={input.name} id={input.name} placeholder={input.placeholder} className="form-control" />
+                                </div>
+                            );
+                        case "integer":
+                        case "float":
+                            return (
+                                <div key={index} className="form-group">
+                                    <label className="form-label" htmlFor={input.name}>{input.label}</label>
+                                    <input onChange={handleChange} type="number" step={(input.type === "integer") ? "1" : "0.01"} name={input.name} id={input.name} placeholder={input.placeholder} className="form-control" />
                                 </div>
                             );
                         case "calendar":
@@ -102,6 +109,19 @@ const FunctionForm = (props) => {
                                             } catch {}
                                         }}
                                     />
+                                </div>
+                            );
+                        case "select":
+                            return (
+                                <div key={index} className="form-group">
+                                    <label className="form-label" htmlFor={input.name}>{input.label}</label>
+                                    <select onChange={handleChange} name={input.name} id={input.name} value={inputState[input.name] || input.options[0]} className="form-control">
+                                        {input.options.map((option, optionIndex) => {
+                                            return (
+                                                <option key={optionIndex} value={option.value}>{option.name}</option>
+                                            );
+                                        })}
+                                    </select>
                                 </div>
                             );
                         default:
