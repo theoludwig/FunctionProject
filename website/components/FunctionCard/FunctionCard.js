@@ -39,7 +39,7 @@ const FunctionCard = forwardRef((props, ref) => {
                     <div className="FunctionCard__top">
                         <img onLoad={handleLoad} className="FunctionCard__image" alt={props.title} src={API_URL + props.image} />
                         <h2 className="FunctionCard__title">{props.title}</h2>
-                        <p className="FunctionCard__description">{props.description}</p>
+                        <p className="FunctionCard__description text-center">{props.description}</p>
                     </div>
                     <div className="FunctionCard__info">
                         <p className="FunctionCard__category" style={{ backgroundColor: props.categorie.color }}>{props.categorie.name}</p>

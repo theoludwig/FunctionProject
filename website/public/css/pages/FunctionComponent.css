@@ -38,13 +38,3 @@
     overflow: auto;
     white-space: normal !important;
 }
-.table-column {
-    display: grid;
-}
-.table, th, td {
-    border: 1px solid var(--text-color);
-    border-collapse: collapse;
-}
-.table-row {
-    padding: 15px;
-}

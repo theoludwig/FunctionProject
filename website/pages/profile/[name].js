@@ -160,7 +160,7 @@ const Profile = (props) => {
                         {(props.favoritesArray.length > 0) &&
                             <div className="row justify-content-center">
                                 <div className="col-24 text-center">
-                                    <h2>Fonctions en <span className="important">favoris :</span></h2>
+                                    <h2>Dernières fonctions ajoutées aux <span className="important">favoris</span> :</h2>
                                 </div>
                                 <div className="col-24">
                                     <div className="row justify-content-center">
@@ -177,7 +177,7 @@ const Profile = (props) => {
                         {(props.commentsArray.length > 0) &&
                             <div className="row justify-content-center">
                                 <div className="col-24 text-center">
-                                    <h2>Derniers <span className="important">commentaires :</span></h2>
+                                    <h2>Derniers <span className="important">commentaires</span> :</h2>
                                 </div>
                                 <div className="col-24 text-center">
                                     {props.commentsArray.map((comment) => (
@@ -194,6 +194,35 @@ const Profile = (props) => {
                                             </div>
                                         </div>
                                     ))}
+                                </div>
+                            </div>
+                        }
+
+                        {(props.quotesArray.length > 0) &&
+                            <div className="row justify-content-center">
+                                <div className="col-24 text-center">
+                                    <h2>Dernières <span className="important">citations</span> proposées (et validées) :</h2>
+                                    <p>Citations pour la fonction <Link href="/functions/randomQuote"><a>Générateur de citations</a></Link>.</p>
+                                </div>
+                                <div className="col-24 table-column">
+                                    <table style={{ marginBottom: '50px' }}>
+                                        <thead>
+                                            <tr>
+                                                <th className="table-row" scope="col">Citation/Proverbe</th>
+                                                <th className="table-row" scope="col">Auteur</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {props.quotesArray.map((currentQuote, index) => {
+                                                return (
+                                                    <tr key={index}>
+                                                        <td className="table-row text-center">{currentQuote.quote}</td>
+                                                        <td className="table-row text-center">{currentQuote.author}</td>
+                                                    </tr>
+                                                );
+                                            })}
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         }

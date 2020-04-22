@@ -67,32 +67,32 @@ const manageQuotes = (props) => {
                 </div>
 
                 <div className="row" style={{ marginBottom: '30px' }}>
-                    <div className="col-24 Admin__table-column">
-                        <table className="Admin__table">
+                    <div className="col-24 table-column">
+                        <table className="table">
                             <thead>
                                 <tr>
-                                    <th className="Admin__table-row" scope="col">Citation/Proverbe</th>
-                                    <th className="Admin__table-row" scope="col">Auteur</th>
-                                    <th className="Admin__table-row" scope="col">Proposée par</th>
-                                    <th className="Admin__table-row" scope="col">Valider</th>
-                                    <th className="Admin__table-row" scope="col">Supprimer</th>
+                                    <th className="table-row" scope="col">Citation/Proverbe</th>
+                                    <th className="table-row" scope="col">Auteur</th>
+                                    <th className="table-row" scope="col">Proposée par</th>
+                                    <th className="table-row" scope="col">Valider</th>
+                                    <th className="table-row" scope="col">Supprimer</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {quotesData.rows.map((currentQuote, index) => {
                                     const quoteJSX = (
                                         <Fragment>
-                                                <td className="Admin__table-row text-center">{currentQuote.quote}</td>
-                                                <td className="Admin__table-row text-center">{currentQuote.author}</td>
-                                                <td className="Admin__table-row text-center">
+                                                <td className="table-row text-center">{currentQuote.quote}</td>
+                                                <td className="table-row text-center">{currentQuote.author}</td>
+                                                <td className="table-row text-center">
                                                     <Link href={"/profile/[name]"} as={`/profile/${currentQuote.user.name}`}>
                                                         <a>{currentQuote.user.name}</a>
                                                     </Link>
                                                 </td>
-                                                <td onClick={() => handleValidationQuote(currentQuote.id, true)} className="Admin__table-row text-center" style={{ cursor: 'pointer' }}>
+                                                <td onClick={() => handleValidationQuote(currentQuote.id, true)} className="table-row text-center" style={{ cursor: 'pointer' }}>
                                                     <FontAwesomeIcon icon={faCheck} style={{ width: '1.5rem' }} />
                                                 </td>
-                                                <td onClick={() => handleValidationQuote(currentQuote.id, false)} className="Admin__table-row text-center" style={{ cursor: 'pointer' }}>
+                                                <td onClick={() => handleValidationQuote(currentQuote.id, false)} className="table-row text-center" style={{ cursor: 'pointer' }}>
                                                     <FontAwesomeIcon icon={faTrash} style={{ width: '1.5rem' }} />
                                                 </td>
                                         </Fragment>

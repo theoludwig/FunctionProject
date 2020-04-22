@@ -218,3 +218,13 @@ a, .important {
     content: "";
     background: no-repeat 50%/50% 50%;
 }
+.table-column {
+    display: grid;
+}
+.table, th, td {
+    border: 1px solid var(--text-color);
+    border-collapse: collapse;
+}
+.table-row {
+    padding: 15px;
+}

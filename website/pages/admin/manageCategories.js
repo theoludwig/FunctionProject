@@ -135,28 +135,28 @@ const manageCategories = (props) => {
                         </div>    
                         <div className="row justify-content-center">
                             <div className="container-fluid">
-                                <div className="col-24 Admin__table-column">
-                                    <table className="Admin__table">
+                                <div className="col-24 table-column">
+                                    <table className="table">
                                         <thead>
                                             <tr>
-                                                <th className="Admin__table-row Admin__table-head-row" scope="col">id</th>
-                                                <th className="Admin__table-row Admin__table-head-row" scope="col">name</th>
-                                                <th className="Admin__table-row Admin__table-head-row" scope="col">color</th>
-                                                <th className="Admin__table-row Admin__table-head-row" scope="col">createdAt</th>
-                                                <th className="Admin__table-row Admin__table-head-row" scope="col">updatedAt</th>
-                                                <th className="Admin__table-row Admin__table-head-row" scope="col">Modifier</th>
-                                                <th className="Admin__table-row Admin__table-head-row" scope="col">Supprimer</th>
+                                                <th className="table-row" scope="col">id</th>
+                                                <th className="table-row" scope="col">name</th>
+                                                <th className="table-row" scope="col">color</th>
+                                                <th className="table-row" scope="col">createdAt</th>
+                                                <th className="table-row" scope="col">updatedAt</th>
+                                                <th className="table-row" scope="col">Modifier</th>
+                                                <th className="table-row" scope="col">Supprimer</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {categories.map((category) => {
                                                 return (
                                                     <tr key={category.id} style={{ backgroundColor: category.color }}>
-                                                        <td className="Admin__table-row">{category.id}</td>
-                                                        <td className="Admin__table-row">{category.name}</td>
-                                                        <td className="Admin__table-row">{category.color}</td>
-                                                        <td className="Admin__table-row">{date.format(new Date(category.createdAt), 'DD/MM/YYYY à HH:mm', true)}</td>
-                                                        <td className="Admin__table-row">{date.format(new Date(category.updatedAt), 'DD/MM/YYYY à HH:mm', true)}</td>
+                                                        <td className="table-row">{category.id}</td>
+                                                        <td className="table-row">{category.name}</td>
+                                                        <td className="table-row">{category.color}</td>
+                                                        <td className="table-row">{date.format(new Date(category.createdAt), 'DD/MM/YYYY à HH:mm', true)}</td>
+                                                        <td className="table-row">{date.format(new Date(category.updatedAt), 'DD/MM/YYYY à HH:mm', true)}</td>
                                                         <td style={{ cursor: 'pointer' }} onClick={() => handleEditCategory({ name: category.name, color: category.color, id: category.id })}>
                                                             <FontAwesomeIcon icon={faPen} style={{ width: '1.5rem' }} />
                                                         </td>

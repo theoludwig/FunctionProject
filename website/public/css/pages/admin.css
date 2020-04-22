@@ -20,16 +20,6 @@
 .Admin__Modal-select-option {
     color: rgb(221, 220, 220);
 }
-.Admin__table-column {
-    display: grid;
-}
-.Admin__table, th, td {
-    border: 1px solid var(--text-color);
-    border-collapse: collapse;
-}
-.Admin__table-row {
-    padding: 15px;
-}
 .Admin__Function-slide {
     margin-top: 40px;
 }

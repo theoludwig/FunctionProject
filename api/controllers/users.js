@@ -14,6 +14,7 @@ const Favorites                                                    = require('..
 const Functions                                                    = require('../models/functions');
 const Categories                                                   = require('../models/categories');
 const Comments                                                     = require('../models/comments');
+const Quotes                                                       = require('../models/quotes');
 const deleteFilesNameStartWith                                     = require('../assets/utils/deleteFilesNameStartWith');
 
 async function handleEditUser(res, { name, email, biography, isPublicEmail }, userId, logoName) {
@@ -221,16 +222,18 @@ exports.getUserInfo = async (req, res, next) => {
             where: { userId: user.id },
             include: [
                 { model: Functions, attributes: { exclude: ["updatedAt", "utilizationForm", "article", "isOnline"] }, include: { model: Categories, attributes: ["name", "color"] } }
-            ] 
+            ],
+            order: [['createdAt', 'DESC']],
+            limit: 5
         });
         const favoritesArray = favorites.map((favorite) => favorite.function);
         const comments = await Comments.findAll({
-            limit: 10,
             where: { userId: user.id },
             include: [
                 { model: Functions, attributes: { exclude: ["updatedAt", "utilizationForm", "article", "isOnline"] } }
             ],
-            order: [['createdAt', 'DESC']]
+            order: [['createdAt', 'DESC']],
+            limit: 5
         });
         const commentsArray = comments.map((commentObject) => {
             return {
@@ -239,6 +242,14 @@ exports.getUserInfo = async (req, res, next) => {
                 createdAt: commentObject.createdAt,
                 function: commentObject.function.dataValues
             };
+        });
+        const quotesArray = await Quotes.findAll({
+            where: { userId: user.id },
+            attributes: {
+                exclude: ["updatedAt", "createdAt", "isValidated", "userId", "id"]
+            }, 
+            order: [['createdAt', 'DESC']],
+            limit: 5,
         });
         const userObject = {
             // Si Public Email
@@ -249,7 +260,8 @@ exports.getUserInfo = async (req, res, next) => {
             logo: user.logo,
             createdAt: user.createdAt,
             favoritesArray,
-            commentsArray
+            commentsArray,
+            quotesArray
         };
         return res.status(200).json(userObject);
     } catch (error) {
