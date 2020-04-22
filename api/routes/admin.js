@@ -196,4 +196,14 @@ AdminRouter.route('/categories/:id')
     // Supprime une catégorie avec son id
     .delete(isAuth, isAdmin, adminController.deleteCategory);
 
+AdminRouter.route('/quotes')
+
+    // Récupère les citations pas encore validées
+    .get(isAuth, isAdmin, adminController.getQuotes);
+
+AdminRouter.route('/quotes/:id')
+
+    // Valide ou supprime une citation
+    .put(isAuth, isAdmin, adminController.putQuote);
+
 module.exports = AdminRouter;

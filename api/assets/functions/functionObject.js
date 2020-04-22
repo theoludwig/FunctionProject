@@ -8,6 +8,7 @@ const convertCurrencyOutput           = require('./main/convertCurrency');
 const calculateAgeOutput              = require('./main/calculateAge');
 const heapAlgorithmOutput             = require('./main/heapAlgorithm');
 const convertEncodingOutput           = require('./main/convertEncoding');
+const randomQuote                     = require('./main/randomQuote');
 
 const functionObject = {
     randomNumber             : randomNumberOutput,
@@ -19,7 +20,8 @@ const functionObject = {
     convertCurrency          : convertCurrencyOutput,
     calculateAge             : calculateAgeOutput,
     heapAlgorithm            : heapAlgorithmOutput,
-    convertEncoding          : convertEncodingOutput
+    convertEncoding          : convertEncodingOutput,
+    randomQuote              : randomQuote,
 };
 
 // Choisi la fonction à exécuter

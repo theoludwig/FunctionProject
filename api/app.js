@@ -26,6 +26,7 @@ app.use('/users', require('./routes/users'));
 app.use('/admin', require('./routes/admin'));
 app.use('/favorites', require('./routes/favorites'));
 app.use('/comments', require('./routes/comments'));
+app.use('/quotes', require('./routes/quotes'));
 
 /* Errors Handling */
 app.use((_req, _res, next) => errorHandling(next, { statusCode: 404, message: "La route n'existe pas!" })); // 404
@@ -41,6 +42,7 @@ const Categories = require('./models/categories');
 const Users      = require('./models/users');
 const Favorites  = require('./models/favorites');
 const Comments   = require('./models/comments');
+const Quotes     = require('./models/quotes');
 
 // A function has a category
 Categories.hasOne(Functions, { constraints: true, onDelete: 'CASCADE'});
@@ -57,6 +59,10 @@ Users.hasMany(Comments);
 Comments.belongsTo(Users, { constraints: false });
 Functions.hasMany(Comments);
 Comments.belongsTo(Functions, { constraints: false });
+
+// Users can suggest new quotes
+Users.hasMany(Quotes);
+Quotes.belongsTo(Users, { constraints: false });
 
 /* Server */
 // sequelize.sync({ force: true })

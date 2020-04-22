@@ -5,6 +5,8 @@ const errorHandling            = require('../assets/utils/errorHandling');
 const { serverError }          = require('../assets/config/errors');
 const Functions                = require('../models/functions');
 const Categories               = require('../models/categories');
+const Quotes                   = require('../models/quotes');
+const Users                    = require('../models/users');
 const helperQueryNumber        = require('../assets/utils/helperQueryNumber');
 const Sequelize                = require('sequelize');
 const deleteFilesNameStartWith = require('../assets/utils/deleteFilesNameStartWith');
@@ -248,7 +250,7 @@ exports.putCategory = async (req, res, next) => {
         category.name = name;
         category.color = color;
         const result = await category.save();
-        return res.status(200).json({ message: "La catégorie a bien été modifié!", result });
+        return res.status(200).json({ message: "La catégorie a bien été modifiée!", result });
     } catch (error) {
         console.log(error);
         return errorHandling(next, serverError);
@@ -263,9 +265,60 @@ exports.deleteCategory = async (req, res, next) => {
             return errorHandling(next, { message: "La catégorie n'existe pas." });
         }
         await category.destroy();
-        return res.status(200).json({ message: "La catégorie a bien été supprimé!" });
+        return res.status(200).json({ message: "La catégorie a bien été supprimée!" });
     } catch (error) {
         console.log(error);
         return errorHandling(next, serverError);
+    }
+}
+
+exports.getQuotes = (req, res, next) => {
+    const page   = helperQueryNumber(req.query.page, 1);
+    const limit  = helperQueryNumber(req.query.limit, 10);
+    const offset = (page - 1) * limit;
+    Quotes.findAndCountAll({
+        limit, 
+        offset, 
+        where: { 
+            isValidated: 0,
+        },
+        include: [
+            { model: Users, attributes: ["name", "logo"] }
+        ],
+        order: [['createdAt', 'DESC']]
+    })
+        .then((result) => {
+            const { count, rows } = result;
+            const hasMore = (page * limit) < count;
+            return res.status(200).json({ totalItems: count, hasMore, rows });
+        })
+        .catch((error) => {
+            console.log(error);
+            return errorHandling(next, serverError);
+        });
+}
+
+exports.putQuote = async (req, res, next) => {
+    const { id }      = req.params;
+    const { isValid } = req.body;
+    try {
+        if (typeof isValid !== 'boolean') {
+            return errorHandling(next, { message: "isValid doit être un booléen.", statusCode: 400 });
+        }
+        const quote = await Quotes.findOne({ where: { id, isValidated: 0 } });
+        if (!quote) {
+            return errorHandling(next, { message: "La citation n'existe pas (ou est déjà validé).", statusCode: 404 });
+        }
+        if (isValid) {
+            quote.isValidated = true;
+            const result = await quote.save();
+            return res.status(200).json({ isValidated: true, message: "La citation a bien été validée!", result });
+        } 
+
+        await quote.destroy();
+        return res.status(200).json({ isValidated: false, message: "La citation a bien été supprimée!" });
+    } catch (error) {
+        console.log(error);
+        return errorHandling(next, serverError);   
     }
 }
