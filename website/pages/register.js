@@ -8,7 +8,7 @@ import '../public/css/pages/register-login.css';
 
 const Register = () => {
     
-    const [inputState, setInputState] = useState({});
+    const [inputState, setInputState] = useState({ name: "", email: "", password: "" });
     const [message, setMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     
@@ -23,9 +23,9 @@ const Register = () => {
         event.preventDefault();
         api.post('/users/register', inputState)
             .then(({ data }) => {
+                setInputState({ name: "", email: "", password: "" });
                 setMessage(`<p class="form-success"><b>Succès:</b> ${data.result}</p>`);
                 setIsLoading(false);
-                setInputState({});
             })
             .catch((error) => {
                 setMessage(`<p class="form-error"><b>Erreur:</b> ${error.response.data.message}</p>`);
@@ -46,17 +46,17 @@ const Register = () => {
                         <form onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label className="form-label" htmlFor="name">Nom :</label>
-                                <input onChange={handleChange} type="text" name="name" id="name" className="form-control" placeholder="Divlo" />
+                                <input value={inputState.name} onChange={handleChange} type="text" name="name" id="name" className="form-control" placeholder="Divlo" />
                             </div>
 
                             <div className="form-group">
                                 <label className="form-label" htmlFor="name">Email :</label>
-                                <input onChange={handleChange} type="email" name="email" id="email" className="form-control" placeholder="email@gmail.com" />
+                                <input value={inputState.email} onChange={handleChange} type="email" name="email" id="email" className="form-control" placeholder="email@gmail.com" />
                             </div>
 
                             <div className="form-group">
                                 <label className="form-label" htmlFor="name">Mot de passe :</label>
-                                <input onChange={handleChange} type="password" name="password" id="password" className="form-control" placeholder="******" />
+                                <input value={inputState.password} onChange={handleChange} type="password" name="password" id="password" className="form-control" placeholder="******" />
                             </div>
 
                             <div className="form-group text-center">

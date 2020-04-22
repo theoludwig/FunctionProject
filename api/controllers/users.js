@@ -8,7 +8,7 @@ const errorHandling                                                = require('..
 const { serverError, generalError }                                = require('../assets/config/errors');
 const { JWT_SECRET, FRONT_END_HOST, EMAIL_INFO, HOST, TOKEN_LIFE } = require('../assets/config/config');
 const transporter                                                  = require('../assets/config/transporter');
-const { emailTemplate }                                            = require('../assets/config/emails');
+const { emailUserTemplate }                                        = require('../assets/config/emails');
 const Users                                                        = require('../models/users');
 const Favorites                                                    = require('../models/favorites');
 const Functions                                                    = require('../models/functions');
@@ -28,7 +28,7 @@ async function handleEditUser(res, { name, email, biography, isPublicEmail }, us
             from: `"FunctionProject" <${EMAIL_INFO.auth.user}>`,
             to: email,
             subject: "FunctionProject - Confirmer l'email",
-            html: emailTemplate("Veuillez confirmer l'email", "Oui, je confirme.", `${HOST}/users/confirm-email/${tempToken}`, "Si vous avez reçu ce message par erreur, il suffit de le supprimer. Votre email ne serez pas confirmé si vous ne cliquez pas sur le lien de confirmation ci-dessus.")
+            html: emailUserTemplate("Veuillez confirmer l'email", "Oui, je confirme.", `${HOST}/users/confirm-email/${tempToken}`, "Si vous avez reçu ce message par erreur, il suffit de le supprimer. Votre email ne serez pas confirmé si vous ne cliquez pas sur le lien de confirmation ci-dessus.")
         });
     }
     if (biography != undefined) {
@@ -97,7 +97,7 @@ exports.register = async (req, res, next) => {
             from: `"FunctionProject" <${EMAIL_INFO.auth.user}>`,
             to: email,
             subject: "FunctionProject - Confirmer l'inscription",
-            html: emailTemplate("Veuillez confirmer l'inscription", "Oui, je m'inscris.", `${HOST}/users/confirm-email/${tempToken}`, "Si vous avez reçu ce message par erreur, il suffit de le supprimer. Vous ne serez pas inscrit si vous ne cliquez pas sur le lien de confirmation ci-dessus.")
+            html: emailUserTemplate("Veuillez confirmer l'inscription", "Oui, je m'inscris.", `${HOST}/users/confirm-email/${tempToken}`, "Si vous avez reçu ce message par erreur, il suffit de le supprimer. Vous ne serez pas inscrit si vous ne cliquez pas sur le lien de confirmation ci-dessus.")
         });
         return res.status(201).json({ result: "Vous y êtes presque, veuillez vérifier vos emails pour confirmer l'inscription." });
     } catch (error) {
@@ -173,7 +173,7 @@ exports.resetPassword = async (req, res, next) => {
             from: `"FunctionProject" <${EMAIL_INFO.auth.user}>`,
             to: email,
             subject: "FunctionProject - Réinitialisation du mot de passe",
-            html: emailTemplate("Veuillez confirmer la réinitialisation du mot de passe", "Oui, je change mon mot de passe.", `${FRONT_END_HOST}/newPassword?token=${tempToken}`, "Si vous avez reçu ce message par erreur, il suffit de le supprimer. Votre mot de passe ne sera pas réinitialiser si vous ne cliquez pas sur le lien ci-dessus. Par ailleurs, pour la sécurité de votre compte, la réinitialisation du mot de passe est disponible pendant un délai de 1 heure, passez ce temps, la réinitialisation ne sera plus valide.")
+            html: emailUserTemplate("Veuillez confirmer la réinitialisation du mot de passe", "Oui, je change mon mot de passe.", `${FRONT_END_HOST}/newPassword?token=${tempToken}`, "Si vous avez reçu ce message par erreur, il suffit de le supprimer. Votre mot de passe ne sera pas réinitialiser si vous ne cliquez pas sur le lien ci-dessus. Par ailleurs, pour la sécurité de votre compte, la réinitialisation du mot de passe est disponible pendant un délai de 1 heure, passez ce temps, la réinitialisation ne sera plus valide.")
         });
         return res.status(200).json({ result: "Demande de réinitialisation du mot de passe réussi, veuillez vérifier vos emails!" });
     } catch (error) {

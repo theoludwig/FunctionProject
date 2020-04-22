@@ -14,6 +14,9 @@ module.exports = randomQuote = async ({ res, next }, _argsObject) => {
             attributes: {
                 exclude: ["isValidated"]
             },
+            where: { 
+                isValidated: 1,
+            }
         });
         return res.status(200).json(quote);
     } catch (error) {

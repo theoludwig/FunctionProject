@@ -1,8 +1,8 @@
-const errorHandling     = require('../assets/utils/errorHandling');
-const { serverError }   = require('../assets/config/errors');
-const Quotes            = require('../models/quotes');
-const Users             = require('../models/users');
-const helperQueryNumber = require('../assets/utils/helperQueryNumber');
+const errorHandling                   = require('../assets/utils/errorHandling');
+const { serverError, requiredFields } = require('../assets/config/errors');
+const Quotes                          = require('../models/quotes');
+const Users                           = require('../models/users');
+const helperQueryNumber               = require('../assets/utils/helperQueryNumber');
 
 exports.getQuotes = (req, res, next) => {
     const page   = helperQueryNumber(req.query.page, 1);
@@ -35,6 +35,10 @@ exports.getQuotes = (req, res, next) => {
 
 exports.postQuote = (req, res, next) => {
     const { quote, author } = req.body;
+    // S'il n'y a pas les champs obligatoire
+    if (!(quote && author)) {
+        return errorHandling(next, requiredFields);
+    }
     Quotes.create({ quote, author, userId: req.userId })
         .then((_result) => {
             return res.status(200).json({ message: "La citation a bien été ajoutée, elle est en attente de confirmation d'un administrateur." });

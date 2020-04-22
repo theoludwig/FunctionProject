@@ -56,6 +56,9 @@ const Admin = (props) => {
                             <Link href={"/admin/manageCategories"}>
                                 <button style={{ margin: '0 0 0 20px' }} className="btn btn-dark">Gérer les catégories</button>
                             </Link>
+                            <Link href={"/admin/manageQuotes"}>
+                                <button style={{ margin: '0 0 0 20px' }} className="btn btn-dark">Gérer les citations</button>
+                            </Link>
                         </div>
                     </FunctionsList>
             }

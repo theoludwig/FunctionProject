@@ -1,15 +1,18 @@
-const path                     = require('path');
-const fs                       = require('fs');
-const { validationResult }     = require('express-validator');
-const errorHandling            = require('../assets/utils/errorHandling');
-const { serverError }          = require('../assets/config/errors');
-const Functions                = require('../models/functions');
-const Categories               = require('../models/categories');
-const Quotes                   = require('../models/quotes');
-const Users                    = require('../models/users');
-const helperQueryNumber        = require('../assets/utils/helperQueryNumber');
-const Sequelize                = require('sequelize');
-const deleteFilesNameStartWith = require('../assets/utils/deleteFilesNameStartWith');
+const path                           = require('path');
+const fs                             = require('fs');
+const { validationResult }           = require('express-validator');
+const errorHandling                  = require('../assets/utils/errorHandling');
+const { serverError }                = require('../assets/config/errors');
+const Functions                      = require('../models/functions');
+const Categories                     = require('../models/categories');
+const Quotes                         = require('../models/quotes');
+const Users                          = require('../models/users');
+const helperQueryNumber              = require('../assets/utils/helperQueryNumber');
+const Sequelize                      = require('sequelize');
+const deleteFilesNameStartWith       = require('../assets/utils/deleteFilesNameStartWith');
+const { EMAIL_INFO, FRONT_END_HOST } = require('../assets/config/config');
+const transporter                    = require('../assets/config/transporter');
+const { emailQuoteTemplate }         = require('../assets/config/emails');
 
 const handleEditFunction = async (res, resultFunction, { title, slug, description, type, categorieId, isOnline }, imageName = false) => {
     resultFunction.title       = title;
@@ -305,18 +308,35 @@ exports.putQuote = async (req, res, next) => {
         if (typeof isValid !== 'boolean') {
             return errorHandling(next, { message: "isValid doit être un booléen.", statusCode: 400 });
         }
-        const quote = await Quotes.findOne({ where: { id, isValidated: 0 } });
+        const quote = await Quotes.findOne({ 
+            where: { 
+                id, 
+                isValidated: 0 
+            },
+            include: [
+                { model: Users, attributes: ["name", "email"] }
+            ]
+        });
         if (!quote) {
             return errorHandling(next, { message: "La citation n'existe pas (ou est déjà validé).", statusCode: 404 });
         }
+
+        await transporter.sendMail({
+            from: `"FunctionProject" <${EMAIL_INFO.auth.user}>`,
+            to: quote.user.email,
+            subject: "FunctionProject - Citation proposée",
+            html: emailQuoteTemplate(isValid, quote, FRONT_END_HOST)
+        });
+
         if (isValid) {
             quote.isValidated = true;
-            const result = await quote.save();
-            return res.status(200).json({ isValidated: true, message: "La citation a bien été validée!", result });
-        } 
-
-        await quote.destroy();
-        return res.status(200).json({ isValidated: false, message: "La citation a bien été supprimée!" });
+            await quote.save();
+            return res.status(200).json({ message: "La citation a bien été validée!" });
+        } else {
+            await quote.destroy();
+            return res.status(200).json({ imessage: "La citation a bien été supprimée!" });
+        }
+ 
     } catch (error) {
         console.log(error);
         return errorHandling(next, serverError);   
