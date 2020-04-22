@@ -30,7 +30,7 @@ module.exports = convertCurrencyOutput = ({ res, next }, argsObject) => {
             const day        = ('0'+(dateObject.getDate())).slice(-2);
             const month      = ('0'+(dateObject.getMonth()+1)).slice(-2);
             const date       = `${day}/${month}/${year}`;
-            const resultHTML = `<p>${formatNumberResult(number)} ${response.data.base} = ${formatNumberResult(result).toFixed(2)} ${finalCurrency}</p><p>Dernier rafraîchissement du taux d'échange : ${data}</p>`;
+            const resultHTML = `<p>${formatNumberResult(number)} ${response.data.base} = ${formatNumberResult(result.toFixed(2))} ${finalCurrency}</p><p>Dernier rafraîchissement du taux d'échange : ${date}</p>`;
             return res.status(200).json({ date, result, resultHTML });
         })
         .catch(() => errorHandling(next, { message: "La devise n'existe pas.", statusCode: 404 }));

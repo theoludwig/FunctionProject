@@ -23,7 +23,7 @@ function armstrongNumber(number) {
     const isArmstrongNumber = (result === number); 
     return {
         isArmstrongNumber,
-        resultHTML: `<p>${formattedNumber} ${isArmstrongNumber ? "" : "n'"}est pas un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.</p>`
+        resultHTML: `<p>${formattedNumber} ${isArmstrongNumber ? "est" : "n'est pas"} un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.</p>`
     }    
 }
 

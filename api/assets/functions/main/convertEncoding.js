@@ -124,7 +124,7 @@ function numberUnicodeToText(string) {
         const array = string.split(" ");
         let resultat = "";
         for (let index in array) {
-          resultat = resultat + String.fromCodePoint(parseInt(array[index]).toString());
+            resultat += String.fromCodePoint(parseInt(array[index]).toString());
         }
         return resultat;
     }

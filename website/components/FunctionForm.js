@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import Loader from './Loader';
 import htmlParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
@@ -15,6 +15,17 @@ const FunctionForm = (props) => {
     const [inputState, setInputState]         = useState({});
     const [message, setMessage]               = useState("");
     const [isLoading, setIsLoading]           = useState(false);
+
+    // inputState par défaut
+    useEffect(() => {
+        const inputStateNew = { ...inputState };
+        props.inputsArray.forEach((input) => {
+            if (input.type === "select" && input.options.length > 0) {
+                inputStateNew[input.name] = input.options[0].value;
+            }
+        });
+        setInputState(inputStateNew);
+    }, []);
 
     const handleSubmit = (event) => {
         setIsLoading(true);
