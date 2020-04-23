@@ -32,7 +32,9 @@ Si vous voulez **contribuer**, avant toute chose écrivait une **"[issue](https:
 
 ## 🌐 Installation
 
-**Note :** En installant, la version locale vous n'aurez pas accès aux données des fonctions etc. Seulement une **base de donnée vide**.
+**Note :** En installant, la version locale vous n'aurez pas accès aux données. Seulement une **base de donnée vide**.
+
+Si vous voulez avoir les données des catégories et des fonctions, vous pouvez d'abord lancer l'API pour que Sequelize crée les tables SQl et ensuite exécuter le fichier SQL [backup.sql](./.github/backup.sql).
 
 ### Prérequis :
 
