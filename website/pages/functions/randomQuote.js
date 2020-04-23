@@ -1,84 +1,20 @@
 import { Fragment, useState, useEffect, useContext, useRef, useCallback } from 'react';
-import HeadTag from '../../components/HeadTag';
 import Link from 'next/link';
 import { UserContext } from '../../contexts/UserContext';
-import FunctionComponentTop from '../../components/FunctionComponentTop';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
-import SwipeableViews from 'react-swipeable-views';
 import redirect from '../../utils/redirect';
-import FunctionArticle from '../../components/FunctionArticle';
-import FunctionComments from '../../components/FunctionComments/FunctionComments';
 import htmlParser from 'html-react-parser';
 import Loader from '../../components/Loader';
+import FunctionPage from '../../components/FunctionPage/FunctionPage';
+import FunctionTabs from '../../components/FunctionPage/FunctionTabs';
+import FunctionArticle from '../../components/FunctionArticle';
+import FunctionComments from '../../components/FunctionComments/FunctionComments';
 import api from '../../utils/api';
 import copyToClipboard from '../../utils/copyToClipboard';
-import { API_URL } from '../../utils/config';
-import '../../public/css/pages/FunctionComponent.css';
-import '../../components/FunctionTabs/FunctionTabs.css';
-import '../../components/FunctionCard/FunctionCard.css';
 import 'notyf/notyf.min.css';
-
-const FunctionTabsTop = (props) => {
-    return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <ul className="FunctionTabs__nav">
-                    <li className="FunctionTabs__nav-item">
-                        <a 
-                            className={`FunctionTabs__nav-link ${(props.slideIndex === 0) ? "FunctionTabs__nav-link-active" : ""}`} 
-                            onClick={() => props.setSlideIndex(0)}
-                        >
-                            ⚙️ Utilisation
-                        </a>
-                    </li>
-                    <li className="FunctionTabs__nav-item">
-                        <a 
-                            className={`FunctionTabs__nav-link ${(props.slideIndex === 1) ? "FunctionTabs__nav-link-active" : ""}`} 
-                            onClick={() => props.setSlideIndex(1)}
-                        >
-                            📜 Liste
-                        </a>
-                    </li>
-                    <li className="FunctionTabs__nav-item">
-                        <a 
-                            className={`FunctionTabs__nav-link ${(props.slideIndex === 2) ? "FunctionTabs__nav-link-active" : ""}`} 
-                            onClick={() => props.setSlideIndex(2)}
-                        >
-                            ✒️ Proposer
-                        </a>
-                    </li>
-                    <li className="FunctionTabs__nav-item">
-                        <a 
-                            className={`FunctionTabs__nav-link ${(props.slideIndex === 3) ? "FunctionTabs__nav-link-active" : ""}`} 
-                            onClick={() => props.setSlideIndex(3)}
-                        >
-                            📝 Article
-                        </a>
-                    </li>
-                    <li className="FunctionTabs__nav-item">
-                        <a 
-                            className={`FunctionTabs__nav-link ${(props.slideIndex === 4) ? "FunctionTabs__nav-link-active" : ""}`} 
-                            onClick={() => props.setSlideIndex(4)}
-                        >
-                            📬 Commentaires
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    );
-}
-
-const FunctionTabs = (props) => {
-    return (
-        <div className="container-fluid">
-            <SwipeableViews onChangeIndex={(index) => props.setSlideIndex(index)} index={props.slideIndex} enableMouseEvents>
-                {props.children}
-            </SwipeableViews>
-        </div>
-    );
-}
+import '../../public/css/pages/FunctionComponent.css';
+import '../../components/FunctionCard/FunctionCard.css';
 
 const GenerateQuote = () => {
 
@@ -315,22 +251,13 @@ const FunctionTabManager = (props) => {
     );
 }
 
-const randomQuote = (props) => {
-
-    const [slideIndex, setSlideIndex] = useState(0);
-
-    return (
-        <Fragment>
-            <HeadTag title={props.title} description={props.description} image={API_URL + props.image} />
-
-            <div className="container-fluid">
-                <FunctionTabsTop slideIndex={slideIndex} setSlideIndex={setSlideIndex} />
-                <FunctionComponentTop { ...props } />
-                <FunctionTabManager { ...props } slideIndex={slideIndex} setSlideIndex={setSlideIndex} />
-            </div>
-        </Fragment>
-    );
-}
+const randomQuote = (props) => (
+    <FunctionPage 
+        FunctionTabManager={FunctionTabManager}
+        { ...props }
+        tabNames={["⚙️ Utilisation", "📜 Liste", "✒️ Proposer", "📝 Article", "📬 Commentaires"]} 
+    />
+);
 
 export async function getServerSideProps(context) {
     return api.get(`/functions/randomQuote`)
