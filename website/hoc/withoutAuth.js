@@ -8,7 +8,7 @@ const withoutAuth = (WrappedComponent) => {
         
         const { isAuth, user } = useContext(UserContext);
         
-        if (isAuth) return redirect({}, `/profile/${user.name}`);
+        if (isAuth) return redirect({}, `/users/${user.name}`);
 
         return <WrappedComponent { ...props } />;
     }
