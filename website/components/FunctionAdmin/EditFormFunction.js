@@ -1,5 +1,5 @@
 import { useState, Fragment } from 'react';
-import api from '../utils/api';
+import api from '../../utils/api';
 import 'notyf/notyf.min.css';
 
 const EditFormFunction = (props) => {

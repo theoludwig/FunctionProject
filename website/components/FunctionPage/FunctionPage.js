@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import { API_URL } from '../../utils/config';
 import HeadTag from '../HeadTag';
 import FunctionTabsTop from './FunctionTabsTop';
-import FunctionComponentTop from '../FunctionComponentTop';
+import FunctionComponentTop from './FunctionComponentTop';
 
 const FunctionPage = (props) => {
 

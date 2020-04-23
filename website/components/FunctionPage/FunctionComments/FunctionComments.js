@@ -1,9 +1,9 @@
 import { Fragment, useState, useEffect, useContext, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import { UserContext } from '../../contexts/UserContext';
+import { UserContext } from '../../../contexts/UserContext';
 import CommentCard from '../CommentCard/CommentCard';
-import Loader from '../Loader';
-import api from '../../utils/api';
+import Loader from '../../Loader';
+import api from '../../../utils/api';
 import './FunctionComments.css';
 
 const FunctionComments = ({ functionId }) => {

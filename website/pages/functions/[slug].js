@@ -1,25 +1,48 @@
-import FunctionTabsContextProvider from '../../contexts/FunctionTabsContext';
-import HeadTag from '../../components/HeadTag';
-import FunctionComponentTop from '../../components/FunctionComponentTop';
-import FunctionTabsTop from '../../components/FunctionTabs/FunctionTabsTop';
-import FunctionTabManager from '../../components/FunctionTabManager';
+import FunctionTabs from '../../components/FunctionPage/FunctionTabs';
+import FunctionForm from '../../components/FunctionPage/FunctionForm';
+import FunctionArticle from '../../components/FunctionPage/FunctionArticle';
+import FunctionComments from '../../components/FunctionPage/FunctionComments/FunctionComments';
+import FunctionPage from '../../components/FunctionPage/FunctionPage';
 import redirect from '../../utils/redirect';
 import api from '../../utils/api';
-import { API_URL } from '../../utils/config';
 import '../../public/css/pages/FunctionComponent.css';
 
-const FunctionComponent = (props) => {
+const FunctionTabManager = (props) => {
+    if (props.type === "form") {
+        return (
+            <FunctionTabs setSlideIndex={props.setSlideIndex} slideIndex={props.slideIndex}>
+                <div className="FunctionComponent__slide">
+                    <FunctionForm inputsArray={ [...props.utilizationForm || []] } slug={props.slug} />
+                </div>
+                <div className="FunctionComponent__slide">
+                    <FunctionArticle article={props.article} />
+                </div>
+                <div className="FunctionComponent__slide">
+                    <FunctionComments functionId={props.id} />
+                </div>
+            </FunctionTabs>
+        );
+    }
+
     return (
-        <FunctionTabsContextProvider>
-            <HeadTag title={props.title} description={props.description} image={API_URL + props.image} />
-            <div className="container-fluid">
-                <FunctionTabsTop type={props.type} />
-                <FunctionComponentTop { ...props } />
-                <FunctionTabManager { ...props } />
+        <FunctionTabs setSlideIndex={props.setSlideIndex} slideIndex={props.slideIndex}>
+            <div className="FunctionComponent__slide">
+                <FunctionArticle article={props.article} />
             </div>
-        </FunctionTabsContextProvider>
+            <div className="FunctionComponent__slide">
+                <FunctionComments functionId={props.id} />
+            </div>
+        </FunctionTabs>
     );
 }
+
+const FunctionComponent = (props) => (
+    <FunctionPage 
+        FunctionTabManager={FunctionTabManager}
+        { ...props }
+        tabNames={(props.type === "form") ? ["⚙️ Utilisation", "📝 Article", "📬 Commentaires"] : ["📝 Article", "📬 Commentaires"]} 
+    />
+);
 
 export async function getServerSideProps(context) {
     const { slug } = context.params;

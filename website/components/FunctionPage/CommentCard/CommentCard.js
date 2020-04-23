@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { forwardRef, useContext, Fragment } from 'react';
 import date from 'date-and-time';
-import { UserContext } from '../../contexts/UserContext';
-import { API_URL } from '../../utils/config';
-import api from '../../utils/api';
+import { UserContext } from '../../../contexts/UserContext';
+import { API_URL } from '../../../utils/config';
+import api from '../../../utils/api';
 import './CommentCard.css';
 
 const CommentCard = forwardRef((props, ref) => {

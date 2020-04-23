@@ -2,13 +2,13 @@ import { Fragment, useState } from 'react';
 import Cookies from "universal-cookie";
 import SwipeableViews from 'react-swipeable-views';
 import HeadTag from '../../components/HeadTag';
-import AddEditFunction from '../../components/AddEditFunction';
-import EditArticleFunction from '../../components/EditArticleFunction';
-import EditFormFunction from '../../components/EditFormFunction';
+import AddEditFunction from '../../components/FunctionAdmin/AddEditFunction';
+import EditArticleFunction from '../../components/FunctionAdmin/EditArticleFunction';
+import EditFormFunction from '../../components/FunctionAdmin/EditFormFunction';
 import redirect from '../../utils/redirect';
 import api from '../../utils/api';
 import { API_URL } from '../../utils/config';
-import '../../components/FunctionTabs/FunctionTabs.css';
+import '../../components/FunctionPage/FunctionTabs.css';
 import '../../public/css/pages/admin.css';
 
 const AdminFunctionComponent = (props) => {

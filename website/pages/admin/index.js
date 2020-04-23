@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Modal from '../../components/Modal';
 import FunctionsList from '../../components/FunctionsList/FunctionsList';
-import AddEditFunction from '../../components/AddEditFunction';
+import AddEditFunction from '../../components/FunctionAdmin/AddEditFunction';
 import redirect from '../../utils/redirect';
 import '../../public/css/pages/admin.css';
 

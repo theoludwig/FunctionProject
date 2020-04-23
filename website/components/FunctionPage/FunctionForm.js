@@ -1,8 +1,8 @@
 import { Fragment, useState, useEffect } from 'react';
-import Loader from './Loader';
+import Loader from '../Loader';
 import htmlParser from 'html-react-parser';
 import dynamic from 'next/dynamic';
-import api from '../utils/api';
+import api from '../../utils/api';
 import fr from 'date-fns/locale/fr';
 import { registerLocale } from  "react-datepicker";
 import date from 'date-and-time';

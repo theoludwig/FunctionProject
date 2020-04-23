@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import date from 'date-and-time';
-import { UserContext } from '../contexts/UserContext';
-import api from '../utils/api';
-import { API_URL } from '../utils/config';
-import './FunctionCard/FunctionCard.css';
+import { UserContext } from '../../contexts/UserContext';
+import api from '../../utils/api';
+import { API_URL } from '../../utils/config';
+import '../FunctionCard/FunctionCard.css';
 
 const FunctionComponentTop = (props) => {
 

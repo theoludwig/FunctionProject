@@ -1,9 +1,9 @@
 import { Fragment, useState, useEffect } from 'react';
 import htmlParser from 'html-react-parser';
-import Loader from '../components/Loader';
-import useAPI from '../hooks/useAPI';
-import api from '../utils/api';
-import '../public/css/pages/admin.css';
+import Loader from '../../components/Loader';
+import useAPI from '../../hooks/useAPI';
+import api from '../../utils/api';
+import '../../public/css/pages/admin.css';
 
 const AddEditFunction = (props) => {
 
