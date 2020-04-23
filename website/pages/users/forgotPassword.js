@@ -1,18 +1,18 @@
 import { Fragment, useState } from 'react';
 import htmlParser from 'html-react-parser';
-import Loader from '../components/Loader';
-import HeadTag from '../components/HeadTag';
-import api from '../utils/api';
-import withoutAuth from '../hoc/withoutAuth';
-import '../public/css/pages/register-login.css';
+import Loader from '../../components/Loader';
+import HeadTag from '../../components/HeadTag';
+import api from '../../utils/api';
+import withoutAuth from '../../hoc/withoutAuth';
+import '../../public/css/pages/register-login.css';
 
-const Register = () => {
-    
-    const [inputState, setInputState] = useState({ name: "", email: "", password: "" });
+const forgotPassword = () => {
+
+    const [inputState, setInputState] = useState({});
     const [message, setMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    
-    const handleChange = (event) => {
+
+    const handleChange = () => {
         const inputStateNew = { ...inputState };
         inputStateNew[event.target.name] = event.target.value;
         setInputState(inputStateNew);
@@ -21,11 +21,11 @@ const Register = () => {
     const handleSubmit = (event) => {
         setIsLoading(true);
         event.preventDefault();
-        api.post('/users/register', inputState)
+        api.post('/users/reset-password', inputState)
             .then(({ data }) => {
-                setInputState({ name: "", email: "", password: "" });
                 setMessage(`<p class="form-success"><b>Succès:</b> ${data.result}</p>`);
                 setIsLoading(false);
+                setInputState({});
             })
             .catch((error) => {
                 setMessage(`<p class="form-error"><b>Erreur:</b> ${error.response.data.message}</p>`);
@@ -36,29 +36,21 @@ const Register = () => {
     return (
         <Fragment>
             <HeadTag 
-                title="S'inscrire - FunctionProject" 
-                description="Créer un compte." 
+                title="Mot de passe oublié - FunctionProject" 
+                description="Vous vous ne souvenez pas de votre mot de passe ? Demandez une demande de réinitialisation de mot de passe par email." 
             />
             <div className="container Register-Login__container">
                 <div className="row Register-Login__row justify-content-center">
                     <div className="col-20">
-                        <h1 className="Register-Login__title">S'inscrire</h1>
+                        <h1 className="Register-Login__title">Mot de passe oublié ?</h1>
+                        <div className="text-center">
+                            <p>Demandez une demande de réinitialisation de mot de passe par email.</p>
+                        </div>
                         <form onSubmit={handleSubmit}>
                             <div className="form-group">
-                                <label className="form-label" htmlFor="name">Nom :</label>
-                                <input value={inputState.name} onChange={handleChange} type="text" name="name" id="name" className="form-control" placeholder="Divlo" />
-                            </div>
-
-                            <div className="form-group">
                                 <label className="form-label" htmlFor="name">Email :</label>
-                                <input value={inputState.email} onChange={handleChange} type="email" name="email" id="email" className="form-control" placeholder="email@gmail.com" />
+                                <input onChange={handleChange} type="email" name="email" id="email" className="form-control" placeholder="email@gmail.com" />
                             </div>
-
-                            <div className="form-group">
-                                <label className="form-label" htmlFor="name">Mot de passe :</label>
-                                <input value={inputState.password} onChange={handleChange} type="password" name="password" id="password" className="form-control" placeholder="******" />
-                            </div>
-
                             <div className="form-group text-center">
                                 <button type="submit" className="btn btn-dark">Envoyer</button>
                             </div>
@@ -76,5 +68,7 @@ const Register = () => {
             </div>
         </Fragment>
     );
+
 }
-export default withoutAuth(Register);
+
+export default withoutAuth(forgotPassword);

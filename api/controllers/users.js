@@ -148,7 +148,7 @@ exports.confirmEmail = async (req, res, next) => {
         user.tempToken = null;
         user.isConfirmed = true;
         await user.save();
-        return res.redirect(`${FRONT_END_HOST}/login?isConfirmed=true`);
+        return res.redirect(`${FRONT_END_HOST}/users/login?isConfirmed=true`);
     } catch (error) {
         console.log(error);
         return errorHandling(next, serverError);
@@ -174,7 +174,7 @@ exports.resetPassword = async (req, res, next) => {
             from: `"FunctionProject" <${EMAIL_INFO.auth.user}>`,
             to: email,
             subject: "FunctionProject - Réinitialisation du mot de passe",
-            html: emailUserTemplate("Veuillez confirmer la réinitialisation du mot de passe", "Oui, je change mon mot de passe.", `${FRONT_END_HOST}/newPassword?token=${tempToken}`, "Si vous avez reçu ce message par erreur, il suffit de le supprimer. Votre mot de passe ne sera pas réinitialiser si vous ne cliquez pas sur le lien ci-dessus. Par ailleurs, pour la sécurité de votre compte, la réinitialisation du mot de passe est disponible pendant un délai de 1 heure, passez ce temps, la réinitialisation ne sera plus valide.")
+            html: emailUserTemplate("Veuillez confirmer la réinitialisation du mot de passe", "Oui, je change mon mot de passe.", `${FRONT_END_HOST}/users/newPassword?token=${tempToken}`, "Si vous avez reçu ce message par erreur, il suffit de le supprimer. Votre mot de passe ne sera pas réinitialiser si vous ne cliquez pas sur le lien ci-dessus. Par ailleurs, pour la sécurité de votre compte, la réinitialisation du mot de passe est disponible pendant un délai de 1 heure, passez ce temps, la réinitialisation ne sera plus valide.")
         });
         return res.status(200).json({ result: "Demande de réinitialisation du mot de passe réussi, veuillez vérifier vos emails!" });
     } catch (error) {

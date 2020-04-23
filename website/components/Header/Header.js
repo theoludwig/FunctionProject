@@ -40,14 +40,14 @@ export default function Header() {
                         {
                             (!isAuth) ? 
                                 <Fragment>
-                                    <NavigationLink name="S'inscrire" path="/register" />
-                                    <NavigationLink name="Connexion" path="/login" />
+                                    <NavigationLink name="S'inscrire" path="/users/register" />
+                                    <NavigationLink name="Connexion" path="/users/login" />
                                 </Fragment>
                             :
                                 <Fragment>
                                     <li className="navbar-item">
-                                        <Link href={"/profile/[name]"} as={`/profile/${user.name}`}>
-                                            <a className={`navbar-link ${pathname === "/profile/[name]" ? "navbar-link-active" : null}`}>Mon Profil</a>
+                                        <Link href={"/users/[name]"} as={`/users/${user.name}`}>
+                                            <a className={`navbar-link ${pathname === "/users/[name]" ? "navbar-link-active" : null}`}>Mon Profil</a>
                                         </Link>
                                     </li>
                                     <li className="navbar-item">

@@ -1,11 +1,11 @@
 import { Fragment, useState } from 'react';
 import htmlParser from 'html-react-parser';
-import Loader from '../components/Loader';
-import HeadTag from '../components/HeadTag';
-import api from '../utils/api';
-import redirect from '../utils/redirect';
-import withoutAuth from '../hoc/withoutAuth';
-import '../public/css/pages/register-login.css';
+import Loader from '../../components/Loader';
+import HeadTag from '../../components/HeadTag';
+import api from '../../utils/api';
+import redirect from '../../utils/redirect';
+import withoutAuth from '../../hoc/withoutAuth';
+import '../../public/css/pages/register-login.css';
 
 const newPassword = (props) => {
 

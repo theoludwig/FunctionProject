@@ -2,11 +2,11 @@ import { Fragment, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import htmlParser from 'html-react-parser';
-import Loader from '../components/Loader';
-import HeadTag from '../components/HeadTag';
-import { UserContext } from '../contexts/UserContext';
-import withoutAuth from '../hoc/withoutAuth';
-import '../public/css/pages/register-login.css';
+import Loader from '../../components/Loader';
+import HeadTag from '../../components/HeadTag';
+import { UserContext } from '../../contexts/UserContext';
+import withoutAuth from '../../hoc/withoutAuth';
+import '../../public/css/pages/register-login.css';
 
 const Login = () => {
 

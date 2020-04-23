@@ -130,7 +130,7 @@ const QuoteList = () => {
                                             <td className="table-row text-center">{currentQuote.quote}</td>
                                             <td className="table-row text-center">{currentQuote.author}</td>
                                             <td className="table-row text-center">
-                                                <Link href={"/profile/[name]"} as={`/profile/${currentQuote.user.name}`}>
+                                                <Link href={"/users/[name]"} as={`/users/${currentQuote.user.name}`}>
                                                     <a>{currentQuote.user.name}</a>
                                                 </Link>
                                             </td>
