@@ -27,6 +27,7 @@ app.use('/admin', require('./routes/admin'));
 app.use('/favorites', require('./routes/favorites'));
 app.use('/comments', require('./routes/comments'));
 app.use('/quotes', require('./routes/quotes'));
+app.use('/tasks', require('./routes/tasks'));
 
 /* Errors Handling */
 app.use((_req, _res, next) => errorHandling(next, { statusCode: 404, message: "La route n'existe pas!" })); // 404
@@ -37,12 +38,13 @@ app.use((error, _req, res, _next) => {
 });
 
 /* Database Relations */
-const Functions   = require('./models/functions');
-const Categories  = require('./models/categories');
-const Users       = require('./models/users');
-const Favorites   = require('./models/favorites');
-const Comments    = require('./models/comments');
-const Quotes      = require('./models/quotes');
+const Functions  = require('./models/functions');
+const Categories = require('./models/categories');
+const Users      = require('./models/users');
+const Favorites  = require('./models/favorites');
+const Comments   = require('./models/comments');
+const Quotes     = require('./models/quotes');
+const Tasks      = require('./models/tasks');
 
 // A function has a category
 Categories.hasOne(Functions, { constraints: true, onDelete: 'CASCADE'});
@@ -63,6 +65,10 @@ Comments.belongsTo(Functions, { constraints: false });
 // Users can suggest new quotes
 Users.hasMany(Quotes);
 Quotes.belongsTo(Users, { constraints: false });
+
+// Users can have tasks
+Users.hasMany(Tasks);
+Tasks.belongsTo(Users, { constraints: false });
 
 /* Server */
 // sequelize.sync({ force: true })
