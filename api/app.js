@@ -37,12 +37,12 @@ app.use((error, _req, res, _next) => {
 });
 
 /* Database Relations */
-const Functions  = require('./models/functions');
-const Categories = require('./models/categories');
-const Users      = require('./models/users');
-const Favorites  = require('./models/favorites');
-const Comments   = require('./models/comments');
-const Quotes     = require('./models/quotes');
+const Functions   = require('./models/functions');
+const Categories  = require('./models/categories');
+const Users       = require('./models/users');
+const Favorites   = require('./models/favorites');
+const Comments    = require('./models/comments');
+const Quotes      = require('./models/quotes');
 
 // A function has a category
 Categories.hasOne(Functions, { constraints: true, onDelete: 'CASCADE'});
