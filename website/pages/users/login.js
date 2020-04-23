@@ -47,7 +47,7 @@ const Login = () => {
                                 <label className="form-label" htmlFor="password">Mot de passe :</label>
                                 <input onChange={handleChange} type="password" name="password" id="password" className="form-control" placeholder="******" />
                                 <p>
-                                    <Link href={"/forgotPassword"}>
+                                    <Link href={"/users/forgotPassword"}>
                                         <a className="Register-Login__Forgot-password">Mot de passe oublié ?</a>
                                     </Link>
                                 </p>
