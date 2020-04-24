@@ -9,6 +9,7 @@ import './FunctionsList.css';
 const FunctionsList = (props) => {
 
     const { categoryId } = useRouter().query;
+    let pageFunctions = 1;
 
     // State de recherche et de catégories
     const [, categories]                = useAPI('/categories');
@@ -17,7 +18,6 @@ const FunctionsList = (props) => {
     // State pour afficher les fonctions
     const [functionsData, setFunctionsData]         = useState({ hasMore: true, rows: [] });
     const [isLoadingFunctions, setLoadingFunctions] = useState(true);
-    const [pageFunctions, setPageFunctions]         = useState(1);
 
     // Récupère la catégorie avec la query categoryId
     useEffect(() => {
@@ -26,18 +26,11 @@ const FunctionsList = (props) => {
         }
     }, [categoryId]);
 
-    // Récupère les fonctions si la page change
-    useEffect(() => {
-        getFunctionsData().then((data) => setFunctionsData({ 
-            hasMore: data.hasMore, 
-            rows: [...functionsData.rows, ...data.rows] 
-        }));
-    }, [pageFunctions]);
-
     // Récupère les fonctions si la catégorie/recherche change
     useEffect(() => {
+        pageFunctions = 1;
         getFunctionsData().then((data) => setFunctionsData(data));
-    }, [inputSearch.selectedCategory, inputSearch.search]);
+    }, [inputSearch]);
 
     // Permet la pagination au scroll
     const observer = useRef();
@@ -46,7 +39,15 @@ const FunctionsList = (props) => {
         if (observer.current) observer.current.disconnect();
         observer.current = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting && functionsData.hasMore) {
-                setPageFunctions(pageFunctions + 1);
+                pageFunctions += 1;
+                getFunctionsData().then((data) => {
+                    setFunctionsData((oldData) => {
+                        return { 
+                            hasMore: data.hasMore, 
+                            rows: [...oldData.rows, ...data.rows] 
+                        }
+                    });
+                }); 
             }
         }, { threshold: 1 });
         if (node) observer.current.observe(node);
