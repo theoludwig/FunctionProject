@@ -86,7 +86,7 @@ const FunctionComments = ({ functionId }) => {
                                 </form>
                             :
                                 <p className="text-center">
-                                    Vous devez être <Link href={'/login'}><a>connecté</a></Link> pour poster un commentaire.
+                                    Vous devez être <Link href={'/users/login'}><a>connecté</a></Link> pour poster un commentaire.
                                 </p>
                         }
                     </div>

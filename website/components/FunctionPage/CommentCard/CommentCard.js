@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { forwardRef, useContext, Fragment } from 'react';
+import { forwardRef, useContext } from 'react';
 import date from 'date-and-time';
 import { UserContext } from '../../../contexts/UserContext';
 import { API_URL } from '../../../utils/config';
@@ -35,14 +35,20 @@ const CommentCard = forwardRef((props, ref) => {
                         <Link href={"/users/[name]"} as={`/users/${props.user.name}`}>
                             <a>{props.user.name}</a>
                         </Link> 
-                        &nbsp;- {date.format(new Date(props.createdAt), 'DD/MM/YYYY à HH:mm', true)}
-                        {(isAuth && user.name === props.user.name) && <Fragment>&nbsp;-&nbsp;<a onClick={deleteCommentById} href="#">supprimer</a></Fragment>} 
+                        &nbsp;- {date.format(new Date(props.createdAt), 'DD/MM/YYYY à HH:mm', true)} 
                     </span>
                 </div>
                 <div className="row">
-                    <p className="CommentCard__message">
-                        {props.message}
-                    </p>
+                    <div className="col-24">
+                        <p className="CommentCard__message">
+                            {props.message}
+                        </p>
+                        {(isAuth && user.name === props.user.name) && 
+                            <p style={{ fontSize: '15px', margin: '15px 0 0 0', fontStyle: 'italic' }}>
+                                <a onClick={deleteCommentById} href="#">supprimer le commentaire</a>
+                            </p>
+                        }
+                    </div>
                 </div>
             </div>
         </div>

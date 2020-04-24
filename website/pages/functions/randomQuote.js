@@ -169,7 +169,7 @@ const SuggestQuote = () => {
         const token = user.token;
         if (isAuth && token != undefined) {
             api.post('/quotes', inputState, { headers: { 'Authorization': token } })
-            .then(({ data }) => {
+                .then(({ data }) => {
                     setInputState({ quote: "", author: "" });
                     setMessage(`<p class="form-success"><b>Succès:</b> ${data.message}</p>`);
                     setIsLoading(false);
@@ -181,50 +181,49 @@ const SuggestQuote = () => {
         }
     }
 
-    return (
-        <div className="container-fluid">
-            {
-                (isAuth) ?
-                    <Fragment>                        
-                        <div className="row justify-content-center">
-                            <div className="col-24 text-center">
-                                <h2 style={{ margin: 0 }}>Proposer une citation : </h2>
-                                <p style={{ marginTop: '5px' }}>Vous pouvez proposer des citations, et une fois validé elles seront rajoutés à la liste des citations.</p>
-                            </div>
-                        </div>
-                        <div style={{ marginBottom: '40px' }} className="row">
-                            <div className="col-24">
-                                <form onSubmit={handleSubmit}>
-                                    <div className="form-group">
-                                        <label htmlFor="quote" className="form-label">Citation :</label>
-                                        <textarea value={inputState.quote} onChange={handleChange} style={{ height: 'auto' }} id="quote" name="quote" type="text" className="form-control" rows="4" placeholder="La citation..." />
-                                    </div>
-                                    
-                                    <div className="form-group">
-                                        <label htmlFor="author" className="form-label">Auteur :</label>
-                                        <input value={inputState.author} onChange={handleChange} name="author" id="author" type="text" className="form-control" placeholder="L'auteur de la citation..." />
-                                    </div>
+    if (!isAuth) {
+        return (
+            <p className="text-center">
+                Vous devez être <Link href={'/users/login'}><a>connecté</a></Link> pour proposer une citation.
+            </p>
+        );
+    }
 
-                                    <div className="form-group text-center">
-                                        <button type="submit" className="btn btn-dark">Envoyer</button>
-                                    </div>
-                                </form>
-                            </div>
+    return (
+        <div className="container-fluid">                     
+            <div className="row justify-content-center">
+                <div className="col-24 text-center">
+                    <h2 style={{ margin: 0 }}>Proposer une citation : </h2>
+                    <p style={{ marginTop: '5px' }}>Vous pouvez proposer des citations, et une fois validé elles seront rajoutés à la liste des citations.</p>
+                </div>
+            </div>
+            <div style={{ marginBottom: '40px' }} className="row">
+                <div className="col-24">
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="quote" className="form-label">Citation :</label>
+                            <textarea value={inputState.quote} onChange={handleChange} style={{ height: 'auto' }} id="quote" name="quote" type="text" className="form-control" rows="4" placeholder="La citation..." />
                         </div>
-                        <div className="form-result text-center">
-                            {
-                                (isLoading) ? 
-                                    <Loader />
-                                :
-                                    htmlParser(message)
-                            }
+                        
+                        <div className="form-group">
+                            <label htmlFor="author" className="form-label">Auteur :</label>
+                            <input value={inputState.author} onChange={handleChange} name="author" id="author" type="text" className="form-control" placeholder="L'auteur de la citation..." />
                         </div>
-                    </Fragment>
-                :
-                <p className="text-center">
-                    Vous devez être <Link href={'/login'}><a>connecté</a></Link> pour proposer une citation.
-                </p>
-            }
+
+                        <div className="form-group text-center">
+                            <button type="submit" className="btn btn-dark">Envoyer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div className="form-result text-center">
+                {
+                    (isLoading) ? 
+                        <Loader />
+                    :
+                        htmlParser(message)
+                }
+            </div>
         </div>
     );
 }
