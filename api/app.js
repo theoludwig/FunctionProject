@@ -1,15 +1,18 @@
 /* Modules */
 require('dotenv').config();
-const path    = require('path');
-const express = require('express');
-const helmet  = require('helmet');
-const cors    = require('cors');
-const morgan  = require('morgan');
+const path            = require('path');
+const express         = require('express');
+const helmet          = require('helmet');
+const cors            = require('cors');
+const morgan          = require('morgan');
+const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 
 /* Files Imports & Variables */
 const sequelize     = require('./assets/utils/database');
 const { PORT }      = require('./assets/config/config');
 const errorHandling = require('./assets/utils/errorHandling');
+const isAuth        = require('./middlewares/isAuth');
+const isAdmin       = require('./middlewares/isAdmin');
 const app           = express();
 
 /* Middlewares */
@@ -17,13 +20,14 @@ app.use(helmet());
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(redirectToHTTPS([/localhost:(\d{4})/]));
 
 /* Routes */ 
 app.use('/images', express.static(path.join(__dirname, "assets", "images")));
 app.use('/functions', require('./routes/functions'));
 app.use('/categories', require('./routes/categories'));
 app.use('/users', require('./routes/users'));
-app.use('/admin', require('./routes/admin'));
+app.use('/admin', isAuth, isAdmin, require('./routes/admin'));
 app.use('/favorites', require('./routes/favorites'));
 app.use('/comments', require('./routes/comments'));
 app.use('/quotes', require('./routes/quotes'));

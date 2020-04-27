@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.6",
+    "express-http-to-https": "^1.1.4",
     "express-validator": "^6.4.0",
     "helmet": "^3.21.3",
     "jsonwebtoken": "^8.5.1",

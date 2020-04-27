@@ -2,8 +2,6 @@ const { Router }      = require('express');
 const fileUpload      = require('express-fileupload');
 const { body }        = require('express-validator');
 const adminController = require('../controllers/admin');
-const isAuth          = require('../middlewares/isAuth');
-const isAdmin         = require('../middlewares/isAdmin');
 const Functions       = require('../models/functions');
 const Categories      = require('../models/categories');
 
@@ -12,11 +10,10 @@ const AdminRouter = Router();
 AdminRouter.route('/functions')
 
     // Récupère les fonctions
-    .get(isAuth, isAdmin, adminController.getFunctions)
+    .get(adminController.getFunctions)
 
     // Permet de créé une fonction
-    .post(isAuth, isAdmin, 
-    fileUpload({ 
+    .post(fileUpload({ 
         useTempFiles: true, 
         safeFileNames: true,
         preserveExtension: Number,
@@ -98,13 +95,12 @@ AdminRouter.route('/functions')
 AdminRouter.route('/functions/:slug')
 
     // Récupère les informations d'une fonction
-    .get(isAuth, isAdmin, adminController.getFunctionBySlug);
+    .get(adminController.getFunctionBySlug);
 
 AdminRouter.route('/functions/:id')
 
     // Modifie information basique d'une fonction
-    .put(isAuth, isAdmin, 
-        fileUpload({ 
+    .put(fileUpload({ 
             useTempFiles: true, 
             safeFileNames: true,
             preserveExtension: Number,
@@ -173,37 +169,37 @@ AdminRouter.route('/functions/:id')
         ], adminController.putFunction)
 
     // Supprime une fonction avec son id
-    .delete(isAuth, isAdmin, adminController.deleteFunction);
+    .delete(adminController.deleteFunction);
 
 AdminRouter.route('/functions/article/:id')
 
-    .put(isAuth, isAdmin, adminController.putFunctionArticle);
+    .put(adminController.putFunctionArticle);
 
 AdminRouter.route('/functions/form/:id')
 
-    .put(isAuth, isAdmin, adminController.putFunctionForm);
+    .put(adminController.putFunctionForm);
 
 AdminRouter.route('/categories')
 
     // Crée une catégorie
-    .post(isAuth, isAdmin, adminController.postCategory);
+    .post(adminController.postCategory);
 
 AdminRouter.route('/categories/:id')
 
     // Modifier une catégorie avec son id
-    .put(isAuth, isAdmin, adminController.putCategory)
+    .put(adminController.putCategory)
 
     // Supprime une catégorie avec son id
-    .delete(isAuth, isAdmin, adminController.deleteCategory);
+    .delete(adminController.deleteCategory);
 
 AdminRouter.route('/quotes')
 
     // Récupère les citations pas encore validées
-    .get(isAuth, isAdmin, adminController.getQuotes);
+    .get(adminController.getQuotes);
 
 AdminRouter.route('/quotes/:id')
 
     // Valide ou supprime une citation
-    .put(isAuth, isAdmin, adminController.putQuote);
+    .put(adminController.putQuote);
 
 module.exports = AdminRouter;

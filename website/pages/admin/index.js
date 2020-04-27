@@ -16,10 +16,6 @@ const Admin = (props) => {
 
     const toggleModal = () => setIsOpen(!isOpen);
 
-    if (!props.user.isAdmin && typeof window != 'undefined') {
-        return redirect({}, '/404');
-    }
-
     return (
         <Fragment>
             <HeadTag title="Admin - FunctionProject" description="Page d'administration de FunctionProject." />
@@ -66,12 +62,14 @@ const Admin = (props) => {
     );
 }
 
-export async function getServerSideProps({ req }) {
-    const cookies = new Cookies(req.headers.cookie);
+export async function getServerSideProps(context) {
+    const cookies = new Cookies(context.req.headers.cookie);
+    const user    = { ...cookies.get('user') };
+    if (!user.isAdmin) {
+        return redirect(context, '/404');
+    }
     return {
-        props: { 
-            user: { ...cookies.get('user') }
-        }
+        props: { user }
     };
 }
 

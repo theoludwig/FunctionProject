@@ -43,10 +43,6 @@ const manageQuotes = (props) => {
         if (node) observer.current.observe(node);
     }, [isLoadingQuotes, quotesData.hasMore]);
 
-    if (!props.user.isAdmin && typeof window != 'undefined') {
-        return redirect({}, '/404');
-    }
-
     const handleValidationQuote = async (id, isValid) => {
         try {
             await api.put(`/admin/quotes/${id}`, { isValid }, { headers: { 'Authorization': props.user.token } });
@@ -112,12 +108,14 @@ const manageQuotes = (props) => {
     );
 }
 
-export async function getServerSideProps({ req }) {
-    const cookies = new Cookies(req.headers.cookie);
+export async function getServerSideProps(context) {
+    const cookies = new Cookies(context.req.headers.cookie);
+    const user    = { ...cookies.get('user') };
+    if (!user.isAdmin) {
+        return redirect(context, '/404');
+    }
     return {
-        props: { 
-            user: { ...cookies.get('user') }
-        }
+        props: { user }
     };
 }
 
