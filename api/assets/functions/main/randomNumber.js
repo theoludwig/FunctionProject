@@ -14,7 +14,7 @@ function randomNumber(min, max) {
 }
 
 /* OUTPUTS */
-module.exports = randomNumberOutput = ({ res, next }, argsObject) => {
+const randomNumberOutput = ({ res, next }, argsObject) => {
     let { min, max } = argsObject;
     
     // S'il n'y a pas les champs obligatoire
@@ -32,3 +32,6 @@ module.exports = randomNumberOutput = ({ res, next }, argsObject) => {
     const result = randomNumber(min, max);
     return res.status(200).json({ result, resultHTML: `<p>Nombre aléatoire compris entre ${min} inclus et ${max} inclus : <strong>${formatNumberResult(result)}</strong></p>` });
 }
+
+exports.randomNumber       = randomNumber;
+exports.randomNumberOutput = randomNumberOutput;

@@ -1,4 +1,4 @@
-const randomNumberOutput              = require('./main/randomNumber');
+const { randomNumberOutput }          = require('./main/randomNumber');
 const convertRomanArabicNumbersOutput = require('./main/convertRomanArabicNumbers');
 const convertDistanceOutput           = require('./main/convertDistance');
 const convertTemperatureOutput        = require('./main/convertTemperature');
@@ -10,6 +10,7 @@ const heapAlgorithmOutput             = require('./main/heapAlgorithm');
 const convertEncodingOutput           = require('./main/convertEncoding');
 const randomQuote                     = require('./main/randomQuote');
 const linkShortener                   = require('./main/linkShortener');
+const rightPriceOutput                = require('./main/rightPrice');
 
 const functionObject = {
     randomNumber             : randomNumberOutput,
@@ -24,6 +25,7 @@ const functionObject = {
     convertEncoding          : convertEncodingOutput,
     randomQuote              : randomQuote,
     linkShortener            : linkShortener,
+    rightPrice               : rightPriceOutput,
 };
 
 // Choisi la fonction à exécuter
