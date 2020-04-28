@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from 'react';
+import { useState, Fragment } from 'react';
 import redirect from '../../utils/redirect';
 import FunctionPage from '../../components/FunctionPage/FunctionPage';
 import FunctionTabs from '../../components/FunctionPage/FunctionTabs';
