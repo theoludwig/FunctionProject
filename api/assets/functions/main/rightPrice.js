@@ -26,11 +26,12 @@ async function getAmazonProductList(url) {
             for (let indexProduct in amazonProductList) {
                 try {   
                     const elementProduct = amazonProductList[indexProduct];
-                    const productImage = elementProduct.querySelector('.s-image');
+                    const productImage   = elementProduct.querySelector('.s-image');
+                    const originalPrice  = elementProduct.querySelector(".a-price-whole").innerHTML;
                     productsList.push({
                         name: productImage["alt"],
                         image: productImage["src"],
-                        price: elementProduct.querySelector(".a-price-whole").innerHTML
+                        price: Number(originalPrice.replace(",", ".").replace(" ", ""))
                     });
                 } catch (error) {
                     continue;
