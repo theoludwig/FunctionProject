@@ -32,9 +32,3 @@
     margin-right: 15px;
     cursor: pointer;
 }
-.vscode-editor {
-    padding: 15px;
-    border-radius: 10px;
-    overflow: auto;
-    white-space: normal !important;
-}

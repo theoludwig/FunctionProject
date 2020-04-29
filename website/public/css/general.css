@@ -228,3 +228,9 @@ a, .important {
 .table-row {
     padding: 15px;
 }
+.vscode-editor {
+    padding: 15px;
+    border-radius: 10px;
+    overflow: auto;
+    white-space: normal !important;
+}

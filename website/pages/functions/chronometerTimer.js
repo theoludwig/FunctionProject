@@ -59,7 +59,6 @@ const Chronometer = () => {
                         <div className="Chronometer__item">
                             <div className="Chronomter__row">
                                 <div className="Chronometer__time-left">
-                                    {/* 25:00 */}
                                     {getFormattedValue()}
                                 </div>
                             </div>
