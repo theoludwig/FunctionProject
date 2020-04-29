@@ -7,7 +7,6 @@ import FunctionComments from '../../components/FunctionPage/FunctionComments/Fun
 import Loader from '../../components/Loader';
 import api from '../../utils/api';
 import '../../public/css/pages/FunctionComponent.css';
-import '../../public/css/pages/functions/toDoList.css';
 import '../../components/FunctionCard/FunctionCard.css';
 import '../../public/css/pages/functions/rightPrice.css';
 

@@ -23,6 +23,7 @@
     "notyf": "^3.6.0",
     "nprogress": "^0.2.0",
     "react": "16.13.0",
+    "react-codepen-embed": "^1.0.1",
     "react-color": "^2.18.0",
     "react-datepicker": "^2.14.1",
     "react-dom": "16.13.0",
