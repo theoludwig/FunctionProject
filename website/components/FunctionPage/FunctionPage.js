@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import { API_URL } from '../../utils/config';
+import { API_URL } from '../../utils/config/config';
 import HeadTag from '../HeadTag';
 import FunctionTabsTop from './FunctionTabsTop';
 import FunctionComponentTop from './FunctionComponentTop';

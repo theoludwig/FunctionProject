@@ -11,7 +11,7 @@ import redirect from '../../utils/redirect';
 import htmlParser from 'html-react-parser';
 import Loader from '../../components/Loader';
 import api from '../../utils/api';
-import { API_URL } from '../../utils/config';
+import { API_URL } from '../../utils/config/config';
 import '../../public/css/pages/profile.css';
 
 const Profile = (props) => {

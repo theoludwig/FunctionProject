@@ -7,7 +7,7 @@ import EditArticleFunction from '../../components/FunctionAdmin/EditArticleFunct
 import EditFormFunction from '../../components/FunctionAdmin/EditFormFunction';
 import redirect from '../../utils/redirect';
 import api from '../../utils/api';
-import { API_URL } from '../../utils/config';
+import { API_URL } from '../../utils/config/config';
 import '../../components/FunctionPage/FunctionTabs.css';
 import '../../public/css/pages/admin.css';
 

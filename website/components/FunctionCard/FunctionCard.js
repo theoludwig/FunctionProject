@@ -3,7 +3,7 @@ import { useState, forwardRef } from 'react';
 import date from 'date-and-time';
 import Loader from '../Loader';
 import './FunctionCard.css';
-import { API_URL } from '../../utils/config';
+import { API_URL } from '../../utils/config/config';
 
 const FunctionCard = forwardRef((props, ref) => {
 
@@ -11,6 +11,10 @@ const FunctionCard = forwardRef((props, ref) => {
 
     const handleLoad = () => {
         setIsLoading(false);
+    }
+
+    const handleError = (event) => {
+        event.target.src = API_URL + "/images/functions/default.png";
     }
 
     const isFormOrArticle = (props.type === 'form' || props.type === 'article');
@@ -37,7 +41,7 @@ const FunctionCard = forwardRef((props, ref) => {
 
                 <div className={`FunctionCard__container ${isLoading ? "d-none" : ""}`}>
                     <div className="FunctionCard__top">
-                        <img onLoad={handleLoad} className="FunctionCard__image" alt={props.title} src={API_URL + props.image} />
+                        <img onLoad={handleLoad} onError={handleError} className="FunctionCard__image" alt={props.title} src={API_URL + props.image} />
                         <h2 className="FunctionCard__title">{props.title}</h2>
                         <p className="FunctionCard__description text-center">{props.description}</p>
                     </div>
