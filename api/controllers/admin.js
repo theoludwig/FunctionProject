@@ -8,6 +8,7 @@ const Categories                     = require('../models/categories');
 const Quotes                         = require('../models/quotes');
 const Users                          = require('../models/users');
 const helperQueryNumber              = require('../assets/utils/helperQueryNumber');
+const getPagesHelper                 = require('../assets/utils/getPagesHelper');
 const Sequelize                      = require('sequelize');
 const deleteFilesNameStartWith       = require('../assets/utils/deleteFilesNameStartWith');
 const { EMAIL_INFO, FRONT_END_HOST } = require('../assets/config/config');
@@ -28,16 +29,11 @@ const handleEditFunction = async (res, resultFunction, { title, slug, descriptio
     res.status(200).json({ message: "La fonction a bien été modifié!", result });
 }
 
-exports.getFunctions = (req, res, next) => {
-    const page       = helperQueryNumber(req.query.page, 1);
-    const limit      = helperQueryNumber(req.query.limit, 10);
+exports.getFunctions = async (req, res, next) => {
     const categoryId = helperQueryNumber(req.query.categoryId, 0);
     let   search     = req.query.search;
-    try { search = search.toLowerCase(); } catch {}
-    const offset     = (page - 1) * limit;
-    Functions.findAndCountAll({ 
-        limit, 
-        offset, 
+    try { search = search.toLowerCase(); } catch {};
+    const options = {
         where: {
             // Trie par catégorie
             ... (categoryId !== 0) && { categorieId: categoryId },
@@ -57,16 +53,8 @@ exports.getFunctions = (req, res, next) => {
             exclude: ["updatedAt", "utilizationForm", "article", "isOnline"]
         },
         order: [['createdAt', 'DESC']]
-    })
-        .then((result) => {
-            const { count, rows } = result;
-            const hasMore = (page * limit) < count;
-            return res.status(200).json({ totalItems: count, hasMore, rows });
-        })
-        .catch((error) => {
-            console.log(error);
-            return errorHandling(next, serverError);
-        });
+    };
+    return await getPagesHelper({ req, res, next }, Functions, options);
 }
 
 exports.getFunctionBySlug = (req, res, next) => {
@@ -275,13 +263,8 @@ exports.deleteCategory = async (req, res, next) => {
     }
 }
 
-exports.getQuotes = (req, res, next) => {
-    const page   = helperQueryNumber(req.query.page, 1);
-    const limit  = helperQueryNumber(req.query.limit, 10);
-    const offset = (page - 1) * limit;
-    Quotes.findAndCountAll({
-        limit, 
-        offset, 
+exports.getQuotes = async (req, res, next) => {
+    const options = {
         where: { 
             isValidated: 0,
         },
@@ -289,16 +272,8 @@ exports.getQuotes = (req, res, next) => {
             { model: Users, attributes: ["name", "logo"] }
         ],
         order: [['createdAt', 'DESC']]
-    })
-        .then((result) => {
-            const { count, rows } = result;
-            const hasMore = (page * limit) < count;
-            return res.status(200).json({ totalItems: count, hasMore, rows });
-        })
-        .catch((error) => {
-            console.log(error);
-            return errorHandling(next, serverError);
-        });
+    };
+    return await getPagesHelper({ req, res, next }, Quotes, options);
 }
 
 exports.putQuote = async (req, res, next) => {

@@ -2,15 +2,10 @@ const errorHandling                   = require('../assets/utils/errorHandling')
 const { serverError, requiredFields } = require('../assets/config/errors');
 const Quotes                          = require('../models/quotes');
 const Users                           = require('../models/users');
-const helperQueryNumber               = require('../assets/utils/helperQueryNumber');
+const getPagesHelper                  = require('../assets/utils/getPagesHelper');
 
-exports.getQuotes = (req, res, next) => {
-    const page   = helperQueryNumber(req.query.page, 1);
-    const limit  = helperQueryNumber(req.query.limit, 10);
-    const offset = (page - 1) * limit;
-    Quotes.findAndCountAll({
-        limit, 
-        offset, 
+exports.getQuotes = async (req, res, next) => {
+    const options = {
         where: { 
             isValidated: 1,
         },
@@ -21,16 +16,8 @@ exports.getQuotes = (req, res, next) => {
             exclude: ["isValidated"]
         },
         order: [['createdAt', 'DESC']]
-    })
-        .then((result) => {
-            const { count, rows } = result;
-            const hasMore = (page * limit) < count;
-            return res.status(200).json({ totalItems: count, hasMore, rows });
-        })
-        .catch((error) => {
-            console.log(error);
-            return errorHandling(next, serverError);
-        });
+    };
+    return await getPagesHelper({ req, res, next }, Quotes, options);
 }
 
 exports.postQuote = (req, res, next) => {

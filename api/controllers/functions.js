@@ -4,18 +4,14 @@ const Functions         = require('../models/functions');
 const Categories        = require('../models/categories');
 const functionToExecute = require('../assets/functions/functionObject');
 const helperQueryNumber = require('../assets/utils/helperQueryNumber');
+const getPagesHelper    = require('../assets/utils/getPagesHelper');
 const Sequelize         = require('sequelize');
 
-exports.getFunctions = (req, res, next) => {
-    const page       = helperQueryNumber(req.query.page, 1);
-    const limit      = helperQueryNumber(req.query.limit, 10);
+exports.getFunctions = async (req, res, next) => {
     const categoryId = helperQueryNumber(req.query.categoryId, 0);
     let   search     = req.query.search;
-    try { search = search.toLowerCase(); } catch {}
-    const offset     = (page - 1) * limit;
-    Functions.findAndCountAll({ 
-        limit, 
-        offset, 
+    try { search = search.toLowerCase(); } catch {};
+    const options = {
         where: { 
             isOnline: 1,
             // Trie par catégorie
@@ -36,16 +32,8 @@ exports.getFunctions = (req, res, next) => {
             exclude: ["updatedAt", "utilizationForm", "article", "isOnline"]
         },
         order: [['createdAt', 'DESC']]
-    })
-        .then((result) => {
-            const { count, rows } = result;
-            const hasMore = (page * limit) < count;
-            return res.status(200).json({ totalItems: count, hasMore, rows });
-        })
-        .catch((error) => {
-            console.log(error);
-            return errorHandling(next, serverError);
-        });
+    };
+    return await getPagesHelper({ req, res, next }, Functions, options);
 }
 
 exports.getFunctionBySlug = (req, res, next) => {
