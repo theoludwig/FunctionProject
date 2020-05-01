@@ -1,10 +1,10 @@
 function copyToClipboard(text) {
-    const elem = document.createElement('textarea');
-    elem.value = text;
-    document.body.appendChild(elem);
-    elem.select();
+    const element = document.createElement('textarea');
+    element.value = text;
+    document.body.appendChild(element);
+    element.select();
     document.execCommand('copy');
-    document.body.removeChild(elem);
+    document.body.removeChild(element);
 }
 
 export default copyToClipboard;

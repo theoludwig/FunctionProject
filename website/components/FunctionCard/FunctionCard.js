@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { useState, forwardRef } from 'react';
 import date from 'date-and-time';
 import Loader from '../Loader';
-import './FunctionCard.css';
 import { API_URL } from '../../utils/config/config';
+import './FunctionCard.css';
 
 const FunctionCard = forwardRef((props, ref) => {
 

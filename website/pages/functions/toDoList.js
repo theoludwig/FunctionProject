@@ -10,7 +10,6 @@ import FunctionArticle from '../../components/FunctionPage/FunctionArticle';
 import FunctionComments from '../../components/FunctionPage/FunctionComments/FunctionComments';
 import api from '../../utils/api';
 import '../../public/css/pages/FunctionComponent.css';
-import '../../components/FunctionCard/FunctionCard.css';
 import '../../public/css/pages/functions/toDoList.css';
 
 const ManageToDo = () => {

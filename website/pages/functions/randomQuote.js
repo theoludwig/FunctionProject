@@ -14,7 +14,6 @@ import api from '../../utils/api';
 import copyToClipboard from '../../utils/copyToClipboard';
 import 'notyf/notyf.min.css';
 import '../../public/css/pages/FunctionComponent.css';
-import '../../components/FunctionCard/FunctionCard.css';
 
 const GenerateQuote = () => {
 

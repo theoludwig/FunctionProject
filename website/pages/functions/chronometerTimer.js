@@ -10,7 +10,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faSync } from '@fortawesome/free-solid-svg-icons';
 import api from '../../utils/api';
 import '../../public/css/pages/FunctionComponent.css';
-import '../../components/FunctionCard/FunctionCard.css';
 import '../../public/css/pages/functions/chronometerTimer.css';
 
 let interval;
@@ -18,12 +17,12 @@ function convertSeconds(seconds) {
     return {
         minutes: Math.floor(seconds / 60),
         seconds: seconds % 60 
-    }
+    };
 }
 
 const Chronometer = () => {
 
-    const [timeLength, setTimeLength] = useState(0);      // seconds
+    const [timeLength, setTimeLength] = useState(0); // seconds
     const [isPlaying, setIsPlaying]   = useState(false);
 
     const handlePlayPause = () => {

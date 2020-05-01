@@ -7,7 +7,6 @@ import FunctionComments from '../../components/FunctionPage/FunctionComments/Fun
 import Loader from '../../components/Loader';
 import api from '../../utils/api';
 import '../../public/css/pages/FunctionComponent.css';
-import '../../components/FunctionCard/FunctionCard.css';
 import '../../public/css/pages/functions/rightPrice.css';
 
 const PlayRightPrice = () => {
@@ -140,7 +139,7 @@ const rightPrice = (props) => (
     <FunctionPage 
         FunctionTabManager={FunctionTabManager}
         { ...props }
-        tabNames={["⚙️ Utilisation", "📝 Article", "📬 Commentaires"]} 
+        tabNames={["🕹️ Jouer", "📝 Article", "📬 Commentaires"]} 
     />
 );
 
