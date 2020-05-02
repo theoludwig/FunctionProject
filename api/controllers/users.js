@@ -4,6 +4,7 @@ const bcrypt                                                       = require('bc
 const jwt                                                          = require('jsonwebtoken');
 const ms                                                           = require('ms');
 const uuid                                                         = require('uuid');
+const Sequelize                                                    = require('sequelize');
 const errorHandling                                                = require('../assets/utils/errorHandling');
 const { serverError, generalError }                                = require('../assets/config/errors');
 const { JWT_SECRET, FRONT_END_HOST, EMAIL_INFO, HOST, TOKEN_LIFE } = require('../assets/config/config');
@@ -16,6 +17,7 @@ const Categories                                                   = require('..
 const Comments                                                     = require('../models/comments');
 const Quotes                                                       = require('../models/quotes');
 const deleteFilesNameStartWith                                     = require('../assets/utils/deleteFilesNameStartWith');
+const getPagesHelper                                               = require('../assets/utils/getPagesHelper');
 
 async function handleEditUser(res, { name, email, biography, isPublicEmail }, userId, logoName) {
     const user = await Users.findOne({ where: { id: userId } });
@@ -41,6 +43,25 @@ async function handleEditUser(res, { name, email, biography, isPublicEmail }, us
     }
     await user.save();
     return res.status(200).json({ id: user.id, name: user.name, email: user.email, biography: user.biography, logo: user.logo, isPublicEmail: user.isPublicEmail, isAdmin: user.isAdmin, createdAt: user.createdAt });
+}
+
+exports.getUsers = async (req, res, next) => {
+    let { search } = req.query;
+    try { search = search.toLowerCase(); } catch {};
+    const options = {
+        where: { 
+            isConfirmed: true,
+            // Recherche
+            ...(search != undefined) && {
+                name: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('name')), 'LIKE', `%${search}%`)
+            }
+        },
+        attributes: {
+            exclude: ["updatedAt", "isAdmin", "isConfirmed", "password", "tempToken", "tempExpirationToken", "isPublicEmail", "email"]
+        }, 
+        order: [['createdAt', 'DESC']]
+    };
+    return await getPagesHelper({ req, res, next }, Users, options);
 }
 
 exports.putUser = async (req, res, next) => {

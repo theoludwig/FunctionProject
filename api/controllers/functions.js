@@ -9,7 +9,7 @@ const Sequelize         = require('sequelize');
 
 exports.getFunctions = async (req, res, next) => {
     const categoryId = helperQueryNumber(req.query.categoryId, 0);
-    let   search     = req.query.search;
+    let   { search } = req.query;
     try { search = search.toLowerCase(); } catch {};
     const options = {
         where: { 
