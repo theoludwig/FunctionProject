@@ -22,7 +22,9 @@ En plus de présenter des fonctions, FunctionProject est un **blog** ce qui perm
 
 Si vous aimez le projet, vous pouvez aider à **le faire connaître** en utilisant [#FunctionProject](https://twitter.com/hashtag/FunctionProject) sur **Twitter**. 🐦
 
-Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/).
+Les dernières versions publiées : [https://github.com/Divlo/FunctionProject/releases](https://github.com/Divlo/FunctionProject/releases)
+
+Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/) (actuellement en version 1.0).
 
 ## 🚀 Open Source 
 

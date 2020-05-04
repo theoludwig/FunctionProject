@@ -1,6 +1,8 @@
 {
-  "name": "functionproject-next",
-  "version": "1.0.0",
+  "name": "website",
+  "version": "2.0.0",
+  "description": "Website frontend for FunctionProject",
+  "main": "server.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev node server",
     "build": "next build",
@@ -27,6 +29,7 @@
     "react-color": "^2.18.0",
     "react-datepicker": "^2.14.1",
     "react-dom": "16.13.0",
+    "react-markdown": "^4.3.1",
     "react-swipeable-views": "^0.13.9",
     "react-swipeable-views-utils": "^0.13.9",
     "suneditor-react": "^2.8.0",

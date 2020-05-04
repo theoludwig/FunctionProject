@@ -29,7 +29,12 @@ const Home = () => {
                         <div className="col-24">
                             <h1 className="title-important">FunctionProject</h1>
                             <p className="Home__description">
-                                Apprenez la programmation grâce à l'apprentissage par projet alias fonction (en <span className="important">JavaScript</span>).<br/>
+                                Apprenez la programmation grâce à l'apprentissage par projet alias fonction (en <span className="important">JavaScript</span>).
+                                <br/>
+                                <Link href={"/about"}>
+                                    <a>En savoir plus ? (à-propos)</a>
+                                </Link>
+                                <br/>
                                 Découvrez la liste des fonctions disponibles : 
                             </p>
                         </div>
@@ -51,7 +56,7 @@ const Home = () => {
                             </p>
                         </div>
                         <div className="col-24">
-                            <a target="_blank" rel="noopener noreferrer" href="https://github.com/Divlo/FunctionProject"> <img className="Home__image-width" src="/images/GitHub.png" alt="GitHub"/> </a>
+                            <a target="_blank" rel="noopener noreferrer" href="https://github.com/Divlo/FunctionProject"><img className="Home__image-width" src="/images/GitHub.png" alt="GitHub" /></a>
                         </div>
                     </div>
 
