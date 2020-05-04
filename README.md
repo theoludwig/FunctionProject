@@ -11,7 +11,7 @@
   <a href="https://github.com/Divlo/FunctionProject/graphs/contributors"><img src="https://img.shields.io/github/contributors/Divlo/FunctionProject" alt="Contributors"></a>
   <img src="https://img.shields.io/github/stars/Divlo/FunctionProject?style=social" alt="Stars">
   <br/> <br/>
-  <a href="https://function.divlo.fr/"><img src="./.github/FunctionProject.png" alt="FunctionProject" /></a>
+  <a href="https://function.divlo.fr/"><img src="https://raw.githubusercontent.com/Divlo/FunctionProject/master/.github/FunctionProject.png" alt="FunctionProject" /></a>
 </p>
 
 ## ⚙️ À propos
