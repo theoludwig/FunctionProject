@@ -52,7 +52,7 @@ const Profile = (props) => {
                 .then(() => {
                     setIsLoading(false);
                     logoutUser();
-                    redirect({}, '/login?isSuccessEdit=true');
+                    redirect({}, '/users/login?isSuccessEdit=true');
                 })
                 .catch((error) => {
                     setMessage(`<p class="form-error"><b>Erreur:</b> ${error.response.data.message}</p>`);

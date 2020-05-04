@@ -53,18 +53,16 @@ const FunctionsList = (props) => {
         if (node) observer.current.observe(node);
     }, [isLoadingFunctions, functionsData.hasMore]);
 
-    const getFunctionsData = () => {
+    const getFunctionsData = async () => {
         setLoadingFunctions(true);
-        return new Promise(async (next) => {
-            const URL = `${(props.isAdmin) ? "/admin/functions" : "/functions"}?page=${pageFunctions}&limit=10&categoryId=${inputSearch.selectedCategory}&search=${inputSearch.search}`;
-            const result = await api.get(URL, {
-                headers: {
-                    ...(props.isAdmin && props.token != undefined) && { 'Authorization': props.token }
-                }
-            });
-            setLoadingFunctions(false);
-            next(result.data);
+        const URL = `${(props.isAdmin) ? "/admin/functions" : "/functions"}?page=${pageFunctions}&limit=10&categoryId=${inputSearch.selectedCategory}&search=${inputSearch.search}`;
+        const result = await api.get(URL, {
+            headers: {
+                ...(props.isAdmin && props.token != undefined) && { 'Authorization': props.token }
+            }
         });
+        setLoadingFunctions(false);
+        return result.data;
     }
 
     const handleChange = (event) => {
@@ -86,7 +84,7 @@ const FunctionsList = (props) => {
                         <option key={category.id} value={category.id} className="Functions__select-option" style={{ backgroundColor: category.color }}>{category.name}</option>
                     ))}
                 </select>
-                <input value={inputSearch.search} onChange={handleChange} type="search" className="Functions__form-control Functions__search-input" name="search" id="search" placeholder="🔎 Rechercher..."></input>
+                <input value={inputSearch.search} onChange={handleChange} type="search" className="Functions__form-control Functions__search-input" name="search" id="search" placeholder="🔎 Rechercher..." />
             </div>
 
             <div className="row justify-content-center">

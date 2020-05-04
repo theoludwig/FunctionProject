@@ -1,0 +1,65 @@
+.Users__form-control {
+    display: block;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .5em;
+}
+.Users__search-container {
+    margin-bottom: 50px;
+}
+.Users__search-input {
+    width: 50%;
+}
+
+.UserCard {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    word-wrap: break-word;
+    box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, .25);
+    border: 1px solid black;
+    border-radius: 1rem;
+    margin: 0 0 50px 0;
+    cursor: pointer;
+    transition: all .3s;
+    padding: 10px;
+}
+.UserCard__container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.UserCard:hover {
+    transform: translateY(-7px);
+}
+/* col-md */
+@media (min-width: 768px) {
+    .UserCard {
+        margin: 0 30px 50px 30px;
+    } 
+}
+/* col-xl */
+@media (min-width: 1200px) {
+    .UserCard {
+        margin: 0 20px 50px 20px;
+    }   
+}
+.UserCard__logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.UserCard__name {
+    margin: 30px 0 10px 0;
+}

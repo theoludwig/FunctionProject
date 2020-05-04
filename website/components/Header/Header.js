@@ -37,6 +37,7 @@ export default function Header() {
                     <ul className={`navbar__list ${(isActive) ? "navbar__list-active" : ""}`}>
                         <NavigationLink name="Accueil" path="/" />
                         <NavigationLink name="Fonctions" path="/functions" />
+                        <NavigationLink name="Utilisateurs" path="/users" />
                         {
                             (!isAuth) ? 
                                 <Fragment>
