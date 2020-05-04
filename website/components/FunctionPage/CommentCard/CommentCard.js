@@ -14,7 +14,7 @@ const CommentCard = forwardRef((props, ref) => {
         props.manageComment.setLoadingComments(true);
         if (isAuth && user.token != undefined) {
             try {
-                await api.delete(`/comments?commentId=${props.id}`, { headers: { 'Authorization': user.token } });
+                await api.delete(`/comments/${props.id}`, { headers: { 'Authorization': user.token } });
                 const newCommentsData = { ...props.manageComment.commentsData };
                 const commentIndex    = newCommentsData.rows.findIndex((value) => value.id === props.id);
                 newCommentsData.rows.splice(commentIndex, 1);

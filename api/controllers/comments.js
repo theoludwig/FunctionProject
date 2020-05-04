@@ -37,7 +37,7 @@ exports.postCommentsByFunctionId = async (req, res, next) => {
 }
 
 exports.deleteCommentById = async (req, res, next) => {
-    const { commentId } = req.query;
+    const { commentId } = req.params;
     try {
         const comment = await Comments.findOne({ where: { userId: req.userId, id: parseInt(commentId) } });
         if (!comment) {
@@ -45,6 +45,26 @@ exports.deleteCommentById = async (req, res, next) => {
         }
         await comment.destroy();
         return res.status(200).json({ message: "Le commentaire a bien été supprimé." });
+    } catch (error) {
+        console.log(error);
+        return errorHandling(next, serverError);   
+    }
+}
+
+exports.putCommentsById = async (req, res, next) => {
+    const { commentId } = req.params;
+    const { message }   = req.body;
+    if (!message) {
+        return errorHandling(next, { message: "Vous ne pouvez pas poster de commentaire vide.", statusCode: 400 });
+    }
+    try {
+        const comment = await Comments.findOne({ where: { userId: req.userId, id: parseInt(commentId) } });
+        if (!comment) {
+            return errorHandling(next, { message: "Le commentaire n'existe pas.", statusCode: 404 });
+        }
+        comment.message = message;
+        await comment.save();
+        return res.status(200).json({ message: "Le commentaire a bien été modifié." });
     } catch (error) {
         console.log(error);
         return errorHandling(next, serverError);   

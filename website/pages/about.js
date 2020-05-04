@@ -4,9 +4,6 @@ import ReactMarkdown  from 'react-markdown/with-html';
 import HeadTag from '../components/HeadTag';
 
 const About = (props) => {
-
-    console.log(props);
-
     return (
         <Fragment>
             <HeadTag 

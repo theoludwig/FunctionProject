@@ -4,7 +4,10 @@ const isAuth             = require('../middlewares/isAuth');
 
 const CommentsRouter = Router();
 
-CommentsRouter.route('/')
+CommentsRouter.route('/:commentId')
+
+    // Modifier un commentaire
+    .put(isAuth, commentsController.putCommentsById)
 
     // Supprime un commentaire
     .delete(isAuth, commentsController.deleteCommentById);
