@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { forwardRef, useContext } from 'react';
+import { useEffect, useState, forwardRef, useContext, Fragment } from 'react';
 import date from 'date-and-time';
+import htmlParser from 'html-react-parser';
 import { UserContext } from '../../../contexts/UserContext';
 import { API_URL } from '../../../utils/config/config';
 import api from '../../../utils/api';
@@ -8,7 +9,14 @@ import './CommentCard.css';
 
 const CommentCard = forwardRef((props, ref) => {
 
-    const { isAuth, user } = useContext(UserContext);
+    const { isAuth, user }          = useContext(UserContext);
+    const [isEditing, setEditing]   = useState(false);
+    const [editInput, setEditInput] = useState("");
+    const [message, setMessage]     = useState("");
+
+    useEffect(() => {
+        setEditInput(props.message);
+    }, []);
 
     const deleteCommentById = async () => {
         props.manageComment.setLoadingComments(true);
@@ -22,6 +30,26 @@ const CommentCard = forwardRef((props, ref) => {
             } catch {}
         }
         props.manageComment.setLoadingComments(false);
+    }
+
+    const handleChange = (event) => {
+        setEditInput(event.target.value);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        api.put(`/comments/${props.id}`, { message: editInput }, { headers: { 'Authorization': user.token } })
+            .then((_response) => {
+                setEditing(false);
+            })
+            .catch((error) => {
+                setMessage(`<p class="form-error"><b>Erreur:</b> ${error.response.data.message}</p>`);
+            });
+    }
+
+    const editComment = () => {
+        setEditing(true);
+        setMessage("");
     }
 
     return (
@@ -40,13 +68,33 @@ const CommentCard = forwardRef((props, ref) => {
                 </div>
                 <div className="row">
                     <div className="col-24">
-                        <p className="CommentCard__message">
-                            {props.message}
-                        </p>
-                        {(isAuth && user.name === props.user.name) && 
-                            <p style={{ fontSize: '15px', margin: '15px 0 0 0', fontStyle: 'italic' }}>
-                                <a onClick={deleteCommentById} href="#">supprimer le commentaire</a>
-                            </p>
+                        {
+                            (!isEditing) ?
+                                <Fragment>
+                                    <p className="CommentCard__message">
+                                        {editInput}
+                                    </p>
+                                    {(isAuth && user.name === props.user.name) && 
+                                        <p style={{ fontSize: '15px', margin: '15px 0 0 0', fontStyle: 'italic' }}>
+                                            <a onClick={deleteCommentById} href="#">supprimer</a>
+                                            &nbsp;-&nbsp;
+                                            <a style={{ cursor: 'pointer' }} onClick={editComment}>modifier</a>
+                                        </p>
+                                    }
+                                </Fragment>
+                            : 
+                                <form onSubmit={handleSubmit}>
+                                    <div className="form-group FunctionComments__post-group">
+                                        <label className="form-label" htmlFor="commentEdit">Modifier le commentaire :</label>   
+                                        <textarea style={{ height: 'auto' }} value={editInput} onChange={handleChange} name="commentEdit" id="commentEdit" className="form-control" rows="5" placeholder="Idée d'amélioration, avis, remarque, partage d'expérience personnel, ..."></textarea>
+                                    </div>
+                                    <div className="form-group" style={{ marginTop: '0.7em' }}>
+                                        <button type="submit" className="btn btn-dark">Envoyer</button>
+                                    </div>
+                                    <div className="text-center">
+                                        {htmlParser(message)}
+                                    </div>
+                                </form>
                         }
                     </div>
                 </div>
