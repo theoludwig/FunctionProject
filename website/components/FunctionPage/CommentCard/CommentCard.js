@@ -4,6 +4,8 @@ import date from 'date-and-time';
 import htmlParser from 'html-react-parser';
 import { UserContext } from '../../../contexts/UserContext';
 import { API_URL } from '../../../utils/config/config';
+import ReactMarkdown  from 'react-markdown';
+import CodeBlock from "../../CodeBlock";
 import api from '../../../utils/api';
 import './CommentCard.css';
 
@@ -71,9 +73,9 @@ const CommentCard = forwardRef((props, ref) => {
                         {
                             (!isEditing) ?
                                 <Fragment>
-                                    <p className="CommentCard__message">
-                                        {editInput}
-                                    </p>
+                                    <div className="CommentCard__message">
+                                        <ReactMarkdown source={editInput} renderers={{ code: CodeBlock }} />
+                                    </div>
                                     {(isAuth && user.name === props.user.name) && 
                                         <p style={{ fontSize: '15px', margin: '15px 0 0 0', fontStyle: 'italic' }}>
                                             <a onClick={deleteCommentById} href="#">supprimer</a>
@@ -86,7 +88,7 @@ const CommentCard = forwardRef((props, ref) => {
                                 <form onSubmit={handleSubmit}>
                                     <div className="form-group FunctionComments__post-group">
                                         <label className="form-label" htmlFor="commentEdit">Modifier le commentaire :</label>   
-                                        <textarea style={{ height: 'auto' }} value={editInput} onChange={handleChange} name="commentEdit" id="commentEdit" className="form-control" rows="5" placeholder="Idée d'amélioration, avis, remarque, partage d'expérience personnel, ..."></textarea>
+                                        <textarea style={{ height: 'auto' }} value={editInput} onChange={handleChange} name="commentEdit" id="commentEdit" className="form-control" rows="5" placeholder="Idée d'amélioration, avis, remarque, partage d'expérience personnel, ... (Markdown autorisé)"></textarea>
                                     </div>
                                     <div className="form-group" style={{ marginTop: '0.7em' }}>
                                         <button type="submit" className="btn btn-dark">Envoyer</button>
