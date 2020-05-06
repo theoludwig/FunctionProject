@@ -6,10 +6,10 @@ import api from '../../utils/api';
 import useAPI from '../../hooks/useAPI';
 import './FunctionsList.css';
 
+let pageFunctions = 1;
 const FunctionsList = (props) => {
 
     const { categoryId } = useRouter().query;
-    let pageFunctions = 1;
 
     // State de recherche et de catégories
     const [, categories]                = useAPI('/categories');
@@ -56,13 +56,13 @@ const FunctionsList = (props) => {
     const getFunctionsData = async () => {
         setLoadingFunctions(true);
         const URL = `${(props.isAdmin) ? "/admin/functions" : "/functions"}?page=${pageFunctions}&limit=10&categoryId=${inputSearch.selectedCategory}&search=${inputSearch.search}`;
-        const result = await api.get(URL, {
+        const { data } = await api.get(URL, {
             headers: {
                 ...(props.isAdmin && props.token != undefined) && { 'Authorization': props.token }
             }
         });
         setLoadingFunctions(false);
-        return result.data;
+        return data;
     }
 
     const handleChange = (event) => {

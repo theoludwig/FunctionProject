@@ -36,7 +36,7 @@ const GenerateQuote = () => {
         const notyf = new Notyf.Notyf({
             duration: 5000
         });
-        copyToClipboard(`"${quote.quote}" - ${quote.author}`);
+        copyToClipboard(`"${quote?.quote}" - ${quote?.author}`);
         notyf.success('Citation copiée dans le presse-papier!');
     }
 
@@ -50,15 +50,15 @@ const GenerateQuote = () => {
             </div>
             <div style={{ marginTop: '20px' }} className="row justify-content-center">
                 <div className="col-24 text-center">
-                    <p>" {quote.quote} "</p>
-                    <p>- {quote.author}</p>
+                    <p>" {quote?.quote} "</p>
+                    <p>- {quote?.author}</p>
                 </div>
             </div>
             <div style={{ marginBottom: '20px' }} className="row justify-content-center">
                 <a 
                     target="_blank"
                     rel="noopener noreferrer"
-                    href={`https://twitter.com/intent/tweet?text="${quote.quote}" - ${quote.author}&via=Divlo_FR&hashtags=citation,FunctionProject&url=https://function.divlo.fr/functions/randomQuote`}
+                    href={`https://twitter.com/intent/tweet?text="${quote?.quote}" - ${quote?.author}&via=Divlo_FR&hashtags=citation,FunctionProject&url=https://function.divlo.fr/functions/randomQuote`}
                     className="btn btn-lg btn-primary"
                 >
                     <FontAwesomeIcon icon={faTwitter} style={{ width: '1em' }} /> Twitter
@@ -68,26 +68,22 @@ const GenerateQuote = () => {
     );
 }
 
+let pageQuotes = 1; 
 const QuoteList = () => {
 
     const [quotesData, setQuotesData]         = useState({ hasMore: true, rows: [], totalItems: 0 });
     const [isLoadingQuotes, setLoadingQuotes] = useState(true);
-    const [pageQuotes, setPageQuotes]         = useState(1);
 
-    // Récupère les citations si la page change
+    // Récupère les citations initiales
     useEffect(() => {
-        getQuotesData();
-    }, [pageQuotes]);
+        getQuotesData().then((data) => setQuotesData(data));
+    }, []);
 
     const getQuotesData = async () => {
         setLoadingQuotes(true);
-        const { data } = await api.get(`/quotes?limit=20page=${pageQuotes}`);
-        setQuotesData({
-            hasMore: data.hasMore,
-            rows: [...quotesData.rows, ...data.rows],
-            totalItems: data.totalItems
-        });
+        const { data } = await api.get(`/quotes?page=${pageQuotes}&limit=20`);
         setLoadingQuotes(false);
+        return data;
     }
 
     // Permet la pagination au scroll
@@ -97,7 +93,16 @@ const QuoteList = () => {
         if (observer.current) observer.current.disconnect();
         observer.current = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting && quotesData.hasMore) {
-                setPageQuotes(pageQuotes + 1);
+                pageQuotes += 1;
+                getQuotesData().then((data) => {
+                    setQuotesData((oldData) => {
+                        return {
+                            hasMore: data.hasMore,
+                            rows: [...oldData.rows, ...data.rows],
+                            totalItems: data.totalItems
+                        };
+                    });
+                });
             }
         }, { threshold: 1 });
         if (node) observer.current.observe(node);
