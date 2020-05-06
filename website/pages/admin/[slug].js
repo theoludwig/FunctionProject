@@ -15,6 +15,11 @@ const AdminFunctionComponent = (props) => {
 
     const [slideIndex, setSlideIndex] = useState(0);
 
+    const handleDeleteFunction = async () => {
+        await api.delete(`/admin/functions/${props.functionInfo.id}`, { headers: { 'Authorization': props.user.token } });
+        redirect({}, '/admin');
+    }
+
     return (
         <Fragment>
             <HeadTag title={props.functionInfo.title} description={props.functionInfo.description} image={API_URL + props.functionInfo.image} />
@@ -44,6 +49,9 @@ const AdminFunctionComponent = (props) => {
                                 user={props.user} 
                                 isEditing
                             />
+                            <div style={{ marginBottom: '30px' }} className="text-center">
+                                <button onClick={handleDeleteFunction} className="btn btn-dark">Supprimer la fonction</button>
+                            </div>
                         </div>
                         <div className="Admin__Function-slide">
                             <EditArticleFunction { ...props } />
