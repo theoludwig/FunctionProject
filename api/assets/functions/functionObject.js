@@ -11,6 +11,7 @@ const convertEncodingOutput           = require('./main/convertEncoding');
 const randomQuote                     = require('./main/randomQuote');
 const linkShortener                   = require('./main/linkShortener');
 const rightPriceOutput                = require('./main/rightPrice');
+const isPalindromeOutput              = require('./main/isPalindrome');
 
 const functionObject = {
     randomNumber             : randomNumberOutput,
@@ -26,6 +27,7 @@ const functionObject = {
     randomQuote              : randomQuote,
     linkShortener            : linkShortener,
     rightPrice               : rightPriceOutput,
+    isPalindrome             : isPalindromeOutput
 };
 
 // Choisi la fonction à exécuter
