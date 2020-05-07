@@ -43,6 +43,9 @@ const Register = () => {
                 <div className="row Register-Login__row justify-content-center">
                     <div className="col-20">
                         <h1 className="Register-Login__title">S'inscrire</h1>
+                        <div className="text-center">
+                            <p>En vous inscrivant, vous accéderez à de nombreuses fonctionnalités : publier des commentaires, ajouter des fonctions aux favoris, utiliser certaines fonctions disponibles qu'aux membres (exemple: La To Do list) etc.</p>
+                        </div>
                         <form onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label className="form-label" htmlFor="name">Nom :</label>

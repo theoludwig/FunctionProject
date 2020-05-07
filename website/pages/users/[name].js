@@ -10,6 +10,8 @@ import Modal from '../../components/Modal';
 import redirect from '../../utils/redirect';
 import htmlParser from 'html-react-parser';
 import Loader from '../../components/Loader';
+import ReactMarkdown  from 'react-markdown';
+import CodeBlock from "../../components/CodeBlock";
 import api from '../../utils/api';
 import { API_URL } from '../../utils/config/config';
 import '../../public/css/pages/profile.css';
@@ -179,18 +181,18 @@ const Profile = (props) => {
                                 <div className="col-24 text-center">
                                     <h2>Derniers <span className="important">commentaires</span> :</h2>
                                 </div>
-                                <div className="col-24 text-center">
+                                <div className="col-24">
                                     {props.commentsArray.map((comment) => (
                                         <div key={comment.id} className="row Profile__row Profile__comment">
                                             <div className="col-20">
-                                                <p>
+                                                <p style={{ textAlign: 'center', marginTop: '30px' }}>
                                                     Posté sur la fonction&nbsp; 
                                                     <Link href={(comment.function.type === 'form' || comment.function.type === 'article') ? "/functions/[slug]" : `/functions/${comment.function.slug}`} as={`/functions/${comment.function.slug}`}>
                                                         <a>{comment.function.title}</a>
                                                     </Link> 
                                                     &nbsp;le {date.format(new Date(comment.createdAt), 'DD/MM/YYYY à HH:mm', true)}
                                                 </p>
-                                                <p>"{comment.message}"</p>
+                                                <ReactMarkdown source={comment.message} renderers={{ code: CodeBlock }} />
                                             </div>
                                         </div>
                                     ))}
