@@ -14,6 +14,7 @@ const rightPriceOutput                = require('./main/rightPrice');
 const isPalindromeOutput              = require('./main/isPalindrome');
 const findLongestWordOutput           = require('./main/findLongestWord');
 const fibonacciOutput                 = require('./main/fibonacci');
+const sortArrayOutput                 = require('./main/sortArray');
 
 const functionObject = {
     randomNumber             : randomNumberOutput,
@@ -31,7 +32,8 @@ const functionObject = {
     rightPrice               : rightPriceOutput,
     isPalindrome             : isPalindromeOutput,
     findLongestWord          : findLongestWordOutput,
-    fibonacci                : fibonacciOutput
+    fibonacci                : fibonacciOutput,
+    sortArray                : sortArrayOutput,
 };
 
 // Choisi la fonction à exécuter
