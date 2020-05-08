@@ -7,7 +7,7 @@ const formatNumberResult               = require('../secondary/formatNumberResul
  * @param {Number} degree - Nombre de degrès
  * @param {String} unit - Unité du nombre (°C ou °F) après conversion
  * @returns {Object} false si arguments non valides et sinon un objet contenant la string et le nombre résultat
- * @examples convertTemperature(23, '°C') → { result: 73.4, resultHTML: "73.4 °F" }
+ * @examples convertTemperature(23, '°F') → { result: 73.4, resultHTML: "73.4 °F" }
  */
 function convertTemperature(degree, unit) {
     let temperatureValue = 0;
