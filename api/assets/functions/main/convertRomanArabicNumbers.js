@@ -21,8 +21,8 @@ const correspondancesRomainArabe = [
 
 /** 
  * @description Convertis un nombre arabe en nombre romain.
- * @param {Number} nombre - Le nombre arabe à convertir
- * @returns {String}
+ * @param {number} nombre - Le nombre arabe à convertir
+ * @returns {string}
  * @examples convertArabicToRoman(24) → 'XXIV'
  */
 function convertArabicToRoman(nombre) {
@@ -45,21 +45,21 @@ function convertArabicToRoman(nombre) {
 
 /** 
  * @description Convertis un nombre romain en nombre arabe.
- * @param {String} str - Le nombre romain à convertir
- * @returns {Number}
- * @examples convertRomanToArabic('XXIV') → 24
+ * @param {string} string - Le nombre romain à convertir
+ * @return {number}
+ * @example convertRomanToArabic('XXIV') → 24
  */
-function convertRomanToArabic(str) {
+function convertRomanToArabic(string) {
     let result = 0;
-    for (let i = 0; i < correspondancesRomainArabe.length; i++) {
-        while (str.indexOf(correspondancesRomainArabe[i][1]) === 0) {
+    correspondancesRomainArabe.forEach((correspondance) => {        
+        while (string.indexOf(correspondance[1]) === 0) {
             // Ajout de la valeur décimale au résultat
-            result += correspondancesRomainArabe[i][0];
+            result += correspondance[0];
             // Supprimer la lettre romaine correspondante du début
-            str = str.replace(correspondancesRomainArabe[i][1],'');
+            string = string.replace(correspondance[1], '');
         }
-    }
-    if (str != '') {
+    });
+    if (string != '') {
         result = 0;
     }
     return result;

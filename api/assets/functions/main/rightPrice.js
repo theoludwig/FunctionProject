@@ -16,7 +16,8 @@ function getRandomArrayElement(array) {
     return array[randomNumber(0, array.length - 1)];
 }
 
-async function getAmazonProductList(url) {
+async function getAmazonProductList(subject) {
+    const url       = `https://www.amazon.fr/s?k=${subject}`;
     const Nightmare = require('nightmare')();
     return await Nightmare.goto(url)
         .wait('.s-result-item')
@@ -33,7 +34,7 @@ async function getAmazonProductList(url) {
                         image: productImage["src"],
                         price: Number(originalPrice.replace(",", ".").replace(" ", ""))
                     });
-                } catch (error) {
+                } catch (_error) {
                     continue;
                 }
             }
@@ -44,7 +45,7 @@ async function getAmazonProductList(url) {
 
 module.exports = rightPriceOutput = async ({ res }, _argsObject) => {
     const subject       = getRandomArrayElement(subjectList);
-    const productsList  = await getAmazonProductList(`https://www.amazon.fr/s?k=${subject}`);
+    const productsList  = await getAmazonProductList(subject);
     const randomProduct = getRandomArrayElement(productsList);
     return res.status(200).json({ subject, ...randomProduct });
 }
