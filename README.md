@@ -24,7 +24,7 @@ Si vous aimez le projet, vous pouvez aider à **le faire connaître** en utilisa
 
 Les dernières versions publiées : [https://github.com/Divlo/FunctionProject/releases](https://github.com/Divlo/FunctionProject/releases)
 
-Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/) (actuellement en version 1.0).
+Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/) (actuellement en version 2.0).
 
 ## 🚀 Open Source 
 

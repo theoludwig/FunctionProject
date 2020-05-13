@@ -2,12 +2,6 @@ const Sequelize = require('sequelize');
 const sequelize = require('../assets/utils/database');
 
 module.exports = sequelize.define('function', {
-    id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true
-    },
     title: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -34,7 +28,7 @@ module.exports = sequelize.define('function', {
         allowNull: true
     },
     utilizationForm: {
-        type: Sequelize.JSON,
+        type: Sequelize.TEXT,
         allowNull: true
     },
     isOnline: {

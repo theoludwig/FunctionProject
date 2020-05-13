@@ -51,6 +51,7 @@ exports.getFunctionBySlug = (req, res, next) => {
             if (!result) {
                 return errorHandling(next, { message: "La fonction n'existe pas.", statusCode: 404 });
             }
+            try { result.utilizationForm = JSON.parse(result.utilizationForm); } catch {}
             return res.status(200).json(result);
         })
         .catch((error) => {

@@ -68,9 +68,13 @@ const newPassword = (props) => {
     );
 }
 
-newPassword.getInitialProps = (context) => {
+export async function getServerSideProps(context) {
     if (context.query.token != undefined) {
-        return context.query;
+        return {
+            props: {
+                token: context.query.token
+            }
+        };
     }
     return redirect(context, '/404');
 }

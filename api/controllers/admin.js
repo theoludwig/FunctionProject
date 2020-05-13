@@ -69,6 +69,7 @@ exports.getFunctionBySlug = (req, res, next) => {
             if (!result) {
                 return errorHandling(next, { message: "La fonction n'existe pas.", statusCode: 404 });
             }
+            try { result.utilizationForm = JSON.parse(result.utilizationForm); } catch {}
             return res.status(200).json(result);
         })
         .catch((error) => {
@@ -185,7 +186,7 @@ exports.putFunctionForm = async (req, res, next) => {
         if (!resultFunction) {
             return errorHandling(next, { message: "La fonction n'existe pas.", statusCode: 404 });
         }
-        resultFunction.utilizationForm = form;
+        resultFunction.utilizationForm = JSON.stringify(form);
         const result = await resultFunction.save();
         return res.status(200).json(result);
     } catch (error) {
