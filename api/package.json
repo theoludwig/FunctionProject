@@ -19,6 +19,7 @@
     "express-http-to-https": "^1.1.4",
     "express-validator": "^6.4.0",
     "helmet": "^3.21.3",
+    "jsdom": "^16.2.2",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "ms": "^2.1.2",
@@ -32,7 +33,6 @@
   "devDependencies": {
     "dotenv": "^8.2.0",
     "morgan": "^1.9.1",
-    "nightmare": "^3.0.2",
     "nodemon": "^2.0.2"
   }
 }

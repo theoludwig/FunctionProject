@@ -30,7 +30,7 @@ Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/) (ac
 
 Le partage est essentiel afin de progresser, l'**Open Source** permet l'entraide et le **partage de connaissance** entre développeurs.
 
-Si vous voulez **contribuer**, avant toute chose écrivait une **"[issue](https://github.com/Divlo/FunctionProject/issues)" sur GitHub** à propos des changements que vous voulez apporter et on pourra en **discuter avec grand plaisir**. 😉
+Si vous voulez **contribuer**, avant toute chose écrivez une **"[issue](https://github.com/Divlo/FunctionProject/issues)" sur GitHub** à propos des changements que vous voulez apporter et on pourra en **discuter avec grand plaisir**. 😉
 
 ## 🌐 Installation
 
