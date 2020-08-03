@@ -9,7 +9,6 @@ const calculateAgeOutput = require('./main/calculateAge')
 const heapAlgorithmOutput = require('./main/heapAlgorithm')
 const convertEncodingOutput = require('./main/convertEncoding')
 const randomQuote = require('./main/randomQuote')
-const linkShortener = require('./main/linkShortener')
 const rightPriceOutput = require('./main/rightPrice')
 const isPalindromeOutput = require('./main/isPalindrome')
 const findLongestWordOutput = require('./main/findLongestWord')
@@ -28,7 +27,6 @@ const functionObject = {
   heapAlgorithm: heapAlgorithmOutput,
   convertEncoding: convertEncodingOutput,
   randomQuote: randomQuote,
-  linkShortener: linkShortener,
   rightPrice: rightPriceOutput,
   isPalindrome: isPalindromeOutput,
   findLongestWord: findLongestWordOutput,

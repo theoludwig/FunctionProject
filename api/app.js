@@ -32,6 +32,7 @@ app.use('/favorites', require('./routes/favorites'))
 app.use('/comments', require('./routes/comments'))
 app.use('/quotes', require('./routes/quotes'))
 app.use('/tasks', require('./routes/tasks'))
+app.use('/links', require('./routes/links_shortener'))
 
 /* Errors Handling */
 app.use((_req, _res, next) =>
@@ -51,6 +52,7 @@ const Favorites = require('./models/favorites')
 const Comments = require('./models/comments')
 const Quotes = require('./models/quotes')
 const Tasks = require('./models/tasks')
+const ShortLinks = require('./models/short_links')
 
 // A function has a category
 Categories.hasOne(Functions, { constraints: true, onDelete: 'CASCADE' })
@@ -75,6 +77,10 @@ Quotes.belongsTo(Users, { constraints: false })
 // Users can have tasks
 Users.hasMany(Tasks)
 Tasks.belongsTo(Users, { constraints: false })
+
+// Users can have links
+Users.hasMany(ShortLinks)
+ShortLinks.belongsTo(Users, { constraints: false })
 
 /* Server */
 // sequelize.sync({ force: true })
