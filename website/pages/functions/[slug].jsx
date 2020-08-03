@@ -7,12 +7,18 @@ import redirect from '../../utils/redirect'
 import api from '../../utils/api'
 import '../../public/css/pages/FunctionComponent.css'
 
-const FunctionTabManager = (props) => {
+const FunctionTabManager = props => {
   if (props.type === 'form') {
     return (
-      <FunctionTabs setSlideIndex={props.setSlideIndex} slideIndex={props.slideIndex}>
+      <FunctionTabs
+        setSlideIndex={props.setSlideIndex}
+        slideIndex={props.slideIndex}
+      >
         <div className='FunctionComponent__slide'>
-          <FunctionForm inputsArray={[...props.utilizationForm || []]} slug={props.slug} />
+          <FunctionForm
+            inputsArray={[...(props.utilizationForm || [])]}
+            slug={props.slug}
+          />
         </div>
         <div className='FunctionComponent__slide'>
           <FunctionArticle article={props.article} />
@@ -25,7 +31,10 @@ const FunctionTabManager = (props) => {
   }
 
   return (
-    <FunctionTabs setSlideIndex={props.setSlideIndex} slideIndex={props.slideIndex}>
+    <FunctionTabs
+      setSlideIndex={props.setSlideIndex}
+      slideIndex={props.slideIndex}
+    >
       <div className='FunctionComponent__slide'>
         <FunctionArticle article={props.article} />
       </div>
@@ -36,18 +45,23 @@ const FunctionTabManager = (props) => {
   )
 }
 
-const FunctionComponent = (props) => (
+const FunctionComponent = props => (
   <FunctionPage
     FunctionTabManager={FunctionTabManager}
     {...props}
-    tabNames={(props.type === 'form') ? ['⚙️ Utilisation', '📝 Article', '📬 Commentaires'] : ['📝 Article', '📬 Commentaires']}
+    tabNames={
+      props.type === 'form'
+        ? ['⚙️ Utilisation', '📝 Article', '📬 Commentaires']
+        : ['📝 Article', '📬 Commentaires']
+    }
   />
 )
 
 export async function getServerSideProps (context) {
   const { slug } = context.params
-  return api.get(`/functions/${slug}`)
-    .then((response) => ({ props: response.data }))
+  return api
+    .get(`/functions/${slug}`)
+    .then(response => ({ props: response.data }))
     .catch(() => redirect(context, '/404'))
 }
 

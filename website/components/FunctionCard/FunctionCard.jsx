@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useState, forwardRef, memo } from 'react'
 import date from 'date-and-time'
 import Loader from '../Loader'
-import { API_URL } from '../../utils/config/config'
+import { API_URL } from '../../utils/api'
 import './FunctionCard.css'
 
 const FunctionCard = memo(

@@ -30,7 +30,7 @@ const Chronometer = () => {
     } else {
       if (interval) clearInterval(interval)
       interval = setInterval(() => {
-        setTimeLength((time) => time + 1)
+        setTimeLength(time => time + 1)
       }, 1000)
     }
     setIsPlaying(!isPlaying)
@@ -44,7 +44,10 @@ const Chronometer = () => {
 
   const getFormattedValue = () => {
     const minutesAndSeconds = convertSeconds(timeLength)
-    const minutes = (minutesAndSeconds.minutes < 100) ? (('0' + minutesAndSeconds.minutes).slice(-2)) : minutesAndSeconds.minutes
+    const minutes =
+      minutesAndSeconds.minutes < 100
+        ? ('0' + minutesAndSeconds.minutes).slice(-2)
+        : minutesAndSeconds.minutes
     const seconds = ('0' + minutesAndSeconds.seconds).slice(-2)
     return `${minutes}:${seconds}`
   }
@@ -65,9 +68,15 @@ const Chronometer = () => {
             <div className='Chronometer__item Chronometer__buttons'>
               <div className='Chronomter__row Chronometer__row-button'>
                 <button onClick={handlePlayPause} className='Chronometer-btn'>
-                  <FontAwesomeIcon {...(isPlaying) ? { icon: faPause } : { icon: faPlay }} />
+                  <FontAwesomeIcon
+                    {...(isPlaying ? { icon: faPause } : { icon: faPlay })}
+                  />
                 </button>
-                <button onClick={handleReset} className='Chronometer-btn' title='Remettre à zéro ?'>
+                <button
+                  onClick={handleReset}
+                  className='Chronometer-btn'
+                  title='Remettre à zéro ?'
+                >
                   <FontAwesomeIcon icon={faSync} />
                 </button>
               </div>
@@ -82,14 +91,24 @@ const Chronometer = () => {
 const Pomodoro = () => {
   return (
     <div style={{ marginBottom: '50px' }} className='container-fluid'>
-      <Codepen hash='vYEbPoB' user='Divlo' height={800} defaultTab='result' preview={false} loader={() => <Loader />} />
+      <Codepen
+        hash='vYEbPoB'
+        user='Divlo'
+        height={800}
+        defaultTab='result'
+        preview={false}
+        loader={() => <Loader />}
+      />
     </div>
   )
 }
 
-const FunctionTabManager = (props) => {
+const FunctionTabManager = props => {
   return (
-    <FunctionTabs setSlideIndex={props.setSlideIndex} slideIndex={props.slideIndex}>
+    <FunctionTabs
+      setSlideIndex={props.setSlideIndex}
+      slideIndex={props.slideIndex}
+    >
       <div className='FunctionComponent__slide'>
         <Chronometer />
       </div>
@@ -106,17 +125,23 @@ const FunctionTabManager = (props) => {
   )
 }
 
-const chronometerTimer = (props) => (
+const chronometerTimer = props => (
   <FunctionPage
     FunctionTabManager={FunctionTabManager}
     {...props}
-    tabNames={['⏰ Chronomètre', '⌛ Pomodoro', '📝 Article', '📬 Commentaires']}
+    tabNames={[
+      '⏰ Chronomètre',
+      '⌛ Pomodoro',
+      '📝 Article',
+      '📬 Commentaires'
+    ]}
   />
 )
 
 export async function getServerSideProps (context) {
-  return api.get('/functions/chronometerTimer')
-    .then((response) => ({ props: response.data }))
+  return api
+    .get('/functions/chronometerTimer')
+    .then(response => ({ props: response.data }))
     .catch(() => redirect(context, '/404'))
 }
 

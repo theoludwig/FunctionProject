@@ -43,8 +43,16 @@ const GenerateQuote = () => {
     <div className='container-fluid'>
       <div className='row justify-content-center'>
         <div className='col-24 text-center'>
-          <button onClick={getRandomQuote} className='btn btn-dark'>Générer une nouvelle citation</button>
-          <button style={{ marginLeft: '15px' }} onClick={handleCopyQuote} className='btn btn-dark'>Copier la citation</button>
+          <button onClick={getRandomQuote} className='btn btn-dark'>
+            Générer une nouvelle citation
+          </button>
+          <button
+            style={{ marginLeft: '15px' }}
+            onClick={handleCopyQuote}
+            className='btn btn-dark'
+          >
+            Copier la citation
+          </button>
         </div>
       </div>
       <div style={{ marginTop: '20px' }} className='row justify-content-center'>
@@ -53,7 +61,10 @@ const GenerateQuote = () => {
           <p>- {quote?.author}</p>
         </div>
       </div>
-      <div style={{ marginBottom: '20px' }} className='row justify-content-center'>
+      <div
+        style={{ marginBottom: '20px' }}
+        className='row justify-content-center'
+      >
         <a
           target='_blank'
           rel='noopener noreferrer'
@@ -69,12 +80,16 @@ const GenerateQuote = () => {
 
 let pageQuotes = 1
 const QuoteList = () => {
-  const [quotesData, setQuotesData] = useState({ hasMore: true, rows: [], totalItems: 0 })
+  const [quotesData, setQuotesData] = useState({
+    hasMore: true,
+    rows: [],
+    totalItems: 0
+  })
   const [isLoadingQuotes, setLoadingQuotes] = useState(true)
 
   // Récupère les citations initiales
   useEffect(() => {
-    getQuotesData().then((data) => setQuotesData(data))
+    getQuotesData().then(data => setQuotesData(data))
   }, [])
 
   const getQuotesData = async () => {
@@ -86,32 +101,40 @@ const QuoteList = () => {
 
   // Permet la pagination au scroll
   const observer = useRef()
-  const lastQuoteRef = useCallback((node) => {
-    if (isLoadingQuotes) return
-    if (observer.current) observer.current.disconnect()
-    observer.current = new window.IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && quotesData.hasMore) {
-        pageQuotes += 1
-        getQuotesData().then((data) => {
-          setQuotesData((oldData) => {
-            return {
-              hasMore: data.hasMore,
-              rows: [...oldData.rows, ...data.rows],
-              totalItems: data.totalItems
-            }
-          })
-        })
-      }
-    }, { threshold: 1 })
-    if (node) observer.current.observe(node)
-  }, [isLoadingQuotes, quotesData.hasMore])
+  const lastQuoteRef = useCallback(
+    node => {
+      if (isLoadingQuotes) return
+      if (observer.current) observer.current.disconnect()
+      observer.current = new window.IntersectionObserver(
+        entries => {
+          if (entries[0].isIntersecting && quotesData.hasMore) {
+            pageQuotes += 1
+            getQuotesData().then(data => {
+              setQuotesData(oldData => {
+                return {
+                  hasMore: data.hasMore,
+                  rows: [...oldData.rows, ...data.rows],
+                  totalItems: data.totalItems
+                }
+              })
+            })
+          }
+        },
+        { threshold: 1 }
+      )
+      if (node) observer.current.observe(node)
+    },
+    [isLoadingQuotes, quotesData.hasMore]
+  )
 
   return (
     <div className='container-fluid'>
       <div className='row justify-content-center'>
         <div className='col-24 text-center'>
           <h2 style={{ margin: 0 }}>Liste des citations : </h2>
-          <p style={{ marginTop: '5px' }}>Total de {quotesData.totalItems} citations.</p>
+          <p style={{ marginTop: '5px' }}>
+            Total de {quotesData.totalItems} citations.
+          </p>
         </div>
       </div>
 
@@ -120,19 +143,32 @@ const QuoteList = () => {
           <table>
             <thead>
               <tr>
-                <th className='table-row' scope='col'>Citation/Proverbe</th>
-                <th className='table-row' scope='col'>Auteur</th>
-                <th className='table-row' scope='col'>Proposée par</th>
+                <th className='table-row' scope='col'>
+                  Citation/Proverbe
+                </th>
+                <th className='table-row' scope='col'>
+                  Auteur
+                </th>
+                <th className='table-row' scope='col'>
+                  Proposée par
+                </th>
               </tr>
             </thead>
             <tbody>
               {quotesData.rows.map((currentQuote, index) => {
                 const quoteJSX = (
                   <>
-                    <td className='table-row text-center'>{currentQuote.quote}</td>
-                    <td className='table-row text-center'>{currentQuote.author}</td>
                     <td className='table-row text-center'>
-                      <Link href='/users/[name]' as={`/users/${currentQuote.user.name}`}>
+                      {currentQuote.quote}
+                    </td>
+                    <td className='table-row text-center'>
+                      {currentQuote.author}
+                    </td>
+                    <td className='table-row text-center'>
+                      <Link
+                        href='/users/[name]'
+                        as={`/users/${currentQuote.user.name}`}
+                      >
                         <a>{currentQuote.user.name}</a>
                       </Link>
                     </td>
@@ -140,7 +176,11 @@ const QuoteList = () => {
                 )
                 // Si c'est le dernier élément
                 if (quotesData.rows.length === index + 1) {
-                  return <tr key={index} ref={lastQuoteRef}>{quoteJSX}</tr>
+                  return (
+                    <tr key={index} ref={lastQuoteRef}>
+                      {quoteJSX}
+                    </tr>
+                  )
                 }
                 return <tr key={index}>{quoteJSX}</tr>
               })}
@@ -158,25 +198,30 @@ const SuggestQuote = () => {
   const [message, setMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     const inputStateNew = { ...inputState }
     inputStateNew[event.target.name] = event.target.value
     setInputState(inputStateNew)
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     setIsLoading(true)
     event.preventDefault()
     const token = user.token
     if (isAuth && token != null) {
-      api.post('/quotes', inputState, { headers: { Authorization: token } })
+      api
+        .post('/quotes', inputState, { headers: { Authorization: token } })
         .then(({ data }) => {
           setInputState({ quote: '', author: '' })
-          setMessage(`<p class="form-success"><b>Succès:</b> ${data.message}</p>`)
+          setMessage(
+            `<p class="form-success"><b>Succès:</b> ${data.message}</p>`
+          )
           setIsLoading(false)
         })
-        .catch((error) => {
-          setMessage(`<p class="form-error"><b>Erreur:</b> ${error.response.data.message}</p>`)
+        .catch(error => {
+          setMessage(
+            `<p class="form-error"><b>Erreur:</b> ${error.response.data.message}</p>`
+          )
           setIsLoading(false)
         })
     }
@@ -185,7 +230,11 @@ const SuggestQuote = () => {
   if (!isAuth) {
     return (
       <p className='text-center'>
-                Vous devez être <Link href='/users/login'><a>connecté</a></Link> pour proposer une citation.
+        Vous devez être{' '}
+        <Link href='/users/login'>
+          <a>connecté</a>
+        </Link>{' '}
+        pour proposer une citation.
       </p>
     )
   }
@@ -195,42 +244,68 @@ const SuggestQuote = () => {
       <div className='row justify-content-center'>
         <div className='col-24 text-center'>
           <h2 style={{ margin: 0 }}>Proposer une citation : </h2>
-          <p style={{ marginTop: '5px' }}>Vous pouvez proposer des citations, et une fois validé elles seront rajoutés à la liste des citations.</p>
+          <p style={{ marginTop: '5px' }}>
+            Vous pouvez proposer des citations, et une fois validé elles seront
+            rajoutés à la liste des citations.
+          </p>
         </div>
       </div>
       <div style={{ marginBottom: '40px' }} className='row'>
         <div className='col-24'>
           <form onSubmit={handleSubmit}>
             <div className='form-group'>
-              <label htmlFor='quote' className='form-label'>Citation :</label>
-              <textarea value={inputState.quote} onChange={handleChange} style={{ height: 'auto' }} id='quote' name='quote' type='text' className='form-control' rows='4' placeholder='La citation...' />
+              <label htmlFor='quote' className='form-label'>
+                Citation :
+              </label>
+              <textarea
+                value={inputState.quote}
+                onChange={handleChange}
+                style={{ height: 'auto' }}
+                id='quote'
+                name='quote'
+                type='text'
+                className='form-control'
+                rows='4'
+                placeholder='La citation...'
+              />
             </div>
 
             <div className='form-group'>
-              <label htmlFor='author' className='form-label'>Auteur :</label>
-              <input value={inputState.author} onChange={handleChange} name='author' id='author' type='text' className='form-control' placeholder="L'auteur de la citation..." />
+              <label htmlFor='author' className='form-label'>
+                Auteur :
+              </label>
+              <input
+                value={inputState.author}
+                onChange={handleChange}
+                name='author'
+                id='author'
+                type='text'
+                className='form-control'
+                placeholder="L'auteur de la citation..."
+              />
             </div>
 
             <div className='form-group text-center'>
-              <button type='submit' className='btn btn-dark'>Envoyer</button>
+              <button type='submit' className='btn btn-dark'>
+                Envoyer
+              </button>
             </div>
           </form>
         </div>
       </div>
       <div className='form-result text-center'>
-        {
-          (isLoading)
-            ? <Loader />
-            : htmlParser(message)
-        }
+        {isLoading ? <Loader /> : htmlParser(message)}
       </div>
     </div>
   )
 }
 
-const FunctionTabManager = (props) => {
+const FunctionTabManager = props => {
   return (
-    <FunctionTabs setSlideIndex={props.setSlideIndex} slideIndex={props.slideIndex}>
+    <FunctionTabs
+      setSlideIndex={props.setSlideIndex}
+      slideIndex={props.slideIndex}
+    >
       <div className='FunctionComponent__slide'>
         <GenerateQuote />
       </div>
@@ -250,17 +325,24 @@ const FunctionTabManager = (props) => {
   )
 }
 
-const randomQuote = (props) => (
+const randomQuote = props => (
   <FunctionPage
     FunctionTabManager={FunctionTabManager}
     {...props}
-    tabNames={['⚙️ Utilisation', '📜 Liste', '✒️ Proposer', '📝 Article', '📬 Commentaires']}
+    tabNames={[
+      '⚙️ Utilisation',
+      '📜 Liste',
+      '✒️ Proposer',
+      '📝 Article',
+      '📬 Commentaires'
+    ]}
   />
 )
 
 export async function getServerSideProps (context) {
-  return api.get('/functions/randomQuote')
-    .then((response) => ({ props: response.data }))
+  return api
+    .get('/functions/randomQuote')
+    .then(response => ({ props: response.data }))
     .catch(() => redirect(context, '/404'))
 }
 

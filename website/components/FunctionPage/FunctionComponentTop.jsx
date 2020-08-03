@@ -5,8 +5,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons'
 import date from 'date-and-time'
 import { UserContext } from '../../contexts/UserContext'
-import api from '../../utils/api'
-import { API_URL } from '../../utils/config/config'
+import api, { API_URL } from '../../utils/api'
 import '../FunctionCard/FunctionCard.css'
 
 const FunctionComponentTop = props => {

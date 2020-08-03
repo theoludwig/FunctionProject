@@ -6,42 +6,68 @@ import AddEditFunction from '../../components/FunctionAdmin/AddEditFunction'
 import EditArticleFunction from '../../components/FunctionAdmin/EditArticleFunction'
 import EditFormFunction from '../../components/FunctionAdmin/EditFormFunction'
 import redirect from '../../utils/redirect'
-import api from '../../utils/api'
-import { API_URL } from '../../utils/config/config'
+import api, { API_URL } from '../../utils/api'
 import '../../components/FunctionPage/FunctionTabs.css'
 import '../../public/css/pages/admin.css'
 
-const AdminFunctionComponent = (props) => {
+const AdminFunctionComponent = props => {
   const [slideIndex, setSlideIndex] = useState(0)
 
   const handleDeleteFunction = async () => {
-    await api.delete(`/admin/functions/${props.functionInfo.id}`, { headers: { Authorization: props.user.token } })
+    await api.delete(`/admin/functions/${props.functionInfo.id}`, {
+      headers: { Authorization: props.user.token }
+    })
     redirect({}, '/admin')
   }
 
   return (
     <>
-      <HeadTag title={props.functionInfo.title} description={props.functionInfo.description} image={API_URL + props.functionInfo.image} />
+      <HeadTag
+        title={props.functionInfo.title}
+        description={props.functionInfo.description}
+        image={API_URL + props.functionInfo.image}
+      />
 
       <div className='container-fluid'>
         <div className='container'>
           <div className='row justify-content-center'>
             <ul className='FunctionTabs__nav'>
               <li className='FunctionTabs__nav-item'>
-                <a onClick={() => setSlideIndex(0)} className={`FunctionTabs__nav-link ${(slideIndex === 0) && 'FunctionTabs__nav-link-active'}`}>✒️ Modifier</a>
+                <a
+                  onClick={() => setSlideIndex(0)}
+                  className={`FunctionTabs__nav-link ${slideIndex === 0 &&
+                    'FunctionTabs__nav-link-active'}`}
+                >
+                  ✒️ Modifier
+                </a>
               </li>
               <li className='FunctionTabs__nav-item'>
-                <a onClick={() => setSlideIndex(1)} className={`FunctionTabs__nav-link ${(slideIndex === 1) && 'FunctionTabs__nav-link-active'}`}>📝 Article</a>
+                <a
+                  onClick={() => setSlideIndex(1)}
+                  className={`FunctionTabs__nav-link ${slideIndex === 1 &&
+                    'FunctionTabs__nav-link-active'}`}
+                >
+                  📝 Article
+                </a>
               </li>
               <li className='FunctionTabs__nav-item'>
-                <a onClick={() => setSlideIndex(2)} className={`FunctionTabs__nav-link ${(slideIndex === 2) && 'FunctionTabs__nav-link-active'}`}>⚙️ Utilisation</a>
+                <a
+                  onClick={() => setSlideIndex(2)}
+                  className={`FunctionTabs__nav-link ${slideIndex === 2 &&
+                    'FunctionTabs__nav-link-active'}`}
+                >
+                  ⚙️ Utilisation
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
         <div className='container-fluid'>
-          <SwipeableViews onChangeIndex={(index) => setSlideIndex(index)} index={slideIndex}>
+          <SwipeableViews
+            onChangeIndex={index => setSlideIndex(index)}
+            index={slideIndex}
+          >
             <div className='Admin__Function-slide'>
               <AddEditFunction
                 defaultInputState={{ ...props.functionInfo }}
@@ -49,7 +75,9 @@ const AdminFunctionComponent = (props) => {
                 isEditing
               />
               <div style={{ marginBottom: '30px' }} className='text-center'>
-                <button onClick={handleDeleteFunction} className='btn btn-dark'>Supprimer la fonction</button>
+                <button onClick={handleDeleteFunction} className='btn btn-dark'>
+                  Supprimer la fonction
+                </button>
               </div>
             </div>
             <div className='Admin__Function-slide'>
@@ -72,8 +100,9 @@ export async function getServerSideProps (context) {
   if (!user.isAdmin) {
     return redirect(context, '/404')
   }
-  return api.get(`/admin/functions/${slug}`, { headers: { Authorization: user.token } })
-    .then((response) => {
+  return api
+    .get(`/admin/functions/${slug}`, { headers: { Authorization: user.token } })
+    .then(response => {
       return {
         props: {
           user,

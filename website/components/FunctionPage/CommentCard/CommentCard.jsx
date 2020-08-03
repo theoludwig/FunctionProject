@@ -3,10 +3,9 @@ import { useEffect, useState, forwardRef, useContext } from 'react'
 import date from 'date-and-time'
 import htmlParser from 'html-react-parser'
 import { UserContext } from '../../../contexts/UserContext'
-import { API_URL } from '../../../utils/config/config'
 import ReactMarkdown from 'react-markdown'
 import CodeBlock from '../../CodeBlock'
-import api from '../../../utils/api'
+import api, { API_URL } from '../../../utils/api'
 import './CommentCard.css'
 
 const CommentCard = forwardRef((props, ref) => {
