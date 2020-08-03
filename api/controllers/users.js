@@ -265,7 +265,7 @@ exports.getUserInfo = async (req, res, next) => {
       }
     })
     const quotesArray = await Quotes.findAll({
-      where: { userId: user.id },
+      where: { userId: user.id, isValidated: 1 },
       attributes: {
         exclude: ['updatedAt', 'createdAt', 'isValidated', 'userId', 'id']
       },
