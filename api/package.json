@@ -2,14 +2,11 @@
   "name": "api",
   "version": "2.0.0",
   "description": "Backend REST API for FunctionProject",
-  "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "format": "standard \"./**/*.js\" --fix | snazzy || exit 0"
   },
-  "keywords": [],
-  "author": "Divlo",
-  "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
@@ -33,6 +30,8 @@
   "devDependencies": {
     "dotenv": "^8.2.0",
     "morgan": "^1.9.1",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.4",
+    "snazzy": "^8.0.0",
+    "standard": "^14.3.4"
   }
 }

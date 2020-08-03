@@ -1,19 +1,17 @@
-import { useContext } from 'react';
-import { UserContext } from '../contexts/UserContext';
-import redirect from '../utils/redirect';
+import { useContext } from 'react'
+import { UserContext } from '../contexts/UserContext'
+import redirect from '../utils/redirect'
 
 const withoutAuth = (WrappedComponent) => {
-    
-    const Component = (props) => {
-        
-        const { isAuth, user } = useContext(UserContext);
-        
-        if (isAuth) return redirect({}, `/users/${user.name}`);
+  const Component = (props) => {
+    const { isAuth, user } = useContext(UserContext)
 
-        return <WrappedComponent { ...props } />;
-    }
+    if (isAuth) return redirect({}, `/users/${user.name}`)
 
-    return Component;
-}       
+    return <WrappedComponent {...props} />
+  }
 
-export default withoutAuth;
+  return Component
+}
+
+export default withoutAuth

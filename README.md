@@ -5,10 +5,9 @@
 </p>
 
 <p align="center">
+  <a href="https://gitmoji.carloscuesta.me/"><img src="https://camo.githubusercontent.com/2a4924a23bd9ef18afe793f4999b1b9ec474e48f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6769746d6f6a692d253230f09f989c253230f09f988d2d4646444436372e7376673f7374796c653d666c61742d737175617265" alt="Gitmoji"/></a>
+  <a href="https://standardjs.com"><img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg"/></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/licence-MIT-blue.svg" alt="Licence MIT"/></a>
-  <img src="https://img.shields.io/github/repo-size/Divlo/FunctionProject" alt="Repo Size">
-  <a href="https://github.com/Divlo/FunctionProject/commits/master"><img src="https://img.shields.io/github/commit-activity/m/Divlo/FunctionProject" alt="Commit Activity"></a>
-  <a href="https://github.com/Divlo/FunctionProject/graphs/contributors"><img src="https://img.shields.io/github/contributors/Divlo/FunctionProject" alt="Contributors"></a>
   <img src="https://img.shields.io/github/stars/Divlo/FunctionProject?style=social" alt="Stars">
   <br/> <br/>
   <a href="https://function.divlo.fr/"><img src="https://raw.githubusercontent.com/Divlo/FunctionProject/master/.github/FunctionProject.png" alt="FunctionProject" /></a>
@@ -75,6 +74,8 @@ npm run dev # API lancé sur http://localhost:8080
 ```
 
 Enjoy! 😃
+
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
 ## 📄 Licence
 

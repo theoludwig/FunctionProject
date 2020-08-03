@@ -1,23 +1,23 @@
-const { Router }         = require('express');
-const commentsController = require('../controllers/comments');
-const isAuth             = require('../middlewares/isAuth');
+const { Router } = require('express')
+const commentsController = require('../controllers/comments')
+const isAuth = require('../middlewares/isAuth')
 
-const CommentsRouter = Router();
+const CommentsRouter = Router()
 
 CommentsRouter.route('/:commentId')
 
-    // Modifier un commentaire
-    .put(isAuth, commentsController.putCommentsById)
+// Modifier un commentaire
+  .put(isAuth, commentsController.putCommentsById)
 
-    // Supprime un commentaire
-    .delete(isAuth, commentsController.deleteCommentById);
+// Supprime un commentaire
+  .delete(isAuth, commentsController.deleteCommentById)
 
 CommentsRouter.route('/:functionId')
 
-    // Récupère les commentaires
-    .get(commentsController.getCommentsByFunctionId)
+// Récupère les commentaires
+  .get(commentsController.getCommentsByFunctionId)
 
-    // Permet à un utilisateur de poster un commentaire sur une fonction
-    .post(isAuth, commentsController.postCommentsByFunctionId);
+// Permet à un utilisateur de poster un commentaire sur une fonction
+  .post(isAuth, commentsController.postCommentsByFunctionId)
 
-module.exports = CommentsRouter;
+module.exports = CommentsRouter

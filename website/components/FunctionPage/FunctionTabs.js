@@ -1,14 +1,14 @@
-import SwipeableViews from 'react-swipeable-views';
-import './FunctionTabs.css';
+import SwipeableViews from 'react-swipeable-views'
+import './FunctionTabs.css'
 
 const FunctionTabs = (props) => {
-    return (
-        <div className="container-fluid">
-            <SwipeableViews onChangeIndex={(index) => props.setSlideIndex(index)} index={props.slideIndex}>
-                {props.children}
-            </SwipeableViews>
-        </div>
-    );
+  return (
+    <div className='container-fluid'>
+      <SwipeableViews onChangeIndex={(index) => props.setSlideIndex(index)} index={props.slideIndex}>
+        {props.children}
+      </SwipeableViews>
+    </div>
+  )
 }
 
-export default FunctionTabs;
+export default FunctionTabs
