@@ -23,9 +23,9 @@ Si vous aimez le projet, vous pouvez aider à **le faire connaître** en utilisa
 
 Les dernières versions publiées : [https://github.com/Divlo/FunctionProject/releases](https://github.com/Divlo/FunctionProject/releases)
 
-Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/) (actuellement en version 2.0).
+Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/) (actuellement en version 2.1).
 
-## 🚀 Open Source 
+## 🚀 Open Source
 
 Le partage est essentiel afin de progresser, l'**Open Source** permet l'entraide et le **partage de connaissance** entre développeurs.
 
@@ -60,15 +60,18 @@ npm install
 
 Vous devrez ensuite configurer l'API en créant un fichier `.env` à la racine du dossier `/api` et prendre exemple du fichier `.env.example` avec votre configuration.
 
-### Lancer l'environnement de développement : 
+### Lancer l'environnement de développement :
 
-Dans deux terminals séparés : 
+Dans deux terminals séparés :
 
 - Lancer le front-end en allant dans `/website`
+
 ```sh
 npm run dev # front-end lancé sur http://localhost:3000
 ```
+
 - Lancer l'api en allant dans `/api`
+
 ```sh
 npm run dev # API lancé sur http://localhost:8080
 ```
