@@ -10,6 +10,8 @@
     margin: 0 0 50px 0;
     cursor: pointer;
     transition: all .3s;
+    color: var(--text-color);
+    text-decoration: none !important;
 }
 .FunctionCard__container {
     height: 100%;
