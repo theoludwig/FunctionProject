@@ -20,27 +20,36 @@ module.exports = ({ res, next }, argsObject) => {
   let { counter } = argsObject
 
   // S'il n'y a pas les champs obligatoire
-  if (!(counter)) {
+  if (!counter) {
     return errorHandling(next, requiredFields)
   }
 
   // Si ce n'est pas un nombre
   counter = parseInt(counter)
   if (isNaN(counter)) {
-    return errorHandling(next, { message: 'Veuillez rentré un nombre valide.', statusCode: 400 })
+    return errorHandling(next, {
+      message: 'Veuillez rentré un nombre valide.',
+      statusCode: 400
+    })
   }
 
   // Si le nombre dépasse LIMIT_COUNTER
   const LIMIT_COUNTER = 51
   if (counter >= LIMIT_COUNTER) {
-    return errorHandling(next, { message: `Par souci de performance, vous ne pouvez pas exécuter cette fonction avec un compteur dépassant ${LIMIT_COUNTER - 1}.`, statusCode: 400 })
+    return errorHandling(next, {
+      message: `Par souci de performance, vous ne pouvez pas exécuter cette fonction avec un compteur dépassant ${LIMIT_COUNTER -
+        1}.`,
+      statusCode: 400
+    })
   }
 
   const result = fibonacci(counter)
-  const resultFormatted = result.map((number) => formatNumberResult(number))
+  const resultFormatted = result.map(number => formatNumberResult(number))
   return res.status(200).json({
     result,
     resultFormatted,
-    resultHTML: `<p>Les ${counter} premiers nombres de la suite de fibonacci :<br/> ${resultFormatted.join(', ')}</p>`
+    resultHTML: `<p>Les ${counter} premiers nombres de la suite de fibonacci :<br/> ${resultFormatted.join(
+      ', '
+    )}</p>`
   })
 }

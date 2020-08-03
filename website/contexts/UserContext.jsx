@@ -22,7 +22,9 @@ function UserContextProvider (props) {
 
   useEffect(() => {
     if (isAuth) {
-      setMessageLogin('<p class="form-error"><b>Erreur:</b> Vous devez être déconnecter avant de vous connecter.</p>')
+      setMessageLogin(
+        '<p class="form-error"><b>Erreur:</b> Vous devez être déconnecter avant de vous connecter.</p>'
+      )
     } else {
       setMessageLogin('')
     }
@@ -43,10 +45,14 @@ function UserContextProvider (props) {
       cookies.set('user', newUser, { path: '/', maxAge: newUser.expiresIn })
       setUser(newUser)
       setIsAuth(true)
-      setMessageLogin('<p class="form-success"><b>Succès:</b> Connexion réussi!</p>')
+      setMessageLogin(
+        '<p class="form-success"><b>Succès:</b> Connexion réussi!</p>'
+      )
       setLoginLoading(false)
     } catch (error) {
-      setMessageLogin(`<p class="form-error"><b>Erreur:</b> ${error.response.data.message}</p>`)
+      setMessageLogin(
+        `<p class="form-error"><b>Erreur:</b> ${error.response.data.message}</p>`
+      )
       setLoginLoading(false)
       setIsAuth(false)
       setUser(null)
@@ -54,7 +60,17 @@ function UserContextProvider (props) {
   }
 
   return (
-    <UserContext.Provider value={{ user, loginUser, logoutUser, loginLoading, messageLogin, isAuth, setMessageLogin }}>
+    <UserContext.Provider
+      value={{
+        user,
+        loginUser,
+        logoutUser,
+        loginLoading,
+        messageLogin,
+        isAuth,
+        setMessageLogin
+      }}
+    >
       {props.children}
     </UserContext.Provider>
   )

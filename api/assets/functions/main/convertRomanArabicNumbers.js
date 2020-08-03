@@ -51,7 +51,7 @@ function convertArabicToRoman (nombre) {
  */
 function convertRomanToArabic (string) {
   let result = 0
-  correspondancesRomainArabe.forEach((correspondance) => {
+  correspondancesRomainArabe.forEach(correspondance => {
     while (string.indexOf(correspondance[1]) === 0) {
       // Ajout de la valeur décimale au résultat
       result += correspondance[0]
@@ -68,7 +68,7 @@ function convertRomanToArabic (string) {
 /* OUTPUTS */
 const convertRomanToArabicOutput = ({ res, next }, number) => {
   // S'il n'y a pas les champs obligatoire
-  if (!(number)) {
+  if (!number) {
     return errorHandling(next, requiredFields)
   }
 
@@ -80,26 +80,44 @@ const convertRomanToArabicOutput = ({ res, next }, number) => {
     return errorHandling(next, generalError)
   }
 
-  return res.status(200).json({ result, resultHTML: `<p><span class="important">${number}</span> s'écrit <span class="important">${result}</span> en chiffres arabes.</p>` })
+  return res
+    .status(200)
+    .json({
+      result,
+      resultHTML: `<p><span class="important">${number}</span> s'écrit <span class="important">${result}</span> en chiffres arabes.</p>`
+    })
 }
 
 const convertArabicToRomanOutput = ({ res, next }, number) => {
   // S'il n'y a pas les champs obligatoire
-  if (!(number)) {
+  if (!number) {
     return errorHandling(next, requiredFields)
   }
 
   // Si ce n'est pas un nombre
   number = parseInt(number)
   if (isNaN(number)) {
-    return errorHandling(next, { message: 'Veuillez rentré un nombre valide.', statusCode: 400 })
+    return errorHandling(next, {
+      message: 'Veuillez rentré un nombre valide.',
+      statusCode: 400
+    })
   }
 
   const result = convertArabicToRoman(number)
-  return res.status(200).json({ result, resultHTML: `<p><span class="important">${formatNumberResult(number)}</span> s'écrit <span class="important">${result}</span> en chiffres romains.</p>` })
+  return res
+    .status(200)
+    .json({
+      result,
+      resultHTML: `<p><span class="important">${formatNumberResult(
+        number
+      )}</span> s'écrit <span class="important">${result}</span> en chiffres romains.</p>`
+    })
 }
 
-const convertRomanArabicObject = { convertRomanToArabicOutput, convertArabicToRomanOutput }
+const convertRomanArabicObject = {
+  convertRomanToArabicOutput,
+  convertArabicToRomanOutput
+}
 function executeFunction (option, value, { res, next }) {
   return convertRomanArabicObject[option]({ res, next }, value)
 }
@@ -115,7 +133,10 @@ module.exports = ({ res, next }, argsObject) => {
   // Si la fonction n'existe pas
   // eslint-disable-next-line
   if (!convertRomanArabicObject.hasOwnProperty(functionName)) {
-    return errorHandling(next, { message: "Cette conversion n'existe pas.", statusCode: 400 })
+    return errorHandling(next, {
+      message: "Cette conversion n'existe pas.",
+      statusCode: 400
+    })
   }
 
   executeFunction(functionName, value, { res, next })

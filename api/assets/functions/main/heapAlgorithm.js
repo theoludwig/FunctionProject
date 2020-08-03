@@ -18,9 +18,14 @@ function heapAlgorithm (string) {
 
   for (let indexString = 0; indexString < string.length; indexString++) {
     const firstChar = string[indexString]
-    const charsLeft = string.substring(0, indexString) + string.substring(indexString + 1)
+    const charsLeft =
+      string.substring(0, indexString) + string.substring(indexString + 1)
     const innerPermutations = heapAlgorithm(charsLeft)
-    for (let indexPermutation = 0; indexPermutation < innerPermutations.length; indexPermutation++) {
+    for (
+      let indexPermutation = 0;
+      indexPermutation < innerPermutations.length;
+      indexPermutation++
+    ) {
       results.push(firstChar + innerPermutations[indexPermutation])
     }
   }
@@ -32,19 +37,26 @@ module.exports = ({ res, next }, argsObject) => {
   const { string } = argsObject
 
   // S'il n'y a pas les champs obligatoire
-  if (!(string)) {
+  if (!string) {
     return errorHandling(next, requiredFields)
   }
 
   // Si la chaîne de caractère dépasse LIMIT_CHARACTERS caractères
   const LIMIT_CHARACTERS = 7
   if (string.length > LIMIT_CHARACTERS) {
-    return errorHandling(next, { message: `Par souci de performance, vous ne pouvez pas exécuter cette fonction avec un mot dépassant ${LIMIT_CHARACTERS} caractères.`, statusCode: 400 })
+    return errorHandling(next, {
+      message: `Par souci de performance, vous ne pouvez pas exécuter cette fonction avec un mot dépassant ${LIMIT_CHARACTERS} caractères.`,
+      statusCode: 400
+    })
   }
 
   const result = heapAlgorithm(string)
-  let resultHTML = `<p>Il y a ${formatNumberResult(result.length)} possibilités d'anagramme pour le mot "${string}" qui contient ${string.length} caractères, la liste : <br/><br/>`
-  result.forEach((string) => {
+  let resultHTML = `<p>Il y a ${formatNumberResult(
+    result.length
+  )} possibilités d'anagramme pour le mot "${string}" qui contient ${
+    string.length
+  } caractères, la liste : <br/><br/>`
+  result.forEach(string => {
     resultHTML += string + '<br/>'
   })
   resultHTML += '</p>'

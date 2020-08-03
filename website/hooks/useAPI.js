@@ -14,11 +14,11 @@ function useAPI (url, defaultData = [], method = 'get', options = {}) {
 
   useEffect(() => {
     api[method](url, options)
-      .then((result) => {
+      .then(result => {
         setData(result.data)
         setIsLoading(false)
       })
-      .catch((error) => {
+      .catch(error => {
         setHasError(true)
         console.error(error)
       })

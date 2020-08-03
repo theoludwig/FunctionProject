@@ -1,22 +1,22 @@
 .Register-Login__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .Register-Login__row {
-    padding: 30px;
-    box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, .25);
-    border: 1px solid black;
-    border-radius: 1rem;
+  padding: 30px;
+  box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.25);
+  border: 1px solid black;
+  border-radius: 1rem;
 }
 .Register-Login__title {
-    text-align: center;
+  text-align: center;
 }
 .Register-Login__Forgot-password {
-    color: var(--text-color);
-    font-size: 16px;
+  color: var(--text-color);
+  font-size: 16px;
 }
 .Register-Login__Forgot-password:hover {
-    color: var(--important);
-    text-decoration: none;
+  color: var(--important);
+  text-decoration: none;
 }

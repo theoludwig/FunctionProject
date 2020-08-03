@@ -27,9 +27,14 @@ exports.postFavoriteByFunctionId = async (req, res, next) => {
   const { functionId } = req.params
   const { userId } = req
   try {
-    const resultFunction = await Functions.findOne({ where: { id: functionId } })
+    const resultFunction = await Functions.findOne({
+      where: { id: functionId }
+    })
     if (!resultFunction) {
-      return errorHandling(next, { message: "La fonction n'existe pas.", statusCode: 404 })
+      return errorHandling(next, {
+        message: "La fonction n'existe pas.",
+        statusCode: 404
+      })
     }
     const favorite = await Favorites.findOne({
       where: {
@@ -41,7 +46,10 @@ exports.postFavoriteByFunctionId = async (req, res, next) => {
       await Favorites.create({ userId, functionId })
       return res.status(201).json({ result: 'Le favoris a bien été ajouté!' })
     }
-    return errorHandling(next, { message: 'La fonction est déjà en favoris.', statusCode: 400 })
+    return errorHandling(next, {
+      message: 'La fonction est déjà en favoris.',
+      statusCode: 400
+    })
   } catch (error) {
     console.log(error)
     return errorHandling(next, serverError)
@@ -52,9 +60,14 @@ exports.deleteFavoriteByFunctionId = async (req, res, next) => {
   const { functionId } = req.params
   const { userId } = req
   try {
-    const resultFunction = await Functions.findOne({ where: { id: functionId } })
+    const resultFunction = await Functions.findOne({
+      where: { id: functionId }
+    })
     if (!resultFunction) {
-      return errorHandling(next, { message: "La fonction n'existe pas.", statusCode: 404 })
+      return errorHandling(next, {
+        message: "La fonction n'existe pas.",
+        statusCode: 404
+      })
     }
     const favorite = await Favorites.findOne({
       where: {
@@ -63,10 +76,15 @@ exports.deleteFavoriteByFunctionId = async (req, res, next) => {
       }
     })
     if (!favorite) {
-      return errorHandling(next, { message: "Le fonction n'est pas en favoris.", statusCode: 400 })
+      return errorHandling(next, {
+        message: "Le fonction n'est pas en favoris.",
+        statusCode: 400
+      })
     }
     await favorite.destroy()
-    return res.status(200).json({ message: 'Le fonction a bien été supprimé des favoris.' })
+    return res
+      .status(200)
+      .json({ message: 'Le fonction a bien été supprimé des favoris.' })
   } catch (error) {
     console.log(error)
     return errorHandling(next, serverError)

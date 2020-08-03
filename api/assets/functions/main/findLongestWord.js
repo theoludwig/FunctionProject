@@ -12,7 +12,7 @@ function findLongestWord (string) {
   let stringLength = 0
   let result = ''
 
-  arrayString.forEach((element) => {
+  arrayString.forEach(element => {
     if (element.length > stringLength) {
       result = element
       stringLength = element.length
@@ -27,7 +27,7 @@ module.exports = ({ res, next }, argsObject) => {
   const { string } = argsObject
 
   // S'il n'y a pas les champs obligatoire
-  if (!(string)) {
+  if (!string) {
     return errorHandling(next, requiredFields)
   }
 

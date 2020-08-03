@@ -73,7 +73,9 @@ function binaryToHexadecimal (value) {
   if (isNaN(value)) {
     return false
   } else {
-    return parseInt(value).toString(16).toUpperCase()
+    return parseInt(value)
+      .toString(16)
+      .toUpperCase()
   }
 }
 
@@ -140,10 +142,15 @@ function numberUnicodeToText (string) {
 function textToBinary (s) {
   try {
     s = unescape(encodeURIComponent(s))
-    let chr; let i = 0; const l = s.length; let out = ''
+    let chr
+    let i = 0
+    const l = s.length
+    let out = ''
     for (; i < l; i++) {
       chr = s.charCodeAt(i).toString(2)
-      while (chr.length % 8 !== 0) { chr = '0' + chr }
+      while (chr.length % 8 !== 0) {
+        chr = '0' + chr
+      }
       out += chr
     }
     return out.replace(/(\d{8})/g, '$1 ').replace(/(^\s+|\s+$)/, '')
@@ -161,10 +168,13 @@ function textToBinary (s) {
 function binaryToText (s) {
   try {
     s = s.replace(/\s/g, '')
-    let i = 0; const l = s.length; let chr; let out = ''
+    let i = 0
+    const l = s.length
+    let chr
+    let out = ''
     for (; i < l; i += 8) {
       chr = parseInt(s.substr(i, 8), 2).toString(16)
-      out += '%' + ((chr.length % 2 === 0) ? chr : '0' + chr)
+      out += '%' + (chr.length % 2 === 0 ? chr : '0' + chr)
     }
     return decodeURIComponent(out)
   } catch (error) {
@@ -181,10 +191,13 @@ function binaryToText (s) {
 function textToHexadecimal (s) {
   try {
     s = unescape(encodeURIComponent(s))
-    let chr; let i = 0; const l = s.length; let out = ''
+    let chr
+    let i = 0
+    const l = s.length
+    let out = ''
     for (; i < l; i++) {
       chr = s.charCodeAt(i).toString(16)
-      out += (chr.length % 2 === 0) ? chr : '0' + chr
+      out += chr.length % 2 === 0 ? chr : '0' + chr
       out += ' '
     }
     return out.toUpperCase()
@@ -209,7 +222,20 @@ function hexadecimalToText (s) {
 }
 
 /* OUTPUTS */
-const convertEncoding = { decimalToBinary, binaryToDecimal, decimalToHexadecimal, hexadecimalToDecimal, binaryToHexadecimal, hexadecimalToBinary, textToNumberUnicode, numberUnicodeToText, textToBinary, binaryToText, textToHexadecimal, hexadecimalToText }
+const convertEncoding = {
+  decimalToBinary,
+  binaryToDecimal,
+  decimalToHexadecimal,
+  hexadecimalToDecimal,
+  binaryToHexadecimal,
+  hexadecimalToBinary,
+  textToNumberUnicode,
+  numberUnicodeToText,
+  textToBinary,
+  binaryToText,
+  textToHexadecimal,
+  hexadecimalToText
+}
 function executeFunction (option, value) {
   return convertEncoding[option](value)
 }
@@ -225,7 +251,10 @@ module.exports = ({ res, next }, argsObject) => {
   // Si la fonction n'existe pas
   // eslint-disable-next-line
   if (!convertEncoding.hasOwnProperty(functionName)) {
-    return errorHandling(next, { message: "Cette conversion n'existe pas.", statusCode: 400 })
+    return errorHandling(next, {
+      message: "Cette conversion n'existe pas.",
+      statusCode: 400
+    })
   }
 
   const result = executeFunction(functionName, value)

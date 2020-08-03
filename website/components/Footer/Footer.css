@@ -1,10 +1,10 @@
 .footer {
-    border-top: var(--border-header-footer);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  border-top: var(--border-header-footer);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .footer-text {
-    line-height: 2.5;
+  line-height: 2.5;
 }

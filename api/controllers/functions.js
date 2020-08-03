@@ -10,24 +10,42 @@ const Sequelize = require('sequelize')
 exports.getFunctions = async (req, res, next) => {
   const categoryId = helperQueryNumber(req.query.categoryId, 0)
   let { search } = req.query
-  try { search = search.toLowerCase() } catch {};
+  try {
+    search = search.toLowerCase()
+  } catch {}
   const options = {
     where: {
       isOnline: 1,
       // Trie par catégorie
-      ...(categoryId !== 0) && { categorieId: categoryId },
+      ...(categoryId !== 0 && { categorieId: categoryId }),
       // Recherche
-      ...(search != null) && {
+      ...(search != null && {
         [Sequelize.Op.or]: [
-          { title: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('title')), 'LIKE', `%${search}%`) },
-          { slug: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('slug')), 'LIKE', `%${search}%`) },
-          { description: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('description')), 'LIKE', `%${search}%`) }
+          {
+            title: Sequelize.where(
+              Sequelize.fn('LOWER', Sequelize.col('title')),
+              'LIKE',
+              `%${search}%`
+            )
+          },
+          {
+            slug: Sequelize.where(
+              Sequelize.fn('LOWER', Sequelize.col('slug')),
+              'LIKE',
+              `%${search}%`
+            )
+          },
+          {
+            description: Sequelize.where(
+              Sequelize.fn('LOWER', Sequelize.col('description')),
+              'LIKE',
+              `%${search}%`
+            )
+          }
         ]
-      }
+      })
     },
-    include: [
-      { model: Categories, attributes: ['name', 'color'] }
-    ],
+    include: [{ model: Categories, attributes: ['name', 'color'] }],
     attributes: {
       exclude: ['updatedAt', 'utilizationForm', 'article', 'isOnline']
     },
@@ -43,18 +61,21 @@ exports.getFunctionBySlug = (req, res, next) => {
     attributes: {
       exclude: ['updatedAt', 'isOnline']
     },
-    include: [
-      { model: Categories, attributes: ['name', 'color'] }
-    ]
+    include: [{ model: Categories, attributes: ['name', 'color'] }]
   })
-    .then((result) => {
+    .then(result => {
       if (!result) {
-        return errorHandling(next, { message: "La fonction n'existe pas.", statusCode: 404 })
+        return errorHandling(next, {
+          message: "La fonction n'existe pas.",
+          statusCode: 404
+        })
       }
-      try { result.utilizationForm = JSON.parse(result.utilizationForm) } catch {}
+      try {
+        result.utilizationForm = JSON.parse(result.utilizationForm)
+      } catch {}
       return res.status(200).json(result)
     })
-    .catch((error) => {
+    .catch(error => {
       console.log(error)
       return errorHandling(next, serverError)
     })
@@ -65,5 +86,8 @@ exports.executeFunctionBySlug = (req, res, next) => {
   if (functionOutput !== undefined) {
     return functionOutput({ res, next }, req.body)
   }
-  return errorHandling(next, { message: "La fonction n'existe pas.", statusCode: 404 })
+  return errorHandling(next, {
+    message: "La fonction n'existe pas.",
+    statusCode: 404
+  })
 }

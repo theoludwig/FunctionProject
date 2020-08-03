@@ -5,7 +5,7 @@ const CategoriesRouter = Router()
 
 CategoriesRouter.route('/')
 
-// Récupère les catégories
+  // Récupère les catégories
   .get(categoriesController.getCategories)
 
 module.exports = CategoriesRouter

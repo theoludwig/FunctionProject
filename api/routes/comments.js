@@ -6,18 +6,18 @@ const CommentsRouter = Router()
 
 CommentsRouter.route('/:commentId')
 
-// Modifier un commentaire
+  // Modifier un commentaire
   .put(isAuth, commentsController.putCommentsById)
 
-// Supprime un commentaire
+  // Supprime un commentaire
   .delete(isAuth, commentsController.deleteCommentById)
 
 CommentsRouter.route('/:functionId')
 
-// Récupère les commentaires
+  // Récupère les commentaires
   .get(commentsController.getCommentsByFunctionId)
 
-// Permet à un utilisateur de poster un commentaire sur une fonction
+  // Permet à un utilisateur de poster un commentaire sur une fonction
   .post(isAuth, commentsController.postCommentsByFunctionId)
 
 module.exports = CommentsRouter

@@ -10,7 +10,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 registerLocale('fr', fr)
 
-const FunctionForm = (props) => {
+const FunctionForm = props => {
   const [inputState, setInputState] = useState({})
   const [message, setMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -18,7 +18,7 @@ const FunctionForm = (props) => {
   // inputState par défaut
   useEffect(() => {
     const inputStateNew = { ...inputState }
-    props.inputsArray.forEach((input) => {
+    props.inputsArray.forEach(input => {
       if (input.type === 'select' && input.options.length > 0) {
         inputStateNew[input.name] = input.options[0].value
       }
@@ -26,21 +26,22 @@ const FunctionForm = (props) => {
     setInputState(inputStateNew)
   }, [])
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     setIsLoading(true)
     event.preventDefault()
-    api.post(`/functions/${props.slug}`, inputState)
-      .then((response) => {
+    api
+      .post(`/functions/${props.slug}`, inputState)
+      .then(response => {
         setMessage(response.data.resultHTML)
         setIsLoading(false)
       })
-      .catch((error) => {
+      .catch(error => {
         setMessage(error.response.data.message)
         setIsLoading(false)
       })
   }
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     const inputStateNew = { ...inputState }
     inputStateNew[event.target.name] = event.target.value
     setInputState(inputStateNew)
@@ -61,16 +62,35 @@ const FunctionForm = (props) => {
             case 'text':
               return (
                 <div key={index} className='form-group'>
-                  <label className='form-label' htmlFor={input.name}>{input.label}</label>
-                  <input onChange={handleChange} type='text' name={input.name} id={input.name} placeholder={input.placeholder} className='form-control' />
+                  <label className='form-label' htmlFor={input.name}>
+                    {input.label}
+                  </label>
+                  <input
+                    onChange={handleChange}
+                    type='text'
+                    name={input.name}
+                    id={input.name}
+                    placeholder={input.placeholder}
+                    className='form-control'
+                  />
                 </div>
               )
             case 'integer':
             case 'float':
               return (
                 <div key={index} className='form-group'>
-                  <label className='form-label' htmlFor={input.name}>{input.label}</label>
-                  <input onChange={handleChange} type='number' step={(input.type === 'integer') ? '1' : '0.01'} name={input.name} id={input.name} placeholder={input.placeholder} className='form-control' />
+                  <label className='form-label' htmlFor={input.name}>
+                    {input.label}
+                  </label>
+                  <input
+                    onChange={handleChange}
+                    type='number'
+                    step={input.type === 'integer' ? '1' : '0.01'}
+                    name={input.name}
+                    id={input.name}
+                    placeholder={input.placeholder}
+                    className='form-control'
+                  />
                 </div>
               )
             case 'calendar':
@@ -81,13 +101,14 @@ const FunctionForm = (props) => {
                 document.body.appendChild(newScript)
               }
               // eslint-disable-next-line
-              const DatePicker = dynamic(
-                () => import('react-datepicker'),
-                { ssr: false }
-              )
+              const DatePicker = dynamic(() => import('react-datepicker'), {
+                ssr: false
+              })
               return (
                 <div key={index} className='form-group'>
-                  <label className='form-label' htmlFor={input.name}>{input.label}</label>
+                  <label className='form-label' htmlFor={input.name}>
+                    {input.label}
+                  </label>
                   <br />
                   <DatePicker
                     selected={(() => {
@@ -97,7 +118,11 @@ const FunctionForm = (props) => {
                           const year = dateArray[2]
                           const month = dateArray[1]
                           const day = dateArray[0]
-                          return new Date(year, parseInt(month) - 1, parseInt(day) + 1)
+                          return new Date(
+                            year,
+                            parseInt(month) - 1,
+                            parseInt(day) + 1
+                          )
                         }
                         throw new Error('Not a valid date')
                       } catch {
@@ -108,9 +133,13 @@ const FunctionForm = (props) => {
                     dateFormat='dd/MM/yyyy'
                     fixedHeight
                     placeholderText={input.placeholder}
-                    onChange={(dateObject) => {
+                    onChange={dateObject => {
                       try {
-                        const formattedDate = date.format(dateObject, 'DD/MM/YYYY', true)
+                        const formattedDate = date.format(
+                          dateObject,
+                          'DD/MM/YYYY',
+                          true
+                        )
                         handleChange({
                           target: {
                             name: input.name,
@@ -125,33 +154,39 @@ const FunctionForm = (props) => {
             case 'select':
               return (
                 <div key={index} className='form-group'>
-                  <label className='form-label' htmlFor={input.name}>{input.label}</label>
-                  <select onChange={handleChange} name={input.name} id={input.name} value={inputState[input.name] || input.options[0]} className='form-control'>
+                  <label className='form-label' htmlFor={input.name}>
+                    {input.label}
+                  </label>
+                  <select
+                    onChange={handleChange}
+                    name={input.name}
+                    id={input.name}
+                    value={inputState[input.name] || input.options[0]}
+                    className='form-control'
+                  >
                     {input.options.map((option, optionIndex) => {
                       return (
-                        <option key={optionIndex} value={option.value}>{option.name}</option>
+                        <option key={optionIndex} value={option.value}>
+                          {option.name}
+                        </option>
                       )
                     })}
                   </select>
                 </div>
               )
             default:
-              return (
-                <p>Erreur, l'input n'est pas valide...</p>
-              )
+              return <p>Erreur, l'input n'est pas valide...</p>
           }
         })}
 
         <div className='form-group text-center'>
-          <button type='submit' className='btn btn-dark'>Envoyer</button>
+          <button type='submit' className='btn btn-dark'>
+            Envoyer
+          </button>
         </div>
       </form>
       <div className='form-result text-center'>
-        {
-          (isLoading)
-            ? <Loader />
-            : htmlParser(message)
-        }
+        {isLoading ? <Loader /> : htmlParser(message)}
       </div>
     </>
   )

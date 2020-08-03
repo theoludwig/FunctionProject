@@ -36,12 +36,20 @@ exports.putTask = async (req, res, next) => {
   const { isCompleted } = req.body
   try {
     if (typeof isCompleted !== 'boolean') {
-      return errorHandling(next, { message: 'isCompleted doit être un booléen.', statusCode: 400 })
+      return errorHandling(next, {
+        message: 'isCompleted doit être un booléen.',
+        statusCode: 400
+      })
     }
 
-    const taskResult = await Tasks.findOne({ where: { id, userId: req.userId } })
+    const taskResult = await Tasks.findOne({
+      where: { id, userId: req.userId }
+    })
     if (!taskResult) {
-      return errorHandling(next, { message: 'La "tâche à faire" n\'existe pas.', statusCode: 404 })
+      return errorHandling(next, {
+        message: 'La "tâche à faire" n\'existe pas.',
+        statusCode: 404
+      })
     }
     taskResult.isCompleted = isCompleted
     const taskSaved = await taskResult.save()
@@ -55,12 +63,19 @@ exports.putTask = async (req, res, next) => {
 exports.deleteTask = async (req, res, next) => {
   const { id } = req.params
   try {
-    const taskResult = await Tasks.findOne({ where: { id, userId: req.userId } })
+    const taskResult = await Tasks.findOne({
+      where: { id, userId: req.userId }
+    })
     if (!taskResult) {
-      return errorHandling(next, { message: 'La "tâche à faire" n\'existe pas.', statusCode: 404 })
+      return errorHandling(next, {
+        message: 'La "tâche à faire" n\'existe pas.',
+        statusCode: 404
+      })
     }
     await taskResult.destroy()
-    return res.status(200).json({ message: 'La "tâche à faire" a bien été supprimée!' })
+    return res
+      .status(200)
+      .json({ message: 'La "tâche à faire" a bien été supprimée!' })
   } catch (error) {
     console.log(error)
     return errorHandling(next, serverError)

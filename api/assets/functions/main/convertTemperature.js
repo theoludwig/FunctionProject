@@ -12,15 +12,17 @@ const formatNumberResult = require('../secondary/formatNumberResult')
 function convertTemperature (degree, unit) {
   let temperatureValue = 0
   if (unit === '°C') {
-    temperatureValue = (degree - 32) * 5 / 9
+    temperatureValue = ((degree - 32) * 5) / 9
   } else if (unit === '°F') {
-    temperatureValue = ((degree * 9 / 5) + 32)
+    temperatureValue = (degree * 9) / 5 + 32
   } else {
     return false
   }
   return {
     result: temperatureValue,
-    resultHTML: `<p>${formatNumberResult(degree)} ${(unit === '°C') ? '°F' : '°C'} = ${formatNumberResult(temperatureValue)} ${unit}</p>`
+    resultHTML: `<p>${formatNumberResult(degree)} ${
+      unit === '°C' ? '°F' : '°C'
+    } = ${formatNumberResult(temperatureValue)} ${unit}</p>`
   }
 }
 
@@ -36,7 +38,10 @@ module.exports = ({ res, next }, argsObject) => {
   // Si ce n'est pas un nombre
   degree = parseFloat(degree)
   if (isNaN(degree)) {
-    return errorHandling(next, { message: 'Veuillez rentré un nombre valide.', statusCode: 400 })
+    return errorHandling(next, {
+      message: 'Veuillez rentré un nombre valide.',
+      statusCode: 400
+    })
   }
 
   const result = convertTemperature(degree, unitToConvert)

@@ -34,7 +34,9 @@ app.use('/quotes', require('./routes/quotes'))
 app.use('/tasks', require('./routes/tasks'))
 
 /* Errors Handling */
-app.use((_req, _res, next) => errorHandling(next, { statusCode: 404, message: "La route n'existe pas!" })) // 404
+app.use((_req, _res, next) =>
+  errorHandling(next, { statusCode: 404, message: "La route n'existe pas!" })
+) // 404
 app.use((error, _req, res, _next) => {
   console.log(error)
   const { statusCode, message } = error
@@ -76,8 +78,11 @@ Tasks.belongsTo(Users, { constraints: false })
 
 /* Server */
 // sequelize.sync({ force: true })
-sequelize.sync()
+sequelize
+  .sync()
   .then(() => {
-    app.listen(PORT, () => console.log('\x1b[36m%s\x1b[0m', `Started on port ${PORT}.`))
+    app.listen(PORT, () =>
+      console.log('\x1b[36m%s\x1b[0m', `Started on port ${PORT}.`)
+    )
   })
-  .catch((error) => console.log(error))
+  .catch(error => console.log(error))

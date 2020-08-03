@@ -1,4 +1,4 @@
-const FunctionTabsTop = (props) => {
+const FunctionTabsTop = props => {
   return (
     <div className='container'>
       <div className='row justify-content-center'>
@@ -7,7 +7,11 @@ const FunctionTabsTop = (props) => {
             return (
               <li key={index} className='FunctionTabs__nav-item'>
                 <a
-                  className={`FunctionTabs__nav-link ${(props.slideIndex === index) ? 'FunctionTabs__nav-link-active' : ''}`}
+                  className={`FunctionTabs__nav-link ${
+                    props.slideIndex === index
+                      ? 'FunctionTabs__nav-link-active'
+                      : ''
+                  }`}
                   onClick={() => props.setSlideIndex(index)}
                 >
                   {tabName}

@@ -16,14 +16,24 @@ function armstrongNumber (number) {
   let resultString = ''
   for (let index = 0; index < numberStringLength; index++) {
     result = result + parseInt(numberString[index]) ** numberStringLength
-    resultString = resultString + ' + ' + numberString[index] + '<sup>' + numberStringLength + '</sup>'
+    resultString =
+      resultString +
+      ' + ' +
+      numberString[index] +
+      '<sup>' +
+      numberStringLength +
+      '</sup>'
   }
 
   const formattedNumber = formatNumberResult(number)
-  const isArmstrongNumber = (result === number)
+  const isArmstrongNumber = result === number
   return {
     isArmstrongNumber,
-    resultHTML: `<p>${formattedNumber} ${isArmstrongNumber ? 'est' : "n'est pas"} un nombre d'Armstrong, car ${resultString.slice(2)} = ${formatNumberResult(result)}.</p>`
+    resultHTML: `<p>${formattedNumber} ${
+      isArmstrongNumber ? 'est' : "n'est pas"
+    } un nombre d'Armstrong, car ${resultString.slice(
+      2
+    )} = ${formatNumberResult(result)}.</p>`
   }
 }
 
@@ -32,14 +42,17 @@ module.exports = ({ res, next }, argsObject) => {
   let { number } = argsObject
 
   // S'il n'y a pas les champs obligatoire
-  if (!(number)) {
+  if (!number) {
     return errorHandling(next, requiredFields)
   }
 
   // Si ce n'est pas un nombre
   number = parseInt(number)
   if (isNaN(number) || number <= 0) {
-    return errorHandling(next, { message: 'Veuillez rentré un nombre valide.', statusCode: 400 })
+    return errorHandling(next, {
+      message: 'Veuillez rentré un nombre valide.',
+      statusCode: 400
+    })
   }
 
   return res.status(200).json(armstrongNumber(number))

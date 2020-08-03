@@ -4,10 +4,10 @@ const { serverError } = require('../assets/config/errors')
 
 exports.getCategories = (_req, res, next) => {
   Categories.findAll()
-    .then((result) => {
+    .then(result => {
       res.status(200).json(result)
     })
-    .catch((error) => {
+    .catch(error => {
       console.log(error)
       return errorHandling(next, serverError)
     })

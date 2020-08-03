@@ -8,9 +8,7 @@ module.exports = async ({ res, next }, _argsObject) => {
   try {
     const quote = await Quotes.findOne({
       order: sequelize.random(),
-      include: [
-        { model: Users, attributes: ['name', 'logo'] }
-      ],
+      include: [{ model: Users, attributes: ['name', 'logo'] }],
       attributes: {
         exclude: ['isValidated']
       },

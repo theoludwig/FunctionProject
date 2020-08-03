@@ -6,13 +6,13 @@ const FavoritesRouter = Router()
 
 FavoritesRouter.route('/:functionId')
 
-// Récupère si une fonction est en favoris (d'un utilisateur)
+  // Récupère si une fonction est en favoris (d'un utilisateur)
   .get(isAuth, favoritesController.getFavoriteByFunctionId)
 
-// Permet à un utilisateur d'ajouter une fonction aux favoris
+  // Permet à un utilisateur d'ajouter une fonction aux favoris
   .post(isAuth, favoritesController.postFavoriteByFunctionId)
 
-// Supprime une fonction des favoris d'un utilisateur
+  // Supprime une fonction des favoris d'un utilisateur
   .delete(isAuth, favoritesController.deleteFavoriteByFunctionId)
 
 module.exports = FavoritesRouter

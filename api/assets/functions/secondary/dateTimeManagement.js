@@ -27,7 +27,8 @@ function showDateTime (timeNow) {
   const hour = ('0' + timeNow.getHours()).slice(-2)
   const minute = ('0' + timeNow.getMinutes()).slice(-2)
   const second = ('0' + timeNow.getSeconds()).slice(-2)
-  const showDateTimeValue = day + '/' + month + '/' + year + ' - ' + hour + ':' + minute + ':' + second
+  const showDateTimeValue =
+    day + '/' + month + '/' + year + ' - ' + hour + ':' + minute + ':' + second
   const objectDateTime = {
     year: year,
     month: month,

@@ -8,8 +8,11 @@ export default function Footer () {
         <Link href='/about'>
           <a>FunctionProject</a>
         </Link>
-                &nbsp;- Version 2.1 <br />
-        <a href='https://divlo.fr/' target='_blank' rel='noopener noreferrer'>Divlo</a> | Tous droits réservés
+        &nbsp;- Version 2.1 <br />
+        <a href='https://divlo.fr/' target='_blank' rel='noopener noreferrer'>
+          Divlo
+        </a>{' '}
+        | Tous droits réservés
       </p>
     </footer>
   )

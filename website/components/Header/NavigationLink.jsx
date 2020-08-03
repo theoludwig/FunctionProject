@@ -8,7 +8,11 @@ export default function NavigationLink (props) {
   return (
     <li className='navbar-item'>
       <Link href={props.path}>
-        <a className={`navbar-link ${pathname === props.path ? 'navbar-link-active' : null}`}>
+        <a
+          className={`navbar-link ${
+            pathname === props.path ? 'navbar-link-active' : null
+          }`}
+        >
           {props.name}
         </a>
       </Link>

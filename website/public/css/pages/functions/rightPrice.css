@@ -1,20 +1,20 @@
 .Product__image {
-    max-width: 150px;
+  max-width: 150px;
 }
 .Price__result {
-    height: 50px;
-    margin: 5px 0 10px 0;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    color: #fff;
+  height: 50px;
+  margin: 5px 0 10px 0;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  color: #fff;
 }
 .Price__result-success {
-    background-color: #28a745;
+  background-color: #28a745;
 }
 .Price__result-plus {
-    background-color: #dc3545;
+  background-color: #dc3545;
 }
 .Price__result-moins {
-    background-color: #343a40;   
+  background-color: #343a40;
 }

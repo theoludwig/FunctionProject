@@ -36,7 +36,8 @@ const HeadTag = ({ title, image, description }) => (
 
 HeadTag.defaultProps = {
   title: 'FunctionProject',
-  description: "Apprenez la programmation grâce à l'apprentissage par projet alias fonction.",
+  description:
+    "Apprenez la programmation grâce à l'apprentissage par projet alias fonction.",
   image: '/images/FunctionProject_icon_small.png'
 }
 

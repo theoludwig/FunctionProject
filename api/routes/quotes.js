@@ -6,10 +6,10 @@ const QuotesRouter = Router()
 
 QuotesRouter.route('/')
 
-// Récupère les citations
+  // Récupère les citations
   .get(quotesController.getQuotes)
 
-// Proposer une citation
+  // Proposer une citation
   .post(isAuth, quotesController.postQuote)
 
 module.exports = QuotesRouter

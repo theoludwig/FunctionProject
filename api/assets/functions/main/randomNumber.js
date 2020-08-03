@@ -26,11 +26,21 @@ const randomNumberOutput = ({ res, next }, argsObject) => {
   min = parseInt(min)
   max = parseInt(max)
   if (isNaN(min) || isNaN(max)) {
-    return errorHandling(next, { message: 'Les paramètres min et max doivent être des nombres...', statusCode: 400 })
+    return errorHandling(next, {
+      message: 'Les paramètres min et max doivent être des nombres...',
+      statusCode: 400
+    })
   }
 
   const result = randomNumber(min, max)
-  return res.status(200).json({ result, resultHTML: `<p>Nombre aléatoire compris entre ${min} inclus et ${max} inclus : <strong>${formatNumberResult(result)}</strong></p>` })
+  return res
+    .status(200)
+    .json({
+      result,
+      resultHTML: `<p>Nombre aléatoire compris entre ${min} inclus et ${max} inclus : <strong>${formatNumberResult(
+        result
+      )}</strong></p>`
+    })
 }
 
 exports.randomNumber = randomNumber

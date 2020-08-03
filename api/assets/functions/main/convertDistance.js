@@ -2,7 +2,33 @@ const errorHandling = require('../../utils/errorHandling')
 const { requiredFields, generalError } = require('../../config/errors')
 const formatNumberResult = require('../secondary/formatNumberResult')
 
-const correspondancesDistance = ['pm', null, null, 'nm', null, null, 'µm', null, null, 'mm', 'cm', 'dm', 'm', 'dam', 'hm', 'km', null, null, 'Mm', null, null, 'Gm', null, null, 'Tm']
+const correspondancesDistance = [
+  'pm',
+  null,
+  null,
+  'nm',
+  null,
+  null,
+  'µm',
+  null,
+  null,
+  'mm',
+  'cm',
+  'dm',
+  'm',
+  'dam',
+  'hm',
+  'km',
+  null,
+  null,
+  'Mm',
+  null,
+  null,
+  'Gm',
+  null,
+  null,
+  'Tm'
+]
 
 /**
  * @description Convertis la longueur (distance) avec les unités allant de picomètre au Téramètre.
@@ -21,7 +47,11 @@ function convertDistance (firstValue, unitFirstValue, unitFinalValue) {
     const result = firstValue * Math.pow(10, difference)
     return {
       result,
-      resultHTML: `<p>${formatNumberResult(firstValue)} ${unitFirstValue} = ${formatNumberResult(result)} ${unitFinalValue}</p>`
+      resultHTML: `<p>${formatNumberResult(
+        firstValue
+      )} ${unitFirstValue} = ${formatNumberResult(
+        result
+      )} ${unitFinalValue}</p>`
     }
   }
   return false
@@ -39,7 +69,10 @@ module.exports = ({ res, next }, argsObject) => {
   // Si ce n'est pas un nombre
   number = parseFloat(number)
   if (isNaN(number)) {
-    return errorHandling(next, { message: 'Veuillez rentré un nombre valide.', statusCode: 400 })
+    return errorHandling(next, {
+      message: 'Veuillez rentré un nombre valide.',
+      statusCode: 400
+    })
   }
 
   const result = convertDistance(number, numberUnit, finalUnit)

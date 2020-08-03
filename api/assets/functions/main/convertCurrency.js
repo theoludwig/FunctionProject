@@ -15,23 +15,39 @@ module.exports = ({ res, next }, argsObject) => {
   // Si ce n'est pas un nombre
   number = parseFloat(number)
   if (isNaN(number)) {
-    return errorHandling(next, { message: 'Veuillez rentré un nombre valide.', statusCode: 400 })
+    return errorHandling(next, {
+      message: 'Veuillez rentré un nombre valide.',
+      statusCode: 400
+    })
   }
 
-  axios.get(`https://api.exchangeratesapi.io/latest?base=${baseCurrency}`)
-    .then((response) => {
+  axios
+    .get(`https://api.exchangeratesapi.io/latest?base=${baseCurrency}`)
+    .then(response => {
       const rate = response.data.rates[finalCurrency]
       if (!rate) {
-        return errorHandling(next, { message: "La devise n'existe pas.", statusCode: 404 })
+        return errorHandling(next, {
+          message: "La devise n'existe pas.",
+          statusCode: 404
+        })
       }
       const result = rate * number
       const dateObject = new Date(response.data.date)
       const year = dateObject.getFullYear()
-      const day = ('0' + (dateObject.getDate())).slice(-2)
+      const day = ('0' + dateObject.getDate()).slice(-2)
       const month = ('0' + (dateObject.getMonth() + 1)).slice(-2)
       const date = `${day}/${month}/${year}`
-      const resultHTML = `<p>${formatNumberResult(number)} ${response.data.base} = ${formatNumberResult(result.toFixed(2))} ${finalCurrency}</p><p>Dernier rafraîchissement du taux d'échange : ${date}</p>`
+      const resultHTML = `<p>${formatNumberResult(number)} ${
+        response.data.base
+      } = ${formatNumberResult(
+        result.toFixed(2)
+      )} ${finalCurrency}</p><p>Dernier rafraîchissement du taux d'échange : ${date}</p>`
       return res.status(200).json({ date, result, resultHTML })
     })
-    .catch(() => errorHandling(next, { message: "La devise n'existe pas.", statusCode: 404 }))
+    .catch(() =>
+      errorHandling(next, {
+        message: "La devise n'existe pas.",
+        statusCode: 404
+      })
+    )
 }

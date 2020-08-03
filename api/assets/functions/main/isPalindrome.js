@@ -8,7 +8,10 @@ const { requiredFields } = require('../../config/errors')
  * @example reverseString('Hello') → 'olleH'
  */
 function reverseString (string) {
-  return string.split('').reverse().join('')
+  return string
+    .split('')
+    .reverse()
+    .join('')
 }
 
 /**
@@ -28,12 +31,15 @@ module.exports = ({ res, next }, argsObject) => {
   let { string } = argsObject
 
   // S'il n'y a pas les champs obligatoire
-  if (!(string)) {
+  if (!string) {
     return errorHandling(next, requiredFields)
   }
 
   if (typeof string !== 'string') {
-    return errorHandling(next, { message: 'Vous devez rentré une chaîne de caractère valide.', statusCode: 400 })
+    return errorHandling(next, {
+      message: 'Vous devez rentré une chaîne de caractère valide.',
+      statusCode: 400
+    })
   }
 
   string = string.toLowerCase()
@@ -43,6 +49,10 @@ module.exports = ({ res, next }, argsObject) => {
   return res.status(200).json({
     isPalindrome: isPalindromeResult,
     reverseString: reverseStringResult,
-    resultHTML: `<p>"${string}" ${(isPalindromeResult) ? 'est' : "n'est pas"} un palindrome car <br/> "${string}" ${(isPalindromeResult) ? '===' : '!=='} "${reverseStringResult}"</p>`
+    resultHTML: `<p>"${string}" ${
+      isPalindromeResult ? 'est' : "n'est pas"
+    } un palindrome car <br/> "${string}" ${
+      isPalindromeResult ? '===' : '!=='
+    } "${reverseStringResult}"</p>`
   })
 }

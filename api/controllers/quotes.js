@@ -9,9 +9,7 @@ exports.getQuotes = async (req, res, next) => {
     where: {
       isValidated: 1
     },
-    include: [
-      { model: Users, attributes: ['name', 'logo'] }
-    ],
+    include: [{ model: Users, attributes: ['name', 'logo'] }],
     attributes: {
       exclude: ['isValidated']
     },
@@ -27,10 +25,15 @@ exports.postQuote = (req, res, next) => {
     return errorHandling(next, requiredFields)
   }
   Quotes.create({ quote, author, userId: req.userId })
-    .then((_result) => {
-      return res.status(200).json({ message: "La citation a bien été ajoutée, elle est en attente de confirmation d'un administrateur." })
+    .then(_result => {
+      return res
+        .status(200)
+        .json({
+          message:
+            "La citation a bien été ajoutée, elle est en attente de confirmation d'un administrateur."
+        })
     })
-    .catch((error) => {
+    .catch(error => {
       console.log(error)
       return errorHandling(next, serverError)
     })

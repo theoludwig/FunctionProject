@@ -12,7 +12,11 @@ const DEFAULT_OPTIONS = {
  * @param {*} Model Model Sequelize
  * @param {Object} options Options avec clause where etc.
  */
-async function getPagesHelper ({ req, res, next }, Model, options = DEFAULT_OPTIONS) {
+async function getPagesHelper (
+  { req, res, next },
+  Model,
+  options = DEFAULT_OPTIONS
+) {
   const page = helperQueryNumber(req.query.page, 1)
   const limit = helperQueryNumber(req.query.limit, 10)
   const offset = (page - 1) * limit
@@ -23,7 +27,7 @@ async function getPagesHelper ({ req, res, next }, Model, options = DEFAULT_OPTI
       ...options
     })
     const { count, rows } = result
-    const hasMore = (page * limit) < count
+    const hasMore = page * limit < count
     return res.status(200).json({ totalItems: count, hasMore, rows })
   } catch (error) {
     console.log(error)
