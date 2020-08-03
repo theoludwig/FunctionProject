@@ -3,6 +3,8 @@ const errorHandling = require('../../utils/errorHandling')
 const { requiredFields, serverError } = require('../../config/errors')
 const shortLinks = require('../../../models/short_links')
 
+const shortLinkBaseURL = 'https://s.divlo.fr'
+
 module.exports = async ({ res, next }, argsObject) => {
   let { url, shortcutName } = argsObject
 
@@ -37,7 +39,7 @@ module.exports = async ({ res, next }, argsObject) => {
     // Si l'url a déjà été raccourcie
     const urlInDatabase = await shortLinks.findOne({ where: { url } })
     if (urlInDatabase) {
-      const urlShort = `https://short-links.divlo.fr/?q=${urlInDatabase.shortcut}`
+      const urlShort = `${shortLinkBaseURL}/${urlInDatabase.shortcut}`
       return errorHandling(next, {
         message: `L'url a déjà été raccourcie... <br/> <br/> <a target="_blank" rel="noopener noreferrer" href="${urlShort}">${urlShort}</a>`,
         statusCode: 400
@@ -49,7 +51,7 @@ module.exports = async ({ res, next }, argsObject) => {
       where: { shortcut: shortcutName }
     })
     if (shortcutInDatabase) {
-      const urlShort = `https://short-links.divlo.fr/?q=${shortcutInDatabase.shortcut}`
+      const urlShort = `${shortLinkBaseURL}/${shortcutInDatabase.shortcut}`
       return errorHandling(next, {
         message: `Le nom du raccourci a déjà été utilisé... <br/> <br/> <a target="_blank" rel="noopener noreferrer" href="${urlShort}">${urlShort}</a>`,
         statusCode: 400
@@ -58,13 +60,11 @@ module.exports = async ({ res, next }, argsObject) => {
 
     // Ajout du lien raccourci
     const result = await shortLinks.create({ url, shortcut: shortcutName })
-    const shortcutLinkResult = `https://short-links.divlo.fr/?q=${result.shortcut}`
-    return res
-      .status(200)
-      .json({
-        resultHTML: `URL Raccourcie : <br/> <br/> <a target="_blank" rel="noopener noreferrer" href="${shortcutLinkResult}">${shortcutLinkResult}</a>`,
-        result: shortcutLinkResult
-      })
+    const shortcutLinkResult = `${shortLinkBaseURL}/${result.shortcut}`
+    return res.status(200).json({
+      resultHTML: `URL Raccourcie : <br/> <br/> <a target="_blank" rel="noopener noreferrer" href="${shortcutLinkResult}">${shortcutLinkResult}</a>`,
+      result: shortcutLinkResult
+    })
   } catch (error) {
     console.log(error)
     return errorHandling(next, serverError)

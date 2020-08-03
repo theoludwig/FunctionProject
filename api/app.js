@@ -5,7 +5,7 @@ const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
 const morgan = require('morgan')
-const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
+const { redirectToHTTPS } = require('express-http-to-https')
 
 /* Files Imports & Variables */
 const sequelize = require('./assets/utils/database')
