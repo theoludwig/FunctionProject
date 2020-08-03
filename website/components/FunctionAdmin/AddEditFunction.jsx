@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import htmlParser from 'html-react-parser'
-import Loader from '../../components/Loader'
+import Loader from '../Loader'
 import useAPI from '../../hooks/useAPI'
 import api from '../../utils/api'
 import '../../public/css/pages/admin.css'
