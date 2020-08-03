@@ -1,13 +1,14 @@
 {
   "name": "website",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Website frontend for FunctionProject",
   "main": "server.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev node server",
+    "dev": "cross-env NODE_ENV=development node server",
     "build": "next build",
     "export": "next export",
-    "start": "cross-env NODE_ENV=production node server"
+    "start": "cross-env NODE_ENV=production node server",
+    "format": "standard \"./**/*.{js,jsx}\" --fix | snazzy || exit 0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
@@ -22,7 +23,7 @@
     "express": "^4.17.1",
     "express-http-to-https": "^1.1.4",
     "html-react-parser": "^0.10.2",
-    "next": "9.3.2",
+    "next": "^9.5.1",
     "next-fonts": "^1.0.3",
     "notyf": "^3.6.0",
     "nprogress": "^0.2.0",
@@ -39,6 +40,8 @@
     "universal-cookie": "^4.0.3"
   },
   "devDependencies": {
-    "cross-env": "^7.0.2"
+    "cross-env": "^7.0.2",
+    "snazzy": "^8.0.0",
+    "standard": "^14.3.4"
   }
 }

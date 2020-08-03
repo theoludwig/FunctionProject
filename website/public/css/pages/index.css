@@ -1,15 +1,15 @@
 .Home__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .Home__logo-spin {
-    cursor: pointer;
+  cursor: pointer;
 }
 .Home__image-width {
-    width: 13em;
+  width: 13em;
 }
-div[aria-hidden="false"] {
-    overflow: hidden !important;
+div[aria-hidden='false'] {
+  overflow: hidden !important;
 }
