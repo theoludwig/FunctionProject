@@ -41,8 +41,8 @@ const Profile = props => {
       event.target.files != null
         ? event.target.files[0]
         : isTypeCheck
-        ? event.target.checked
-        : event.target.value
+          ? event.target.checked
+          : event.target.value
     setInputState(inputStateNew)
   }
 

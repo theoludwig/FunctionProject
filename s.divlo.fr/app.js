@@ -51,7 +51,18 @@ app.get('/:shortcut', (req, res, next) => {
         return res.redirect('/error/404')
       }
 
-      return res.redirect(result.url)
+      const count = (result.count += 1)
+      database.query(
+        'UPDATE short_links SET count = ? WHERE id = ?',
+        [count, result.id],
+        error => {
+          if (error != null) {
+            return next(error)
+          }
+
+          return res.redirect(result.url)
+        }
+      )
     }
   )
 })

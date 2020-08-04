@@ -278,6 +278,9 @@ const LinksList = ({
                       Nom
                     </th>
                     <th className='table-row' scope='col'>
+                      Compteur de clics
+                    </th>
+                    <th className='table-row' scope='col'>
                       Modifier
                     </th>
                     <th className='table-row' scope='col'>
@@ -297,6 +300,7 @@ const LinksList = ({
                             {link.shortcut}
                           </a>
                         </td>
+                        <td className='table-row'>{link.count}</td>
                         <td
                           style={{ cursor: 'pointer' }}
                           onClick={() => handleEditLink(link)}

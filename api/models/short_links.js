@@ -9,5 +9,10 @@ module.exports = sequelize.define('short_link', {
   shortcut: {
     type: Sequelize.TEXT,
     allowNull: false
+  },
+  count: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    defaultValue: 0
   }
 })
