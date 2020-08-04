@@ -79,7 +79,8 @@ exports.postLink = async (req, res, next) => {
     const shortcutLinkResult = `${shortLinkBaseURL}/${result.shortcut}`
     return res.status(200).json({
       resultHTML: `URL Raccourcie : <br/> <br/> <a target="_blank" rel="noopener noreferrer" href="${shortcutLinkResult}">${shortcutLinkResult}</a>`,
-      result: shortcutLinkResult
+      result: shortcutLinkResult,
+      linkDatabase: result
     })
   } catch (error) {
     console.log(error)

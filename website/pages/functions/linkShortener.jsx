@@ -16,9 +16,9 @@ import 'notyf/notyf.min.css'
 import '../../public/css/pages/FunctionComponent.css'
 import '../../public/css/pages/admin.css'
 
-const CreateLink = () => {
+const CreateLink = ({ linksData, setLinksData }) => {
   const { isAuth, user } = useContext(UserContext)
-  const [inputState, setInputState] = useState({})
+  const [inputState, setInputState] = useState({ url: '', shortcutName: '' })
   const [message, setMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
@@ -29,6 +29,9 @@ const CreateLink = () => {
       const response = await api.post('/links', inputState, {
         headers: { Authorization: user.token }
       })
+      const linksDataState = { ...linksData }
+      linksDataState.rows.push(response.data.linkDatabase)
+      setLinksData(linksDataState)
       setMessage(response.data.resultHTML)
       setIsLoading(false)
       setInputState({ url: '', shortcutName: '' })
@@ -66,6 +69,7 @@ const CreateLink = () => {
                 Entrez le lien à raccourcir :
               </label>
               <input
+                value={inputState.url}
                 onChange={handleChange}
                 type='text'
                 name='url'
@@ -80,6 +84,7 @@ const CreateLink = () => {
                 Entrez le nom du raccourci :
               </label>
               <input
+                value={inputState.shortcutName}
                 onChange={handleChange}
                 type='text'
                 name='shortcutName'
@@ -105,14 +110,13 @@ const CreateLink = () => {
 }
 
 let pageLinks = 1
-const LinksList = () => {
+const LinksList = ({
+  linksData,
+  setLinksData,
+  isLoadingLinks,
+  setLoadingLinks
+}) => {
   const { isAuth, user } = useContext(UserContext)
-  const [linksData, setLinksData] = useState({
-    hasMore: true,
-    rows: [],
-    totalItems: 0
-  })
-  const [isLoadingLinks, setLoadingLinks] = useState(true)
   const [isEditing, setIsEditing] = useState(false)
 
   const [defaultInputState, setDefaultInputState] = useState({
@@ -288,7 +292,11 @@ const LinksList = () => {
                         <td className='table-row'>
                           <a href={link.url}>{link.url}</a>
                         </td>
-                        <td className='table-row'>{link.shortcut}</td>
+                        <td className='table-row'>
+                          <a href={`https://s.divlo.fr/${link.shortcut}`}>
+                            {link.shortcut}
+                          </a>
+                        </td>
                         <td
                           style={{ cursor: 'pointer' }}
                           onClick={() => handleEditLink(link)}
@@ -399,16 +407,33 @@ const LinksList = () => {
 }
 
 const FunctionTabManager = props => {
+  const [linksData, setLinksData] = useState({
+    hasMore: true,
+    rows: [],
+    totalItems: 0
+  })
+  const [isLoadingLinks, setLoadingLinks] = useState(true)
+
   return (
     <FunctionTabs
       setSlideIndex={props.setSlideIndex}
       slideIndex={props.slideIndex}
     >
       <div className='FunctionComponent__slide'>
-        <CreateLink />
+        <CreateLink
+          linksData={linksData}
+          setLinksData={setLinksData}
+          isLoadingLinks={isLoadingLinks}
+          setLoadingLinks={setLoadingLinks}
+        />
       </div>
       <div className='FunctionComponent__slide'>
-        <LinksList />
+        <LinksList
+          linksData={linksData}
+          setLinksData={setLinksData}
+          isLoadingLinks={isLoadingLinks}
+          setLoadingLinks={setLoadingLinks}
+        />
       </div>
       <div className='FunctionComponent__slide'>
         <FunctionArticle article={props.article} />
