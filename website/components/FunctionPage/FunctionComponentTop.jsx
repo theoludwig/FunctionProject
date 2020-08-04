@@ -90,7 +90,7 @@ const FunctionComponentTop = props => {
               </a>
             </Link>
             <p className='FunctionCard__publication-date'>
-              {date.format(new Date(props.createdAt), 'DD/MM/YYYY', true)}
+              {date.format(new Date(props.createdAt), 'DD/MM/YYYY', false)}
             </p>
           </div>
         </div>

@@ -229,14 +229,14 @@ const manageCategories = props => {
                             {date.format(
                               new Date(category.createdAt),
                               'DD/MM/YYYY à HH:mm',
-                              true
+                              false
                             )}
                           </td>
                           <td className='table-row'>
                             {date.format(
                               new Date(category.updatedAt),
                               'DD/MM/YYYY à HH:mm',
-                              true
+                              false
                             )}
                           </td>
                           <td

@@ -138,7 +138,7 @@ const FunctionForm = props => {
                         const formattedDate = date.format(
                           dateObject,
                           'DD/MM/YYYY',
-                          true
+                          false
                         )
                         handleChange({
                           target: {

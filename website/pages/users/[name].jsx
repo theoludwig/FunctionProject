@@ -41,8 +41,8 @@ const Profile = props => {
       event.target.files != null
         ? event.target.files[0]
         : isTypeCheck
-          ? event.target.checked
-          : event.target.value
+        ? event.target.checked
+        : event.target.value
     setInputState(inputStateNew)
   }
 
@@ -245,7 +245,7 @@ const Profile = props => {
                     {date.format(
                       new Date(props.createdAt),
                       'DD/MM/YYYY à HH:mm',
-                      true
+                      false
                     )}
                   </p>
                 </div>
@@ -316,7 +316,7 @@ const Profile = props => {
                         {date.format(
                           new Date(comment.createdAt),
                           'DD/MM/YYYY à HH:mm',
-                          true
+                          false
                         )}
                       </p>
                       <ReactMarkdown

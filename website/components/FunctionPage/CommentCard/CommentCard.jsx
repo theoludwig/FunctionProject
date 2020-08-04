@@ -82,7 +82,7 @@ const CommentCard = forwardRef((props, ref) => {
               <a>{props.user.name}</a>
             </Link>
             &nbsp;-{' '}
-            {date.format(new Date(props.createdAt), 'DD/MM/YYYY à HH:mm', true)}
+            {date.format(new Date(props.createdAt), 'DD/MM/YYYY à HH:mm', false)}
           </span>
         </div>
         <div className='row'>
