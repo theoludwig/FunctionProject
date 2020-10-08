@@ -23,7 +23,7 @@
     "express": "^4.17.1",
     "express-http-to-https": "^1.1.4",
     "html-react-parser": "^0.10.2",
-    "next": "^9.5.1",
+    "next": "^9.5.4",
     "next-fonts": "^1.0.3",
     "notyf": "^3.6.0",
     "nprogress": "^0.2.0",
