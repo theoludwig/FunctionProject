@@ -23,15 +23,15 @@ const FunctionCard = memo(
       <Link
         {...(props.isAdmin
           ? {
-            href: '/admin/[slug]',
-            as: `/admin/${props.slug}`
-          }
+              href: '/admin/[slug]',
+              as: `/admin/${props.slug}`
+            }
           : {
-            href: isFormOrArticle
-              ? '/functions/[slug]'
-              : `/functions/${props.slug}`,
-            as: `/functions/${props.slug}`
-          })}
+              href: isFormOrArticle
+                ? '/functions/[slug]'
+                : `/functions/${props.slug}`,
+              as: `/functions/${props.slug}`
+            })}
       >
         {/* FunctionCard a une hauteur pendant chargement */}
         <a

@@ -82,62 +82,68 @@ const CommentCard = forwardRef((props, ref) => {
               <a>{props.user.name}</a>
             </Link>
             &nbsp;-{' '}
-            {date.format(new Date(props.createdAt), 'DD/MM/YYYY à HH:mm', false)}
+            {date.format(
+              new Date(props.createdAt),
+              'DD/MM/YYYY à HH:mm',
+              false
+            )}
           </span>
         </div>
         <div className='row'>
           <div className='col-24'>
-            {!isEditing ? (
-              <>
-                <div className='CommentCard__message'>
-                  <ReactMarkdown
-                    source={editInput}
-                    renderers={{ code: CodeBlock }}
-                  />
-                </div>
-                {isAuth && user.name === props.user.name && (
-                  <p
-                    style={{
-                      fontSize: '15px',
-                      margin: '15px 0 0 0',
-                      fontStyle: 'italic'
-                    }}
-                  >
-                    <a onClick={deleteCommentById} href='#'>
-                      supprimer
-                    </a>
+            {!isEditing
+              ? (
+                <>
+                  <div className='CommentCard__message'>
+                    <ReactMarkdown
+                      source={editInput}
+                      renderers={{ code: CodeBlock }}
+                    />
+                  </div>
+                  {isAuth && user.name === props.user.name && (
+                    <p
+                      style={{
+                        fontSize: '15px',
+                        margin: '15px 0 0 0',
+                        fontStyle: 'italic'
+                      }}
+                    >
+                      <a onClick={deleteCommentById} href='#'>
+                        supprimer
+                      </a>
                     &nbsp;-&nbsp;
-                    <a style={{ cursor: 'pointer' }} onClick={editComment}>
-                      modifier
-                    </a>
-                  </p>
+                      <a style={{ cursor: 'pointer' }} onClick={editComment}>
+                        modifier
+                      </a>
+                    </p>
+                  )}
+                </>
+                )
+              : (
+                <form onSubmit={handleSubmit}>
+                  <div className='form-group FunctionComments__post-group'>
+                    <label className='form-label' htmlFor='commentEdit'>
+                      Modifier le commentaire :
+                    </label>
+                    <textarea
+                      style={{ height: 'auto' }}
+                      value={editInput}
+                      onChange={handleChange}
+                      name='commentEdit'
+                      id='commentEdit'
+                      className='form-control'
+                      rows='5'
+                      placeholder="Idée d'amélioration, avis, remarque, partage d'expérience personnel, ... (Markdown autorisé)"
+                    />
+                  </div>
+                  <div className='form-group' style={{ marginTop: '0.7em' }}>
+                    <button type='submit' className='btn btn-dark'>
+                      Envoyer
+                    </button>
+                  </div>
+                  <div className='text-center'>{htmlParser(message)}</div>
+                </form>
                 )}
-              </>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                <div className='form-group FunctionComments__post-group'>
-                  <label className='form-label' htmlFor='commentEdit'>
-                    Modifier le commentaire :
-                  </label>
-                  <textarea
-                    style={{ height: 'auto' }}
-                    value={editInput}
-                    onChange={handleChange}
-                    name='commentEdit'
-                    id='commentEdit'
-                    className='form-control'
-                    rows='5'
-                    placeholder="Idée d'amélioration, avis, remarque, partage d'expérience personnel, ... (Markdown autorisé)"
-                  />
-                </div>
-                <div className='form-group' style={{ marginTop: '0.7em' }}>
-                  <button type='submit' className='btn btn-dark'>
-                    Envoyer
-                  </button>
-                </div>
-                <div className='text-center'>{htmlParser(message)}</div>
-              </form>
-            )}
           </div>
         </div>
       </div>

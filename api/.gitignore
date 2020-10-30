@@ -11,14 +11,16 @@
 # production
 /build
 
-# misc
-.DS_Store
+# envs
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 .env.production
+
+# misc
+.DS_Store
 /temp
 /assets/images/
 

@@ -1,0 +1,73 @@
+version: '3.0'
+services:
+  functionproject-api:
+    build:
+      context: './api'
+    ports:
+      - '8080:8080'
+    depends_on:
+      - 'functionproject-database'
+      - 'functionproject-maildev'
+    volumes:
+      - './api:/app'
+      - '/app/node_modules'
+    environment:
+      WAIT_HOSTS: 'functionproject-database:3306'
+    container_name: 'functionproject-api'
+
+  s.divlo.fr-website:
+    build:
+      context: './s.divlo.fr'
+    ports:
+      - '7000:7000'
+    depends_on:
+      - 'functionproject-database'
+    volumes:
+      - './s.divlo.fr:/app'
+      - '/app/node_modules'
+    environment:
+      WAIT_HOSTS: 'functionproject-database:3306'
+    container_name: 's.divlo.fr-website'
+
+  functionproject-website:
+    build:
+      context: './website'
+    ports:
+      - '3000:3000'
+    volumes:
+      - './website:/app'
+      - '/app/node_modules'
+    container_name: 'functionproject-website'
+
+  functionproject-phpmyadmin:
+    image: 'phpmyadmin/phpmyadmin:5.0.2'
+    environment:
+      PMA_HOST: 'functionproject-database'
+      PMA_USER: 'root'
+      PMA_PASSWORD: 'password'
+    ports:
+      - '8000:80'
+    depends_on:
+      - 'functionproject-database'
+    container_name: 'functionproject-phpmyadmin'
+
+  functionproject-database:
+    image: 'mysql:5.7'
+    command: '--default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_DATABASE: 'functionproject'
+    ports:
+      - '3306:3306'
+    volumes:
+      - 'database-volume:/var/lib/mysql'
+    container_name: 'functionproject-database'
+
+  functionproject-maildev:
+    image: 'maildev/maildev:1.1.0'
+    ports:
+      - '1080:80'
+    container_name: 'functionproject-maildev'
+
+volumes:
+  database-volume:

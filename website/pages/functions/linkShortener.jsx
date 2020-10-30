@@ -266,144 +266,146 @@ const LinksList = ({
       </div>
       <div className='row justify-content-center'>
         <div className='container-fluid'>
-          {!isEditing ? (
-            <div className='col-24 table-column'>
-              <table className='table' style={{ marginBottom: '40px' }}>
-                <thead>
-                  <tr>
-                    <th className='table-row' scope='col'>
-                      Liens
-                    </th>
-                    <th className='table-row' scope='col'>
-                      Nom
-                    </th>
-                    <th className='table-row' scope='col'>
-                      Compteur de clics
-                    </th>
-                    <th className='table-row' scope='col'>
-                      Modifier
-                    </th>
-                    <th className='table-row' scope='col'>
-                      Supprimer
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {linksData.rows.map((link, index) => {
-                    const linkJSX = (
-                      <>
-                        <td className='table-row'>
-                          <a href={link.url}>{link.url}</a>
-                        </td>
-                        <td className='table-row'>
-                          <a href={`https://s.divlo.fr/${link.shortcut}`}>
-                            {link.shortcut}
-                          </a>
-                        </td>
-                        <td className='table-row'>{link.count}</td>
-                        <td
-                          style={{ cursor: 'pointer' }}
-                          onClick={() => handleEditLink(link)}
-                        >
-                          <FontAwesomeIcon
-                            icon={faPen}
-                            style={{ width: '1.5rem' }}
-                          />
-                        </td>
-                        <td
-                          style={{ cursor: 'pointer' }}
-                          onClick={() => handleRemoveLink(link.id)}
-                        >
-                          <FontAwesomeIcon
-                            icon={faTrash}
-                            style={{ width: '1.5rem' }}
-                          />
-                        </td>
-                      </>
-                    )
-                    // Si c'est le dernier élément
-                    if (linksData.rows.length === index + 1) {
-                      return (
-                        <tr key={index} ref={lastLinkRef}>
-                          {linkJSX}
-                        </tr>
+          {!isEditing
+            ? (
+              <div className='col-24 table-column'>
+                <table className='table' style={{ marginBottom: '40px' }}>
+                  <thead>
+                    <tr>
+                      <th className='table-row' scope='col'>
+                        Liens
+                      </th>
+                      <th className='table-row' scope='col'>
+                        Nom
+                      </th>
+                      <th className='table-row' scope='col'>
+                        Compteur de clics
+                      </th>
+                      <th className='table-row' scope='col'>
+                        Modifier
+                      </th>
+                      <th className='table-row' scope='col'>
+                        Supprimer
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {linksData.rows.map((link, index) => {
+                      const linkJSX = (
+                        <>
+                          <td className='table-row'>
+                            <a href={link.url}>{link.url}</a>
+                          </td>
+                          <td className='table-row'>
+                            <a href={`https://s.divlo.fr/${link.shortcut}`}>
+                              {link.shortcut}
+                            </a>
+                          </td>
+                          <td className='table-row'>{link.count}</td>
+                          <td
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => handleEditLink(link)}
+                          >
+                            <FontAwesomeIcon
+                              icon={faPen}
+                              style={{ width: '1.5rem' }}
+                            />
+                          </td>
+                          <td
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => handleRemoveLink(link.id)}
+                          >
+                            <FontAwesomeIcon
+                              icon={faTrash}
+                              style={{ width: '1.5rem' }}
+                            />
+                          </td>
+                        </>
                       )
-                    }
-                    return <tr key={index}>{linkJSX}</tr>
-                  })}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <Modal>
-              <div className='Admin__Modal__container container-fluid'>
-                <div className='Admin__Modal__row row'>
-                  <div className='col-24'>
-                    <div className='Admin__Modal-top-container row'>
-                      <div className='col-24'>
-                        <span
-                          onClick={toggleModal}
-                          style={{
-                            cursor: 'pointer',
-                            position: 'absolute',
-                            left: 0
-                          }}
-                        >
-                          <FontAwesomeIcon
-                            icon={faTimes}
-                            style={{ width: '1.5rem', color: 'red' }}
-                          />
-                        </span>
+                      // Si c'est le dernier élément
+                      if (linksData.rows.length === index + 1) {
+                        return (
+                          <tr key={index} ref={lastLinkRef}>
+                            {linkJSX}
+                          </tr>
+                        )
+                      }
+                      return <tr key={index}>{linkJSX}</tr>
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              )
+            : (
+              <Modal>
+                <div className='Admin__Modal__container container-fluid'>
+                  <div className='Admin__Modal__row row'>
+                    <div className='col-24'>
+                      <div className='Admin__Modal-top-container row'>
+                        <div className='col-24'>
+                          <span
+                            onClick={toggleModal}
+                            style={{
+                              cursor: 'pointer',
+                              position: 'absolute',
+                              left: 0
+                            }}
+                          >
+                            <FontAwesomeIcon
+                              icon={faTimes}
+                              style={{ width: '1.5rem', color: 'red' }}
+                            />
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className='col-24'>
-                    <form onSubmit={handleEditSubmit}>
-                      <div className='form-group'>
-                        <label className='form-label' htmlFor='url'>
-                          Entrez le lien à raccourcir :
-                        </label>
-                        <input
-                          value={defaultInputState.url}
-                          onChange={handleChange}
-                          type='text'
-                          name='url'
-                          id='url'
-                          placeholder='(e.g : https://divlo.fr)'
-                          className='form-control'
-                        />
-                      </div>
+                    <div className='col-24'>
+                      <form onSubmit={handleEditSubmit}>
+                        <div className='form-group'>
+                          <label className='form-label' htmlFor='url'>
+                            Entrez le lien à raccourcir :
+                          </label>
+                          <input
+                            value={defaultInputState.url}
+                            onChange={handleChange}
+                            type='text'
+                            name='url'
+                            id='url'
+                            placeholder='(e.g : https://divlo.fr)'
+                            className='form-control'
+                          />
+                        </div>
 
-                      <div className='form-group'>
-                        <label className='form-label' htmlFor='shortcutName'>
-                          Entrez le nom du raccourci :
-                        </label>
-                        <input
-                          value={defaultInputState.shortcutName}
-                          onChange={handleChange}
-                          type='text'
-                          name='shortcutName'
-                          id='shortcutName'
-                          placeholder='(e.g : divlo)'
-                          className='form-control'
-                        />
-                      </div>
+                        <div className='form-group'>
+                          <label className='form-label' htmlFor='shortcutName'>
+                            Entrez le nom du raccourci :
+                          </label>
+                          <input
+                            value={defaultInputState.shortcutName}
+                            onChange={handleChange}
+                            type='text'
+                            name='shortcutName'
+                            id='shortcutName'
+                            placeholder='(e.g : divlo)'
+                            className='form-control'
+                          />
+                        </div>
 
-                      <div className='form-group text-center'>
-                        <button type='submit' className='btn btn-dark'>
-                          Envoyer
-                        </button>
+                        <div className='form-group text-center'>
+                          <button type='submit' className='btn btn-dark'>
+                            Envoyer
+                          </button>
+                        </div>
+                      </form>
+                      <div className='form-result text-center'>
+                        {isLoading ? <Loader /> : htmlParser(message)}
                       </div>
-                    </form>
-                    <div className='form-result text-center'>
-                      {isLoading ? <Loader /> : htmlParser(message)}
                     </div>
                   </div>
                 </div>
-              </div>
-            </Modal>
-          )}
+              </Modal>
+              )}
         </div>
       </div>
     </div>

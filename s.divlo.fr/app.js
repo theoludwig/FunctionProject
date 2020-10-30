@@ -10,18 +10,21 @@ const mysql = require('mysql')
 /* Files Imports & Variables */
 const app = express()
 const database = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASS,
+  database: process.env.DATABASE_NAME,
+  port: process.env.DATABASE_PORT
 })
 
 /* Middlewares */
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+} else if (process.env.NODE_ENV === 'production') {
+  app.use(redirectToHTTPS())
+}
 app.use(helmet())
-app.use(morgan('dev'))
 app.use(express.json())
-app.use(redirectToHTTPS([/localhost:(\d{4})/]))
 
 /* EJS Template Engines */
 app.set('view engine', 'ejs')
@@ -77,7 +80,7 @@ app.use((error, _req, res) => {
 })
 
 /* Server */
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 7000
 app.listen(PORT, () => {
   console.log('\x1b[36m%s\x1b[0m', `Started on port ${PORT}.`)
 })

@@ -51,35 +51,37 @@ export default function Header () {
             <NavigationLink name='Accueil' path='/' />
             <NavigationLink name='Fonctions' path='/functions' />
             <NavigationLink name='Utilisateurs' path='/users' />
-            {!isAuth ? (
-              <>
-                <NavigationLink name="S'inscrire" path='/users/register' />
-                <NavigationLink name='Connexion' path='/users/login' />
-              </>
-            ) : (
-              <>
-                <li className='navbar-item'>
-                  <Link href='/users/[name]' as={`/users/${user.name}`}>
-                    <a
-                      className={`navbar-link ${
+            {!isAuth
+              ? (
+                <>
+                  <NavigationLink name="S'inscrire" path='/users/register' />
+                  <NavigationLink name='Connexion' path='/users/login' />
+                </>
+                )
+              : (
+                <>
+                  <li className='navbar-item'>
+                    <Link href='/users/[name]' as={`/users/${user.name}`}>
+                      <a
+                        className={`navbar-link ${
                         pathname === '/users/[name]'
                           ? 'navbar-link-active'
                           : null
                       }`}
-                    >
-                      Mon Profil
-                    </a>
-                  </Link>
-                </li>
-                <li className='navbar-item'>
-                  <Link href='/'>
-                    <a onClick={logoutUser} className='navbar-link'>
-                      Se déconnecter
-                    </a>
-                  </Link>
-                </li>
-              </>
-            )}
+                      >
+                        Mon Profil
+                      </a>
+                    </Link>
+                  </li>
+                  <li className='navbar-item'>
+                    <Link href='/'>
+                      <a onClick={logoutUser} className='navbar-link'>
+                        Se déconnecter
+                      </a>
+                    </Link>
+                  </li>
+                </>
+                )}
             {isAuth && user.isAdmin && (
               <NavigationLink name='Admin' path='/admin' />
             )}

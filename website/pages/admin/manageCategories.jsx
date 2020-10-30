@@ -159,119 +159,121 @@ const manageCategories = props => {
         description="Page d'administration de FunctionProject. Gérer les catégories."
       />
 
-      {isOpen ? (
-        <Modal>
-          <AddEditCategory
-            handleToggleModal={toggleModal}
-            defaultInputState={defaultInputState}
-            {...props}
-            isEditing={isEditing}
-          />
-        </Modal>
-      ) : (
-        <div className='container-fluid text-center'>
-          <div className='row justify-content-center'>
-            <div className='col-24'>
-              <h1>Gérer les catégories</h1>
-              <button
-                onClick={() => {
-                  setDefaultInputState(defaultCategoryState)
-                  toggleModal()
-                  setIsEditing(false)
-                }}
-                style={{ margin: '0 0 40px 0' }}
-                className='btn btn-dark'
-              >
-                Ajouter une catégorie
-              </button>
+      {isOpen
+        ? (
+          <Modal>
+            <AddEditCategory
+              handleToggleModal={toggleModal}
+              defaultInputState={defaultInputState}
+              {...props}
+              isEditing={isEditing}
+            />
+          </Modal>
+          )
+        : (
+          <div className='container-fluid text-center'>
+            <div className='row justify-content-center'>
+              <div className='col-24'>
+                <h1>Gérer les catégories</h1>
+                <button
+                  onClick={() => {
+                    setDefaultInputState(defaultCategoryState)
+                    toggleModal()
+                    setIsEditing(false)
+                  }}
+                  style={{ margin: '0 0 40px 0' }}
+                  className='btn btn-dark'
+                >
+                  Ajouter une catégorie
+                </button>
+              </div>
             </div>
-          </div>
-          <div className='row justify-content-center'>
-            <div className='container-fluid'>
-              <div className='col-24 table-column'>
-                <table className='table'>
-                  <thead>
-                    <tr>
-                      <th className='table-row' scope='col'>
-                        id
-                      </th>
-                      <th className='table-row' scope='col'>
-                        name
-                      </th>
-                      <th className='table-row' scope='col'>
-                        color
-                      </th>
-                      <th className='table-row' scope='col'>
-                        createdAt
-                      </th>
-                      <th className='table-row' scope='col'>
-                        updatedAt
-                      </th>
-                      <th className='table-row' scope='col'>
-                        Modifier
-                      </th>
-                      <th className='table-row' scope='col'>
-                        Supprimer
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {categories.map(category => {
-                      return (
-                        <tr
-                          key={category.id}
-                          style={{ backgroundColor: category.color }}
-                        >
-                          <td className='table-row'>{category.id}</td>
-                          <td className='table-row'>{category.name}</td>
-                          <td className='table-row'>{category.color}</td>
-                          <td className='table-row'>
-                            {date.format(
-                              new Date(category.createdAt),
-                              'DD/MM/YYYY à HH:mm',
-                              false
-                            )}
-                          </td>
-                          <td className='table-row'>
-                            {date.format(
-                              new Date(category.updatedAt),
-                              'DD/MM/YYYY à HH:mm',
-                              false
-                            )}
-                          </td>
-                          <td
-                            style={{ cursor: 'pointer' }}
-                            onClick={() =>
-                              handleEditCategory({
-                                name: category.name,
-                                color: category.color,
-                                id: category.id
-                              })}
+            <div className='row justify-content-center'>
+              <div className='container-fluid'>
+                <div className='col-24 table-column'>
+                  <table className='table'>
+                    <thead>
+                      <tr>
+                        <th className='table-row' scope='col'>
+                          id
+                        </th>
+                        <th className='table-row' scope='col'>
+                          name
+                        </th>
+                        <th className='table-row' scope='col'>
+                          color
+                        </th>
+                        <th className='table-row' scope='col'>
+                          createdAt
+                        </th>
+                        <th className='table-row' scope='col'>
+                          updatedAt
+                        </th>
+                        <th className='table-row' scope='col'>
+                          Modifier
+                        </th>
+                        <th className='table-row' scope='col'>
+                          Supprimer
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {categories.map(category => {
+                        return (
+                          <tr
+                            key={category.id}
+                            style={{ backgroundColor: category.color }}
                           >
-                            <FontAwesomeIcon
-                              icon={faPen}
-                              style={{ width: '1.5rem' }}
-                            />
-                          </td>
-                          <td
-                            style={{ cursor: 'pointer' }}
-                            onClick={() => handleRemoveCategory(category.id)}
-                          >
-                            <FontAwesomeIcon
-                              icon={faTrash}
-                              style={{ width: '1.5rem' }}
-                            />
-                          </td>
-                        </tr>
-                      )
-                    })}
-                  </tbody>
-                </table>
+                            <td className='table-row'>{category.id}</td>
+                            <td className='table-row'>{category.name}</td>
+                            <td className='table-row'>{category.color}</td>
+                            <td className='table-row'>
+                              {date.format(
+                                new Date(category.createdAt),
+                                'DD/MM/YYYY à HH:mm',
+                                false
+                              )}
+                            </td>
+                            <td className='table-row'>
+                              {date.format(
+                                new Date(category.updatedAt),
+                                'DD/MM/YYYY à HH:mm',
+                                false
+                              )}
+                            </td>
+                            <td
+                              style={{ cursor: 'pointer' }}
+                              onClick={() =>
+                                handleEditCategory({
+                                  name: category.name,
+                                  color: category.color,
+                                  id: category.id
+                                })}
+                            >
+                              <FontAwesomeIcon
+                                icon={faPen}
+                                style={{ width: '1.5rem' }}
+                              />
+                            </td>
+                            <td
+                              style={{ cursor: 'pointer' }}
+                              onClick={() => handleRemoveCategory(category.id)}
+                            >
+                              <FontAwesomeIcon
+                                icon={faTrash}
+                                style={{ width: '1.5rem' }}
+                              />
+                            </td>
+                          </tr>
+                        )
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+          )}
     </>
   )
 }

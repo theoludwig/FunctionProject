@@ -90,36 +90,38 @@ const FunctionComments = ({ functionId }) => {
       <div className='FunctionComments__post container-fluid'>
         <div className='row FunctionComments__row'>
           <div className='col-24'>
-            {isAuth ? (
-              <form onSubmit={handleSubmit}>
-                <div className='form-group FunctionComments__post-group'>
-                  <label className='form-label' htmlFor='commentPost'>
-                    Ajouter un commentaire :
-                  </label>
-                  <textarea
-                    className='FunctionComments__textarea form-control'
-                    value={inputState.commentPost}
-                    onChange={handleChange}
-                    name='commentPost'
-                    id='commentPost'
-                    placeholder="Idée d'amélioration, avis, remarque, partage d'expérience personnel, ... (Markdown autorisé)"
-                  />
-                </div>
-                <div className='form-group' style={{ marginTop: '0.7em' }}>
-                  <button type='submit' className='btn btn-dark'>
-                    Envoyer
-                  </button>
-                </div>
-              </form>
-            ) : (
-              <p className='text-center'>
-                Vous devez être{' '}
-                <Link href='/users/login'>
-                  <a>connecté</a>
-                </Link>{' '}
-                pour poster un commentaire.
-              </p>
-            )}
+            {isAuth
+              ? (
+                <form onSubmit={handleSubmit}>
+                  <div className='form-group FunctionComments__post-group'>
+                    <label className='form-label' htmlFor='commentPost'>
+                      Ajouter un commentaire :
+                    </label>
+                    <textarea
+                      className='FunctionComments__textarea form-control'
+                      value={inputState.commentPost}
+                      onChange={handleChange}
+                      name='commentPost'
+                      id='commentPost'
+                      placeholder="Idée d'amélioration, avis, remarque, partage d'expérience personnel, ... (Markdown autorisé)"
+                    />
+                  </div>
+                  <div className='form-group' style={{ marginTop: '0.7em' }}>
+                    <button type='submit' className='btn btn-dark'>
+                      Envoyer
+                    </button>
+                  </div>
+                </form>
+                )
+              : (
+                <p className='text-center'>
+                  Vous devez être{' '}
+                  <Link href='/users/login'>
+                    <a>connecté</a>
+                  </Link>{' '}
+                  pour poster un commentaire.
+                </p>
+                )}
           </div>
         </div>
       </div>

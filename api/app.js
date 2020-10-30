@@ -6,6 +6,7 @@ const helmet = require('helmet')
 const cors = require('cors')
 const morgan = require('morgan')
 const { redirectToHTTPS } = require('express-http-to-https')
+const rateLimit = require('express-rate-limit')
 
 /* Files Imports & Variables */
 const sequelize = require('./assets/utils/database')
@@ -16,11 +17,27 @@ const isAdmin = require('./middlewares/isAdmin')
 const app = express()
 
 /* Middlewares */
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+} else if (process.env.NODE_ENV === 'production') {
+  app.use(redirectToHTTPS())
+  const requestPerSecond = 2
+  const seconds = 60
+  const windowMs = seconds * 1000
+  app.enable('trust proxy')
+  app.use(
+    rateLimit({
+      windowMs,
+      max: seconds * requestPerSecond,
+      handler: (_req, res) => {
+        return res.status(429).json({ message: 'Too many requests' })
+      }
+    })
+  )
+}
 app.use(helmet())
 app.use(cors())
-app.use(morgan('dev'))
 app.use(express.json())
-app.use(redirectToHTTPS([/localhost:(\d{4})/]))
 
 /* Routes */
 app.use('/images', express.static(path.join(__dirname, 'assets', 'images')))
@@ -37,7 +54,7 @@ app.use('/links', require('./routes/links_shortener'))
 /* Errors Handling */
 app.use((_req, _res, next) =>
   errorHandling(next, { statusCode: 404, message: "La route n'existe pas!" })
-) // 404
+)
 app.use((error, _req, res, _next) => {
   console.log(error)
   const { statusCode, message } = error
@@ -83,7 +100,6 @@ Users.hasMany(ShortLinks)
 ShortLinks.belongsTo(Users, { constraints: false })
 
 /* Server */
-// sequelize.sync({ force: true })
 sequelize
   .sync()
   .then(() => {
