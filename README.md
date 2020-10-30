@@ -5,10 +5,9 @@
 </p>
 
 <p align="center">
-  <a href="https://gitmoji.carloscuesta.me/"><img src="https://camo.githubusercontent.com/2a4924a23bd9ef18afe793f4999b1b9ec474e48f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6769746d6f6a692d253230f09f989c253230f09f988d2d4646444436372e7376673f7374796c653d666c61742d737175617265" alt="Gitmoji"/></a>
   <a href="https://standardjs.com"><img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg"/></a>
+  <a href="https://conventionalcommits.org"><img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg" alt="Conventional Commits" /></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/licence-MIT-blue.svg" alt="Licence MIT"/></a>
-  <img src="https://img.shields.io/github/stars/Divlo/FunctionProject?style=social" alt="Stars">
   <br/> <br/>
   <a href="https://function.divlo.fr/"><img src="https://raw.githubusercontent.com/Divlo/FunctionProject/master/.github/FunctionProject.png" alt="FunctionProject" /></a>
 </p>
@@ -23,7 +22,7 @@ Si vous aimez le projet, vous pouvez aider à **le faire connaître** en utilisa
 
 Les dernières versions publiées : [https://github.com/Divlo/FunctionProject/releases](https://github.com/Divlo/FunctionProject/releases)
 
-Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/) (actuellement en version 2.1).
+Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/) (actuellement en version 2.2).
 
 ## 🚀 Open Source
 
@@ -39,8 +38,9 @@ Si vous voulez avoir les données des catégories et des fonctions, vous pouvez 
 
 ### Prérequis :
 
-- NodeJS (et npm) → version récente
-- Base de donnée MySQL → J'utilise Wamp ce qui me permet d'avoir phpmyadmin.
+- [Node.js](https://nodejs.org/) >= 14
+- [npm](https://www.npmjs.com/) >= 6
+- [MySQL](https://www.mysql.com/) >= 5.7
 
 ### Commandes (à suivre dans l'ordre) :
 
@@ -61,6 +61,24 @@ npm install
 Vous devrez ensuite configurer l'API en créant un fichier `.env` à la racine du dossier `/api` et prendre exemple du fichier `.env.example` avec votre configuration.
 
 ### Lancer l'environnement de développement :
+
+#### Avec [docker](https://www.docker.com/) :
+
+```sh
+# Setup and run all the services for you
+docker-compose up --build
+```
+
+**Services started :**
+
+- api : `http://localhost:8080`
+- s.divlo.fr : `http://localhost:7000`
+- website : `http://localhost:3000`
+- [phpmyadmin](https://www.phpmyadmin.net/) : `http://localhost:8000`
+- [MailDev](https://maildev.github.io/maildev/) : `http://localhost:1080`
+- [MySQL database](https://www.mysql.com/) (with PORT 3006)
+
+#### Sans docker :
 
 Dans deux terminals séparés :
 
