@@ -2,11 +2,15 @@ import axios from 'axios'
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL
 
-const api = axios.create({
-  baseURL: API_URL,
-  headers: {
-    'Content-Type': 'application/json'
-  }
-})
+const api = (() => {
+  const baseURL =
+    typeof window === 'undefined' ? process.env.CONTAINER_API_URL : API_URL
+  return axios.create({
+    baseURL,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+})()
 
 export default api

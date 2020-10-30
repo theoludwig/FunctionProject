@@ -5,33 +5,33 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "format": "standard \"./**/*.js\" --fix | snazzy || exit 0"
+    "format": "standard \"./**/*.js\" --fix | snazzy"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "express-fileupload": "^1.1.6",
+    "express-fileupload": "^1.2.0",
     "express-http-to-https": "^1.1.4",
-    "express-validator": "^6.4.0",
-    "helmet": "^3.21.3",
-    "jsdom": "^16.2.2",
+    "express-validator": "^6.6.1",
+    "helmet": "^4.1.1",
+    "jsdom": "^16.4.0",
     "jsonwebtoken": "^8.5.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.1",
     "ms": "^2.1.2",
-    "mysql2": "^2.1.0",
-    "nodemailer": "^6.4.6",
-    "sequelize": "^5.21.5",
+    "mysql2": "^2.2.5",
+    "nodemailer": "^6.4.14",
+    "sequelize": "^6.3.5",
     "smart-request-balancer": "^2.1.1",
-    "uuid": "^7.0.2",
-    "validator": "^13.0.0",
+    "uuid": "^8.3.1",
+    "validator": "^13.1.17",
     "dotenv": "^8.2.0",
-    "morgan": "^1.9.1"
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4",
-    "snazzy": "^8.0.0",
-    "standard": "^14.3.4"
+    "nodemon": "^2.0.6",
+    "snazzy": "^9.0.0",
+    "standard": "^16.0.0"
   }
 }
