@@ -6,6 +6,7 @@ const helmet = require('helmet')
 const cors = require('cors')
 const morgan = require('morgan')
 const { redirectToHTTPS } = require('express-http-to-https')
+const rateLimit = require('express-rate-limit')
 
 /* Files Imports & Variables */
 const sequelize = require('./assets/utils/database')
@@ -20,6 +21,19 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 } else if (process.env.NODE_ENV === 'production') {
   app.use(redirectToHTTPS())
+  const requestPerSecond = 2
+  const seconds = 60
+  const windowMs = seconds * 1000
+  app.enable('trust proxy')
+  app.use(
+    rateLimit({
+      windowMs,
+      max: seconds * requestPerSecond,
+      handler: (_req, res) => {
+        return res.status(429).json({ message: 'Too many requests' })
+      }
+    })
+  )
 }
 app.use(helmet())
 app.use(cors())
