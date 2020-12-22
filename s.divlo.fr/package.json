@@ -2,23 +2,32 @@
   "name": "short.divlo.fr",
   "version": "1.0.0",
   "description": "Link shortener for FunctionProject",
+  "standard": {
+    "files": [
+      "./**/*.js"
+    ],
+    "envs": [
+      "node"
+    ]
+  },
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "format": "standard \"./**/*.js\" --fix | snazzy || exit 0"
+    "lint": "standard | snazzy",
+    "format": "standard --fix | snazzy"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-http-to-https": "^1.1.4",
-    "helmet": "^4.1.1",
+    "helmet": "^4.2.0",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.6",
     "snazzy": "^9.0.0",
-    "standard": "^16.0.0"
+    "standard": "^16.0.3"
   }
 }

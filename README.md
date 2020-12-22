@@ -42,7 +42,7 @@ Si vous voulez avoir les données des catégories et des fonctions, vous pouvez 
 - [npm](https://www.npmjs.com/) >= 6
 - [MySQL](https://www.mysql.com/) >= 5.7
 
-### Commandes (à suivre dans l'ordre) :
+### Commandes (à suivre dans l'ordre)
 
 ```sh
 # Cloner le projet
@@ -60,9 +60,9 @@ npm install
 
 Vous devrez ensuite configurer l'API en créant un fichier `.env` à la racine du dossier `/api` et prendre exemple du fichier `.env.example` avec votre configuration.
 
-### Lancer l'environnement de développement :
+### Lancer l'environnement de développement
 
-#### Avec [docker](https://www.docker.com/) :
+#### Avec [docker](https://www.docker.com/)
 
 ```sh
 # Setup and run all the services for you
@@ -78,7 +78,7 @@ docker-compose up --build
 - [MailDev](https://maildev.github.io/maildev/) : `http://localhost:1080`
 - [MySQL database](https://www.mysql.com/) (with PORT 3006)
 
-#### Sans docker :
+#### Sans docker
 
 Dans deux terminals séparés :
 
