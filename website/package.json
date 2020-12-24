@@ -29,7 +29,7 @@
     "@fortawesome/react-fontawesome": "^0.1.13",
     "@zeit/next-css": "^1.0.1",
     "axios": "^0.21.1",
-    "date-and-time": "^0.14.1",
+    "date-and-time": "^0.14.2",
     "date-fns": "^2.16.1",
     "express": "^4.17.1",
     "express-http-to-https": "^1.1.4",
