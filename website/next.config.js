@@ -1,3 +1,11 @@
-const withCSS = require('@zeit/next-css')
 const withFonts = require('next-fonts')
-module.exports = withFonts(withCSS())
+const withPWA = require('next-pwa')
+
+module.exports = withFonts(
+  withPWA({
+    pwa: {
+      disable: process.env.NODE_ENV !== 'production',
+      dest: 'public'
+    }
+  })
+)

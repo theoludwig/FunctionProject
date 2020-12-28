@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import './Header.css'
 
 export default function NavigationLink (props) {
   const { pathname } = useRouter()

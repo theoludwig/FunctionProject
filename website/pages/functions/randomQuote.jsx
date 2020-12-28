@@ -12,8 +12,6 @@ import FunctionArticle from '../../components/FunctionPage/FunctionArticle'
 import FunctionComments from '../../components/FunctionPage/FunctionComments/FunctionComments'
 import api from '../../utils/api'
 import copyToClipboard from '../../utils/copyToClipboard'
-import 'notyf/notyf.min.css'
-import '../../public/css/pages/FunctionComponent.css'
 
 const GenerateQuote = () => {
   const [quote, setQuote] = useState({ quote: '', author: '' })

@@ -4,7 +4,6 @@ import FunctionCard from '../FunctionCard/FunctionCard'
 import Loader from '../Loader'
 import api from '../../utils/api'
 import useAPI from '../../hooks/useAPI'
-import './FunctionsList.css'
 
 let pageFunctions = 1
 const FunctionsList = props => {

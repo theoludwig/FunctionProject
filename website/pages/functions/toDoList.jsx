@@ -9,8 +9,6 @@ import FunctionTabs from '../../components/FunctionPage/FunctionTabs'
 import FunctionArticle from '../../components/FunctionPage/FunctionArticle'
 import FunctionComments from '../../components/FunctionPage/FunctionComments/FunctionComments'
 import api from '../../utils/api'
-import '../../public/css/pages/FunctionComponent.css'
-import '../../public/css/pages/functions/toDoList.css'
 
 const ManageToDo = () => {
   const { isAuth, user } = useContext(UserContext)

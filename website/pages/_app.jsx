@@ -4,17 +4,36 @@ import NProgress from 'nprogress'
 
 /* Components Imports */
 import Header from '../components/Header/Header'
-import Footer from '../components/Footer/Footer'
+import Footer from '../components/Footer'
 
 /* Contexts Imports */
 import UserContextProvider from '../contexts/UserContext'
 
 /* CSS Imports */
+import 'notyf/notyf.min.css'
+import 'react-datepicker/dist/react-datepicker.css'
 import '../public/fonts/Montserrat/Montserrat.css'
-import '../public/css/normalize.css'
-import '../public/css/grid.css'
-import '../public/css/general.css'
-import '../public/css/nprogress.css'
+import '../styles/suneditor.min.css'
+import '../styles/normalize.css'
+import '../styles/grid.css'
+import '../styles/general.css'
+import '../styles/nprogress.css'
+import '../styles/pages/admin.css'
+import '../styles/pages/404.css'
+import '../styles/pages/index.css'
+import '../styles/pages/profile.css'
+import '../styles/pages/register-login.css'
+import '../styles/pages/users.css'
+import '../styles/pages/FunctionComponent.css'
+import '../styles/pages/functions/chronometerTimer.css'
+import '../styles/pages/functions/rightPrice.css'
+import '../styles/pages/functions/toDoList.css'
+import '../styles/components/Header.css'
+import '../styles/components/FunctionTabs.css'
+import '../styles/components/CommentCard.css'
+import '../styles/components/FunctionComments.css'
+import '../styles/components/FunctionsList.css'
+import '../styles/components/UserCard.css'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())

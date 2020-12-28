@@ -6,7 +6,6 @@ import { faStar as farStar } from '@fortawesome/free-regular-svg-icons'
 import date from 'date-and-time'
 import { UserContext } from '../../contexts/UserContext'
 import api, { API_URL } from '../../utils/api'
-import '../FunctionCard/FunctionCard.css'
 
 const FunctionComponentTop = props => {
   const { isAuth, user } = useContext(UserContext)

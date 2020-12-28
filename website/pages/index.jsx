@@ -4,7 +4,6 @@ import { autoPlay } from 'react-swipeable-views-utils'
 import Link from 'next/link'
 import HeadTag from '../components/HeadTag'
 import Loader from '../components/Loader'
-import '../public/css/pages/index.css'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 

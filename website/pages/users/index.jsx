@@ -3,7 +3,6 @@ import HeadTag from '../../components/HeadTag'
 import Loader from '../../components/Loader'
 import UserCard from '../../components/UserCard/UserCard'
 import api from '../../utils/api'
-import '../../public/css/pages/users.css'
 
 const Users = () => {
   let pageUsers = 1

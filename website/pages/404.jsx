@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import HeadTag from '../components/HeadTag'
-import '../public/css/pages/404.css'
 
 const Error404 = () => (
   <>

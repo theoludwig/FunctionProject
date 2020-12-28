@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import api from '../../utils/api'
-import 'notyf/notyf.min.css'
 
 const EditFormFunction = props => {
   const [inputsArray, setInputsArray] = useState(

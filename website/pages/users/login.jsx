@@ -6,7 +6,6 @@ import Loader from '../../components/Loader'
 import HeadTag from '../../components/HeadTag'
 import { UserContext } from '../../contexts/UserContext'
 import withoutAuth from '../../hoc/withoutAuth'
-import '../../public/css/pages/register-login.css'
 
 const Login = () => {
   const router = useRouter()

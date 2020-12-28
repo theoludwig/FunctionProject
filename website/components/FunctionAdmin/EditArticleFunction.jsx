@@ -3,8 +3,6 @@ import dynamic from 'next/dynamic'
 import { complex } from '../../utils/sunEditorConfig'
 import api from '../../utils/api'
 import FunctionArticle from '../FunctionPage/FunctionArticle'
-import 'notyf/notyf.min.css'
-import '../../public/css/suneditor.min.css'
 
 const SunEditor = dynamic(() => import('suneditor-react'), { ssr: false })
 

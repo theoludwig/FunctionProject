@@ -7,8 +7,6 @@ import EditArticleFunction from '../../components/FunctionAdmin/EditArticleFunct
 import EditFormFunction from '../../components/FunctionAdmin/EditFormFunction'
 import redirect from '../../utils/redirect'
 import api, { API_URL } from '../../utils/api'
-import '../../components/FunctionPage/FunctionTabs.css'
-import '../../public/css/pages/admin.css'
 
 const AdminFunctionComponent = props => {
   const [slideIndex, setSlideIndex] = useState(0)

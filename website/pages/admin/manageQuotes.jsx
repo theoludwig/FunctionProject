@@ -6,7 +6,6 @@ import { faCheck, faTrash } from '@fortawesome/free-solid-svg-icons'
 import redirect from '../../utils/redirect'
 import HeadTag from '../../components/HeadTag'
 import api from '../../utils/api'
-import '../../public/css/pages/admin.css'
 
 const manageQuotes = props => {
   const [quotesData, setQuotesData] = useState({

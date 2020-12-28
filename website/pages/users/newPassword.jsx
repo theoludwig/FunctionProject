@@ -5,7 +5,6 @@ import HeadTag from '../../components/HeadTag'
 import api from '../../utils/api'
 import redirect from '../../utils/redirect'
 import withoutAuth from '../../hoc/withoutAuth'
-import '../../public/css/pages/register-login.css'
 
 const newPassword = (props) => {
   const [inputState, setInputState] = useState({})

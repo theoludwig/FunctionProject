@@ -6,7 +6,6 @@ import api from '../../utils/api'
 import fr from 'date-fns/locale/fr'
 import { registerLocale } from 'react-datepicker'
 import date from 'date-and-time'
-import 'react-datepicker/dist/react-datepicker.css'
 
 registerLocale('fr', fr)
 

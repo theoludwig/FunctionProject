@@ -8,7 +8,6 @@ import Modal from '../../components/Modal'
 import FunctionsList from '../../components/FunctionsList/FunctionsList'
 import AddEditFunction from '../../components/FunctionAdmin/AddEditFunction'
 import redirect from '../../utils/redirect'
-import '../../public/css/pages/admin.css'
 
 const Admin = props => {
   const [isOpen, setIsOpen] = useState(false)

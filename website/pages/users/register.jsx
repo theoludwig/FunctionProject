@@ -4,7 +4,6 @@ import Loader from '../../components/Loader'
 import HeadTag from '../../components/HeadTag'
 import api from '../../utils/api'
 import withoutAuth from '../../hoc/withoutAuth'
-import '../../public/css/pages/register-login.css'
 
 const Register = () => {
   const [inputState, setInputState] = useState({ name: '', email: '', password: '' })

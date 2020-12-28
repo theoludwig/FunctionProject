@@ -12,9 +12,6 @@ import FunctionArticle from '../../components/FunctionPage/FunctionArticle'
 import FunctionComments from '../../components/FunctionPage/FunctionComments/FunctionComments'
 import Modal from '../../components/Modal'
 import api from '../../utils/api'
-import 'notyf/notyf.min.css'
-import '../../public/css/pages/FunctionComponent.css'
-import '../../public/css/pages/admin.css'
 
 const CreateLink = ({ linksData, setLinksData }) => {
   const { isAuth, user } = useContext(UserContext)

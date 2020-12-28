@@ -4,7 +4,6 @@ import { UserContext } from '../../../contexts/UserContext'
 import CommentCard from '../CommentCard/CommentCard'
 import Loader from '../../Loader'
 import api from '../../../utils/api'
-import './FunctionComments.css'
 
 const FunctionComments = ({ functionId }) => {
   // State pour poster un commentaire

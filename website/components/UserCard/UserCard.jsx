@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { forwardRef, memo } from 'react'
 import { API_URL } from '../../utils/api'
-import './UserCard.css'
 
 const UserCard = memo(
   forwardRef((props, ref) => {

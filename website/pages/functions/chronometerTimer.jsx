@@ -9,8 +9,6 @@ import Loader from '../../components/Loader'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faPause, faSync } from '@fortawesome/free-solid-svg-icons'
 import api from '../../utils/api'
-import '../../public/css/pages/FunctionComponent.css'
-import '../../public/css/pages/functions/chronometerTimer.css'
 
 let interval
 function convertSeconds (seconds) {

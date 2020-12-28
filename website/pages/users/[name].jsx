@@ -13,7 +13,6 @@ import Loader from '../../components/Loader'
 import ReactMarkdown from 'react-markdown'
 import CodeBlock from '../../components/CodeBlock'
 import api, { API_URL } from '../../utils/api'
-import '../../public/css/pages/profile.css'
 
 const Profile = props => {
   const { isAuth, user, logoutUser } = useContext(UserContext)

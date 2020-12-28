@@ -5,7 +5,6 @@ import FunctionComments from '../../components/FunctionPage/FunctionComments/Fun
 import FunctionPage from '../../components/FunctionPage/FunctionPage'
 import redirect from '../../utils/redirect'
 import api from '../../utils/api'
-import '../../public/css/pages/FunctionComponent.css'
 
 const FunctionTabManager = props => {
   if (props.type === 'form') {

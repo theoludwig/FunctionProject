@@ -6,8 +6,6 @@ import FunctionArticle from '../../components/FunctionPage/FunctionArticle'
 import FunctionComments from '../../components/FunctionPage/FunctionComments/FunctionComments'
 import Loader from '../../components/Loader'
 import api from '../../utils/api'
-import '../../public/css/pages/FunctionComponent.css'
-import '../../public/css/pages/functions/rightPrice.css'
 
 const PlayRightPrice = () => {
   const [isPlaying, setIsPlaying] = useState(false)

@@ -3,7 +3,6 @@ import { UserContext } from '../../contexts/UserContext'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import NavigationLink from './NavigationLink'
-import './Header.css'
 
 export default function Header () {
   const { isAuth, logoutUser, user } = useContext(UserContext)

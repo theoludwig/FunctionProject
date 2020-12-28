@@ -6,7 +6,6 @@ import { UserContext } from '../../../contexts/UserContext'
 import ReactMarkdown from 'react-markdown'
 import CodeBlock from '../../CodeBlock'
 import api, { API_URL } from '../../../utils/api'
-import './CommentCard.css'
 
 const CommentCard = forwardRef((props, ref) => {
   const { isAuth, user } = useContext(UserContext)

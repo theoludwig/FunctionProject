@@ -3,7 +3,6 @@ import htmlParser from 'html-react-parser'
 import Loader from '../Loader'
 import useAPI from '../../hooks/useAPI'
 import api from '../../utils/api'
-import '../../public/css/pages/admin.css'
 
 const AddEditFunction = props => {
   const [, categories] = useAPI('/categories')

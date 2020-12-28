@@ -1,5 +1,4 @@
 import SwipeableViews from 'react-swipeable-views'
-import './FunctionTabs.css'
 
 const FunctionTabs = props => {
   return (
