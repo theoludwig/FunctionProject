@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Backend REST API for FunctionProject",
   "standard": {
     "files": [
@@ -25,8 +25,8 @@
     "express-fileupload": "^1.2.0",
     "express-http-to-https": "^1.1.4",
     "express-rate-limit": "^5.2.3",
-    "express-validator": "^6.8.1",
-    "helmet": "^4.2.0",
+    "express-validator": "^6.9.0",
+    "helmet": "^4.3.1",
     "jsdom": "^16.4.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
