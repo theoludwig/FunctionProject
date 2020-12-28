@@ -5,11 +5,13 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/Divlo/FunctionProject/actions?query=workflow%3A%22Node.js+CI%22"><img src="https://github.com/Divlo/FunctionProject/workflows/Node.js%20CI/badge.svg" alt="Node.js CI" /></a>
   <a href="https://standardjs.com"><img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg"/></a>
-  <a href="https://conventionalcommits.org"><img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg" alt="Conventional Commits" /></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/licence-MIT-blue.svg" alt="Licence MIT"/></a>
+  <a href="https://conventionalcommits.org"><img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg" alt="Conventional Commits" /></a>
+  <a href="./.github/CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg" alt="Contributor Covenant" /></a>
   <br/> <br/>
-  <a href="https://function.divlo.fr/"><img src="https://raw.githubusercontent.com/Divlo/FunctionProject/master/.github/FunctionProject.png" alt="FunctionProject" /></a>
+  <a href="https://function.divlo.fr/"><img src="https://raw.githubusercontent.com/Divlo/FunctionProject/master/.github/images/FunctionProject.png" alt="FunctionProject" /></a>
 </p>
 
 ## ⚙️ À propos
@@ -22,7 +24,7 @@ Si vous aimez le projet, vous pouvez aider à **le faire connaître** en utilisa
 
 Les dernières versions publiées : [https://github.com/Divlo/FunctionProject/releases](https://github.com/Divlo/FunctionProject/releases)
 
-Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/) (actuellement en version 2.2).
+Le projet est disponible sur [function.divlo.fr](https://function.divlo.fr/) (actuellement en version 2.3).
 
 ## 🚀 Open Source
 
@@ -58,7 +60,7 @@ cd ../website
 npm install
 ```
 
-Vous devrez ensuite configurer l'API en créant un fichier `.env` à la racine du dossier `/api` et prendre exemple du fichier `.env.example` avec votre configuration.
+Vous devrez ensuite configurer les variables d'environnements en créant un fichier `.env` à la racine du dossier `/api`, `/website` et `s.divlo.fr` pour prendre exemple du fichier `.env.example` avec votre configuration.
 
 ### Lancer l'environnement de développement
 
@@ -98,6 +100,6 @@ Enjoy! 😃
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
-## 📄 Licence
+## 📄 License
 
-Ce projet est sous licence MIT - voir le fichier [LICENSE](./LICENSE) pour plus de détails.
+[MIT](./LICENSE)
