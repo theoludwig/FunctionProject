@@ -40,7 +40,7 @@ Si vous voulez avoir les données des catégories et des fonctions, vous pouvez 
 
 - [Node.js](https://nodejs.org/) >= 14
 - [npm](https://www.npmjs.com/) >= 6
-- [MySQL](https://www.mysql.com/) >= 5.7
+- [MySQL](https://www.mysql.com/) >= 8.0
 
 ### Commandes (à suivre dans l'ordre)
 
