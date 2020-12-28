@@ -39,34 +39,34 @@ const FunctionCard = memo(
             style={
               isLoading ? { height: '360px', justifyContent: 'center' } : null
             }
-            className="FunctionCard col-sm-24 col-md-10 col-xl-7"
+            className='FunctionCard col-sm-24 col-md-10 col-xl-7'
           >
-            {isLoading && <Loader width="125px" height="125px" />}
+            {isLoading && <Loader width='125px' height='125px' />}
 
             <div
               className={`FunctionCard__container ${isLoading ? 'd-none' : ''}`}
             >
-              <div className="FunctionCard__top">
+              <div className='FunctionCard__top'>
                 <img
                   onLoad={handleLoad}
                   onError={handleError}
-                  className="FunctionCard__image"
+                  className='FunctionCard__image'
                   alt={props.title}
                   src={API_URL + props.image}
                 />
-                <h2 className="FunctionCard__title">{props.title}</h2>
-                <p className="FunctionCard__description text-center">
+                <h2 className='FunctionCard__title'>{props.title}</h2>
+                <p className='FunctionCard__description text-center'>
                   {props.description}
                 </p>
               </div>
-              <div className="FunctionCard__info">
+              <div className='FunctionCard__info'>
                 <p
-                  className="FunctionCard__category"
+                  className='FunctionCard__category'
                   style={{ backgroundColor: props.categorie.color }}
                 >
                   {props.categorie.name}
                 </p>
-                <p className="FunctionCard__publication-date">
+                <p className='FunctionCard__publication-date'>
                   {date.format(new Date(props.createdAt), 'DD/MM/YYYY', false)}
                 </p>
               </div>
@@ -142,7 +142,8 @@ const FunctionCard = memo(
             margin-right: 20px;
             font-size: 16.4px;
           }
-        `}</style>
+        `}
+        </style>
       </>
     )
   })
