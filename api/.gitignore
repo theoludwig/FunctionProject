@@ -22,7 +22,7 @@
 # misc
 .DS_Store
 /temp
-/assets/images/
+/assets/images/users
 
 npm-debug.log*
 yarn-debug.log*

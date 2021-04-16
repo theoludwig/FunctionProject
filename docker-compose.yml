@@ -40,7 +40,7 @@ services:
     container_name: 'functionproject-website'
 
   functionproject-phpmyadmin:
-    image: 'phpmyadmin/phpmyadmin:5.0.2'
+    image: 'phpmyadmin/phpmyadmin:5.1.0'
     environment:
       PMA_HOST: 'functionproject-database'
       PMA_USER: 'root'
@@ -52,7 +52,7 @@ services:
     container_name: 'functionproject-phpmyadmin'
 
   functionproject-database:
-    image: 'mysql:8.0.22'
+    image: 'mysql:8.0.23'
     command: '--default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci'
     environment:
       MYSQL_ROOT_PASSWORD: 'password'

@@ -1,6 +1,10 @@
 <h1 align="center"><a href="https://function.divlo.fr/">FunctionProject</a></h1>
 
 <p align="center">
+  <strong>⚠️ Le projet n'est plus maintenu.</strong>
+</p>
+
+<p align="center">
   <strong>Apprenez la programmation grâce à l'apprentissage par projet alias fonction.</strong>
 </p>
 
@@ -38,11 +42,11 @@ Si vous voulez **contribuer**, avant toute chose écrivez une **"[issue](https:/
 
 Si vous voulez avoir les données des catégories et des fonctions, vous pouvez d'abord lancer l'API pour que Sequelize crée les tables SQl et ensuite exécuter le fichier SQL [backup.sql](./.github/backup.sql).
 
-### Prérequis :
+### Prérequis
 
 - [Node.js](https://nodejs.org/) >= 14
-- [npm](https://www.npmjs.com/) >= 6
-- [MySQL](https://www.mysql.com/) >= 8.0
+- [npm](https://www.npmjs.com/) >= 7
+- [MySQL](https://www.mysql.com/) >= 8
 
 ### Commandes (à suivre dans l'ordre)
 
@@ -97,8 +101,6 @@ npm run dev # API lancé sur http://localhost:8080
 ```
 
 Enjoy! 😃
-
-[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
 ## 📄 License
 
